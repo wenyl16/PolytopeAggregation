@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "samples": 100,
+  "controls_passed": true,
+  "all_primal_valid": true,
+  "all_bounds_consistent": true,
+  "gap_converged_count": 100,
+  "mean_wall_seconds": 0.022146121989935638,
+  "scope": "Numerical correctness gate, not a requirement to find or exclude nonconvexity"
+}

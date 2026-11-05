@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "captured_at_utc": "2026-10-25T08:18:30.946307+00:00",
+  "device_scale": 3,
+  "training_config_path": "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\microgrid\\scale3\\training\\training_config.json",
+  "training_config_sha256_at_capture": "db11bded128536e191cffceea201430c69a080e3fd53db240314bbf62d5c10ca",
+  "training_config_unmodified": true,
+  "source_snapshot_root": "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\microgrid\\scale3\\source_snapshot",
+  "executed_source_snapshot_verified": true,
+  "current_source_changed": true,
+  "changed_source_paths": [
+    "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\Simulator\\runners\\train_microgrid.py",
+    "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\Simulator\\runners\\train_aggregation.py"
+  ],
+  "files": [
+    {
+      "source_path": "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\Simulator\\runners\\train_microgrid.py",
+      "relative_source_path": "Simulator\\runners\\train_microgrid.py",
+      "recorded_executed_sha256": "ec13cafe27f641159fdc56c57ae91e7b6f642b22c31fadedd710761491c5b0d2",
+      "snapshot_path": "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\microgrid\\scale3\\source_snapshot\\Simulator\\runners\\train_microgrid.py",
+      "snapshot_sha256": "ec13cafe27f641159fdc56c57ae91e7b6f642b22c31fadedd710761491c5b0d2",
+      "snapshot_verified": true,
+      "current_source_sha256": "2441859ea47a3c6d1224a90c90a7209012579c5312c809d07557c41af1ae9c75",
+      "current_source_changed": true,
+      "archive_method": "reconstructed startup runner by reversing the eight added conservativeness CLI/guard/config edits, then accepted only after exact SHA-256 match"
+    },
+    {
+      "source_path": "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\Simulator\\runners\\train_aggregation.py",
+      "relative_source_path": "Simulator\\runners\\train_aggregation.py",
+      "recorded_executed_sha256": "e72cd31b13e0fd5b6efb590ea628a08449988623e34b25715156421e3bf9c383",
+      "snapshot_path": "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\microgrid\\scale3\\source_snapshot\\Simulator\\runners\\train_aggregation.py",
+      "snapshot_sha256": "e72cd31b13e0fd5b6efb590ea628a08449988623e34b25715156421e3bf9c383",
+      "snapshot_verified": true,
+      "current_source_sha256": "c4048aaeb30e05e6d1ea92bb842e2b0ebe1ff64bad3985d0594457dad9172dbe",
+      "current_source_changed": true,
+      "archive_method": "byte copy of unchanged live source, accepted only after exact recorded SHA-256 match",
+      "current_source_review_method": "Current edits are confined to unused aggregate build_stages/main; train_case, new_run_dir, imports and every other top-level AST statement match the executed archive",
+      "used_shared_functions_unchanged": true
+    },
+    {
+      "source_path": "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\Simulator\\cases\\microgrid_case.py",
+      "relative_source_path": "Simulator\\cases\\microgrid_case.py",
+      "recorded_executed_sha256": "cfa9e1c168ffcc3ece7dffc7656e188e08d17a054430e73ac0c1ae7e97145949",
+      "snapshot_path": "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\microgrid\\scale3\\source_snapshot\\Simulator\\cases\\microgrid_case.py",
+      "snapshot_sha256": "cfa9e1c168ffcc3ece7dffc7656e188e08d17a054430e73ac0c1ae7e97145949",
+      "snapshot_verified": true,
+      "current_source_sha256": "cfa9e1c168ffcc3ece7dffc7656e188e08d17a054430e73ac0c1ae7e97145949",
+      "current_source_changed": false,
+      "archive_method": "byte copy of unchanged live source, accepted only after exact recorded SHA-256 match"
+    },
+    {
+      "source_path": "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\Simulator\\Approximator.py",
+      "relative_source_path": "Simulator\\Approximator.py",
+      "recorded_executed_sha256": "51234fa104781c8a6e1fece482ebe96db506fc04e82e49c06bde6f6448656610",
+      "snapshot_path": "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\microgrid\\scale3\\source_snapshot\\Simulator\\Approximator.py",
+      "snapshot_sha256": "51234fa104781c8a6e1fece482ebe96db506fc04e82e49c06bde6f6448656610",
+      "snapshot_verified": true,
+      "current_source_sha256": "51234fa104781c8a6e1fece482ebe96db506fc04e82e49c06bde6f6448656610",
+      "current_source_changed": false,
+      "archive_method": "byte copy of unchanged live source, accepted only after exact recorded SHA-256 match"
+    },
+    {
+      "source_path": "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\Simulator\\microgrid_count_solver.py",
+      "relative_source_path": "Simulator\\microgrid_count_solver.py",
+      "recorded_executed_sha256": "e2e36a57f13505497ffd9acff9b15e8da096f7c12bde307f8314da7afb3ddcd9",
+      "snapshot_path": "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\microgrid\\scale3\\source_snapshot\\Simulator\\microgrid_count_solver.py",
+      "snapshot_sha256": "e2e36a57f13505497ffd9acff9b15e8da096f7c12bde307f8314da7afb3ddcd9",
+      "snapshot_verified": true,
+      "current_source_sha256": "e2e36a57f13505497ffd9acff9b15e8da096f7c12bde307f8314da7afb3ddcd9",
+      "current_source_changed": false,
+      "archive_method": "byte copy of unchanged live source, accepted only after exact recorded SHA-256 match"
+    }
+  ],
+  "runner_factory_AST": {
+    "current": {
+      "build_microgrid": "f8532c1353800a02d61765c64d32249b911c96848135e3ea2668b18dd323667a",
+      "DEVICE_COUNTS": "688f7d41bf34fcb787f6d6c4a090016dca425328d4c47ce2ef8a0e4109916505",
+      "imports": "b38085c362812bf3bf1f1851d988d7a3ac46d2d6878b30f7c910d7d0260c4ddf"
+    },
+    "recorded_executed_snapshot": {
+      "build_microgrid": "f8532c1353800a02d61765c64d32249b911c96848135e3ea2668b18dd323667a",
+      "DEVICE_COUNTS": "688f7d41bf34fcb787f6d6c4a090016dca425328d4c47ce2ef8a0e4109916505",
+      "imports": "b38085c362812bf3bf1f1851d988d7a3ac46d2d6878b30f7c910d7d0260c4ddf"
+    },
+    "build_microgrid_unchanged": true,
+    "DEVICE_COUNTS_unchanged": true,
+    "imports_unchanged": true
+  },
+  "live_runner_change": "External working-tree change adds --conservativeness with default 0.0 plus overwrite guard and config fields. The already running training process loaded the archived startup runner, whose case_mg call uses conservativeness=0.0.",
+  "audit_policy": "Only the two observed runner edits may use exact recorded executed snapshots, with current observed SHA and independently recomputed used factory/function/import AST checks. Current microgrid_case.py, Approximator.py and microgrid_count_solver.py must still match recorded executed bytes.",
+  "no_production_source_restored_or_overwritten": true,
+  "last_reviewed_at_utc": "2026-10-25T08:35:25.153739+00:00",
+  "current_changed_source_count": 2,
+  "shared_runner_used_AST": {
+    "current": {
+      "new_run_dir": "5512aea785286cdc1c605e0bb58039b67b22a555fbd987eadc8d6f0fcaaeae90",
+      "train_case": "9551e4820fdc30079937f767901da6690aba292474eaaf259abb21e55d6c680d",
+      "imports": "f1597dc96b2fecc86db433255a70f4f5038aaa90fef085a9225f68381f6c3918",
+      "top_level_excluding_unused_aggregate_schedule": "25f5057938f028c9d82d1581d5bf3a9157fb0b367392238688f037961f29b7b8"
+    },
+    "recorded_executed_snapshot": {
+      "new_run_dir": "5512aea785286cdc1c605e0bb58039b67b22a555fbd987eadc8d6f0fcaaeae90",
+      "train_case": "9551e4820fdc30079937f767901da6690aba292474eaaf259abb21e55d6c680d",
+      "imports": "f1597dc96b2fecc86db433255a70f4f5038aaa90fef085a9225f68381f6c3918",
+      "top_level_excluding_unused_aggregate_schedule": "25f5057938f028c9d82d1581d5bf3a9157fb0b367392238688f037961f29b7b8"
+    },
+    "train_case_unchanged": true,
+    "new_run_dir_unchanged": true,
+    "imports_unchanged": true,
+    "top_level_except_unused_aggregate_schedule_unchanged": true
+  },
+  "used_shared_functions_unchanged": true,
+  "current_shared_runner_change": "External working-tree edit adds an aggregate-only two-stage schedule to build_stages/main. Microgrid invokes unchanged train_case/new_run_dir and uses its own unchanged three-stage constants."
+}

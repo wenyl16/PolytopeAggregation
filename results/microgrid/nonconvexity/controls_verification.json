@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "count": 100,
+  "max_upper_percent": 0.0,
+  "gap_converged_count": 100,
+  "construction": "20 opposite LP endpoint pairs with one fixed feasible binary schedule; five weights per pair",
+  "projection": "Original mixed-integer region; all original binary bounds restored"
+}

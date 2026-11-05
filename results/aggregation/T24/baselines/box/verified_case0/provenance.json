@@ -1,0 +1,41 @@
+{
+  "status": "completed",
+  "scenario_sha256": "4aa952dedf9b099d1e8e806417c124199762e01a0157b2a102534cafb5ccf151",
+  "source_sha256": {
+    "Simulator\\runners\\prepare_exact_comparison.py": "8b33077ef0bc6e79eeced512d3c54ed145709807b742b67ab23549a25ce1140f",
+    "Simulator\\Approximator.py": "cb86d0ca561a810152313cc70dbd904f18840e7f06d2163e38ac27c1d2addb9b",
+    "Simulator\\baselines.py": "fd49929b6940de2bd15e3abe484316da9b9ec026f9b1d70dec00a730ce54db9b",
+    "Simulator\\runners\\train_aggregation.py": "4915bf5005b7b4af97ec150377d698cdaf44ed0ac43f29cd3a8fe959b42b6634",
+    "Simulator\\cases\\aggregation.py": "417f11e4d7e1721bd65d63959a0dfba1ac7d35bac923f979b6b913d7ff4347a8",
+    "Simulator\\cases\\aggregation_case_T24.py": "20bfd4a2fa84a9a8f44bc8e714696c54753a5b117fb3d347e8727bfa69f407fa"
+  },
+  "builder": "Simulator.baselines.build_cube",
+  "legacy_box_comparison": {
+    "A_cube.csv": {
+      "old_shape": [
+        48,
+        24
+      ],
+      "new_shape": [
+        48,
+        24
+      ],
+      "max_abs_difference": 0.0,
+      "exactly_equal": true,
+      "old_sha256": "291c9baf2f23b50383db01006888ed129a89f9af9a4da4044de62f752cf883f6"
+    },
+    "b_cube.csv": {
+      "old_shape": [
+        48
+      ],
+      "new_shape": [
+        48
+      ],
+      "max_abs_difference": 0.0,
+      "exactly_equal": true,
+      "old_sha256": "8b1f56989cd7a4ed45d2d1feec98701bd823d485ca45c63464921a0578798d63"
+    }
+  },
+  "comp_time": 0.10709071159362793,
+  "final_polytope_sha256": "49b6d45a29277eaddda9d68c1e17555f87cc28475e60237f97f94d0ead404520"
+}

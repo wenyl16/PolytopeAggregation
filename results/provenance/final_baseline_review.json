@@ -1,0 +1,284 @@
+{
+  "active_modules": 58,
+  "missing_modules": [],
+  "missing_imported_symbols": [],
+  "missing_source_paths": [],
+  "historical_lookup_strings": [
+    {
+      "source": "Simulator.paths",
+      "line": 11,
+      "path": "Simulator/baselines.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 12,
+      "path": "Simulator/federated_aggregation.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 13,
+      "path": "Simulator/federated_training.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 14,
+      "path": "Simulator/federated_volume.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 16,
+      "path": "Simulator/microgrid_count_solver.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 17,
+      "path": "Simulator/runners/compare_baselines.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 18,
+      "path": "Simulator/runners/run_federated_peb.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 19,
+      "path": "Simulator/runners/run_microgrid_scale.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 20,
+      "path": "Simulator/runners/run_taheri2022.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 21,
+      "path": "Simulator/runners/taheri_data.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 22,
+      "path": "Simulator/runners/taheri_geometry.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 23,
+      "path": "Simulator/runners/test_taheri2022.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 24,
+      "path": "Simulator/runners/train_aggregation_scaling.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 25,
+      "path": "Simulator/runners/train_aggregation_t96.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 26,
+      "path": "Simulator/support/legacy_aggregation_case.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 27,
+      "path": "Simulator/testers/_scaling_parallel_evaluation.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 28,
+      "path": "Simulator/testers/compute_polytope_errors_and_costs_gurobi.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 29,
+      "path": "Simulator/testers/compute_polytope_errors_pyomo.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 30,
+      "path": "Simulator/testers/summarize_aggregation_scaling.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 31,
+      "path": "Simulator/testers/summarize_microgrid_min_uptime_ablation.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 32,
+      "path": "Simulator/testers/summarize_microgrid_nonconvexity.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 33,
+      "path": "Simulator/testers/summarize_microgrid_scale3_nonconvexity.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 34,
+      "path": "Simulator/testers/summarize_microgrid_scale3_percentage.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 35,
+      "path": "Simulator/testers/summarize_paper_tables.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 36,
+      "path": "Simulator/testers/test_microgrid_ess_time_index.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 37,
+      "path": "Simulator/testers/test_microgrid_min_uptime.py"
+    },
+    {
+      "source": "Simulator.runners.compare_training_stages",
+      "line": 148,
+      "path": "Simulator/testers/evaluation_native.py"
+    },
+    {
+      "source": "Simulator.runners.compare_training_stages",
+      "line": 148,
+      "path": "Simulator/evaluation_native.py"
+    }
+  ],
+  "volume_equivalence": [
+    {
+      "function": "peb_volume_and_gradient",
+      "horizon": 2,
+      "delta_t": 1.0,
+      "all_outputs_bit_equal": true,
+      "positive_volume": 0.630859375
+    },
+    {
+      "function": "peb_volume_and_gradient_modified",
+      "horizon": 2,
+      "delta_t": 1.0,
+      "all_outputs_bit_equal": true,
+      "positive_volume": 0.6516742885253909
+    },
+    {
+      "function": "peb_volume_and_gradient",
+      "horizon": 2,
+      "delta_t": 0.25,
+      "all_outputs_bit_equal": true,
+      "positive_volume": 0.6591796875
+    },
+    {
+      "function": "peb_volume_and_gradient_modified",
+      "horizon": 2,
+      "delta_t": 0.25,
+      "all_outputs_bit_equal": true,
+      "positive_volume": 0.6558468750000005
+    },
+    {
+      "function": "peb_volume_and_gradient",
+      "horizon": 3,
+      "delta_t": 1.0,
+      "all_outputs_bit_equal": true,
+      "positive_volume": 0.53192138671875
+    },
+    {
+      "function": "peb_volume_and_gradient_modified",
+      "horizon": 3,
+      "delta_t": 1.0,
+      "all_outputs_bit_equal": true,
+      "positive_volume": 0.5469916251289695
+    },
+    {
+      "function": "peb_volume_and_gradient",
+      "horizon": 3,
+      "delta_t": 0.25,
+      "all_outputs_bit_equal": true,
+      "positive_volume": 0.53900146484375
+    },
+    {
+      "function": "peb_volume_and_gradient_modified",
+      "horizon": 3,
+      "delta_t": 0.25,
+      "all_outputs_bit_equal": true,
+      "positive_volume": 0.5509117336120611
+    },
+    {
+      "function": "peb_volume_and_gradient",
+      "horizon": 6,
+      "delta_t": 1.0,
+      "all_outputs_bit_equal": true,
+      "positive_volume": 0.35587337147444487
+    },
+    {
+      "function": "peb_volume_and_gradient_modified",
+      "horizon": 6,
+      "delta_t": 1.0,
+      "all_outputs_bit_equal": true,
+      "positive_volume": 0.3725101354086151
+    },
+    {
+      "function": "peb_volume_and_gradient",
+      "horizon": 6,
+      "delta_t": 0.25,
+      "all_outputs_bit_equal": true,
+      "positive_volume": 0.387341252528131
+    },
+    {
+      "function": "peb_volume_and_gradient_modified",
+      "horizon": 6,
+      "delta_t": 0.25,
+      "all_outputs_bit_equal": true,
+      "positive_volume": 0.3752364118497012
+    },
+    {
+      "function": "peb_volume_and_gradient",
+      "horizon": 24,
+      "delta_t": 1.0,
+      "all_outputs_bit_equal": true,
+      "positive_volume": 1.5328088845249166
+    },
+    {
+      "function": "peb_volume_and_gradient_modified",
+      "horizon": 24,
+      "delta_t": 1.0,
+      "all_outputs_bit_equal": true,
+      "positive_volume": 1.6187065835138346
+    },
+    {
+      "function": "peb_volume_and_gradient",
+      "horizon": 24,
+      "delta_t": 0.25,
+      "all_outputs_bit_equal": true,
+      "positive_volume": 1.6683476297893443
+    },
+    {
+      "function": "peb_volume_and_gradient_modified",
+      "horizon": 24,
+      "delta_t": 0.25,
+      "all_outputs_bit_equal": true,
+      "positive_volume": 1.6304580476657993
+    }
+  ],
+  "numpy_compatibility": {
+    "numpy_version": "2.4.6",
+    "native_np_trapz_available": false,
+    "original_only_numpy_proxy": true,
+    "production_fix": "Two trapezoidal integrations use np.trapezoid when available, otherwise np.trapz; the mathematical rule is unchanged."
+  },
+  "taheri_pure_geometry_tests": {
+    "passed": 3,
+    "log": "test_ellipsoid_affine_identity_and_degenerate_stop (selected_existing_taheri_tests.TaheriGeometryChecks.test_ellipsoid_affine_identity_and_degenerate_stop) ... ok\ntest_row_guard_preserves_remaining_auxiliary_variables (selected_existing_taheri_tests.TaheriGeometryChecks.test_row_guard_preserves_remaining_auxiliary_variables) ... ok\ntest_two_dimensional_all_vertices_and_inner_ball (selected_existing_taheri_tests.TaheriGeometryChecks.test_two_dimensional_all_vertices_and_inner_ball)\nEnumerate every possible polygon vertex, rather than sample normals. ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 0.003s\n\nOK\n",
+    "not_run": [
+      "test_projection_matches_lifted_lp",
+      "test_farkas_fit_contains_in_target",
+      "ChanceLabelChecks (full module requires gurobipy)"
+    ]
+  },
+  "matlab_paths": {
+    "code_root_4_parents": "E:\\OneDrive\\Working\\Research\\12\u591a\u79cd\u8bbe\u5907\u8fd0\u884c\u57df\u805a\u5408\u7684\u901a\u7528\u6846\u67b6\\code",
+    "code_root_correct": true,
+    "PV_samples_present": true,
+    "NYC_TMP_present": true
+  },
+  "solver_execution": false
+}

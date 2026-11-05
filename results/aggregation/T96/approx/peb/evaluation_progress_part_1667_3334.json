@@ -1,0 +1,1 @@
+{"event": "completed", "completed": 1667, "total": 1667, "elapsed_seconds": 653.2551776000764, "solver_seconds": 639.0250005722046, "retry_count": 0, "build_seconds": 4.540323100052774, "original_variables": 67296, "original_rows": 153696, "approximation_variables": 96, "approximation_rows": 384}

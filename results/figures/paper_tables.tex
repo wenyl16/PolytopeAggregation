@@ -1,0 +1,77 @@
+% Saved-data recalculation. Requires booktabs. See paper_tables.json for hashes and precision checks.
+\begin{table}[htbp]
+\centering
+\caption{Table I: saved training schedule}
+\begin{tabular}{lllll}
+\toprule
+Stage & Updates & Equivalent lambda & Learning rate & Opt/feas ratio \\
+\midrule
+1 & 1--300 & 0.5 & 0.02 & 1 \\
+2 & 301--500 & 0.99009901 & 0.1 & 0.01 \\
+3 & 501--1000 & 0.999999 & 1 & 1e-06 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{Table II: mean cost deviations}
+\begin{tabular}{ll}
+\toprule
+Method & USD/day \\
+\midrule
+Proposed method (PEB initialization) & 8.65 \\
+PEB inner & 9.82 \\
+PEB outer & -7.22 \\
+Federated PEB & 56.08 \\
+Proposed method (PB initialization) & 27.08 \\
+PB inner & 65.29 \\
+Cutting plane (original) & -11.10 \\
+Cutting plane (modified) & -5.77 \\
+PVE (original) & 16.76 \\
+PVE (modified) & 34.37 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{Table III: 500 continuous devices}
+\begin{tabular}{llllll}
+\toprule
+T & Training (s) & Mean feasibility & Max feasibility & Mean optimality & Max optimality \\
+\midrule
+24 & 741.34 & 2.66e-13 & 1.33e-09 & 0.2083 & 0.5770 \\
+96 & 3262.06 & 1.62e-08 & 3.19e-05 & 0.2800 & 0.5411 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{Table IV: sampled nonconvexity gaps}
+\begin{tabular}{lll}
+\toprule
+Portfolio / MT minimum on-time & Mean gap (\%) & Max gap (\%) \\
+\midrule
+7 devices / 4 h & 0.0351 & 1.0849 \\
+21 devices / 4 h & 0.0113 & 0.3671 \\
+21 devices / removed & 0.0001 & 0.0480 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{Table V: saved training schedule}
+\begin{tabular}{lllll}
+\toprule
+Stage & Updates & Equivalent lambda & Learning rate & Opt/feas ratio \\
+\midrule
+1 & 1--600 & 0.5 & 0.05 & 1 \\
+2 & 601--1200 & 0.99009901 & 0.1 & 0.01 \\
+3 & 1201--2000 & 0.999999 & 0.2 & 1e-06 \\
+\bottomrule
+\end{tabular}
+\end{table}
+

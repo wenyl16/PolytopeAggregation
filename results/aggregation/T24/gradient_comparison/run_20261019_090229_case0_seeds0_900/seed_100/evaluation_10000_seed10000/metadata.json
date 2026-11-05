@@ -1,0 +1,33 @@
+{
+  "status": "completed",
+  "samples": 10000,
+  "direction_seed": 10000,
+  "case_seed": 0,
+  "python": "D:\\Anaconda\\envs\\py312_copy\\python.exe",
+  "gurobi_version": [
+    12,
+    0,
+    2
+  ],
+  "solver_options": {
+    "FeasibilityTol": 1e-09,
+    "OptimalityTol": 1e-09,
+    "BarConvTol": 1e-12,
+    "Threads": 1,
+    "Seed": 0
+  },
+  "final_polytope_sha256": {
+    "approximate": "8133bf2659cd820d2a16b168c22bd116d2275b3ab58f23d57b1236e3ce0e6449",
+    "exact": "cfb3452665e39aae4ff07a319f77ba432390cd1da635c14ba657c8df04d5afab"
+  },
+  "directions_sha256": "5fc04509baeda6ef45a33004744234d854f010108901be123c4e77f70d628b0e",
+  "validation_reference": "saved_original_interface_prefix",
+  "validation_directions": 128,
+  "source_sha256": "2dc6b5b3c1d5c521481eceb338c4c19095779ccabdcb2aa1638daaa9006f81e4",
+  "feasibility_count_threshold": 0.0001,
+  "definition": "Real squared-distance errors of fixed final polytopes; no gradients or training.",
+  "implementation": "Import unchanged Pyomo models via gurobi_persistent; native setObjective/reset(0)/optimize with explicit identical tolerances. One common original-domain support LP per direction for both methods.",
+  "timing_note": "Combined evaluation wall time, not training or a method speed benchmark.",
+  "final_polytopes_unchanged": true,
+  "same_directions_both_methods": true
+}

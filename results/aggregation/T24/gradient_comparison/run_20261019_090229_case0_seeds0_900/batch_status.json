@@ -1,0 +1,74 @@
+{
+  "status": "completed",
+  "training_seeds": [
+    0,
+    100,
+    200,
+    300,
+    400,
+    500,
+    600,
+    700,
+    800,
+    900
+  ],
+  "case_seed": 0,
+  "actual_updates": 1000,
+  "evaluation_samples": 10000,
+  "evaluation_seed": 10000,
+  "train_only": false,
+  "third_stage_learning_rate": 1.0,
+  "runs": [
+    {
+      "training_seed": 0,
+      "path": "seed_0",
+      "status": "completed"
+    },
+    {
+      "training_seed": 100,
+      "path": "seed_100",
+      "status": "completed"
+    },
+    {
+      "training_seed": 200,
+      "path": "seed_200",
+      "status": "completed"
+    },
+    {
+      "training_seed": 300,
+      "path": "seed_300",
+      "status": "completed"
+    },
+    {
+      "training_seed": 400,
+      "path": "seed_400",
+      "status": "completed"
+    },
+    {
+      "training_seed": 500,
+      "path": "seed_500",
+      "status": "completed"
+    },
+    {
+      "training_seed": 600,
+      "path": "seed_600",
+      "status": "completed"
+    },
+    {
+      "training_seed": 700,
+      "path": "seed_700",
+      "status": "completed"
+    },
+    {
+      "training_seed": 800,
+      "path": "seed_800",
+      "status": "completed"
+    },
+    {
+      "training_seed": 900,
+      "path": "seed_900",
+      "status": "completed"
+    }
+  ],
+  "completed_at_utc": "2026-10-26T04:39:49.364302+00:00"
+}

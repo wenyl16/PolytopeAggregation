@@ -1,0 +1,28 @@
+{
+  "status": "completed",
+  "scenario_sha256": "4aa952dedf9b099d1e8e806417c124199762e01a0157b2a102534cafb5ccf151",
+  "source": "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\aggregation\\T24\\exact\\pb",
+  "training_reused": true,
+  "training_seed": 0,
+  "optimizer_updates": 1000,
+  "actual_stage_updates": [
+    300,
+    200,
+    500
+  ],
+  "third_stage_learning_rate": 1.0,
+  "fourth_stage_used": false,
+  "initial_polytope_optimizer_updates": 0,
+  "initial_polytope_note": "Full-training initialization reconstructed from the formal step-zero snapshot",
+  "source_files_sha256": {
+    "final_polytope.npz": "eadb8e1871a1a320a2002459396b70fc1165dd2b79a98c87e49a3ac99af58974",
+    "pretrainnet_weights.pth": "478e977624377030cb1e576de94df71c93ccaf54cc90255dbb64035cdc1a2fca",
+    "training_config.json": "a74a012c42e5d93be2e4b757ec0e13152d19a6f4de81a155393dde25cd13f440",
+    "training_directions.npy": "5adbd99f0f20e9575da996cdcb4406ee2acf13827b65b9ff8b6b2e3e482a71d6",
+    "error_history.pkl": "30358d39adeffedae22ed4424bfa1c12b2bdce05ea42f926ef3272a475bc9fa6",
+    "metadata.pkl": "176dba7ba038277ac3148351624d845a0751ea381296f5b5d51cc8a3cf03aaad",
+    "scenario.json": "9cf2a6b58687bb9a5d61636f02fb502706aa98f9710f30c15111f34dc6d5ede2",
+    "projection_retries.json": "1c9315f5a364cb9b7e13024c5635a57cf5ab2cbedc4921be34d05230c972e77d"
+  },
+  "final_polytope_sha256": "eadb8e1871a1a320a2002459396b70fc1165dd2b79a98c87e49a3ac99af58974"
+}

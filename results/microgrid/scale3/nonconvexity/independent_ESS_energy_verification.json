@@ -1,0 +1,33 @@
+{
+  "passed": true,
+  "physical_intervals": 24,
+  "state_boundaries": 25,
+  "checks": {
+    "raw_endpoints": {
+      "passed": true,
+      "ESS_trajectories_checked": 3000,
+      "max_cumulative_SOC_residual": 1.1102230246251565e-15
+    },
+    "formal_projections": {
+      "passed": true,
+      "ESS_trajectories_checked": 15000,
+      "max_cumulative_SOC_residual": 1.3895273820452303e-12
+    },
+    "endpoint_primal": {
+      "passed": true,
+      "ESS_trajectories_checked": 120,
+      "max_cumulative_SOC_residual": 2.220446049250313e-15
+    },
+    "feasible_witnesses": {
+      "passed": true,
+      "ESS_trajectories_checked": 300,
+      "max_cumulative_SOC_residual": 1.9984014443252818e-15
+    },
+    "primal": {
+      "passed": true,
+      "ESS_trajectories_checked": 300,
+      "max_cumulative_SOC_residual": 1.9984014443252818e-15
+    }
+  },
+  "all_first_and_last_interval_powers_included": true
+}

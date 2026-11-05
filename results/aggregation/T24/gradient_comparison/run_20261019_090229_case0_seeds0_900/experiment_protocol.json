@@ -1,0 +1,80 @@
+{
+  "selection_rule": "Predeclared fixed cohort requested by the user; attempt all ten seeds and retain all failures; no replacement or success-based seed selection.",
+  "training_seeds": [
+    0,
+    100,
+    200,
+    300,
+    400,
+    500,
+    600,
+    700,
+    800,
+    900
+  ],
+  "case": {
+    "seed": 0,
+    "discrete_rate": 0.0,
+    "generation_order": [
+      [
+        "gen_CL",
+        5
+      ],
+      [
+        "gen_TCL",
+        40
+      ],
+      [
+        "gen_PV",
+        5
+      ]
+    ],
+    "T": 24
+  },
+  "methods": [
+    "approximate",
+    "exact"
+  ],
+  "network": "PreTrainNet",
+  "actual_updates_per_method_per_seed": 1000,
+  "stage_updates": [
+    300,
+    200,
+    500
+  ],
+  "evaluation_directions": 10000,
+  "evaluation_seed": 10000,
+  "same_initialization_all_seeds": true,
+  "same_training_directions_within_each_pair": true,
+  "same_evaluation_directions_all_seeds": true,
+  "feasibility_count_rule": "squared_distance_error > 1e-4",
+  "failure_reporting": "Report completed/failed counts out of the fixed ten planned seeds. Numerical metrics for complete pairs are conditional on completion, not a full-cohort success claim.",
+  "seed8_check": {
+    "note": "Historical seed-8 diagnostic from a separate earlier experiment; its files were removed when retaining only the fixed 0,100,...,900 cohort. It is not a failure of this cohort.",
+    "status": "failed",
+    "method": "approximate",
+    "iteration": 282,
+    "completed_paired_iterations": 281,
+    "reason": "Projection QP did not meet Gurobi optimality tolerances."
+  },
+  "historical_results_used_as_new_results": false,
+  "stages": [
+    [
+      300,
+      0.02,
+      1.0
+    ],
+    [
+      200,
+      0.1,
+      0.01
+    ],
+    [
+      500,
+      1.0,
+      1e-06
+    ]
+  ],
+  "third_stage_learning_rate": 1.0,
+  "result_policy": "Overwrite each fixed paired seed directory, preserving all ten original seeds and numerical definitions"
+}

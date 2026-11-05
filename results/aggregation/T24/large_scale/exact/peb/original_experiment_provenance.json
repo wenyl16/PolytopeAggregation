@@ -1,0 +1,69 @@
+{
+  "archive": "code.zip",
+  "entries": {
+    "Simulator-v3/runners/main_agg.py": {
+      "sha256": "e54a6b7dc1253275e0bd61aec635e0946aa372a240933ea963b1b2f9f23102f7",
+      "relevant_lines": [
+        {
+          "line": 14,
+          "text": "agg.gen_CL(100)   # 100个可中断负荷"
+        },
+        {
+          "line": 15,
+          "text": "agg.gen_TCL(200)  # 200个温度控制负荷"
+        },
+        {
+          "line": 17,
+          "text": "agg.gen_PV(200)   # 200个光伏"
+        }
+      ]
+    },
+    "Simulator-v3/cases/aggregation_case.py": {
+      "sha256": "a317a3e758a3553fa2804608136f386dea6417a0a7865c1cdf165a7997a34f8b",
+      "relevant_lines": [
+        {
+          "line": 11,
+          "text": "    def __init__(self, seed=None,T = 24, data = None, discrete_rate = 0.0):"
+        },
+        {
+          "line": 60,
+          "text": "    def gen_TCL(self, N):"
+        },
+        {
+          "line": 121,
+          "text": "    def gen_PV(self, N):"
+        },
+        {
+          "line": 146,
+          "text": "    def gen_CL(self, N):"
+        },
+        {
+          "line": 740,
+          "text": "    agg.gen_CL(100)  # 100个可中断负荷"
+        },
+        {
+          "line": 741,
+          "text": "    agg.gen_TCL(200)  # 200个温度控制负荷"
+        },
+        {
+          "line": 743,
+          "text": "    agg.gen_PV(200)  # 200个光伏"
+        }
+      ]
+    }
+  },
+  "confirmed_original_scenario": {
+    "T": 24,
+    "CL": 100,
+    "TCL": 200,
+    "PV": 200
+  },
+  "archive_sha256": "cec8a6dbfc1202c9f9aa73b2af1dc71549c339dcaea4995b8b2f4607577b9feb",
+  "correction": {
+    "incorrect_prior_mapping": "aggregation/T96/approx/peb",
+    "correct_experiment": "T24 resource-count scaling",
+    "new_result_directory": "aggregation/T24/large_scale/exact/peb",
+    "historical_result_found": false,
+    "new_training_protocol": "Current T24 exact/PEB: actual updates 300/200/500; lr0.02/0.1/1; lambda1/0.01/1e-6; case/training seed0"
+  }
+}

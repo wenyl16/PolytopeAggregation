@@ -1,0 +1,15 @@
+{
+  "status": "retained_historical",
+  "migrated_from": "aggregation_96",
+  "horizon": 96,
+  "gradient_mode": "approx",
+  "template": "peb",
+  "model": "PreTrainNet",
+  "recorded_updates": 1003,
+  "phase_end_updates": [
+    301,
+    502,
+    1003
+  ],
+  "note": "Existing results were moved without recomputation. Historical exact training had 1000 updates; new ordinary Trainer uses n_train+1."
+}

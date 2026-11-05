@@ -1,0 +1,90 @@
+{
+  "horizon": 24,
+  "counts": [
+    5,
+    40,
+    5
+  ],
+  "case_seed": 0,
+  "template": "peb",
+  "schedule": "three-stage",
+  "stage_multiplier": 2,
+  "error_cutoff": 1e-08,
+  "final_stage_initial_lr": 1.0,
+  "source_sha256": {
+    "Simulator/runners/compare_training_budgets.py": "9a5fa29454dc0b0ea332ceb111798b78b8561d239311b2d4eeeaf2c81fdc581e",
+    "Simulator/runners/train_aggregation.py": "fefe5b9b103e052023309eca8d989867031955112f58c50c26b14c38017ba941",
+    "Simulator/runners/compare_training_stages.py": "921ca3b9e1efbd7a10e496a716e730b2671219cb8a8a24d59c55124fdc8f9647",
+    "Simulator/runners/prepare_exact_comparison.py": "4afad50d19fd5ef1b43fcd8d850ffc23ade24b087a0a797336c74c1f153f2693",
+    "Simulator/testers/evaluate_aggregation.py": "3f6fe487a580cc62eb35ada8a96cd35724cbc531909997f4719536195f5f1776",
+    "Simulator/Approximator.py": "51234fa104781c8a6e1fece482ebe96db506fc04e82e49c06bde6f6448656610",
+    "Simulator/evaluation_native.py": "004caed55c637baa08624c3c624820688c6f8c7305db07fd4dd680da5de0760b",
+    "Simulator/cases/aggregation.py": "417f11e4d7e1721bd65d63959a0dfba1ac7d35bac923f979b6b913d7ff4347a8",
+    "Simulator/cases/aggregation_case_T24.py": "20bfd4a2fa84a9a8f44bc8e714696c54753a5b117fb3d347e8727bfa69f407fa"
+  },
+  "scenario_sha256": "4aa952dedf9b099d1e8e806417c124199762e01a0157b2a102534cafb5ccf151",
+  "initialization_source": "Exact PEB 94-row template from train_aggregation.main",
+  "solver_threads": 1,
+  "solver_seed": 0,
+  "gradient_mode": "exact",
+  "network": "PreTrainNet",
+  "training_seed": 0,
+  "dtype": "torch.float64",
+  "is_uncertain": false,
+  "stages": [
+    {
+      "n_train": 601,
+      "epochs": 602,
+      "lr": 0.02,
+      "rate_opt_feas": 1.0
+    },
+    {
+      "n_train": 401,
+      "epochs": 402,
+      "lr": 0.1,
+      "rate_opt_feas": 0.01
+    },
+    {
+      "n_train": 1001,
+      "epochs": 1002,
+      "lr": 1.0,
+      "rate_opt_feas": 1e-06
+    }
+  ],
+  "status": "completed",
+  "elapsed_seconds": 461.01739399996586,
+  "train_calls": [
+    {
+      "n_train": 601,
+      "epochs": 602,
+      "optimizer_updates": 602,
+      "elapsed_seconds": 133.74402539990842
+    },
+    {
+      "n_train": 401,
+      "epochs": 402,
+      "optimizer_updates": 402,
+      "elapsed_seconds": 87.02971959998831
+    },
+    {
+      "n_train": 1001,
+      "epochs": 1002,
+      "optimizer_updates": 1002,
+      "elapsed_seconds": 240.24364460003562
+    }
+  ],
+  "optimizer_updates": 2006,
+  "phase_end_updates": [
+    602,
+    1004,
+    2006
+  ],
+  "scheduler_last_epoch": 1002,
+  "scheduler_step_count": 1003,
+  "final_learning_rates": [
+    0.8170728068875467,
+    0.8170728068875467
+  ],
+  "finite_gradient_norms_verified": true,
+  "actual_training_directions_verified": true
+}

@@ -1,0 +1,21 @@
+{
+  "date": "2026-11-03",
+  "source_and_destination_all_files_sha256_equal": true,
+  "files_including_this_report": 1722,
+  "canonical_manuscript_pdfs": 12,
+  "canonical_pdfs_equal_author_supplied_bytes": true,
+  "all_original_input_files_preserved": 13,
+  "removed_original_files": 506,
+  "tests_from_copied_package": {
+    "all_12_plot_outputs_to_separate_temporary_directories": "passed",
+    "cost_plot_and_cost_table_export": "passed",
+    "tables_I_to_V_recalculated": "passed",
+    "tables_II_III_IV_match_manuscript_at_reported_precision": true,
+    "table_outputs_byte_identical_to_source_package": true,
+    "all_python_modules_parse": true,
+    "active_local_import_dependency_closure": "passed"
+  },
+  "no_training_or_solver_rerun": true,
+  "existing_provenance_gaps": "See results/README.md and results/provenance/paper_results_audit.md",
+  "backup_outside_both_packages": "tmp/paper_repository_cleanup_20261103/before_cleanup.zip"
+}

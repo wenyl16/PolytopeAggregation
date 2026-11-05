@@ -1,0 +1,35 @@
+{
+  "construction": "BenTalNemirovski_Glineur_balanced_folded_SOC_tree",
+  "delta_requested": 0.1,
+  "inner_radius_bound": 0.9090909090909091,
+  "outer_radius_bound": 0.9381512362958566,
+  "error_bound_verified": true,
+  "depth": 5,
+  "rotation_stages_by_level": [
+    4,
+    5,
+    5,
+    6,
+    6
+  ],
+  "cone_count": 23,
+  "cone_counts_by_level": [
+    12,
+    6,
+    3,
+    1,
+    1
+  ],
+  "norm_output_auxiliaries": 22,
+  "auxiliaries": 104,
+  "paper_reported_T8_delta01_auxiliaries": 23,
+  "paper_exact_auxiliary_schedule_recovered": false,
+  "fidelity_note": "Same cited lifted-SOC family and inner-error guarantee; manuscript's 23-variable schedule not specified/recovered",
+  "primary_construction_reference": "https://userpages.cs.umbc.edu/sjkim/papers/KimSoltaniGiannakisTWC13.pdf, equations13-17",
+  "schedule_note": "Extended 2013 version of Taheri reference23; exact published T8 23-variable implementation not recovered",
+  "dimension": 24,
+  "auxiliary_variables": 104,
+  "lifted_dimension": 128,
+  "initial_rows": 232,
+  "geometry_independent_of_training_data": true
+}

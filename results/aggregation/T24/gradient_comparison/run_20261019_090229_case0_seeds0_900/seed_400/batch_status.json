@@ -1,0 +1,21 @@
+{
+  "status": "completed",
+  "training_seeds": [
+    400
+  ],
+  "case_seed": 0,
+  "actual_updates": 1000,
+  "evaluation_samples": 10000,
+  "evaluation_seed": 10000,
+  "train_only": true,
+  "started_utc": "2026-10-26T04:19:06.712270+00:00",
+  "runs": [
+    {
+      "training_seed": 400,
+      "path": "seed_400",
+      "status": "completed",
+      "ended_utc": "2026-10-26T04:27:41.967765+00:00"
+    }
+  ],
+  "ended_utc": "2026-10-26T04:27:41.967765+00:00"
+}

@@ -1,0 +1,81 @@
+{
+  "status": "completed",
+  "horizon": 24,
+  "template": "peb",
+  "counts": [
+    100,
+    200,
+    200
+  ],
+  "resource_count_override": [
+    100,
+    200,
+    200
+  ],
+  "training_seed": 0,
+  "evaluation_seed": 1,
+  "evaluation_samples": 0,
+  "scenario_sha256": "403d6554dd788dad8dbeae379a660c9408d594988122896b736a7f8b0a10a5b9",
+  "source_sha256": {
+    "Simulator\\runners\\train_aggregation.py": "c7c98b60afd8e1a29eefa7078c533024828eab9d9cf4ace70835fe6cf84b45ea",
+    "Simulator\\Approximator.py": "51234fa104781c8a6e1fece482ebe96db506fc04e82e49c06bde6f6448656610",
+    "Simulator\\testers\\compute_polytope_errors_and_costs_gurobi.py": "004caed55c637baa08624c3c624820688c6f8c7305db07fd4dd680da5de0760b",
+    "Simulator\\cases\\aggregation.py": "417f11e4d7e1721bd65d63959a0dfba1ac7d35bac923f979b6b913d7ff4347a8",
+    "Simulator\\cases\\aggregation_case_T24.py": "20bfd4a2fa84a9a8f44bc8e714696c54753a5b117fb3d347e8727bfa69f407fa"
+  },
+  "stages": [
+    {
+      "n_train": 299,
+      "epochs": 300,
+      "lr": 0.02,
+      "rate_opt_feas": 1.0
+    },
+    {
+      "n_train": 199,
+      "epochs": 200,
+      "lr": 0.1,
+      "rate_opt_feas": 0.01
+    },
+    {
+      "n_train": 499,
+      "epochs": 500,
+      "lr": 1.0,
+      "rate_opt_feas": 1e-06
+    }
+  ],
+  "optimizer_updates": 1000,
+  "phase_end_updates": [
+    300,
+    500,
+    1000
+  ],
+  "scheduler_last_epoch": 500,
+  "scheduler_step_count": 501,
+  "final_learning_rates": [
+    0.9039207967999998,
+    0.9039207967999998
+  ],
+  "elapsed_training_seconds": 762.2461943000089,
+  "polytope_shape": [
+    94,
+    24
+  ],
+  "training": {
+    "feasibility": {
+      "mean": 0.0028251806755919683,
+      "median": 4.1177180811881797e-20,
+      "max": 0.16353051335949947,
+      "p95": 0.018033658764674082,
+      "count_gt1e4": 264,
+      "count_threshold": 0.0001
+    },
+    "optimality": {
+      "mean": 0.050695487138704455,
+      "median": 0.04327705903001661,
+      "max": 0.3329979540926475,
+      "p95": 0.12538854092376697,
+      "count_gt1e4": 998,
+      "count_threshold": 0.0001
+    }
+  }
+}

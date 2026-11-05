@@ -1,0 +1,77 @@
+{
+  "status": "verified_match",
+  "criterion": "Annual mean cost deviation of unchanged Proposed PEB strictly lower than PVE original, PVE modified and PEB inner simultaneously",
+  "regions_requested": [
+    "Europe",
+    "United States",
+    "Australia"
+  ],
+  "allowed_windows": [
+    "full calendar2025 UTC",
+    "latest available365completeUTCdays"
+  ],
+  "selected": {
+    "price_area": "CAISO-POD_CONTRL_1_POOLE-APND",
+    "pricing_node": "POD_CONTRL_1_POOLE-APND",
+    "source_DOI": "10.5281/zenodo.21522100",
+    "currency": "USD",
+    "window": {
+      "start_utc": "2025-01-01T00:00:00Z",
+      "end_utc_exclusive": "2026-01-01T00:00:00Z",
+      "scenario_timezone": "UTC",
+      "first_utc_delivery_date": "2025-01-01",
+      "last_utc_delivery_date": "2025-12-31",
+      "days": 365,
+      "window_locked_before_cost_tests": true,
+      "selection": "Complete calendar2025 was specified by user before node screening"
+    },
+    "mean_cost_deviations_USD_per_day": {
+      "proposed_peb_exact": 8.645068044913994,
+      "proposed_pb_exact": 27.07989596620534,
+      "peb_inner": 9.816639332692965,
+      "pb_inner": 65.2871450831962,
+      "cutting_plane": -11.103901367464978,
+      "cutting_plane_modified": -5.766406570521943,
+      "pve": 16.761950342562745,
+      "pve_modified": 34.371352599384664,
+      "federated_peb": 56.077928555222584,
+      "peb_outer": -7.216175514006622
+    },
+    "strict_mean_checks": {
+      "peb_inner": true,
+      "pve": true,
+      "pve_modified": true
+    },
+    "PEB_fraction_lower_than_comparator": {
+      "peb_inner": 0.11934545500487259,
+      "pve": 0.4842445020874435,
+      "pve_modified": 0.7484804236342808
+    }
+  },
+  "CAISO_screen": {
+    "complete_node_curves": 1923,
+    "strict_four_mean_matching_nodes": 4,
+    "independent_matching_price_curves": 2,
+    "all365days_used": true,
+    "excluded_incomplete_nodes": 3,
+    "necessary_condition": "Common original daily reference cancels: mean PEBcost>=mean PVEoriginalcost excludes the target. Full original/four-method costs were computed for potentially qualifying nonzero curves."
+  },
+  "scenario": {
+    "class": "Simulator.cases.aggregation_case_T24.Aggregator",
+    "case_seed": 0,
+    "counts": [
+      5,
+      40,
+      5
+    ]
+  },
+  "trained_models_unchanged": true,
+  "Gaussian_error_arrays_unchanged": true,
+  "source_values_unchanged": true,
+  "no_selected_days_or_price_normalization": true,
+  "source_tier": "Author public research release of CAISO OASIS DAM LMP; exact float32 node-column extracts, not an independently retrieved primary OASIS response",
+  "physical_intersection_sensitivity_passes_same_three_means": true,
+  "price_dispatch_feasibility_disclosed_separately_from_Gaussian_errors": true,
+  "selection_limit": "Selected after screening; this establishes a reproducible node/year sensitivity example, not a general market-wide superiority claim.",
+  "completed_at_utc": "2026-10-28T09:23:08.670276+00:00"
+}

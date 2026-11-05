@@ -1,0 +1,202 @@
+{
+  "status": "completed",
+  "source": "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\aggregation\\T24\\exact",
+  "training_reused": true,
+  "third_stage_learning_rate": 1.0,
+  "training_updates_each": 1000,
+  "training_seed": 0,
+  "evaluation_seed": 1,
+  "evaluation_samples": 5000,
+  "previous_summary": {
+    "proposed_peb_exact": {
+      "mean_cost_difference": 26.436505138899133,
+      "median_cost_difference": 22.467610880319526,
+      "min_cost_difference": 0.22980140202263044,
+      "max_cost_difference": 522.7183353961761,
+      "mean_cost": 115.97494883504775,
+      "num_cost_samples": 365,
+      "cost_unit": "AUD per 24 h",
+      "mean_feas": 1.31574279801755e-08,
+      "max_feas": 1.9859126827947644e-05,
+      "mean_opt": 0.31498564840502913,
+      "max_opt": 0.6529038940824228,
+      "count_feas_gt_1e4": 0
+    },
+    "proposed_pb_exact": {
+      "mean_cost_difference": 40.94099441322711,
+      "median_cost_difference": 37.6919143582916,
+      "min_cost_difference": 0.9911313688291035,
+      "max_cost_difference": 560.9004013961776,
+      "mean_cost": 130.4794381093757,
+      "num_cost_samples": 365,
+      "cost_unit": "AUD per 24 h",
+      "mean_feas": 1.3101043115439097e-06,
+      "max_feas": 0.004161149331700853,
+      "mean_opt": 0.6008414469696355,
+      "max_opt": 0.9848609754739743,
+      "count_feas_gt_1e4": 6
+    },
+    "peb_inner": {
+      "mean_cost_difference": 34.207613597655254,
+      "median_cost_difference": 27.42070000257408,
+      "min_cost_difference": 0.5816848007247515,
+      "max_cost_difference": 393.67089488931384,
+      "mean_cost": 123.74605729380384,
+      "num_cost_samples": 365,
+      "cost_unit": "AUD per 24 h",
+      "mean_feas": 1.4479103183936795e-21,
+      "max_feas": 9.763241658430087e-20,
+      "mean_opt": 1.5166100393559543,
+      "max_opt": 2.6367557859859296,
+      "count_feas_gt_1e4": 0
+    },
+    "pb_inner": {
+      "mean_cost_difference": 105.50175034695056,
+      "median_cost_difference": 102.89601867881643,
+      "min_cost_difference": 3.2517167516135723,
+      "max_cost_difference": 987.0103747520566,
+      "mean_cost": 195.04019404309912,
+      "num_cost_samples": 365,
+      "cost_unit": "AUD per 24 h",
+      "mean_feas": 9.489903646345895e-26,
+      "max_feas": 8.178529209129802e-25,
+      "mean_opt": 4.154485927424282,
+      "max_opt": 5.6641667239745965,
+      "count_feas_gt_1e4": 0
+    },
+    "cutting_plane": {
+      "mean_cost_difference": -26.36996445849387,
+      "median_cost_difference": -24.96039061029677,
+      "min_cost_difference": -88.34410721627435,
+      "max_cost_difference": -0.04310448987295068,
+      "mean_cost": 63.168479237654736,
+      "num_cost_samples": 365,
+      "cost_unit": "AUD per 24 h",
+      "mean_feas": 0.4134911141578832,
+      "max_feas": 1.2068573351110328,
+      "mean_opt": 1.8257107874577948e-12,
+      "max_opt": 4.520195366046688e-12,
+      "count_feas_gt_1e4": 5000
+    },
+    "cutting_plane_modified": {
+      "mean_cost_difference": -22.17741569736051,
+      "median_cost_difference": -19.892450733608953,
+      "min_cost_difference": -84.57461335694575,
+      "max_cost_difference": -0.036038936288987244,
+      "mean_cost": 67.3610279987881,
+      "num_cost_samples": 365,
+      "cost_unit": "AUD per 24 h",
+      "mean_feas": 0.3395120940288658,
+      "max_feas": 0.9019417379844581,
+      "mean_opt": 1.815645026428697e-12,
+      "max_opt": 4.582850340228398e-12,
+      "count_feas_gt_1e4": 5000
+    },
+    "pve": {
+      "mean_cost_difference": 31.77854962098839,
+      "median_cost_difference": 27.604511871371983,
+      "min_cost_difference": 0.7668676465266344,
+      "max_cost_difference": 185.01276962753377,
+      "mean_cost": 121.31699331713702,
+      "num_cost_samples": 365,
+      "cost_unit": "AUD per 24 h",
+      "mean_feas": 1.2026746191103567e-12,
+      "max_feas": 3.4798388153991354e-11,
+      "mean_opt": 3.6869577616569744,
+      "max_opt": 5.125866174263851,
+      "count_feas_gt_1e4": 0
+    },
+    "pve_modified": {
+      "mean_cost_difference": 39.700079932573566,
+      "median_cost_difference": 37.97523081883787,
+      "min_cost_difference": 1.1251775855929687,
+      "max_cost_difference": 247.919050127621,
+      "mean_cost": 129.2385236287222,
+      "num_cost_samples": 365,
+      "cost_unit": "AUD per 24 h",
+      "mean_feas": 3.3420013440933977e-15,
+      "max_feas": 2.0874724106231052e-13,
+      "mean_opt": 1.1970025189737334,
+      "max_opt": 1.9407631254231008,
+      "count_feas_gt_1e4": 0
+    },
+    "peb_outer": {
+      "mean_cost_difference": -47.87865270296839,
+      "median_cost_difference": -48.49752565882683,
+      "min_cost_difference": -157.01272893276047,
+      "max_cost_difference": -0.03133273466451669,
+      "mean_cost": 41.65979099318022,
+      "num_cost_samples": 365,
+      "cost_unit": "AUD per 24 h",
+      "mean_feas": 0.4562867645023376,
+      "max_feas": 1.3572779140564601,
+      "mean_opt": 2.3993054282496897e-12,
+      "max_opt": 4.925198112256484e-12,
+      "count_feas_gt_1e4": 5000
+    }
+  },
+  "previous_metadata_sha256": "36150ace4cd5b238ff47bc6a2a14926725bf0e101b230e9ea4be6be1554ee9d3",
+  "models": {
+    "proposed_peb_exact": {
+      "source": "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\aggregation\\T24\\exact\\peb",
+      "destination": "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\aggregation\\T24\\exact\\peb\\verified_case0_seed0",
+      "source_files_sha256": {
+        "final_polytope.npz": "2f871d9d287d6b961dc5f6b4d8285b9dc5fc9cc88d855cef9f135572d2af9fa0",
+        "pretrainnet_weights.pth": "ea5a92ae2300db19d74c646bc625546de9490c105d06276a01ea719f6c3c3afb",
+        "training_config.json": "4330628ab14660834a1ed0000823ef28313c891740a1b359a83ea8b4f76864bd",
+        "training_directions.npy": "5adbd99f0f20e9575da996cdcb4406ee2acf13827b65b9ff8b6b2e3e482a71d6",
+        "error_history.pkl": "8cf9894d7fc025554ebbed68dd6f9630c2aff309d661c1873b30ecf6ef7b47ac",
+        "metadata.pkl": "176dba7ba038277ac3148351624d845a0751ea381296f5b5d51cc8a3cf03aaad",
+        "scenario.json": "9cf2a6b58687bb9a5d61636f02fb502706aa98f9710f30c15111f34dc6d5ede2",
+        "projection_retries.json": "1c9315f5a364cb9b7e13024c5635a57cf5ab2cbedc4921be34d05230c972e77d"
+      },
+      "evaluation_sha256": "8ff0bca4f22e96ab0ca5ca88ffda5f8a7fba77de16a78c8c3af324c65814aeef",
+      "previous_polytope_sha256": "94a43c359f2c4962f8990bb5154a99b0aa2906dc97b6ce75f5cfb08dbf5ceb3f"
+    },
+    "proposed_pb_exact": {
+      "source": "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\aggregation\\T24\\exact\\pb",
+      "destination": "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\aggregation\\T24\\exact\\pb\\seed_0",
+      "source_files_sha256": {
+        "final_polytope.npz": "eadb8e1871a1a320a2002459396b70fc1165dd2b79a98c87e49a3ac99af58974",
+        "pretrainnet_weights.pth": "478e977624377030cb1e576de94df71c93ccaf54cc90255dbb64035cdc1a2fca",
+        "training_config.json": "a74a012c42e5d93be2e4b757ec0e13152d19a6f4de81a155393dde25cd13f440",
+        "training_directions.npy": "5adbd99f0f20e9575da996cdcb4406ee2acf13827b65b9ff8b6b2e3e482a71d6",
+        "error_history.pkl": "30358d39adeffedae22ed4424bfa1c12b2bdce05ea42f926ef3272a475bc9fa6",
+        "metadata.pkl": "176dba7ba038277ac3148351624d845a0751ea381296f5b5d51cc8a3cf03aaad",
+        "scenario.json": "9cf2a6b58687bb9a5d61636f02fb502706aa98f9710f30c15111f34dc6d5ede2",
+        "projection_retries.json": "1c9315f5a364cb9b7e13024c5635a57cf5ab2cbedc4921be34d05230c972e77d"
+      },
+      "evaluation_sha256": "9a59e6f910a203d7203a7487564dc56c0434d05905093ca4074970c8726c4950",
+      "previous_polytope_sha256": "e38ef8bacbd8114772b6c82bca77cc617c0efbf39d0e47b5e84a24db235731e3"
+    }
+  },
+  "price_files_before": {
+    "cost_coefficients.npy": "c5afc196d7bce8b8324ca18254d7b5fc041084d3e86ca3e8c7e96e5ffaec56ce",
+    "price_provenance.json": "9d5b6877879ee84b6b8624b12bea596d1962bb02b0b9853a748e861884c81c06",
+    "cost_scenarios.csv": "4138af3fa68ce79a120c4790fd7a95dda17388a671416025b11b50ff8a57d7bc",
+    "daily_prices_aud_mwh.npy": "a4075d373b63b48225d898a94104f4cbcd422fc3792b0e38b14062490d4e5097"
+  },
+  "baseline_archives_before": {
+    "peb_inner": "ec93664882a1dbf010154657860c80ba6c1d3a47d33890f10580768f28f03989",
+    "pb_inner": "49b6d45a29277eaddda9d68c1e17555f87cc28475e60237f97f94d0ead404520",
+    "cutting_plane": "61b5fabd4ed6ff39ef35828ed7821005c0031bf5fde10b62dff40f667bba75a8",
+    "cutting_plane_modified": "ca8d5969a485715c0e4e0d765717bd8e49df04ab508ed8c6efec34dc5956da94",
+    "pve": "35a4267efeb53a5b56a3f3cbfeebe29a72e041af0c6575e2937df078f37cd988",
+    "pve_modified": "7d71e528aa86e93b3a4786831661f8c8bec8a647aeab6c0c776d1032b91fd405"
+  },
+  "unchanged_baseline_evaluations_reused": [
+    "peb_inner",
+    "pb_inner",
+    "cutting_plane",
+    "cutting_plane_modified",
+    "pve",
+    "pve_modified",
+    "peb_outer"
+  ],
+  "source_payloads_copied_bitwise": true,
+  "source_payloads_unchanged": true,
+  "reused_raw_error_arrays_bitwise_equal": true,
+  "prices_unchanged": true,
+  "baseline_models_unchanged": true,
+  "completed_at_utc": "2026-10-26T04:06:32.478891+00:00"
+}

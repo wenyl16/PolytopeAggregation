@@ -1,0 +1,11 @@
+{
+  "completed": 5000,
+  "files": {
+    "samples.csv": "cf0128187ab06f41fc899c32dad87e937af55700a3a408764cfb19a689ae8ae1",
+    "projection_diagnostics.json": "1d86335ac7350e21bd99e38f1354c558a91532fcf03491f4798c2e24c44a29ba",
+    "projections.npz": "2371bda167bcd83efb61b0803792885f4a29188ea4cfe9d328f2a356479fa19d",
+    "summary.json": "c5dd269e6d732e35e25d8208bc550e775c30c7136acc3fcf077f27a4f3af262f",
+    "statistics.csv": "c654a4fd6869e8380693fdde32fe0abad6aae12ff3dae6edb3e345eaf79d98fa",
+    "sample_count_comparison.csv": "40607c9e7e14ab900de80c31f38b0f856f2b7f7db48d56cf358fa18e0b471f4c"
+  }
+}

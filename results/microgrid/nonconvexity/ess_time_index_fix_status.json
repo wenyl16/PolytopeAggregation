@@ -1,0 +1,62 @@
+{
+  "fix_confirmed": true,
+  "physical_time_convention": "E_0 is the initial state; physical powers P_1..P_24 are stored at Python indices0..23; boundary SOC E_0..E_24 has25 states.",
+  "previous_issue": "24 power intervals entered aggregation, but only powers at indices1..23 entered23 SOC transitions.",
+  "corrected_transition": "SOC[t+1]=SOC[t]+deltaT*(eta_chg*p_chg[t]-p_dis[t]/eta_dis)/E_rated for t=0..T-1",
+  "initial_and_terminal": "SOC[0]=init_SOC; SOC[T]>=init_SOC; SOC bounds apply to all T+1 boundaries.",
+  "regression_tests_passed": 16,
+  "solver_check": "tmp/ess_time_index_fix_solver_check.json",
+  "case_size_checks": [
+    {
+      "counts": {
+        "MT": 1,
+        "PV": 1,
+        "TL": 1,
+        "CL": 1,
+        "ESS": 1,
+        "HP": 2
+      },
+      "variables": 409,
+      "binaries": 120
+    },
+    {
+      "counts": {
+        "MT": 1,
+        "PV": 5,
+        "TL": 1,
+        "CL": 5,
+        "ESS": 7,
+        "HP": 8
+      },
+      "variables": 1471,
+      "binaries": 264
+    }
+  ],
+  "source_sha256": {
+    "code/Simulator/cases/microgrid_case.py": "ebf46a5ef6e12db5484a6b840d5740e09de6e02f398a447a2eb085573aab519b",
+    "code/Simulator/microgrid_count_solver.py": "9988ae0f7eaeebee7f240fc6ca21f7a9a67f03a0ac725b255cb650560e9f1bd2",
+    "code/Simulator/runners/run_microgrid_scale.py": "d71150b0363223574060cc9c0899ef373968aebffa020888037532ff7cee6cf9",
+    "code/Simulator/testers/evaluate_microgrid_nonconvexity.py": "793e2d929e3972f7169370b927bb5d03905d693e715b52a5feb383fd99a6bab5",
+    "code/Simulator/testers/verify_microgrid_storage_diagnostic.py": "210572039c8f5c0a40b8c22bfe6b6fb39add6447cec6eefa12f42d5604b224c3",
+    "code/Simulator/testers/verify_microgrid_nonconvexity.py": "9e11dca934c32e47b59bf1918f1650f6ad9b25b3033ccee14168d5c0c64ae83f",
+    "code/Simulator/testers/test_microgrid_ess_time_index.py": "a4e8f228409e2847895066c2fadb492b29a91c75f0bdd858c091fb5e7bcbbbea"
+  },
+  "last_saved_diagnostic_fingerprint": "cfcc6de3ac091e1be4c534f89f44317f7a902e85603ccac11969e45c4f919e10",
+  "saved_diagnostic_requires_recomputation": false,
+  "scope": "ESS dynamics and its solver/size consumers only; HP state dynamics were not changed; no full5000-point recomputation in this change.",
+  "current_recomputation": {
+    "completed": true,
+    "completed_probes": 5000,
+    "device_counts": {
+      "MT": 1,
+      "PV": 1,
+      "TL": 1,
+      "CL": 1,
+      "ESS": 1,
+      "HP": 2
+    },
+    "fingerprint": "3e1bb6905960b10d64f27c4838b824930d5a9a0bd1f051427d428f75f8f925ca",
+    "verification": "independent_storage_verification.json",
+    "note": "Current canonical dataset is the original7-device portfolio recomputed after ESS fix; historical custom27-device full dataset has been overwritten."
+  }
+}

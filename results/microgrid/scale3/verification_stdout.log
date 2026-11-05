@@ -1,0 +1,701 @@
+MT (MicroTurbine) generated
+PV (Photovoltaic) generated
+TL (Transferable Load) generated
+CL (Interruptible Load) generated
+ESS (Energy Storage System) generated
+HP (Heat Pump/Air Conditioning) generated
+MT (MicroTurbine) generated
+PV (Photovoltaic) generated
+TL (Transferable Load) generated
+CL (Interruptible Load) generated
+ESS (Energy Storage System) generated
+HP (Heat Pump/Air Conditioning) generated
+{
+  "status": "passed",
+  "device_scale": 3,
+  "checked_at_utc": "2026-10-25T09:11:08.112263+00:00",
+  "protected_inputs": {
+    "manifest": "E:\\OneDrive\\Working\\Research\\12\u591a\u79cd\u8bbe\u5907\u8fd0\u884c\u57df\u805a\u5408\u7684\u901a\u7528\u6846\u67b6\\tmp\\microgrid_scale_protected_inputs_scale3.json",
+    "count": 96,
+    "unchanged": true,
+    "captured_reference_files": 120,
+    "reference_only_changed_files": [
+      "code\\results\\microgrid\\disaggregation\\distribution_shift_metadata.json",
+      "code\\results\\microgrid\\disaggregation\\figures\\distribution_shift.pdf"
+    ],
+    "assertion_scope": "Original 1x training and stopped 5x training inputs; other microgrid result files captured for reference only because unrelated evaluations may be active",
+    "captured_at_utc": "2026-10-25T07:45:32.763988+00:00"
+  },
+  "source_audit": {
+    "status": "passed",
+    "executed_source_verified": true,
+    "physics_and_core_current_sources_match": true,
+    "current_source_changed": true,
+    "current_changed_source_count": 2,
+    "strict_current_source_paths": [
+      "E:\\OneDrive\\Working\\Research\\12\u591a\u79cd\u8bbe\u5907\u8fd0\u884c\u57df\u805a\u5408\u7684\u901a\u7528\u6846\u67b6\\code\\Simulator\\Approximator.py",
+      "E:\\OneDrive\\Working\\Research\\12\u591a\u79cd\u8bbe\u5907\u8fd0\u884c\u57df\u805a\u5408\u7684\u901a\u7528\u6846\u67b6\\code\\Simulator\\cases\\microgrid_case.py",
+      "E:\\OneDrive\\Working\\Research\\12\u591a\u79cd\u8bbe\u5907\u8fd0\u884c\u57df\u805a\u5408\u7684\u901a\u7528\u6846\u67b6\\code\\Simulator\\microgrid_count_solver.py"
+    ],
+    "changed_current_source_paths": [
+      "E:\\OneDrive\\Working\\Research\\12\u591a\u79cd\u8bbe\u5907\u8fd0\u884c\u57df\u805a\u5408\u7684\u901a\u7528\u6846\u67b6\\code\\Simulator\\runners\\train_microgrid.py",
+      "E:\\OneDrive\\Working\\Research\\12\u591a\u79cd\u8bbe\u5907\u8fd0\u884c\u57df\u805a\u5408\u7684\u901a\u7528\u6846\u67b6\\code\\Simulator\\runners\\train_aggregation.py"
+    ],
+    "files": [
+      {
+        "source_path": "E:\\OneDrive\\Working\\Research\\12\u591a\u79cd\u8bbe\u5907\u8fd0\u884c\u57df\u805a\u5408\u7684\u901a\u7528\u6846\u67b6\\code\\Simulator\\runners\\train_microgrid.py",
+        "recorded_executed_sha256": "ec13cafe27f641159fdc56c57ae91e7b6f642b22c31fadedd710761491c5b0d2",
+        "current_source_sha256": "2441859ea47a3c6d1224a90c90a7209012579c5312c809d07557c41af1ae9c75",
+        "current_source_changed": true,
+        "snapshot_path": "E:\\OneDrive\\Working\\Research\\12\u591a\u79cd\u8bbe\u5907\u8fd0\u884c\u57df\u805a\u5408\u7684\u901a\u7528\u6846\u67b6\\code\\results\\microgrid\\scale3\\source_snapshot\\Simulator\\runners\\train_microgrid.py",
+        "snapshot_sha256": "ec13cafe27f641159fdc56c57ae91e7b6f642b22c31fadedd710761491c5b0d2",
+        "snapshot_verified": true,
+        "executed_source_verified": true
+      },
+      {
+        "source_path": "E:\\OneDrive\\Working\\Research\\12\u591a\u79cd\u8bbe\u5907\u8fd0\u884c\u57df\u805a\u5408\u7684\u901a\u7528\u6846\u67b6\\code\\Simulator\\runners\\train_aggregation.py",
+        "recorded_executed_sha256": "e72cd31b13e0fd5b6efb590ea628a08449988623e34b25715156421e3bf9c383",
+        "current_source_sha256": "c4048aaeb30e05e6d1ea92bb842e2b0ebe1ff64bad3985d0594457dad9172dbe",
+        "current_source_changed": true,
+        "snapshot_path": "E:\\OneDrive\\Working\\Research\\12\u591a\u79cd\u8bbe\u5907\u8fd0\u884c\u57df\u805a\u5408\u7684\u901a\u7528\u6846\u67b6\\code\\results\\microgrid\\scale3\\source_snapshot\\Simulator\\runners\\train_aggregation.py",
+        "snapshot_sha256": "e72cd31b13e0fd5b6efb590ea628a08449988623e34b25715156421e3bf9c383",
+        "snapshot_verified": true,
+        "executed_source_verified": true
+      },
+      {
+        "source_path": "E:\\OneDrive\\Working\\Research\\12\u591a\u79cd\u8bbe\u5907\u8fd0\u884c\u57df\u805a\u5408\u7684\u901a\u7528\u6846\u67b6\\code\\Simulator\\cases\\microgrid_case.py",
+        "recorded_executed_sha256": "cfa9e1c168ffcc3ece7dffc7656e188e08d17a054430e73ac0c1ae7e97145949",
+        "current_source_sha256": "cfa9e1c168ffcc3ece7dffc7656e188e08d17a054430e73ac0c1ae7e97145949",
+        "current_source_changed": false,
+        "snapshot_path": "E:\\OneDrive\\Working\\Research\\12\u591a\u79cd\u8bbe\u5907\u8fd0\u884c\u57df\u805a\u5408\u7684\u901a\u7528\u6846\u67b6\\code\\results\\microgrid\\scale3\\source_snapshot\\Simulator\\cases\\microgrid_case.py",
+        "snapshot_sha256": "cfa9e1c168ffcc3ece7dffc7656e188e08d17a054430e73ac0c1ae7e97145949",
+        "snapshot_verified": true,
+        "executed_source_verified": true
+      },
+      {
+        "source_path": "E:\\OneDrive\\Working\\Research\\12\u591a\u79cd\u8bbe\u5907\u8fd0\u884c\u57df\u805a\u5408\u7684\u901a\u7528\u6846\u67b6\\code\\Simulator\\Approximator.py",
+        "recorded_executed_sha256": "51234fa104781c8a6e1fece482ebe96db506fc04e82e49c06bde6f6448656610",
+        "current_source_sha256": "51234fa104781c8a6e1fece482ebe96db506fc04e82e49c06bde6f6448656610",
+        "current_source_changed": false,
+        "snapshot_path": "E:\\OneDrive\\Working\\Research\\12\u591a\u79cd\u8bbe\u5907\u8fd0\u884c\u57df\u805a\u5408\u7684\u901a\u7528\u6846\u67b6\\code\\results\\microgrid\\scale3\\source_snapshot\\Simulator\\Approximator.py",
+        "snapshot_sha256": "51234fa104781c8a6e1fece482ebe96db506fc04e82e49c06bde6f6448656610",
+        "snapshot_verified": true,
+        "executed_source_verified": true
+      },
+      {
+        "source_path": "E:\\OneDrive\\Working\\Research\\12\u591a\u79cd\u8bbe\u5907\u8fd0\u884c\u57df\u805a\u5408\u7684\u901a\u7528\u6846\u67b6\\code\\Simulator\\microgrid_count_solver.py",
+        "recorded_executed_sha256": "e2e36a57f13505497ffd9acff9b15e8da096f7c12bde307f8314da7afb3ddcd9",
+        "current_source_sha256": "e2e36a57f13505497ffd9acff9b15e8da096f7c12bde307f8314da7afb3ddcd9",
+        "current_source_changed": false,
+        "snapshot_path": "E:\\OneDrive\\Working\\Research\\12\u591a\u79cd\u8bbe\u5907\u8fd0\u884c\u57df\u805a\u5408\u7684\u901a\u7528\u6846\u67b6\\code\\results\\microgrid\\scale3\\source_snapshot\\Simulator\\microgrid_count_solver.py",
+        "snapshot_sha256": "e2e36a57f13505497ffd9acff9b15e8da096f7c12bde307f8314da7afb3ddcd9",
+        "snapshot_verified": true,
+        "executed_source_verified": true
+      }
+    ],
+    "all_recorded_sources_have_exact_snapshots": true,
+    "current_runner_factory_AST_unchanged": true,
+    "runner_factory_AST": {
+      "build_microgrid": "f8532c1353800a02d61765c64d32249b911c96848135e3ea2668b18dd323667a",
+      "DEVICE_COUNTS": "688f7d41bf34fcb787f6d6c4a090016dca425328d4c47ce2ef8a0e4109916505",
+      "imports": "b38085c362812bf3bf1f1851d988d7a3ac46d2d6878b30f7c910d7d0260c4ddf"
+    },
+    "used_shared_functions_unchanged": true,
+    "shared_runner_used_AST": {
+      "new_run_dir": "5512aea785286cdc1c605e0bb58039b67b22a555fbd987eadc8d6f0fcaaeae90",
+      "train_case": "9551e4820fdc30079937f767901da6690aba292474eaaf259abb21e55d6c680d",
+      "imports": "f1597dc96b2fecc86db433255a70f4f5038aaa90fef085a9225f68381f6c3918",
+      "top_level_excluding_unused_aggregate_schedule": "25f5057938f028c9d82d1581d5bf3a9157fb0b367392238688f037961f29b7b8"
+    },
+    "provenance_path": "E:\\OneDrive\\Working\\Research\\12\u591a\u79cd\u8bbe\u5907\u8fd0\u884c\u57df\u805a\u5408\u7684\u901a\u7528\u6846\u67b6\\code\\results\\microgrid\\scale3\\source_provenance.json"
+  },
+  "portfolio": {
+    "device_scale": 3,
+    "device_counts": {
+      "MT": 3,
+      "PV": 3,
+      "TL": 3,
+      "CL": 3,
+      "ESS": 3,
+      "HP": 6
+    },
+    "devices_checked": 21,
+    "TL_types": [
+      "EV_charging"
+    ],
+    "independent_deep_copies": true,
+    "physical_bounds_and_baseline_scaled": true,
+    "model_complexity": {
+      "variables": 1176,
+      "binary_variables": 360,
+      "constraints": 1494
+    },
+    "native_layout": {
+      "original_variables": 1176,
+      "original_binary_variables": 360,
+      "original_integer_variables": 360,
+      "original_constraints": 1494,
+      "range_slack_variables": 504,
+      "native_original_variables": 1680,
+      "native_original_constraints": 1494,
+      "added_counts": 72,
+      "added_headroom": 138,
+      "native_variables": 1752,
+      "native_integer_variables": 432,
+      "native_constraints": 1704
+    }
+  },
+  "storage_headroom_original_algebra": {
+    "status": "passed",
+    "implied_headroom_inequalities": 138,
+    "deltaT": 1.0,
+    "storage_parameters": [
+      {
+        "E_rated": 250.0,
+        "eta_chg": 0.95,
+        "eta_dis": 0.98,
+        "SOC_min": 0.1,
+        "SOC_max": 1.0
+      },
+      {
+        "E_rated": 250.0,
+        "eta_chg": 0.95,
+        "eta_dis": 0.98,
+        "SOC_min": 0.1,
+        "SOC_max": 1.0
+      },
+      {
+        "E_rated": 250.0,
+        "eta_chg": 0.95,
+        "eta_dis": 0.98,
+        "SOC_min": 0.1,
+        "SOC_max": 1.0
+      }
+    ],
+    "period_zero_omitted": true,
+    "derivation": "Binary charging mode removes the opposite flow; original SOC dynamics and previous/current SOC bounds imply each headroom inequality"
+  },
+  "training": {
+    "optimizer_updates": 2000,
+    "phase_end_updates": [
+      600,
+      1200,
+      2000
+    ],
+    "training_scenario_directions_inferred_from_schedule": 10000,
+    "training_seconds": 3275.1773276999593,
+    "phase_seconds": [
+      1187.1696564999875,
+      1041.588495099917,
+      1046.41916759999
+    ],
+    "setup_seconds": 4.173883700044826,
+    "weights_npz_snapshot_equal": true,
+    "history_and_weight_schedule_consistent": true,
+    "physical_solver_options": {
+      "Threads": 8,
+      "Seed": 0,
+      "MIPFocus": 2,
+      "Symmetry": 2,
+      "Presolve": 0
+    },
+    "physical_solver_backend": "gurobi_persistent_integer_counts",
+    "source_audit": {
+      "status": "passed",
+      "executed_source_verified": true,
+      "physics_and_core_current_sources_match": true,
+      "current_source_changed": true,
+      "current_changed_source_count": 2,
+      "strict_current_source_paths": [
+        "E:\\OneDrive\\Working\\Research\\12\u591a\u79cd\u8bbe\u5907\u8fd0\u884c\u57df\u805a\u5408\u7684\u901a\u7528\u6846\u67b6\\code\\Simulator\\Approximator.py",
+        "E:\\OneDrive\\Working\\Research\\12\u591a\u79cd\u8bbe\u5907\u8fd0\u884c\u57df\u805a\u5408\u7684\u901a\u7528\u6846\u67b6\\code\\Simulator\\cases\\microgrid_case.py",
+        "E:\\OneDrive\\Working\\Research\\12\u591a\u79cd\u8bbe\u5907\u8fd0\u884c\u57df\u805a\u5408\u7684\u901a\u7528\u6846\u67b6\\code\\Simulator\\microgrid_count_solver.py"
+      ],
+      "changed_current_source_paths": [
+        "E:\\OneDrive\\Working\\Research\\12\u591a\u79cd\u8bbe\u5907\u8fd0\u884c\u57df\u805a\u5408\u7684\u901a\u7528\u6846\u67b6\\code\\Simulator\\runners\\train_microgrid.py",
+        "E:\\OneDrive\\Working\\Research\\12\u591a\u79cd\u8bbe\u5907\u8fd0\u884c\u57df\u805a\u5408\u7684\u901a\u7528\u6846\u67b6\\code\\Simulator\\runners\\train_aggregation.py"
+      ],
+      "files": [
+        {
+          "source_path": "E:\\OneDrive\\Working\\Research\\12\u591a\u79cd\u8bbe\u5907\u8fd0\u884c\u57df\u805a\u5408\u7684\u901a\u7528\u6846\u67b6\\code\\Simulator\\runners\\train_microgrid.py",
+          "recorded_executed_sha256": "ec13cafe27f641159fdc56c57ae91e7b6f642b22c31fadedd710761491c5b0d2",
+          "current_source_sha256": "2441859ea47a3c6d1224a90c90a7209012579c5312c809d07557c41af1ae9c75",
+          "current_source_changed": true,
+          "snapshot_path": "E:\\OneDrive\\Working\\Research\\12\u591a\u79cd\u8bbe\u5907\u8fd0\u884c\u57df\u805a\u5408\u7684\u901a\u7528\u6846\u67b6\\code\\results\\microgrid\\scale3\\source_snapshot\\Simulator\\runners\\train_microgrid.py",
+          "snapshot_sha256": "ec13cafe27f641159fdc56c57ae91e7b6f642b22c31fadedd710761491c5b0d2",
+          "snapshot_verified": true,
+          "executed_source_verified": true
+        },
+        {
+          "source_path": "E:\\OneDrive\\Working\\Research\\12\u591a\u79cd\u8bbe\u5907\u8fd0\u884c\u57df\u805a\u5408\u7684\u901a\u7528\u6846\u67b6\\code\\Simulator\\runners\\train_aggregation.py",
+          "recorded_executed_sha256": "e72cd31b13e0fd5b6efb590ea628a08449988623e34b25715156421e3bf9c383",
+          "current_source_sha256": "c4048aaeb30e05e6d1ea92bb842e2b0ebe1ff64bad3985d0594457dad9172dbe",
+          "current_source_changed": true,
+          "snapshot_path": "E:\\OneDrive\\Working\\Research\\12\u591a\u79cd\u8bbe\u5907\u8fd0\u884c\u57df\u805a\u5408\u7684\u901a\u7528\u6846\u67b6\\code\\results\\microgrid\\scale3\\source_snapshot\\Simulator\\runners\\train_aggregation.py",
+          "snapshot_sha256": "e72cd31b13e0fd5b6efb590ea628a08449988623e34b25715156421e3bf9c383",
+          "snapshot_verified": true,
+          "executed_source_verified": true
+        },
+        {
+          "source_path": "E:\\OneDrive\\Working\\Research\\12\u591a\u79cd\u8bbe\u5907\u8fd0\u884c\u57df\u805a\u5408\u7684\u901a\u7528\u6846\u67b6\\code\\Simulator\\cases\\microgrid_case.py",
+          "recorded_executed_sha256": "cfa9e1c168ffcc3ece7dffc7656e188e08d17a054430e73ac0c1ae7e97145949",
+          "current_source_sha256": "cfa9e1c168ffcc3ece7dffc7656e188e08d17a054430e73ac0c1ae7e97145949",
+          "current_source_changed": false,
+          "snapshot_path": "E:\\OneDrive\\Working\\Research\\12\u591a\u79cd\u8bbe\u5907\u8fd0\u884c\u57df\u805a\u5408\u7684\u901a\u7528\u6846\u67b6\\code\\results\\microgrid\\scale3\\source_snapshot\\Simulator\\cases\\microgrid_case.py",
+          "snapshot_sha256": "cfa9e1c168ffcc3ece7dffc7656e188e08d17a054430e73ac0c1ae7e97145949",
+          "snapshot_verified": true,
+          "executed_source_verified": true
+        },
+        {
+          "source_path": "E:\\OneDrive\\Working\\Research\\12\u591a\u79cd\u8bbe\u5907\u8fd0\u884c\u57df\u805a\u5408\u7684\u901a\u7528\u6846\u67b6\\code\\Simulator\\Approximator.py",
+          "recorded_executed_sha256": "51234fa104781c8a6e1fece482ebe96db506fc04e82e49c06bde6f6448656610",
+          "current_source_sha256": "51234fa104781c8a6e1fece482ebe96db506fc04e82e49c06bde6f6448656610",
+          "current_source_changed": false,
+          "snapshot_path": "E:\\OneDrive\\Working\\Research\\12\u591a\u79cd\u8bbe\u5907\u8fd0\u884c\u57df\u805a\u5408\u7684\u901a\u7528\u6846\u67b6\\code\\results\\microgrid\\scale3\\source_snapshot\\Simulator\\Approximator.py",
+          "snapshot_sha256": "51234fa104781c8a6e1fece482ebe96db506fc04e82e49c06bde6f6448656610",
+          "snapshot_verified": true,
+          "executed_source_verified": true
+        },
+        {
+          "source_path": "E:\\OneDrive\\Working\\Research\\12\u591a\u79cd\u8bbe\u5907\u8fd0\u884c\u57df\u805a\u5408\u7684\u901a\u7528\u6846\u67b6\\code\\Simulator\\microgrid_count_solver.py",
+          "recorded_executed_sha256": "e2e36a57f13505497ffd9acff9b15e8da096f7c12bde307f8314da7afb3ddcd9",
+          "current_source_sha256": "e2e36a57f13505497ffd9acff9b15e8da096f7c12bde307f8314da7afb3ddcd9",
+          "current_source_changed": false,
+          "snapshot_path": "E:\\OneDrive\\Working\\Research\\12\u591a\u79cd\u8bbe\u5907\u8fd0\u884c\u57df\u805a\u5408\u7684\u901a\u7528\u6846\u67b6\\code\\results\\microgrid\\scale3\\source_snapshot\\Simulator\\microgrid_count_solver.py",
+          "snapshot_sha256": "e2e36a57f13505497ffd9acff9b15e8da096f7c12bde307f8314da7afb3ddcd9",
+          "snapshot_verified": true,
+          "executed_source_verified": true
+        }
+      ],
+      "all_recorded_sources_have_exact_snapshots": true,
+      "current_runner_factory_AST_unchanged": true,
+      "runner_factory_AST": {
+        "build_microgrid": "f8532c1353800a02d61765c64d32249b911c96848135e3ea2668b18dd323667a",
+        "DEVICE_COUNTS": "688f7d41bf34fcb787f6d6c4a090016dca425328d4c47ce2ef8a0e4109916505",
+        "imports": "b38085c362812bf3bf1f1851d988d7a3ac46d2d6878b30f7c910d7d0260c4ddf"
+      },
+      "used_shared_functions_unchanged": true,
+      "shared_runner_used_AST": {
+        "new_run_dir": "5512aea785286cdc1c605e0bb58039b67b22a555fbd987eadc8d6f0fcaaeae90",
+        "train_case": "9551e4820fdc30079937f767901da6690aba292474eaaf259abb21e55d6c680d",
+        "imports": "f1597dc96b2fecc86db433255a70f4f5038aaa90fef085a9225f68381f6c3918",
+        "top_level_excluding_unused_aggregate_schedule": "25f5057938f028c9d82d1581d5bf3a9157fb0b367392238688f037961f29b7b8"
+      },
+      "provenance_path": "E:\\OneDrive\\Working\\Research\\12\u591a\u79cd\u8bbe\u5907\u8fd0\u884c\u57df\u805a\u5408\u7684\u901a\u7528\u6846\u67b6\\code\\results\\microgrid\\scale3\\source_provenance.json"
+    }
+  },
+  "evaluation": {
+    "samples": 5000,
+    "direction_seed": 1,
+    "noise_seed": 1,
+    "directions_and_perturbations_exact": true,
+    "CSV_pickle_summary_consistent": true,
+    "trajectory_metric_max_absolute_differences": {
+      "feasibility_error": 0.0,
+      "feasibility_error_rated": 7.019785550370014e-20,
+      "optimality_error_rated": 2.220446049250313e-16,
+      "objective_error": 0.0,
+      "objective_error_rated": 0.0
+    },
+    "evaluation_seconds": 1086.601521500037,
+    "sample_time_mean_seconds": 0.21725981195899657,
+    "sample_time_p95_seconds": 0.2714561900065746,
+    "sample_time_max_seconds": 0.9610658000456169
+  },
+  "training_count_backend": {
+    "status": "passed",
+    "successful_original_physical_solves": 20000,
+    "total_attempts": 20000,
+    "termination_counts": {
+      "optimal": 20000
+    },
+    "original_physical_variables": 1176,
+    "original_binary_variables": 360,
+    "original_physical_constraints": 1494,
+    "redundant_integer_counts_per_solve": 72,
+    "redundant_equalities_per_solve": 72,
+    "implied_storage_headroom_cuts_per_solve": 138,
+    "headroom_period_zero_omitted": true,
+    "storage_parameters": [
+      {
+        "E_rated": 250.0,
+        "eta_chg": 0.95,
+        "eta_dis": 0.98,
+        "SOC_min": 0.1,
+        "SOC_max": 1.0,
+        "Pchg": 100.0,
+        "Pdis": 100.0
+      },
+      {
+        "E_rated": 250.0,
+        "eta_chg": 0.95,
+        "eta_dis": 0.98,
+        "SOC_min": 0.1,
+        "SOC_max": 1.0,
+        "Pchg": 100.0,
+        "Pdis": 100.0
+      },
+      {
+        "E_rated": 250.0,
+        "eta_chg": 0.95,
+        "eta_dis": 0.98,
+        "SOC_min": 0.1,
+        "SOC_max": 1.0,
+        "Pchg": 100.0,
+        "Pdis": 100.0
+      }
+    ],
+    "deltaT": 1.0,
+    "native_shape_counts": {
+      "(1680, 1494, 1752, 1704)": 20000
+    },
+    "actual_tolerances": {
+      "MIPGap": 0.0001,
+      "MIPGapAbs": 1e-10,
+      "FeasibilityTol": 1e-06,
+      "IntFeasTol": 1e-05,
+      "OptimalityTol": 1e-06
+    },
+    "maximum_relative_gap": 9.997492514360119e-05,
+    "maximum_count_equality_residual": 2.020605904817785e-13,
+    "maximum_count_integrality_residual": 3.7493510118835616e-07,
+    "maximum_original_binary_integrality_residual": 3.7493510507413674e-07,
+    "maximum_native_constraint_violation": 9.75279263570883e-07,
+    "maximum_native_bound_violation": 9.509112857131186e-07,
+    "maximum_storage_headroom_violation": 3.87289134096136e-08,
+    "equivalence": "K is uniquely determined by original binary sums; storage headroom cuts follow from binary charge mode, original SOC dynamics/bounds and nonnegative power; original integer feasible set is unchanged"
+  },
+  "evaluation_count_backend": {
+    "status": "passed",
+    "successful_original_physical_solves": 10000,
+    "total_attempts": 10000,
+    "termination_counts": {
+      "optimal": 10000
+    },
+    "original_physical_variables": 1176,
+    "original_binary_variables": 360,
+    "original_physical_constraints": 1494,
+    "redundant_integer_counts_per_solve": 72,
+    "redundant_equalities_per_solve": 72,
+    "implied_storage_headroom_cuts_per_solve": 138,
+    "headroom_period_zero_omitted": true,
+    "storage_parameters": [
+      {
+        "E_rated": 250.0,
+        "eta_chg": 0.95,
+        "eta_dis": 0.98,
+        "SOC_min": 0.1,
+        "SOC_max": 1.0,
+        "Pchg": 100.0,
+        "Pdis": 100.0
+      },
+      {
+        "E_rated": 250.0,
+        "eta_chg": 0.95,
+        "eta_dis": 0.98,
+        "SOC_min": 0.1,
+        "SOC_max": 1.0,
+        "Pchg": 100.0,
+        "Pdis": 100.0
+      },
+      {
+        "E_rated": 250.0,
+        "eta_chg": 0.95,
+        "eta_dis": 0.98,
+        "SOC_min": 0.1,
+        "SOC_max": 1.0,
+        "Pchg": 100.0,
+        "Pdis": 100.0
+      }
+    ],
+    "deltaT": 1.0,
+    "native_shape_counts": {
+      "(1680, 1494, 1752, 1704)": 10000
+    },
+    "actual_tolerances": {
+      "MIPGap": 0.0001,
+      "MIPGapAbs": 1e-10,
+      "FeasibilityTol": 1e-06,
+      "IntFeasTol": 1e-05,
+      "OptimalityTol": 1e-06
+    },
+    "maximum_relative_gap": 7.043988374461711e-06,
+    "maximum_count_equality_residual": 0.0,
+    "maximum_count_integrality_residual": 0.0,
+    "maximum_original_binary_integrality_residual": 0.0,
+    "maximum_native_constraint_violation": 9.700869968432002e-11,
+    "maximum_native_bound_violation": 1.4345857834996423e-11,
+    "maximum_storage_headroom_violation": 4.200373382445832e-11,
+    "equivalence": "K is uniquely determined by original binary sums; storage headroom cuts follow from binary charge mode, original SOC dynamics/bounds and nonnegative power; original integer feasible set is unchanged"
+  },
+  "independent_extremes": {
+    "status": "passed",
+    "fresh_Pyomo_models": true,
+    "integer_variables_preserved": true,
+    "solver_options": {
+      "Threads": 8,
+      "Seed": 0,
+      "MIPFocus": 2,
+      "Symmetry": 2,
+      "Presolve": 0
+    },
+    "physical_backend": "gurobi_persistent_integer_counts",
+    "physical_solver_diagnostics": {
+      "backend": "gurobi_persistent_redundant_integer_count_branching",
+      "fresh_native_model_per_solve": true,
+      "native_model_closed_after_solve": true,
+      "physical_integer_constraints": "unrelaxed",
+      "count_definition": "K[group,t] = sum of original binary status variables over devices",
+      "count_branch_priority": 100,
+      "original_branch_priority": 0,
+      "storage_headroom": true,
+      "deltaT": 1.0,
+      "storage_parameters": [
+        {
+          "E_rated": 250.0,
+          "eta_chg": 0.95,
+          "eta_dis": 0.98,
+          "SOC_min": 0.1,
+          "SOC_max": 1.0,
+          "Pchg": 100.0,
+          "Pdis": 100.0
+        },
+        {
+          "E_rated": 250.0,
+          "eta_chg": 0.95,
+          "eta_dis": 0.98,
+          "SOC_min": 0.1,
+          "SOC_max": 1.0,
+          "Pchg": 100.0,
+          "Pdis": 100.0
+        },
+        {
+          "E_rated": 250.0,
+          "eta_chg": 0.95,
+          "eta_dis": 0.98,
+          "SOC_min": 0.1,
+          "SOC_max": 1.0,
+          "Pchg": 100.0,
+          "Pdis": 100.0
+        }
+      ],
+      "storage_headroom_t0_skipped": true,
+      "storage_headroom_proof": "For t>=1, SOC dynamics and SOC bounds imply the charging/discharging headroom bounds in each binary mode; in the other mode the corresponding nonnegative power is zero. At t=0 the original model has no dynamics, so no headroom inequality is added.",
+      "solve_count": 4,
+      "optimal_solves": 4,
+      "nonoptimal_solves": 0,
+      "exception_count": 0,
+      "optimizer_runtime_seconds": 0.09100008010864258,
+      "wall_seconds": 0.3581795000936836,
+      "storage_parameters_verified_against_original_model": true,
+      "actual_tolerances": {
+        "MIPGap": 0.0001,
+        "MIPGapAbs": 1e-10,
+        "FeasibilityTol": 1e-06,
+        "IntFeasTol": 1e-05,
+        "OptimalityTol": 1e-06
+      }
+    },
+    "projection_comparison_atol": 2e-07,
+    "projection_comparison_rtol": 0.00011,
+    "records": [
+      {
+        "selected_for": "feasibility_error_rated",
+        "sample_index": 4707,
+        "stored_feasibility_error_rated": 3.33404159420407e-07,
+        "recomputed_feasibility_error_rated": 3.33404159420407e-07,
+        "stored_optimality_error_rated": 0.46837104880290875,
+        "recomputed_optimality_error_rated": 0.46837104880290875,
+        "support_objective_differences": {
+          "approximate": -1.7763568394002505e-15,
+          "original": 0.0
+        },
+        "nominal_support_attainability_error": 0.0,
+        "nominal_support_attainability_certificate": {
+          "status": "passed",
+          "method": "fixed_target_constant_objective_MILP",
+          "target_squared_distance": 0.0,
+          "physical_shape_unchanged": true,
+          "original_physical_shape": {
+            "variables": 1176,
+            "binary_variables": 360,
+            "constraints": 1494
+          },
+          "integer_domains_preserved": true,
+          "audit_only_solver_options": {
+            "Threads": 8,
+            "Seed": 0,
+            "MIPFocus": 2,
+            "Symmetry": 2,
+            "FeasibilityTol": 1e-09,
+            "IntFeasTol": 1e-09,
+            "OptimalityTol": 1e-09,
+            "TimeLimit": 60,
+            "Presolve": 0
+          },
+          "residuals": {
+            "original_constraint_violation": 4.3428372009657323e-11,
+            "original_bound_violation": 0.0,
+            "original_integer_residual": 0.0
+          },
+          "native_solve": {
+            "solve_index": 1,
+            "termination_condition": "optimal",
+            "original_variables": 1176,
+            "original_binary_variables": 360,
+            "original_constraints": 1494,
+            "native_original_variables": 1680,
+            "native_original_integer_variables": 360,
+            "native_original_binary_variables": 360,
+            "native_original_constraints": 1494,
+            "native_original_quadratic_constraints": 0,
+            "native_original_quadratic_objective_terms": 0,
+            "added_integer_counts": 72,
+            "added_count_equalities": 72,
+            "storage_headroom": true,
+            "storage_headroom_t0_skipped": true,
+            "added_storage_headroom_cuts": 138,
+            "native_variables": 1752,
+            "native_integer_variables": 432,
+            "native_binary_variables": 360,
+            "native_constraints": 1704,
+            "build_seconds": 0.04495380003936589,
+            "method": -1,
+            "presolve": 0,
+            "threads": 8,
+            "seed": 0,
+            "mip_focus": 2,
+            "symmetry": 2,
+            "status": 2,
+            "optimizer_runtime_seconds": 0.010999917984008789,
+            "solution_count": 1,
+            "bound": 0.0,
+            "node_count": 1.0,
+            "objective": 0.0,
+            "relative_gap": 0.0,
+            "absolute_gap": 0.0,
+            "constraint_violation": 4.331468517193571e-11,
+            "bound_violation": 0.0,
+            "max_count_equality_residual": 0.0,
+            "max_count_integrality_residual": 0.0,
+            "max_original_binary_integrality_residual": 0.0,
+            "max_storage_headroom_violation": 4.860112312599085e-12,
+            "native_model_closed": true,
+            "wall_seconds": 0.06468290009070188
+          }
+        }
+      },
+      {
+        "selected_for": "optimality_error_rated",
+        "sample_index": 1193,
+        "stored_feasibility_error_rated": 0.0,
+        "recomputed_feasibility_error_rated": 0.0,
+        "stored_optimality_error_rated": 0.5356662651004613,
+        "recomputed_optimality_error_rated": 0.5356662651004613,
+        "support_objective_differences": {
+          "approximate": 0.0,
+          "original": 0.0
+        },
+        "nominal_support_attainability_error": 0.0,
+        "nominal_support_attainability_certificate": {
+          "status": "passed",
+          "method": "fixed_target_constant_objective_MILP",
+          "target_squared_distance": 0.0,
+          "physical_shape_unchanged": true,
+          "original_physical_shape": {
+            "variables": 1176,
+            "binary_variables": 360,
+            "constraints": 1494
+          },
+          "integer_domains_preserved": true,
+          "audit_only_solver_options": {
+            "Threads": 8,
+            "Seed": 0,
+            "MIPFocus": 2,
+            "Symmetry": 2,
+            "FeasibilityTol": 1e-09,
+            "IntFeasTol": 1e-09,
+            "OptimalityTol": 1e-09,
+            "TimeLimit": 60,
+            "Presolve": 0
+          },
+          "residuals": {
+            "original_constraint_violation": 4.658673447011097e-11,
+            "original_bound_violation": 0.0,
+            "original_integer_residual": 0.0
+          },
+          "native_solve": {
+            "solve_index": 1,
+            "termination_condition": "optimal",
+            "original_variables": 1176,
+            "original_binary_variables": 360,
+            "original_constraints": 1494,
+            "native_original_variables": 1680,
+            "native_original_integer_variables": 360,
+            "native_original_binary_variables": 360,
+            "native_original_constraints": 1494,
+            "native_original_quadratic_constraints": 0,
+            "native_original_quadratic_objective_terms": 0,
+            "added_integer_counts": 72,
+            "added_count_equalities": 72,
+            "storage_headroom": true,
+            "storage_headroom_t0_skipped": true,
+            "added_storage_headroom_cuts": 138,
+            "native_variables": 1752,
+            "native_integer_variables": 432,
+            "native_binary_variables": 360,
+            "native_constraints": 1704,
+            "build_seconds": 0.04485020006541163,
+            "method": -1,
+            "presolve": 0,
+            "threads": 8,
+            "seed": 0,
+            "mip_focus": 2,
+            "symmetry": 2,
+            "status": 2,
+            "optimizer_runtime_seconds": 0.004000186920166016,
+            "solution_count": 1,
+            "bound": 0.0,
+            "node_count": 0.0,
+            "objective": 0.0,
+            "relative_gap": 0.0,
+            "absolute_gap": 0.0,
+            "constraint_violation": 4.658479851871178e-11,
+            "bound_violation": 0.0,
+            "max_count_equality_residual": 0.0,
+            "max_count_integrality_residual": 0.0,
+            "max_original_binary_integrality_residual": 0.0,
+            "max_storage_headroom_violation": 2.4158453015843406e-13,
+            "native_model_closed": true,
+            "wall_seconds": 0.057655900018289685
+          }
+        }
+      }
+    ]
+  },
+  "verified_artifact_sha256": {
+    "code\\results\\microgrid\\scale3\\training\\setup_timing.json": "4b6c0c693e0e3c8fec38fb8d9c3a858ee357573a965ceee218fde1ca472302b9",
+    "code\\results\\microgrid\\scale3\\training\\solver_diagnostics.json": "5e462472b130fe4137e5beace49971f786e3e7e27db11561c9f2a16db101eb1a",
+    "code\\results\\microgrid\\scale3\\training\\solver_progress.json": "2fd686fb24ff693a786f301c90b1070d9151cd7f57a674ff38d3f6943f891178",
+    "code\\results\\microgrid\\scale3\\training\\training_config.json": "7e93afb39277a90efdbeb9c1d382c31ff8c9ca5b0014cc6d4bd2edc4f4a0bd96",
+    "code\\results\\microgrid\\scale3\\training\\error_history.pkl": "b255b3b8b59048707bb2e72fed808e123a7879a34c4d599f1556ed09f80d56c0",
+    "code\\results\\microgrid\\scale3\\training\\metadata.pkl": "12c40a4cd0324f682faf91ee44b0c644f65a72c074970bfa2d6eaa4627464b1d",
+    "code\\results\\microgrid\\scale3\\training\\final_polytope.npz": "e71d23b2927d8614d73373445b7d6bf70b05bbc1f96ed729ef9acea0e4ed30c3",
+    "code\\results\\microgrid\\scale3\\training\\pretrainnet_weights.pth": "ec8e3f3e123f0c2ee84aedc264db53a2f4f3adee8fb49832f102226aa396ccfe",
+    "code\\results\\microgrid\\scale3\\disaggregation\\metadata.json": "b061656885e8129663b45fee22c81c7e01220f93b28c48e021ba1572a0f5ad68",
+    "code\\results\\microgrid\\scale3\\disaggregation\\solver_diagnostics.json": "f495546da63ed0fcc83f015203ca3ca8f7de6e3897186f0f64e3a20bb85d6adc",
+    "code\\results\\microgrid\\scale3\\disaggregation\\summary.json": "5794ef0ec9129e6eefe3da6190b06fb83ea0ac075474d90c132d65229114b847",
+    "code\\results\\microgrid\\scale3\\disaggregation\\results.pkl": "221efe743528cf1c8df1a28fbd1073d3ba8f3c0c663d99b6e5518ca24c162953",
+    "code\\results\\microgrid\\scale3\\disaggregation\\errors.csv": "edc947951b2caf96c88b8d59b399ef2a069c41130a6c07bebbb362fa517dd1ef",
+    "code\\results\\microgrid\\scale3\\source_provenance.json": "b058fefbd98e4ffc6e6b4db99a736e65e3e548435c4298dc6591640dadb78ebb",
+    "code\\results\\microgrid\\scale3\\source_snapshot\\Simulator\\Approximator.py": "51234fa104781c8a6e1fece482ebe96db506fc04e82e49c06bde6f6448656610",
+    "code\\results\\microgrid\\scale3\\source_snapshot\\Simulator\\microgrid_count_solver.py": "e2e36a57f13505497ffd9acff9b15e8da096f7c12bde307f8314da7afb3ddcd9",
+    "code\\results\\microgrid\\scale3\\source_snapshot\\Simulator\\cases\\microgrid_case.py": "cfa9e1c168ffcc3ece7dffc7656e188e08d17a054430e73ac0c1ae7e97145949",
+    "code\\results\\microgrid\\scale3\\source_snapshot\\Simulator\\runners\\train_aggregation.py": "e72cd31b13e0fd5b6efb590ea628a08449988623e34b25715156421e3bf9c383",
+    "code\\results\\microgrid\\scale3\\source_snapshot\\Simulator\\runners\\train_microgrid.py": "ec13cafe27f641159fdc56c57ae91e7b6f642b22c31fadedd710761491c5b0d2",
+    "code\\results\\microgrid\\scale3\\source_snapshot\\Simulator\\testers\\evaluate_microgrid.py": "f1889dc5c0e954a9454d234b3532f7f906722253392d9248d3d0b703bc33b58f",
+    "code\\results\\microgrid\\scale3\\attainability_recheck.json": "14630758f1c3a5fb8912da1f7cc44dd18cbf83d1f700e4926eeef7188113051b",
+    "code\\results\\microgrid\\scale3\\attainability_recheck.npz": "47c996d683c30db8ebca36a17f65982fb960ab8e20fe84f09b0f18108395aafd",
+    "code\\results\\microgrid\\scale3\\projection_recheck.json": "d98ebef3f3f4b599cd9f4fd05546cf3dbb734f40e490cf197cec914099a39d89"
+  }
+}

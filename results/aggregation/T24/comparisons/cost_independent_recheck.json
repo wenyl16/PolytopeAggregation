@@ -1,0 +1,507 @@
+{
+  "status": "passed",
+  "auditor": "Independent US subagent, read-only artifact checks; no solver rerun needed for this mechanical staging audit.",
+  "completed_at_utc": "2026-10-28T09:15:26.389173+00:00",
+  "elapsed_seconds": 1.885590999852866,
+  "staging_directory": "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\tmp\\mean_four_search\\all_methods",
+  "writes": "Only this audit JSON and its scratch script; no changes to all_methods or canonical artifacts.",
+  "staging_metadata_status": "completed",
+  "method_count": 10,
+  "cost_array_count_including_original": 11,
+  "cost_days_per_array": 365,
+  "all11cost_arrays_finite365": true,
+  "source_price_index972_and934_bitwise_equal": true,
+  "coefficients_equal_negative_USDperMWh_prices_divided1000": true,
+  "four_methods_and_original_vs_preexisting_source_daily_costs": {
+    "972": {
+      "original": 0.0,
+      "proposed_peb_exact": 0.0,
+      "peb_inner": 0.0,
+      "pve": 0.0,
+      "pve_modified": 0.0
+    },
+    "934": {
+      "original": 0.0,
+      "proposed_peb_exact": 0.0,
+      "peb_inner": 0.0,
+      "pve": 0.0,
+      "pve_modified": 0.0
+    }
+  },
+  "normalization_rebuilt_from_unchanged_case": {
+    "class": "Simulator.cases.aggregation_case_T24.Aggregator",
+    "case_seed": 0,
+    "counts": [
+      5,
+      40,
+      5
+    ],
+    "pmin_pmax_exact_match_metadata": true,
+    "physical_model_sha256": "1244b99bf74db8250b7df8374c3581b728050a959833d6c9f8312503a131a6d9"
+  },
+  "dispatch_and_cost_checks": [
+    {
+      "method": "original",
+      "days": 365,
+      "finite_cost_and_dispatch": true,
+      "max_physical_denormalization_difference": 0.0,
+      "max_recomputed_cost_difference": 0.0,
+      "mean_cost": -178.5018665110614
+    },
+    {
+      "method": "proposed_peb_exact",
+      "days": 365,
+      "finite_cost_and_dispatch": true,
+      "max_physical_denormalization_difference": 0.0,
+      "max_recomputed_cost_difference": 0.0,
+      "mean_cost": -169.85679846614744
+    },
+    {
+      "method": "proposed_pb_exact",
+      "days": 365,
+      "finite_cost_and_dispatch": true,
+      "max_physical_denormalization_difference": 0.0,
+      "max_recomputed_cost_difference": 0.0,
+      "mean_cost": -151.42197054485604
+    },
+    {
+      "method": "peb_inner",
+      "days": 365,
+      "finite_cost_and_dispatch": true,
+      "max_physical_denormalization_difference": 0.0,
+      "max_recomputed_cost_difference": 0.0,
+      "mean_cost": -168.68522717836842
+    },
+    {
+      "method": "pb_inner",
+      "days": 365,
+      "finite_cost_and_dispatch": true,
+      "max_physical_denormalization_difference": 0.0,
+      "max_recomputed_cost_difference": 0.0,
+      "mean_cost": -113.21472142786523
+    },
+    {
+      "method": "cutting_plane",
+      "days": 365,
+      "finite_cost_and_dispatch": true,
+      "max_physical_denormalization_difference": 0.0,
+      "max_recomputed_cost_difference": 0.0,
+      "mean_cost": -189.6057678785264
+    },
+    {
+      "method": "cutting_plane_modified",
+      "days": 365,
+      "finite_cost_and_dispatch": true,
+      "max_physical_denormalization_difference": 0.0,
+      "max_recomputed_cost_difference": 0.0,
+      "mean_cost": -184.26827308158335
+    },
+    {
+      "method": "pve",
+      "days": 365,
+      "finite_cost_and_dispatch": true,
+      "max_physical_denormalization_difference": 0.0,
+      "max_recomputed_cost_difference": 0.0,
+      "mean_cost": -161.73991616849864
+    },
+    {
+      "method": "pve_modified",
+      "days": 365,
+      "finite_cost_and_dispatch": true,
+      "max_physical_denormalization_difference": 0.0,
+      "max_recomputed_cost_difference": 0.0,
+      "mean_cost": -144.13051391167676
+    },
+    {
+      "method": "federated_peb",
+      "days": 365,
+      "finite_cost_and_dispatch": true,
+      "max_physical_denormalization_difference": 0.0,
+      "max_recomputed_cost_difference": 0.0,
+      "mean_cost": -122.42393795583881
+    },
+    {
+      "method": "peb_outer",
+      "days": 365,
+      "finite_cost_and_dispatch": true,
+      "max_physical_denormalization_difference": 0.0,
+      "max_recomputed_cost_difference": 0.0,
+      "mean_cost": -185.718042025068
+    }
+  ],
+  "cost_CSV_exact_match": {
+    "proposed_peb_exact": {
+      "rows": 365,
+      "exact_original_cost_match": true,
+      "exact_method_cost_match": true,
+      "exact_difference_match": true
+    },
+    "proposed_pb_exact": {
+      "rows": 365,
+      "exact_original_cost_match": true,
+      "exact_method_cost_match": true,
+      "exact_difference_match": true
+    },
+    "peb_inner": {
+      "rows": 365,
+      "exact_original_cost_match": true,
+      "exact_method_cost_match": true,
+      "exact_difference_match": true
+    },
+    "pb_inner": {
+      "rows": 365,
+      "exact_original_cost_match": true,
+      "exact_method_cost_match": true,
+      "exact_difference_match": true
+    },
+    "cutting_plane": {
+      "rows": 365,
+      "exact_original_cost_match": true,
+      "exact_method_cost_match": true,
+      "exact_difference_match": true
+    },
+    "cutting_plane_modified": {
+      "rows": 365,
+      "exact_original_cost_match": true,
+      "exact_method_cost_match": true,
+      "exact_difference_match": true
+    },
+    "pve": {
+      "rows": 365,
+      "exact_original_cost_match": true,
+      "exact_method_cost_match": true,
+      "exact_difference_match": true
+    },
+    "pve_modified": {
+      "rows": 365,
+      "exact_original_cost_match": true,
+      "exact_method_cost_match": true,
+      "exact_difference_match": true
+    },
+    "federated_peb": {
+      "rows": 365,
+      "exact_original_cost_match": true,
+      "exact_method_cost_match": true,
+      "exact_difference_match": true
+    },
+    "peb_outer": {
+      "rows": 365,
+      "exact_original_cost_match": true,
+      "exact_method_cost_match": true,
+      "exact_difference_match": true
+    }
+  },
+  "cost_summary_recomputed": {
+    "proposed_peb_exact": {
+      "mean_cost_difference": 8.645068044913994,
+      "median_cost_difference": 8.495756269111535,
+      "min_cost_difference": -3.2777641996124203,
+      "max_cost_difference": 75.56774772025346,
+      "mean_cost": -169.85679846614744,
+      "num_cost_samples": 365
+    },
+    "proposed_pb_exact": {
+      "mean_cost_difference": 27.07989596620534,
+      "median_cost_difference": 20.00600178447103,
+      "min_cost_difference": 5.939501954245957,
+      "max_cost_difference": 340.05230791138,
+      "mean_cost": -151.42197054485604,
+      "num_cost_samples": 365
+    },
+    "peb_inner": {
+      "mean_cost_difference": 9.816639332692965,
+      "median_cost_difference": 8.515044761857432,
+      "min_cost_difference": 0.4131897259398585,
+      "max_cost_difference": 102.01859381139093,
+      "mean_cost": -168.68522717836842,
+      "num_cost_samples": 365
+    },
+    "pb_inner": {
+      "mean_cost_difference": 65.2871450831962,
+      "median_cost_difference": 51.18141076397305,
+      "min_cost_difference": 15.667222510870147,
+      "max_cost_difference": 908.4214683516639,
+      "mean_cost": -113.21472142786523,
+      "num_cost_samples": 365
+    },
+    "cutting_plane": {
+      "mean_cost_difference": -11.103901367464978,
+      "median_cost_difference": -9.320925155256987,
+      "min_cost_difference": -45.43216954068684,
+      "max_cost_difference": -0.22886322097311762,
+      "mean_cost": -189.6057678785264,
+      "num_cost_samples": 365
+    },
+    "cutting_plane_modified": {
+      "mean_cost_difference": -5.766406570521943,
+      "median_cost_difference": -4.676614921440034,
+      "min_cost_difference": -31.812630970573082,
+      "max_cost_difference": -0.22886322097311762,
+      "mean_cost": -184.26827308158335,
+      "num_cost_samples": 365
+    },
+    "pve": {
+      "mean_cost_difference": 16.761950342562745,
+      "median_cost_difference": 13.146271415360616,
+      "min_cost_difference": 0.2266513080119381,
+      "max_cost_difference": 79.70948429941382,
+      "mean_cost": -161.73991616849864,
+      "num_cost_samples": 365
+    },
+    "pve_modified": {
+      "mean_cost_difference": 34.371352599384664,
+      "median_cost_difference": 22.663194485861695,
+      "min_cost_difference": 3.726859058636389,
+      "max_cost_difference": 297.1549575581166,
+      "mean_cost": -144.13051391167676,
+      "num_cost_samples": 365
+    },
+    "federated_peb": {
+      "mean_cost_difference": 56.077928555222584,
+      "median_cost_difference": 31.678477607305183,
+      "min_cost_difference": 5.8011644294189395,
+      "max_cost_difference": 778.7504951358578,
+      "mean_cost": -122.42393795583881,
+      "num_cost_samples": 365
+    },
+    "peb_outer": {
+      "mean_cost_difference": -7.216175514006622,
+      "median_cost_difference": -5.281260375660736,
+      "min_cost_difference": -41.07235762928716,
+      "max_cost_difference": -0.22886240682702663,
+      "mean_cost": -185.718042025068,
+      "num_cost_samples": 365
+    }
+  },
+  "error_array_consistency": [
+    {
+      "method": "proposed_peb_exact",
+      "samples": 5000,
+      "pickle_and_npz_error_arrays_exact": true,
+      "summary_matches_error_arrays": true
+    },
+    {
+      "method": "proposed_pb_exact",
+      "samples": 5000,
+      "pickle_and_npz_error_arrays_exact": true,
+      "summary_matches_error_arrays": true
+    },
+    {
+      "method": "peb_inner",
+      "samples": 5000,
+      "pickle_and_npz_error_arrays_exact": true,
+      "summary_matches_error_arrays": true
+    },
+    {
+      "method": "pb_inner",
+      "samples": 5000,
+      "pickle_and_npz_error_arrays_exact": true,
+      "summary_matches_error_arrays": true
+    },
+    {
+      "method": "cutting_plane",
+      "samples": 5000,
+      "pickle_and_npz_error_arrays_exact": true,
+      "summary_matches_error_arrays": true
+    },
+    {
+      "method": "cutting_plane_modified",
+      "samples": 5000,
+      "pickle_and_npz_error_arrays_exact": true,
+      "summary_matches_error_arrays": true
+    },
+    {
+      "method": "pve",
+      "samples": 5000,
+      "pickle_and_npz_error_arrays_exact": true,
+      "summary_matches_error_arrays": true
+    },
+    {
+      "method": "pve_modified",
+      "samples": 5000,
+      "pickle_and_npz_error_arrays_exact": true,
+      "summary_matches_error_arrays": true
+    },
+    {
+      "method": "federated_peb",
+      "samples": 5000,
+      "pickle_and_npz_error_arrays_exact": true,
+      "summary_matches_error_arrays": true
+    },
+    {
+      "method": "peb_outer",
+      "samples": 5000,
+      "pickle_and_npz_error_arrays_exact": true,
+      "summary_matches_error_arrays": true
+    }
+  ],
+  "canonical18_files_and_staging_bitwise_preserved": {
+    "directions.npy": {
+      "expected_sha256": "7f1ab3ff18e64b781605f070e457a7eaa6c5b7f7272ea9e2088f3dba9ca241a5",
+      "staging_sha256": "7f1ab3ff18e64b781605f070e457a7eaa6c5b7f7272ea9e2088f3dba9ca241a5",
+      "current_canonical_sha256": "7f1ab3ff18e64b781605f070e457a7eaa6c5b7f7272ea9e2088f3dba9ca241a5",
+      "unchanged": true
+    },
+    "error_comparison.pkl": {
+      "expected_sha256": "8c7b29eaa8beb4ef5941377dc1293797e8e7a5c182c3d72130dc3c310cab95d6",
+      "staging_sha256": "8c7b29eaa8beb4ef5941377dc1293797e8e7a5c182c3d72130dc3c310cab95d6",
+      "current_canonical_sha256": "8c7b29eaa8beb4ef5941377dc1293797e8e7a5c182c3d72130dc3c310cab95d6",
+      "unchanged": true
+    },
+    "error_samples.csv": {
+      "expected_sha256": "fafde84cf0eb6e0b8195619dbf34a064bf1a5a0f6a203995154b0216fb305fbb",
+      "staging_sha256": "fafde84cf0eb6e0b8195619dbf34a064bf1a5a0f6a203995154b0216fb305fbb",
+      "current_canonical_sha256": "fafde84cf0eb6e0b8195619dbf34a064bf1a5a0f6a203995154b0216fb305fbb",
+      "unchanged": true
+    },
+    "peb_outer.npz": {
+      "expected_sha256": "5ae292d6aee23e2b9631177fb6b7c9931581cdd98ffa0c67ad510ead92c0fe0e",
+      "staging_sha256": "5ae292d6aee23e2b9631177fb6b7c9931581cdd98ffa0c67ad510ead92c0fe0e",
+      "current_canonical_sha256": "5ae292d6aee23e2b9631177fb6b7c9931581cdd98ffa0c67ad510ead92c0fe0e",
+      "unchanged": true
+    },
+    "proposed_peb_exact_errors.npz": {
+      "expected_sha256": "135d04849f3b30d14d0e94e997d160d70b35688624f0bedb2d247818c454496f",
+      "staging_sha256": "135d04849f3b30d14d0e94e997d160d70b35688624f0bedb2d247818c454496f",
+      "current_canonical_sha256": "135d04849f3b30d14d0e94e997d160d70b35688624f0bedb2d247818c454496f",
+      "unchanged": true
+    },
+    "proposed_pb_exact_errors.npz": {
+      "expected_sha256": "77f947ee3adf187ca727858e0dbca9be4a7f749f74f13aee0d6fb70ce3ca6f72",
+      "staging_sha256": "77f947ee3adf187ca727858e0dbca9be4a7f749f74f13aee0d6fb70ce3ca6f72",
+      "current_canonical_sha256": "77f947ee3adf187ca727858e0dbca9be4a7f749f74f13aee0d6fb70ce3ca6f72",
+      "unchanged": true
+    },
+    "peb_inner_errors.npz": {
+      "expected_sha256": "6a60887a64c416d276cdb9a80a052638b4f8a9964ae0d96ab0817b056bf0c51b",
+      "staging_sha256": "6a60887a64c416d276cdb9a80a052638b4f8a9964ae0d96ab0817b056bf0c51b",
+      "current_canonical_sha256": "6a60887a64c416d276cdb9a80a052638b4f8a9964ae0d96ab0817b056bf0c51b",
+      "unchanged": true
+    },
+    "pb_inner_errors.npz": {
+      "expected_sha256": "0977035b958933856f43c1bf6b15eafa359502c084d75a93381304132dabca27",
+      "staging_sha256": "0977035b958933856f43c1bf6b15eafa359502c084d75a93381304132dabca27",
+      "current_canonical_sha256": "0977035b958933856f43c1bf6b15eafa359502c084d75a93381304132dabca27",
+      "unchanged": true
+    },
+    "cutting_plane_errors.npz": {
+      "expected_sha256": "190d62481bc14b480276859b0a64f07af2efd2390326b03f4f472b2a8f55a590",
+      "staging_sha256": "190d62481bc14b480276859b0a64f07af2efd2390326b03f4f472b2a8f55a590",
+      "current_canonical_sha256": "190d62481bc14b480276859b0a64f07af2efd2390326b03f4f472b2a8f55a590",
+      "unchanged": true
+    },
+    "cutting_plane_modified_errors.npz": {
+      "expected_sha256": "dd18961944823a7c15df40ad0274fc828cfbf9a00c820ccbf4d9f44b9455646f",
+      "staging_sha256": "dd18961944823a7c15df40ad0274fc828cfbf9a00c820ccbf4d9f44b9455646f",
+      "current_canonical_sha256": "dd18961944823a7c15df40ad0274fc828cfbf9a00c820ccbf4d9f44b9455646f",
+      "unchanged": true
+    },
+    "pve_errors.npz": {
+      "expected_sha256": "50d4008e16824241b3636ab5f8cb43699a3118a643ab792c98d1354f52c7ede2",
+      "staging_sha256": "50d4008e16824241b3636ab5f8cb43699a3118a643ab792c98d1354f52c7ede2",
+      "current_canonical_sha256": "50d4008e16824241b3636ab5f8cb43699a3118a643ab792c98d1354f52c7ede2",
+      "unchanged": true
+    },
+    "pve_modified_errors.npz": {
+      "expected_sha256": "d0a51a0321ebd64680ea72ae80bfabd1875b597fc4e6e3e9a46118066c4bff1b",
+      "staging_sha256": "d0a51a0321ebd64680ea72ae80bfabd1875b597fc4e6e3e9a46118066c4bff1b",
+      "current_canonical_sha256": "d0a51a0321ebd64680ea72ae80bfabd1875b597fc4e6e3e9a46118066c4bff1b",
+      "unchanged": true
+    },
+    "federated_peb_errors.npz": {
+      "expected_sha256": "c5243582fec931eeb25457d8a6e3151acfe0854b49d109b8ff3380e7fb0cc5e1",
+      "staging_sha256": "c5243582fec931eeb25457d8a6e3151acfe0854b49d109b8ff3380e7fb0cc5e1",
+      "current_canonical_sha256": "c5243582fec931eeb25457d8a6e3151acfe0854b49d109b8ff3380e7fb0cc5e1",
+      "unchanged": true
+    },
+    "peb_outer_errors.npz": {
+      "expected_sha256": "8ede26b02c8ad23b761fb27b8327286126587c7d90322c50a4ea19765d874710",
+      "staging_sha256": "8ede26b02c8ad23b761fb27b8327286126587c7d90322c50a4ea19765d874710",
+      "current_canonical_sha256": "8ede26b02c8ad23b761fb27b8327286126587c7d90322c50a4ea19765d874710",
+      "unchanged": true
+    },
+    "proposed_peb_exact_checkpoint.npz": {
+      "expected_sha256": "c82d4d2e5d766633826ce555369d7211217ac1f599aa702d411c13a45a902df2",
+      "staging_sha256": "c82d4d2e5d766633826ce555369d7211217ac1f599aa702d411c13a45a902df2",
+      "current_canonical_sha256": "c82d4d2e5d766633826ce555369d7211217ac1f599aa702d411c13a45a902df2",
+      "unchanged": true
+    },
+    "proposed_peb_exact_progress.json": {
+      "expected_sha256": "486fe2a3cb7778f752f31ccc4be3b043230e771e9ec8bb0c5caae349e454e751",
+      "staging_sha256": "486fe2a3cb7778f752f31ccc4be3b043230e771e9ec8bb0c5caae349e454e751",
+      "current_canonical_sha256": "486fe2a3cb7778f752f31ccc4be3b043230e771e9ec8bb0c5caae349e454e751",
+      "unchanged": true
+    },
+    "proposed_pb_exact_checkpoint.npz": {
+      "expected_sha256": "3d387c96c8a0ef76352cd8d9eb191a2e55636923338cdaa9ab9e1c4e22f2ee0e",
+      "staging_sha256": "3d387c96c8a0ef76352cd8d9eb191a2e55636923338cdaa9ab9e1c4e22f2ee0e",
+      "current_canonical_sha256": "3d387c96c8a0ef76352cd8d9eb191a2e55636923338cdaa9ab9e1c4e22f2ee0e",
+      "unchanged": true
+    },
+    "proposed_pb_exact_progress.json": {
+      "expected_sha256": "ee88261909bf92b445de104f4381b1c4f92a93f6272cf0f51f2163a6190afe4b",
+      "staging_sha256": "ee88261909bf92b445de104f4381b1c4f92a93f6272cf0f51f2163a6190afe4b",
+      "current_canonical_sha256": "ee88261909bf92b445de104f4381b1c4f92a93f6272cf0f51f2163a6190afe4b",
+      "unchanged": true
+    }
+  },
+  "all_staging_nonlabel_files_unchanged_during_audit": true,
+  "root_authorized_label_updates_during_audit": {},
+  "final_label": "CAISO Poole-node day-ahead",
+  "final_price_provenance_node": "POD_CONTRL_1_POOLE-APND",
+  "final_staging_file_sha256": {
+    "cost_coefficients.npy": "1f94f0ee5917b2a11ea1a699c42e206a806520263fd9b37e5c9b82eb156bdd5a",
+    "cost_comparison.pkl": "8ea860d4a721bf451ac12825069186718fa695632ef750264df38ef5d6e20526",
+    "cost_samples.csv": "d7c5c409b3dee88883d2087d12a8eff8368245225eb245772b4779c8e50c8775",
+    "cost_scenarios.csv": "a62916d6f8821cb061d0697b9c1c500802e04bce3d76435f4e561b3ab866f017",
+    "cost_solver_diagnostics.json": "29defbb75fa4bc3f15b6dda4a1e47c54fbcd81e0dbe110f765653bbdde0b00b5",
+    "cutting_plane_costs.npy": "859cac6930112f0a2843106f1979f6b47b6c069ddc08bb2313b5f902d0849121",
+    "cutting_plane_cost_dispatch.npz": "c2636de22773e01c2b948d655d065d38a03938cf8e79528df304d16c5543bd66",
+    "cutting_plane_errors.npz": "190d62481bc14b480276859b0a64f07af2efd2390326b03f4f472b2a8f55a590",
+    "cutting_plane_modified_costs.npy": "67c6f316c927fbadac799d424f0e8029d0a24a2134f00a8358c1669513d5fedd",
+    "cutting_plane_modified_cost_dispatch.npz": "7170e5cf75725959b95a5d31f9e2b24a51b6a55b33b5fefcbf02e1e3e695b233",
+    "cutting_plane_modified_errors.npz": "dd18961944823a7c15df40ad0274fc828cfbf9a00c820ccbf4d9f44b9455646f",
+    "daily_prices_usd_mwh.npy": "2d84ba9e4aaec33a515d8874194ad6e5e7cefde7f63a6f1383701ecd6b3a82f5",
+    "directions.npy": "7f1ab3ff18e64b781605f070e457a7eaa6c5b7f7272ea9e2088f3dba9ca241a5",
+    "error_comparison.pkl": "8c7b29eaa8beb4ef5941377dc1293797e8e7a5c182c3d72130dc3c310cab95d6",
+    "error_reuse.json": "bfede696ed3a781a58bd58a2deec8990d53f79c1cf1aa81e1be5b9b73c1f4f24",
+    "error_samples.csv": "fafde84cf0eb6e0b8195619dbf34a064bf1a5a0f6a203995154b0216fb305fbb",
+    "federated_peb_costs.npy": "332552444cfd85f582a4a9c5376e2f6cb852df0afcca38e8871dd212b3a46b7e",
+    "federated_peb_cost_dispatch.npz": "088287303cb3d322ab8575b9173ceb2fa8f2481e229a00ffcbc2234c74ae6a48",
+    "federated_peb_errors.npz": "c5243582fec931eeb25457d8a6e3151acfe0854b49d109b8ff3380e7fb0cc5e1",
+    "mean_cost_deviation.tex": "4d19883c6ec99f56a22ccd5ea3b482493be6593ed800bda9549092885d449bea",
+    "metadata.json": "1bb0d094053754911fc22ccaeb8d68b4194691e855fd935d08ffcc6cd3a8906e",
+    "original_costs.npy": "15724199effc0a5e33c6246948c596356b8c7c2564ca1ad4212577682d2698af",
+    "original_cost_dispatch.npz": "5978f5b3107f1cea3473cf2f17357d1d5b3242e173fff52fe11bb0fefb0625a7",
+    "pb_inner_costs.npy": "475863ed2698ebbea1d041b6ac82c3b69886eeb7ec5766ec3b62a426b6f20ba1",
+    "pb_inner_cost_dispatch.npz": "cca5146cefdeeb74a5759f6a7782cede3058389ee1d96f406ec541080fcfff68",
+    "pb_inner_errors.npz": "0977035b958933856f43c1bf6b15eafa359502c084d75a93381304132dabca27",
+    "peb_inner_costs.npy": "38873876895bd97b21173e7004ada62f4181decb87c8db436370a4ed92451290",
+    "peb_inner_cost_dispatch.npz": "f6ca4838b8f2c10596254d5aaf187eb048ef3491dfe56f38a8f30b56eca7fa79",
+    "peb_inner_errors.npz": "6a60887a64c416d276cdb9a80a052638b4f8a9964ae0d96ab0817b056bf0c51b",
+    "peb_outer.npz": "5ae292d6aee23e2b9631177fb6b7c9931581cdd98ffa0c67ad510ead92c0fe0e",
+    "peb_outer_costs.npy": "69546c88c81e73204143ac5464096fe0145100f64479508d6aea3c9b689566c2",
+    "peb_outer_cost_dispatch.npz": "5e8aa448e65c0282e3f6630324b9a692601406e6ed3757dc478bf50bda553e79",
+    "peb_outer_errors.npz": "8ede26b02c8ad23b761fb27b8327286126587c7d90322c50a4ea19765d874710",
+    "price_provenance.json": "4901337acb589b8448c30ce26025aaee698507f760f40d16565e85ccfb98e049",
+    "proposed_pb_exact_checkpoint.npz": "3d387c96c8a0ef76352cd8d9eb191a2e55636923338cdaa9ab9e1c4e22f2ee0e",
+    "proposed_pb_exact_costs.npy": "37377c0f0d0d3450b95eb6d656d49ff67a812eb7272c7bb20245eb3cd39c65cd",
+    "proposed_pb_exact_cost_dispatch.npz": "521a2719e04c9eff59a2149dca7caa70853038be15fce9808b8e48ad7d374201",
+    "proposed_pb_exact_errors.npz": "77f947ee3adf187ca727858e0dbca9be4a7f749f74f13aee0d6fb70ce3ca6f72",
+    "proposed_pb_exact_progress.json": "ee88261909bf92b445de104f4381b1c4f92a93f6272cf0f51f2163a6190afe4b",
+    "proposed_peb_exact_checkpoint.npz": "c82d4d2e5d766633826ce555369d7211217ac1f599aa702d411c13a45a902df2",
+    "proposed_peb_exact_costs.npy": "b6597feeae454c87cd65632a1420c6e7e3b7155bdfc1fda6e13ab0b7f07ce6c8",
+    "proposed_peb_exact_cost_dispatch.npz": "02791572a3556c554e02c1ed256c7300966a908d2f860cdf5ad74f0d638a252e",
+    "proposed_peb_exact_errors.npz": "135d04849f3b30d14d0e94e997d160d70b35688624f0bedb2d247818c454496f",
+    "proposed_peb_exact_progress.json": "486fe2a3cb7778f752f31ccc4be3b043230e771e9ec8bb0c5caae349e454e751",
+    "pve_costs.npy": "377d03df6becffc5b0d2d7e462f1ff37cb61ce25f0aabe9fc03284787e1cfed3",
+    "pve_cost_dispatch.npz": "7e5f8651f972f038f251cf2d62898755b3d6428a44e91449c3e819dd17e910ef",
+    "pve_errors.npz": "50d4008e16824241b3636ab5f8cb43699a3118a643ab792c98d1354f52c7ede2",
+    "pve_modified_costs.npy": "b71518e2d942af74246d32a56970ceb0ef257530e21608fa000662638517e31e",
+    "pve_modified_cost_dispatch.npz": "d0cd84fa42e50b6276871292efb349837f75c30bac6d3e970a18102ddc946c84",
+    "pve_modified_errors.npz": "d0a51a0321ebd64680ea72ae80bfabd1875b597fc4e6e3e9a46118066c4bff1b",
+    "source_error_metadata.json": "08077b6fcd9be0b69e7ddf7eb79a4b463c9ff19b4e851a7ae953e313c5884274",
+    "summary.json": "8cd3013d7c44a292a842c4dceb46d761a6fa5ab4d78ca31270c45ee53f9b52d8"
+  },
+  "publication_note": "Numeric arrays were audited in staging and promoted bitwise; source display/attribution metadata was clarified without changing any price, coefficient, cost, or dispatch."
+}

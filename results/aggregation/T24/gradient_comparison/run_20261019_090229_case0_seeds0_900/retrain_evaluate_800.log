@@ -1,0 +1,108 @@
+CL (Interruptible Load) generated: 5 units with ±20% variation
+TCL generated
+PV (Photovoltaic) generated: 5 units with ±20% variation
+Set parameter Username
+Set parameter LicenseID to value 2837180
+Academic license - for non-commercial use only - expires 2027-06-20
+Warning for adding constraints: zero or small (< 1e-13) coefficients, ignored
+Warning for adding constraints: zero or small (< 1e-13) coefficients, ignored
+Output: E:\OneDrive\Working\Research\12多种设备运行域聚合的通用框架\code\results\aggregation\T24\gradient_comparison\run_20261019_090229_case0_seeds0_900\seed_800\evaluation_10000_seed10000
+Original model: 4344 variables, 3144 constraints
+Prefix validation passed: 128 shared directions
+250/10000: elapsed=5.5s, ETA=213.1s, feasibility_error>1e-4 counts={'approximate': 0, 'exact': 0}
+500/10000: elapsed=10.8s, ETA=205.1s, feasibility_error>1e-4 counts={'approximate': 0, 'exact': 0}
+750/10000: elapsed=16.3s, ETA=201.0s, feasibility_error>1e-4 counts={'approximate': 0, 'exact': 0}
+1000/10000: elapsed=21.7s, ETA=195.7s, feasibility_error>1e-4 counts={'approximate': 0, 'exact': 0}
+1250/10000: elapsed=27.1s, ETA=189.6s, feasibility_error>1e-4 counts={'approximate': 0, 'exact': 0}
+1500/10000: elapsed=32.3s, ETA=182.9s, feasibility_error>1e-4 counts={'approximate': 0, 'exact': 0}
+1750/10000: elapsed=37.4s, ETA=176.1s, feasibility_error>1e-4 counts={'approximate': 0, 'exact': 0}
+2000/10000: elapsed=42.7s, ETA=170.8s, feasibility_error>1e-4 counts={'approximate': 0, 'exact': 0}
+2250/10000: elapsed=47.9s, ETA=164.8s, feasibility_error>1e-4 counts={'approximate': 1, 'exact': 0}
+2500/10000: elapsed=53.1s, ETA=159.2s, feasibility_error>1e-4 counts={'approximate': 2, 'exact': 0}
+2750/10000: elapsed=58.3s, ETA=153.8s, feasibility_error>1e-4 counts={'approximate': 2, 'exact': 0}
+3000/10000: elapsed=63.5s, ETA=148.2s, feasibility_error>1e-4 counts={'approximate': 2, 'exact': 0}
+3250/10000: elapsed=68.6s, ETA=142.5s, feasibility_error>1e-4 counts={'approximate': 2, 'exact': 0}
+3500/10000: elapsed=73.7s, ETA=136.9s, feasibility_error>1e-4 counts={'approximate': 2, 'exact': 0}
+3750/10000: elapsed=78.7s, ETA=131.2s, feasibility_error>1e-4 counts={'approximate': 2, 'exact': 0}
+4000/10000: elapsed=83.7s, ETA=125.5s, feasibility_error>1e-4 counts={'approximate': 2, 'exact': 0}
+4250/10000: elapsed=88.7s, ETA=120.0s, feasibility_error>1e-4 counts={'approximate': 3, 'exact': 0}
+4500/10000: elapsed=93.7s, ETA=114.5s, feasibility_error>1e-4 counts={'approximate': 3, 'exact': 0}
+4750/10000: elapsed=98.8s, ETA=109.2s, feasibility_error>1e-4 counts={'approximate': 4, 'exact': 0}
+5000/10000: elapsed=103.8s, ETA=103.8s, feasibility_error>1e-4 counts={'approximate': 4, 'exact': 0}
+5250/10000: elapsed=108.9s, ETA=98.5s, feasibility_error>1e-4 counts={'approximate': 4, 'exact': 0}
+5500/10000: elapsed=114.3s, ETA=93.5s, feasibility_error>1e-4 counts={'approximate': 4, 'exact': 0}
+5750/10000: elapsed=119.6s, ETA=88.4s, feasibility_error>1e-4 counts={'approximate': 4, 'exact': 0}
+6000/10000: elapsed=124.7s, ETA=83.1s, feasibility_error>1e-4 counts={'approximate': 4, 'exact': 0}
+6250/10000: elapsed=129.8s, ETA=77.9s, feasibility_error>1e-4 counts={'approximate': 4, 'exact': 0}
+6500/10000: elapsed=135.0s, ETA=72.7s, feasibility_error>1e-4 counts={'approximate': 4, 'exact': 0}
+6750/10000: elapsed=140.1s, ETA=67.4s, feasibility_error>1e-4 counts={'approximate': 4, 'exact': 0}
+7000/10000: elapsed=145.1s, ETA=62.2s, feasibility_error>1e-4 counts={'approximate': 4, 'exact': 0}
+7250/10000: elapsed=150.2s, ETA=57.0s, feasibility_error>1e-4 counts={'approximate': 5, 'exact': 0}
+7500/10000: elapsed=155.3s, ETA=51.8s, feasibility_error>1e-4 counts={'approximate': 5, 'exact': 0}
+7750/10000: elapsed=160.7s, ETA=46.7s, feasibility_error>1e-4 counts={'approximate': 6, 'exact': 0}
+8000/10000: elapsed=166.0s, ETA=41.5s, feasibility_error>1e-4 counts={'approximate': 6, 'exact': 0}
+8250/10000: elapsed=171.4s, ETA=36.4s, feasibility_error>1e-4 counts={'approximate': 6, 'exact': 0}
+8500/10000: elapsed=176.7s, ETA=31.2s, feasibility_error>1e-4 counts={'approximate': 6, 'exact': 0}
+8750/10000: elapsed=181.8s, ETA=26.0s, feasibility_error>1e-4 counts={'approximate': 6, 'exact': 0}
+9000/10000: elapsed=186.9s, ETA=20.8s, feasibility_error>1e-4 counts={'approximate': 6, 'exact': 0}
+9250/10000: elapsed=192.0s, ETA=15.6s, feasibility_error>1e-4 counts={'approximate': 6, 'exact': 0}
+9500/10000: elapsed=197.0s, ETA=10.4s, feasibility_error>1e-4 counts={'approximate': 6, 'exact': 0}
+9750/10000: elapsed=202.1s, ETA=5.2s, feasibility_error>1e-4 counts={'approximate': 6, 'exact': 0}
+10000/10000: elapsed=207.1s, ETA=0.0s, feasibility_error>1e-4 counts={'approximate': 6, 'exact': 0}
+{
+  "approximate": {
+    "feasibility_error": {
+      "count": 10000,
+      "mean": 1.918560208746879e-07,
+      "median": 6.967543012389985e-13,
+      "p95": 2.5793653915126967e-12,
+      "p99": 2.8797238841083547e-12,
+      "max": 0.00044844018151447807,
+      "min": 1.167017996099299e-27,
+      "max_direction_index_one_based": 7627,
+      "count_gt_1e-4": 6
+    },
+    "optimality_error": {
+      "count": 10000,
+      "mean": 0.9138684015761003,
+      "median": 0.8572449862839344,
+      "p95": 1.7127908402192893,
+      "p99": 2.0638203465254827,
+      "max": 2.6425821747216416,
+      "min": 0.0748667949206723,
+      "max_direction_index_one_based": 3598
+    }
+  },
+  "exact": {
+    "feasibility_error": {
+      "count": 10000,
+      "mean": 2.8114480535727595e-22,
+      "median": 3.3014295153546293e-25,
+      "p95": 1.6849866944765553e-21,
+      "p99": 5.192816818102087e-21,
+      "max": 6.907404810326382e-20,
+      "min": 3.1253991137516063e-30,
+      "max_direction_index_one_based": 7472,
+      "count_gt_1e-4": 0
+    },
+    "optimality_error": {
+      "count": 10000,
+      "mean": 0.8883929254534702,
+      "median": 0.8722737476594247,
+      "p95": 1.247040900684677,
+      "p99": 1.5190849007338454,
+      "max": 2.0720025442112417,
+      "min": 0.16134495819987604,
+      "max_direction_index_one_based": 5673
+    }
+  }
+}
+Completed: E:\OneDrive\Working\Research\12多种设备运行域聚合的通用框架\code\results\aggregation\T24\gradient_comparison\run_20261019_090229_case0_seeds0_900\seed_800\evaluation_10000_seed10000; combined evaluation 207.132s
+CL (Interruptible Load) generated: 5 units with ±20% variation
+TCL generated
+PV (Photovoltaic) generated: 5 units with ±20% variation
+Rechecked direction 3598: ['approximate_optimality_error']
+Rechecked direction 5673: ['exact_optimality_error']
+Rechecked direction 7472: ['exact_feasibility_error']
+Rechecked direction 7627: ['approximate_feasibility_error']
+Passed independent rechecks: E:\OneDrive\Working\Research\12多种设备运行域聚合的通用框架\code\results\aggregation\T24\gradient_comparison\run_20261019_090229_case0_seeds0_900\seed_800\evaluation_10000_seed10000\recheck_extremes.json

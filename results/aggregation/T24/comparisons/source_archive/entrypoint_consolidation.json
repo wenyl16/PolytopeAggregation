@@ -1,0 +1,72 @@
+{
+  "status": "completed",
+  "entries": [
+    {
+      "old": "runners/prepare_aemo_prices.py",
+      "owner": "testers/evaluate_market_costs.py",
+      "action": "--prepare-prices-only"
+    },
+    {
+      "old": "runners/prepare_exact_comparison.py",
+      "owner": "runners/train_aggregation.py",
+      "action": "--prepare-comparison"
+    },
+    {
+      "old": "runners/prepare_inner_comparison.py",
+      "owner": "runners/compare_baselines.py",
+      "action": "--prepare-inner"
+    },
+    {
+      "old": "runners/update_multimethod_comparison.py",
+      "owner": "testers/evaluate_market_costs.py",
+      "action": "--refresh-models"
+    },
+    {
+      "old": "runners/_strategy_continuation_training.py",
+      "owner": "runners/compare_training_strategies.py",
+      "action": "integrated third-stage continuation worker"
+    }
+  ],
+  "old_runtime_files_deleted": true,
+  "current_owner_sha256": {
+    "runners/compare_baselines.py": "760784f42cd6b8442586c1314d9ba04542f3129ca73408c4bb5f4c1d6e92414d",
+    "runners/compare_training_strategies.py": "4d74066e9861a29a5a41c44d1918a54159ee822fe93e97c4291b84d724a9a6e9",
+    "runners/train_aggregation.py": "e228bdb0b29d39acff11276c470df98c7c949af3cec0e902b0c9f3785ca03ec7",
+    "testers/evaluate_market_costs.py": "28e0bc3bbcce55bff09c18e2c1f2543a4ef53c9d1286e213bb3d36bf83dce7b9"
+  },
+  "entrypoint_verification": {
+    "status": "passed",
+    "modules": 25,
+    "help_actions_checked": 6,
+    "removed_modules_present": false,
+    "bad_imports": [],
+    "fresh_source_hash_lists_valid": true,
+    "protected_data_artifacts_unchanged": 30,
+    "uncertainty_artifacts_unchanged": 5,
+    "refresh_numerical_body_ast_equivalent": true,
+    "solver_or_training_started": false
+  },
+  "price_preparation_verification": {
+    "existing_seven_artifacts_byte_preserved": true,
+    "regional_cache_publishes_fixed_vic1_without_search": true,
+    "raw_archive_rebuild_exact_prices_and_original_zip": true,
+    "corrupt_cache_rejected_without_network_or_repair": true,
+    "default_only_evaluates_without_preparation": true,
+    "explicit_refresh_routes_without_cli_recursion": true,
+    "aemo_output_namespace_isolated_from_comparison_output": true,
+    "status": "passed",
+    "original_price_artifacts_unchanged": true,
+    "network_or_solver_used": false,
+    "exact_shape": [
+      365,
+      24
+    ]
+  },
+  "historical_metadata_rewritten": false,
+  "training_or_numerical_results_recomputed": false,
+  "archive_manifests": [
+    "market_migration_manifest.json",
+    "exact_inner_migration_manifest.json",
+    "../../strategy_comparison/source_snapshot/strategy_continuation_merge_manifest.json"
+  ]
+}

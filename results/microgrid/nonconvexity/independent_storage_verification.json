@@ -1,0 +1,167 @@
+{
+  "passed": true,
+  "completed": 5000,
+  "device_scale": 1,
+  "disable_mt_min_uptime": false,
+  "device_counts": {
+    "MT": 1,
+    "PV": 1,
+    "TL": 1,
+    "CL": 1,
+    "ESS": 1,
+    "HP": 2
+  },
+  "storage_energy_kwh": null,
+  "device_counts_override": null,
+  "device_source_indices": {},
+  "parameter_changes": [],
+  "only_storage_energy_changed": false,
+  "only_device_counts_changed": false,
+  "all_per_device_parameters_unchanged": true,
+  "source_storage_energy_kwh": 250.0,
+  "fixed_original_normalization_unchanged": true,
+  "fixed_portfolio_power_normalization_verified": true,
+  "normalization_reference": "Original retained training power spans",
+  "physical_validation": {
+    "raw_endpoints": {
+      "count": 1000,
+      "constraint_violation": 4.291678123991005e-12,
+      "bound_violation": 0.0,
+      "integer_violation": 0.0,
+      "passed": true
+    },
+    "formal_projections": {
+      "count": 5000,
+      "constraint_violation": 8.054001909840736e-10,
+      "bound_violation": 0.0,
+      "integer_violation": 0.0,
+      "passed": true
+    },
+    "control_endpoints": {
+      "count": 40,
+      "constraint_violation": 9.094947017729282e-13,
+      "bound_violation": 0.0,
+      "integer_violation": 0.0,
+      "passed": true
+    },
+    "control_feasible_witnesses": {
+      "count": 100,
+      "constraint_violation": 8.526512829121202e-13,
+      "bound_violation": 0.0,
+      "integer_violation": 0.0,
+      "passed": true
+    },
+    "control_projections": {
+      "count": 100,
+      "constraint_violation": 8.526512829121202e-13,
+      "bound_violation": 0.0,
+      "integer_violation": 0.0,
+      "passed": true
+    }
+  },
+  "original_variables": 409,
+  "expected_variables": 409,
+  "original_binary_variables": 120,
+  "independent_forward_MT_uptime_validation": {
+    "passed": true,
+    "groups": {
+      "raw_endpoints": {
+        "passed": true,
+        "primal_rows": 1000,
+        "MT_devices": 1,
+        "minimum_uptime_enforced": true,
+        "MT_trajectories_checked": 1000,
+        "observed_startups_checked": 3035,
+        "terminal_truncated_startups_checked": 400,
+        "conservative_initial_online_windows_checked": 0,
+        "startup_shutdown_states_match_observed_transitions": true,
+        "maximum_binary_deviation": 0.0,
+        "violations": 0
+      },
+      "control_endpoints": {
+        "passed": true,
+        "primal_rows": 40,
+        "MT_devices": 1,
+        "minimum_uptime_enforced": true,
+        "MT_trajectories_checked": 40,
+        "observed_startups_checked": 40,
+        "terminal_truncated_startups_checked": 0,
+        "conservative_initial_online_windows_checked": 0,
+        "startup_shutdown_states_match_observed_transitions": true,
+        "maximum_binary_deviation": 0.0,
+        "violations": 0
+      },
+      "control_feasible_witnesses": {
+        "passed": true,
+        "primal_rows": 100,
+        "MT_devices": 1,
+        "minimum_uptime_enforced": true,
+        "MT_trajectories_checked": 100,
+        "observed_startups_checked": 100,
+        "terminal_truncated_startups_checked": 0,
+        "conservative_initial_online_windows_checked": 0,
+        "startup_shutdown_states_match_observed_transitions": true,
+        "maximum_binary_deviation": 0.0,
+        "violations": 0
+      },
+      "control_projections": {
+        "passed": true,
+        "primal_rows": 100,
+        "MT_devices": 1,
+        "minimum_uptime_enforced": true,
+        "MT_trajectories_checked": 100,
+        "observed_startups_checked": 100,
+        "terminal_truncated_startups_checked": 0,
+        "conservative_initial_online_windows_checked": 0,
+        "startup_shutdown_states_match_observed_transitions": true,
+        "maximum_binary_deviation": 0.0,
+        "violations": 0
+      },
+      "formal_projections": {
+        "passed": true,
+        "primal_rows": 5000,
+        "MT_devices": 1,
+        "minimum_uptime_enforced": true,
+        "MT_trajectories_checked": 5000,
+        "observed_startups_checked": 13983,
+        "terminal_truncated_startups_checked": 1805,
+        "conservative_initial_online_windows_checked": 0,
+        "startup_shutdown_states_match_observed_transitions": true,
+        "maximum_binary_deviation": 0.0,
+        "violations": 0
+      }
+    },
+    "minimum_uptime_enforced": true,
+    "total_MT_trajectories_checked": 6240,
+    "total_observed_startups_checked": 17258,
+    "validation_basis": "Forward checking from observed u state transitions, independent of Pyomo rolling-uptime expressions",
+    "initial_online_semantics": "First min(U,T) periods remain online",
+    "terminal_semantics": "Only the visible portion of each startup run is required"
+  },
+  "reproducible_directions": true,
+  "reproducible_probes": true,
+  "mixture_membership_verified": true,
+  "distance_fields_verified": true,
+  "numerical_threshold_percent": 0.001,
+  "reporting_threshold_percent": 0.01,
+  "stored_sample_classifications_use_numerical_threshold": true,
+  "numerical_classification_counts": {
+    "detected_gap": 939,
+    "numerical_zero": 4061
+  },
+  "reporting_classification_counts": {
+    "below_threshold": 4090,
+    "detected_gap": 910
+  },
+  "classification_counts": {
+    "below_threshold": 4090,
+    "detected_gap": 910
+  },
+  "max_lower_percent": 1.0848923635594705,
+  "max_upper_percent": 1.0848923635594703,
+  "max_control_percent": 0.0,
+  "recorded_input_source_hashes_match": true,
+  "validation_basis": "Original nominal Pyomo expressions; no optimizer or training used",
+  "scope": "Finite convex-combination probes, not a global upper bound or proof of convexity",
+  "caveat": "Feasibility and solver bounds use declared numerical tolerances, not exact arithmetic"
+}

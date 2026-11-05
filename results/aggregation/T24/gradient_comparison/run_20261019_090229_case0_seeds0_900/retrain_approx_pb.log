@@ -1,0 +1,32 @@
+CL (Interruptible Load) generated: 5 units with ±20% variation
+TCL generated
+PV (Photovoltaic) generated: 5 units with ±20% variation
+Update 50: feasibility=0.108362, optimality=0.61413
+Update 100: feasibility=0.0812247, optimality=0.380185
+Update 150: feasibility=0.233474, optimality=0.384807
+Update 200: feasibility=0.72437, optimality=0.238339
+Update 250: feasibility=0.383884, optimality=0.432343
+Update 300: feasibility=0.234989, optimality=0.366474
+Update 350: feasibility=2.30564e-24, optimality=0.499197
+Update 400: feasibility=5.97551e-26, optimality=0.750242
+Update 450: feasibility=4.1534e-23, optimality=0.449521
+Update 500: feasibility=1.4266e-24, optimality=0.714326
+Update 550: feasibility=2.2774e-19, optimality=0.752093
+Update 600: feasibility=9.02127e-26, optimality=1.07549
+Update 650: feasibility=5.12499e-21, optimality=0.66335
+Update 700: feasibility=9.83588e-26, optimality=0.904222
+Update 750: feasibility=7.44712e-24, optimality=0.856721
+Update 800: feasibility=3.06094e-21, optimality=0.793812
+Update 850: feasibility=4.43011e-21, optimality=0.533751
+Update 900: feasibility=5.75948e-23, optimality=0.784225
+Update 950: feasibility=1.79243e-21, optimality=0.969354
+Update 1000: feasibility=4.92422e-21, optimality=0.872509
+Saved training results: E:\OneDrive\Working\Research\12多种设备运行域聚合的通用框架\code\results\aggregation\T24\approx\pb
+pb evaluation: 0/5000
+pb evaluation: 1000/5000
+pb evaluation: 2000/5000
+pb evaluation: 3000/5000
+pb evaluation: 4000/5000
+pb evaluation: 5000/5000
+pb: max feasibility=0.00117807720971; count > 1e-4=4
+Saved main training and evaluation results: E:\OneDrive\Working\Research\12多种设备运行域聚合的通用框架\code\results\aggregation\T24\approx\pb

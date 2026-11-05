@@ -1,0 +1,810 @@
+{
+  "scope": "intermediate_ellipsoid_not_final_paper_polytope",
+  "epsilon": 0.04,
+  "K": 25,
+  "points": [
+    {
+      "point_kind": "boundary",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "interior",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "boundary",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "interior",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "boundary",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "interior",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "boundary",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "interior",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "boundary",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "interior",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "boundary",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "interior",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "boundary",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "interior",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "boundary",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "interior",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "boundary",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "interior",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "boundary",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "interior",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "boundary",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "interior",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "boundary",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "interior",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "boundary",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "interior",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "boundary",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "interior",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "boundary",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "interior",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "boundary",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "interior",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "boundary",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "interior",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "boundary",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "interior",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "boundary",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "interior",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "boundary",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "interior",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "boundary",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "interior",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "boundary",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "interior",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "boundary",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "interior",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "boundary",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "interior",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "boundary",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "interior",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "boundary",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "interior",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "boundary",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "interior",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "boundary",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "interior",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "boundary",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "interior",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "boundary",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "interior",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "boundary",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "interior",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "boundary",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "interior",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "boundary",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "interior",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "boundary",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "interior",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "boundary",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "interior",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "boundary",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "interior",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "boundary",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "interior",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "boundary",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "interior",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "boundary",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "interior",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "boundary",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "interior",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "boundary",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "interior",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "boundary",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "interior",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "boundary",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "interior",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "boundary",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "interior",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "boundary",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "interior",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "boundary",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "interior",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "boundary",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "interior",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "boundary",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "interior",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "boundary",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "interior",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "boundary",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    },
+    {
+      "point_kind": "interior",
+      "label": 1,
+      "successes": 0,
+      "failures": 25,
+      "unknown": 0,
+      "scenarios_observed": 25
+    }
+  ],
+  "feasible_points": 0,
+  "infeasible_points": 100,
+  "unknown_points": 0
+}

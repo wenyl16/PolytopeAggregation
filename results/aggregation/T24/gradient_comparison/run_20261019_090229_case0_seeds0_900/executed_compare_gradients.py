@@ -1,0 +1,519 @@
+"""Paired T24 PreTrainNet experiments with common initial values and saved directions.
+
+Unlike Trainer.train(n_train), --iterations is the actual number of updates.
+The standard protocol has 300/200/500 updates and 10000 evaluation directions.
+"""
+import argparse
+import copy
+import csv
+from datetime import datetime, timezone
+import hashlib
+import json
+import os
+from pathlib import Path
+import platform
+import subprocess
+import sys
+import time
+
+os.environ.setdefault('KMP_DUPLICATE_LIB_OK', 'TRUE')
+os.environ.setdefault('CUBLAS_WORKSPACE_CONFIG', ':4096:8')
+if __package__ in (None, ''):
+    sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+
+import gurobipy
+import numpy as np
+import torch
+from Simulator.Approximator import ErrorCalculator, PreTrainNet, compute_exact_error, compute_surrogate_error
+from Simulator.cases.aggregation_case_T24 import Aggregator
+from Simulator.paths import CODE_ROOT, gradient_result_dir
+
+STAGES = [(300, 0.02, 1.0), (200, 0.1, 0.01), (500, 1.0, 1e-6)]
+OPTIONS = {'FeasibilityTol': 1e-9, 'OptimalityTol': 1e-9,
+           'BarConvTol': 1e-12, 'Threads': 1, 'Seed': 0}
+DEFAULT_TRAINING_SEEDS = tuple(range(0, 1000, 100))
+
+def surrogate(A, b, samples):
+    return compute_surrogate_error(A, b, [samples])
+
+def configure(calculator):
+    calculator.configure(feas_tol=0., opt_tol=0., active_tol=1e-5)
+    for solver in (calculator.solver, calculator.cvx_solver):
+        solver.options.update(OPTIONS)
+    return calculator
+
+
+
+def sync(device):
+    if device.type == 'cuda':
+        torch.cuda.synchronize(device)
+
+
+def write_json(path, data):
+    path.write_text(json.dumps(data, indent=2, ensure_ascii=False, allow_nan=False),
+                    encoding='utf-8')
+
+
+def sample_errors(calculator, direction, exact=False):
+    """Identical four LP/QP calls; only the derivative construction differs."""
+    samples = []
+    solve_seconds = 0.
+    analytic_seconds = 0.
+    for kind in ('feas', 'opt'):
+        start = time.perf_counter()
+        if kind == 'feas':
+            x_apx = calculator.optimize_direction(direction, in_approx=True)
+            x_org = calculator.project(x_apx) if x_apx is not None else None
+        else:
+            x_org = calculator.optimize_direction(direction)
+            x_apx = calculator.project(x_org, to_approx=True) if x_org is not None else None
+        solve_seconds += time.perf_counter() - start
+        if x_apx is None or x_org is None:
+            raise RuntimeError(f'{kind}: LP/QP solve failed')
+        start = time.perf_counter()
+        if exact:
+            result = calculator._error_result(x_apx, x_org, kind, direction)
+            if not result['is_valid']:
+                raise RuntimeError('Exact gradient failed certification')
+        else:
+            result = {'is_valid': True,
+                      'error': float(np.sum((x_apx - x_org) ** 2)),
+                      'active_indices': calculator._find_active(x_apx),
+                      'x_org': x_org.copy(), 'x_apx': x_apx.copy()}
+        analytic_seconds += time.perf_counter() - start
+        samples.append([result])
+    return samples, solve_seconds, analytic_seconds
+
+
+def make_optimizer(network, lr):
+    optimizer = torch.optim.SGD(network.parameters(), lr=lr)
+    scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=100, gamma=0.98)
+    return optimizer, scheduler
+
+
+def take_step(run, direction, iteration, stage, weight, device):
+    sync(device)
+    started = time.perf_counter()
+    run['optimizer'].zero_grad(set_to_none=True)
+    A, b = run['network']()
+    A_numpy = A[0].detach().cpu().numpy().copy()
+    b_numpy = b[0].detach().cpu().numpy().copy()
+    run['calculator'].update_polytope(A_hat=A_numpy, b_hat=b_numpy)
+    sync(device)
+    prepare_seconds = time.perf_counter() - started
+    samples, solve_seconds, analytic_seconds = sample_errors(
+        run['calculator'], direction, exact=run['method'] == 'exact')
+    start = time.perf_counter()
+    if run['method'] == 'exact':
+        feas = compute_exact_error(A, b, [samples[0]])
+        opt = compute_exact_error(A, b, [samples[1]])
+    else:
+        feas = surrogate(A, b, samples[0])
+        opt = surrogate(A, b, samples[1])
+    (feas + weight * opt).backward()
+    gradient_norm = torch.sqrt(sum(p.grad.square().sum() for p in run['network'].parameters()
+                                   if p.grad is not None)).item()
+    lr = run['optimizer'].param_groups[0]['lr']
+    run['optimizer'].step()
+    run['scheduler'].step()
+    sync(device)
+    backward_seconds = time.perf_counter() - start
+    row = {'method': run['method'], 'iteration': iteration, 'stage': stage,
+           'lr': lr, 'rate_opt_feas': weight,
+           'feasibility_error': samples[0][0]['error'],
+           'optimality_error': samples[1][0]['error'],
+           'objective_feasibility': feas.item(), 'objective_optimality': opt.item(),
+           'gradient_norm': gradient_norm,
+           'step_seconds': time.perf_counter() - started,
+           'solve_seconds': solve_seconds, 'analytic_gradient_seconds': analytic_seconds,
+           'backward_update_seconds': backward_seconds, 'prepare_seconds': prepare_seconds}
+    for kind, sample in zip(('feasibility', 'optimality'), samples):
+        sample = sample[0]
+        row[f'{kind}_gradient_status'] = sample.get('gradient_status', 'surrogate')
+        row[f'{kind}_adjoint_solver'] = sample.get('adjoint_solver', '')
+        row[f'{kind}_active_count'] = len(sample['active_indices'])
+        row[f'{kind}_gradient_active_count'] = len(sample.get('gradient_active_indices', sample['active_indices']))
+        for diagnostic in ('active_matrix_rank', 'active_matrix_condition',
+                           'adjoint_residual_inf', 'active_constraint_residual_inf',
+                           'linearization_incompatibility_dimension'):
+            row[f'{kind}_{diagnostic}'] = sample.get(diagnostic, '')
+    run['rows'].append(row)
+    run['used_directions'].append(direction.copy())
+    return row, (A_numpy, b_numpy, samples)
+
+
+def stats(values):
+    a = np.asarray(values, dtype=float)
+    return {'mean': float(a.mean()), 'median': float(np.median(a)),
+            'max': float(a.max()), 'min': float(a.min()),
+            'p95': float(np.quantile(a, .95)), 'last': float(a[-1])}
+
+
+def gradient_comparison(snapshot, output_dir):
+    """Compare both gradients at the SAME A,b,points,active sets, and v."""
+    iteration, A, b, samples, direction = snapshot
+    output = []
+    arrays = {'A': A, 'b': b, 'direction': direction}
+    for kind, sample in zip(('feasibility', 'optimality'), samples):
+        sample = sample[0]
+        At = torch.tensor(A[None], dtype=torch.float64, requires_grad=True)
+        bt = torch.tensor(b[None], dtype=torch.float64, requires_grad=True)
+        value = surrogate(At, bt, [sample])
+        gA, gb = torch.autograd.grad(value, (At, bt))
+        approximate = np.concatenate((gA.numpy().ravel(), gb.numpy().ravel()))
+        exact = np.concatenate((sample['gradient_A'].ravel(), sample['gradient_b']))
+        ne, na = np.linalg.norm(exact), np.linalg.norm(approximate)
+        output.append({'iteration': iteration, 'kind': kind, 'true_error': sample['error'],
+                       'gradient_status': sample.get('gradient_status', 'ok'),
+                       'surrogate_value': value.item(), 'exact_norm': float(ne),
+                       'approximate_norm': float(na),
+                       'relative_gradient_difference': float(np.linalg.norm(approximate-exact)/ne)
+                       if ne > 1e-12 else None,
+                       'cosine': float(np.dot(exact, approximate)/(ne*na))
+                       if min(ne, na) > 1e-12 else None})
+        for name in ('gradient_A', 'gradient_b', 'x_org', 'x_apx', 'active_indices'):
+            arrays[f'{kind}_{name}'] = sample[name]
+        arrays[f'{kind}_gradient_status'] = sample.get('gradient_status', 'ok')
+        if 'adjoint_solver' in sample:
+            arrays[f'{kind}_adjoint_solver'] = sample['adjoint_solver']
+        if 'gradient_active_indices' in sample:
+            arrays[f'{kind}_gradient_active_indices'] = sample['gradient_active_indices']
+        for diagnostic in ('active_matrix_rank', 'active_matrix_condition',
+                           'adjoint_residual_inf', 'active_constraint_residual_inf',
+                           'linearization_incompatibility_dimension'):
+            if diagnostic in sample:
+                arrays[f'{kind}_{diagnostic}'] = sample[diagnostic]
+        arrays[f'{kind}_surrogate_gradient_A'] = gA.numpy()[0]
+        arrays[f'{kind}_surrogate_gradient_b'] = gb.numpy()[0]
+    np.savez(output_dir / f'same_point_{iteration:04d}.npz', **arrays)
+    return output
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--iterations', type=int, default=1000, help='Actual updates per method, 1..1000')
+    parser.add_argument('--eval-directions', type=int, default=128, help='Independent reference prefix saved after training')
+    parser.add_argument('--samples', type=int, default=10000, help='Final evaluation directions')
+    parser.add_argument('--seed', type=int, default=0, help='Case and initialization seed')
+    seeds = parser.add_mutually_exclusive_group()
+    seeds.add_argument('--training-seed', type=int, help='Run one seed')
+    seeds.add_argument('--training-seeds', type=int, nargs='+',
+                       help='Run a list; default: 0 100 200 300 400 500 600 700 800 900')
+    parser.add_argument('--evaluation-seed', type=int, default=10000)
+    parser.add_argument('--reference-run', type=Path, help='Optional comparison with an existing complete run')
+    parser.add_argument('--output', type=Path, help='New run directory, or new batch parent for multiple seeds')
+    parser.add_argument('--train-only', action='store_true', help='Skip final evaluation, recheck and plotting')
+    parser.add_argument('--overwrite', action='store_true', help='Replace this identified fixed paired experiment in place')
+    args = parser.parse_args()
+    if not 1 <= args.iterations <= 1000 or args.eval_directions < 1 or args.samples < 1:
+        parser.error('Use 1..1000 updates and positive evaluation sample counts')
+    selected = ([args.training_seed] if args.training_seed is not None else
+                args.training_seeds if args.training_seeds is not None else list(DEFAULT_TRAINING_SEEDS))
+    if len(set(selected)) != len(selected):
+        parser.error('Training seeds must be distinct')
+    base = (args.output or gradient_result_dir() / datetime.now().strftime('run_%Y%m%d_%H%M%S_%f')).resolve()
+    if base.exists() and not args.overwrite:
+        raise FileExistsError(f'Refusing to overwrite: {base}')
+    multiple = len(selected) > 1
+    if multiple:
+        base.mkdir(parents=True, exist_ok=args.overwrite)
+    status = {'status': 'running', 'training_seeds': selected, 'case_seed': args.seed,
+              'actual_updates': args.iterations, 'evaluation_samples': args.samples,
+              'evaluation_seed': args.evaluation_seed, 'train_only': args.train_only,
+              'started_utc': datetime.now(timezone.utc).isoformat(), 'runs': []}
+    completed = []
+    for seed in selected:
+        run_args = copy.copy(args)
+        run_args.training_seed = seed
+        run_args.output = base / f'seed_{seed}' if multiple else base
+        record = {'training_seed': seed, 'path': run_args.output.name, 'status': 'running'}
+        status['runs'].append(record)
+        phase = 'training'
+        try:
+            output = run_pair(run_args)
+            if not args.train_only:
+                from Simulator.testers.evaluate_gradients import evaluate_final, recheck_extremes
+                phase = 'evaluation'
+                evaluation = evaluate_final(argparse.Namespace(result_dir=output, samples=args.samples, seed=args.evaluation_seed))
+                phase = 'recheck'
+                recheck_extremes(argparse.Namespace(evaluation_dir=evaluation))
+                phase = 'plot'
+                with (output / 'plot.log').open('w', encoding='utf-8') as log:
+                    subprocess.run([sys.executable, '-X', 'utf8', '-m',
+                                    'Simulator.drawers.plot_training', str(output)],
+                                   cwd=CODE_ROOT, stdout=log, stderr=subprocess.STDOUT, check=True)
+            record['status'] = 'completed'
+            completed.append(output)
+        except Exception as exc:
+            record.update(status='failed', phase=phase, error=f'{type(exc).__name__}: {exc}')
+            print(f'Seed {seed} failed during {phase}: {exc}', flush=True)
+        record['ended_utc'] = datetime.now(timezone.utc).isoformat()
+        if base.exists():
+            write_json(base / 'batch_status.json', status)
+    status['status'] = 'completed' if len(completed) == len(selected) else 'completed_with_failures'
+    status['ended_utc'] = datetime.now(timezone.utc).isoformat()
+    if multiple and not args.train_only:
+        from Simulator.testers.evaluate_gradients import summarize_runs
+        summarize_runs([base / f'seed_{seed}' for seed in selected], base / 'summary',
+                       samples=args.samples, seed=args.evaluation_seed)
+    if base.exists():
+        write_json(base / 'batch_status.json', status)
+    print(f'Batch {status["status"]}: {base}', flush=True)
+    return 0 if status['status'] == 'completed' else 1
+
+
+def run_pair(args):
+    training_seed = args.seed if args.training_seed is None else args.training_seed
+    evaluation_seed = args.seed + 10000 if args.evaluation_seed is None else args.evaluation_seed
+    if not (1 <= args.iterations <= 1000) or args.eval_directions < 1:
+        raise ValueError('Use 1..1000 iterations and at least one evaluation direction')
+    root = gradient_result_dir()
+    output = args.output or root / datetime.now().strftime('%Y%m%d_%H%M%S')
+    if output.exists() and getattr(args, 'overwrite', False):
+        target = output.resolve()
+        if (output.is_symlink() or not target.is_relative_to(root.resolve())
+                or target == root.resolve()):
+            raise ValueError('Overwrite must identify one paired result inside gradient_comparison')
+        marker = target / 'metadata.json'
+        old = json.loads(marker.read_text(encoding='utf-8'))
+        if old.get('model') != 'PreTrainNet' or old.get('seed') != args.seed or old.get('training_seed', old.get('seed')) != training_seed:
+            raise ValueError('Refusing to overwrite an unidentified or differently seeded pair')
+        for path in target.rglob('*'):
+            if path.is_file():
+                if path.is_symlink() or not path.resolve().is_relative_to(target):
+                    raise ValueError(f'Unsafe paired output: {path}')
+                path.unlink()
+    output.mkdir(parents=True, exist_ok=getattr(args, 'overwrite', False))
+    print(f'Output: {output}', flush=True)
+    torch.manual_seed(args.seed)
+    torch.use_deterministic_algorithms(True)
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    directions = np.random.RandomState(training_seed).randn(args.iterations, 24)
+    eval_directions = np.random.RandomState(evaluation_seed).randn(args.eval_directions, 24)
+    np.save(output / 'training_directions.npy', directions)
+    np.save(output / 'evaluation_directions.npy', eval_directions)
+    agg = Aggregator(seed=args.seed, discrete_rate=0.)
+    agg.gen_CL(5)
+    agg.gen_TCL(40)
+    agg.gen_PV(5)
+    original = {'model': agg.case_aggregator(build_only=True)}
+    cumulative = np.tril(np.ones((24, 24)))
+    cumulative /= cumulative.sum(axis=1, keepdims=True)
+    initial_A = np.vstack((np.eye(24), -np.eye(24), cumulative[1:], -cumulative[1:]))
+    initializer = configure(ErrorCalculator(original, initial_A.copy(), np.zeros(94)))
+    initial_b = np.array([row @ initializer.optimize_direction(-row) for row in initial_A])
+    template = PreTrainNet(initial_A, initial_b, device=device).double().to(device)
+    state = copy.deepcopy(template.state_dict())
+    with torch.no_grad():
+        initial_normalized_A, initial_normalized_b = template()
+    np.savez(output / 'initial_polytope.npz',
+             A=initial_normalized_A[0].cpu().numpy(), b=initial_normalized_b[0].cpu().numpy())
+    reference_check = None
+    if args.reference_run is not None:
+        reference_meta = json.loads((args.reference_run / 'metadata.json').read_text(encoding='utf-8'))
+        assert reference_meta['seed'] == args.seed, 'Reference device-case seed differs'
+        with np.load(args.reference_run / 'initial_polytope.npz') as reference_initial:
+            np.testing.assert_array_equal(initial_normalized_A[0].cpu().numpy(), reference_initial['A'])
+            np.testing.assert_array_equal(initial_normalized_b[0].cpu().numpy(), reference_initial['b'])
+        reference_eval = np.load(args.reference_run / 'evaluation_directions.npy')
+        prefix = min(len(reference_eval), len(eval_directions))
+        np.testing.assert_array_equal(eval_directions[:prefix], reference_eval[:prefix])
+        reference_train = np.load(args.reference_run / 'training_directions.npy')
+        train_prefix = min(len(reference_train), len(directions))
+        training_changed = not np.array_equal(directions[:train_prefix], reference_train[:train_prefix])
+        if training_seed != reference_meta.get('training_seed', reference_meta['seed']):
+            assert training_changed, 'Requested new seed produced unchanged training directions'
+        reference_check = {'run': str(args.reference_run.resolve()),
+                           'initial_A_and_b_exactly_equal': True,
+                           'evaluation_prefix_exactly_equal': True,
+                           'evaluation_prefix_length': prefix,
+                           'training_directions_changed': training_changed}
+    print(f'Seeds: case/initialization={args.seed}, training={training_seed}, '
+          f'evaluation={evaluation_seed}; reference check={reference_check}', flush=True)
+    metadata = {'status': 'running', 'seed': args.seed, 'case_seed': args.seed,
+                'initialization_seed': args.seed, 'training_seed': training_seed,
+                'evaluation_seed': evaluation_seed, 'reference_check': reference_check,
+                'iterations': args.iterations, 'evaluation_directions': args.eval_directions,
+                'python': sys.executable, 'torch': torch.__version__, 'numpy': np.__version__,
+                'gurobi': list(gurobipy.gurobi.version()), 'device': str(device),
+                'device_name': torch.cuda.get_device_name(device) if device.type == 'cuda' else platform.processor(),
+                'dtype': 'float64', 'model': 'PreTrainNet', 'polytope_shape': [94, 24],
+                'stages': STAGES, 'solver_options': OPTIONS, 'active_tol': 1e-5,
+                'error_cutoff_both_methods': 0., 'surrogate_implementation': 'shared Approximator.compute_surrogate_error',
+                'gradient_mode': 'exact_vs_approx', 'active_basis_policy': 'qr',
+                'gradient_policy': 'Exactly T active rows: direct solve; more than T: thin QR '
+                                   'minimum-norm sensitivity; full Gurobi projection duals; no fallback. '
+                                   'Nonregular vertices are labelled sensitivities, not certified ordinary derivatives.',
+                'training_directions_sha256': hashlib.sha256(directions.tobytes()).hexdigest(),
+                'iteration_order': 'alternate approximate/exact first each iteration; serial execution',
+                'timing_note': 'Sum of synchronized timed steps; excludes setup/warmup/logging/saving/evaluation. '
+                               'Solver time includes Pyomo solve-call overhead. Single paired run.',
+                'initialization_note': 'Identical production PreTrainNet initialization (biases created '
+                                       'as float32 then promoted to float64), same normalization epsilon 1e-8.',
+                'benchmark_adaptations': 'Shared network/loop; dtype-safe unchanged surrogate formula; '
+                                         'zero cutoff both methods; no callbacks; identical saved v; '
+                                         '1000 rather than legacy 1003 updates.',
+                'source_sha256': {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in (
+                    Path(__file__), Path(__file__).parents[1]/'Approximator.py',
+                    Path(__file__).parents[1]/'cases/aggregation.py',
+                    Path(__file__).parents[1]/'cases/aggregation_case_T24.py')}}
+    if reference_check is not None:
+        comparable_keys = ('iterations', 'stages', 'solver_options', 'active_tol',
+                           'error_cutoff_both_methods', 'dtype', 'model', 'device',
+                           'polytope_shape', 'initialization_note')
+        # JSON normalizes stage tuples to lists in the saved reference metadata.
+        normalized_metadata = json.loads(json.dumps(metadata))
+        for key in comparable_keys:
+            assert normalized_metadata[key] == reference_meta[key], f'Reference setting differs: {key}'
+        reference_check['matching_settings'] = list(comparable_keys)
+        reference_check['algorithm_sources_match'] = {
+            name: metadata['source_sha256'][name] == reference_meta['source_sha256'][name]
+            for name in metadata['source_sha256'] if name in reference_meta['source_sha256']}
+        reference_check['production_algorithm_sources_unchanged'] = all(
+            reference_check['algorithm_sources_match'].values())
+        reference_check['metadata_sha256'] = hashlib.sha256(
+            (args.reference_run / 'metadata.json').read_bytes()).hexdigest()
+    write_json(output / 'metadata.json', metadata)
+    runs = {}
+    for method in ('approximate', 'exact'):
+        network = copy.deepcopy(template)
+        network.load_state_dict(state)
+        calculator = configure(ErrorCalculator(
+            original, initial_A.copy(), initial_b.copy(),
+            gradient_mode='exact' if method == 'exact' else 'approx'))
+        run = {'method': method, 'network': network, 'calculator': calculator,
+               'rows': [], 'used_directions': []}
+        optimizer, scheduler = make_optimizer(network, STAGES[0][1])
+        run.update(optimizer=optimizer, scheduler=scheduler)
+        # Untimed warmup: solver/license initialization and CUDA backward startup.
+        A, b = network()
+        calculator.update_polytope(A[0].detach().cpu().numpy(), b[0].detach().cpu().numpy())
+        try:
+            warmup, _, _ = sample_errors(calculator, directions[0], exact=method == 'exact')
+        except Exception as exc:
+            metadata.update(status='failed', failed_method=method, failure_phase='warmup',
+                            failed_direction_index=1, completed_paired_iterations=0,
+                            failure_type=type(exc).__name__, failure_message=str(exc))
+            np.savez(output / 'failure_input.npz', A=calculator.A_hat,
+                     b=calculator.b_hat, direction=directions[0])
+            write_json(output / 'metadata.json', metadata)
+            raise
+        if method == 'exact':
+            warmup_loss = compute_exact_error(A, b, [warmup[0]])
+        else:
+            warmup_loss = surrogate(A, b, warmup[0])
+        warmup_loss.backward()
+        network.zero_grad(set_to_none=True)
+        sync(device)
+        runs[method] = run
+    for p, q in zip(runs['exact']['network'].parameters(), runs['approximate']['network'].parameters()):
+        assert torch.equal(p, q), 'Initial network parameters differ'
+    metadata['exact_gradient_configuration'] = runs['exact']['calculator'].params.copy()
+    write_json(output / 'metadata.json', metadata)
+    snapshots = []
+    current_stage = None
+    with (output / 'training.csv').open('w', encoding='utf-8', newline='') as f:
+        writer = None
+        for index, direction in enumerate(directions):
+            stage = 1 if index < 300 else (2 if index < 500 else 3)
+            _, lr, weight = STAGES[stage-1]
+            if stage != current_stage:
+                for run in runs.values():
+                    run['optimizer'], run['scheduler'] = make_optimizer(run['network'], lr)
+                current_stage = stage
+            order = ('approximate', 'exact') if index % 2 == 0 else ('exact', 'approximate')
+            for method in order:
+                try:
+                    row, details = take_step(runs[method], direction, index+1, stage, weight, device)
+                except Exception as exc:
+                    metadata.update(status='failed', failed_method=method,
+                                    failure_phase='training', failed_iteration=index+1,
+                                    failed_direction_index=index+1,
+                                    completed_paired_iterations=index,
+                                    failure_type=type(exc).__name__, failure_message=str(exc))
+                    calculator = runs[method]['calculator']
+                    np.savez(output / 'failure_input.npz', A=calculator.A_hat,
+                             b=calculator.b_hat, direction=direction)
+                    write_json(output / 'metadata.json', metadata)
+                    raise
+                if writer is None:
+                    writer = csv.DictWriter(f, fieldnames=list(row))
+                    writer.writeheader()
+                writer.writerow(row)
+                if method == 'exact' and index+1 in {1, 100, 300, 500, args.iterations}:
+                    snapshots.append((index+1, *details, direction.copy()))
+            if index == 0:
+                for key in ('feasibility_error', 'optimality_error'):
+                    np.testing.assert_allclose(runs['exact']['rows'][0][key],
+                                               runs['approximate']['rows'][0][key], rtol=1e-7, atol=1e-10)
+            if (index+1) % 50 == 0 or index+1 == args.iterations:
+                f.flush()
+                print(f'Paired iteration {index+1}/{args.iterations}: ' + ' | '.join(
+                    f'{name}: feas={run["rows"][-1]["feasibility_error"]:.3e}, '
+                    f'opt={run["rows"][-1]["optimality_error"]:.3e}, '
+                    f'time={sum(r["step_seconds"] for r in run["rows"]):.2f}s'
+                    for name, run in runs.items()), flush=True)
+    gradient_results = []
+    for snapshot in snapshots:
+        gradient_results.extend(gradient_comparison(snapshot, output))
+    write_json(output / 'same_point_gradients.json', gradient_results)
+    summary = {'metadata': metadata, 'training': {}, 'evaluation': {},
+               'same_point_gradients': gradient_results}
+    for method, run in runs.items():
+        used = np.array(run['used_directions'])
+        assert np.array_equal(used, directions), 'Sampled directions differ'
+        np.save(output / f'{method}_used_directions.npy', used)
+        network = run['network']
+        with torch.no_grad():
+            A, b = network()
+        A, b = A[0].cpu().numpy(), b[0].cpu().numpy()
+        np.savez(output / f'{method}_final.npz', A=A, b=b)
+        torch.save(network.state_dict(), output / f'{method}_weights.pth')
+        rows = run['rows']
+        summary['training'][method] = {
+            key: float(sum(r[key] for r in rows)) for key in (
+                'step_seconds', 'solve_seconds', 'analytic_gradient_seconds',
+                'backward_update_seconds', 'prepare_seconds')}
+        for key in ('feasibility_error', 'optimality_error'):
+            summary['training'][method][key] = stats([r[key] for r in rows])
+            summary['training'][method][f'{key}_last100_mean'] = float(np.mean([r[key] for r in rows[-100:]]))
+        summary['training'][method]['gradient_status_counts'] = {
+            kind: {status: sum(r[f'{kind}_gradient_status'] == status for r in rows)
+                   for status in sorted({r[f'{kind}_gradient_status'] for r in rows})}
+            for kind in ('feasibility', 'optimality')}
+        summary['training'][method]['active_set_diagnostics'] = {
+            kind: {
+                diagnostic: max((r[f'{kind}_{diagnostic}'] for r in rows
+                                 if r[f'{kind}_{diagnostic}'] != ''), default=None)
+                for diagnostic in ('active_matrix_rank', 'active_matrix_condition',
+                                   'adjoint_residual_inf', 'active_constraint_residual_inf',
+                                   'linearization_incompatibility_dimension')}
+            for kind in ('feasibility', 'optimality')}
+        # Common evaluator uses distances only; no gradient/active-set certification is required.
+        evaluator = configure(ErrorCalculator(original, A, b))
+        evaluation = []
+        for i, direction in enumerate(eval_directions):
+            samples, _, _ = sample_errors(evaluator, direction)
+            evaluation.append((i+1, samples[0][0]['error'], samples[1][0]['error']))
+        with (output / f'{method}_evaluation.csv').open('w', encoding='utf-8', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow(['direction_index', 'feasibility_error', 'optimality_error'])
+            writer.writerows(evaluation)
+        summary['evaluation'][method] = {
+            key: stats([row[j] for row in evaluation])
+            for j, key in ((1, 'feasibility_error'), (2, 'optimality_error'))}
+        print(f'{method}: training={summary["training"][method]["step_seconds"]:.3f}s; '
+              f'evaluation={summary["evaluation"][method]}', flush=True)
+    metadata['status'] = 'completed'
+    metadata['directions_identical_verified'] = True
+    summary['result_note'] = ('All compared errors are real squared distances, not surrogate loss. '
+                             'Evaluation is on a shared independent sample of directions, not a worst-case certificate.')
+    write_json(output / 'metadata.json', metadata)
+    write_json(output / 'summary.json', summary)
+    print(f'Completed: {output}', flush=True)
+    return output
+
+
+if __name__ == '__main__':
+    raise SystemExit(main())
+

@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "directions": 5000,
+  "seed": 1,
+  "unchanged_original_scenario_and_models": true,
+  "bitwise_preserved_error_files": {
+    "directions.npy": "7f1ab3ff18e64b781605f070e457a7eaa6c5b7f7272ea9e2088f3dba9ca241a5",
+    "error_comparison.pkl": "8c7b29eaa8beb4ef5941377dc1293797e8e7a5c182c3d72130dc3c310cab95d6",
+    "error_samples.csv": "fafde84cf0eb6e0b8195619dbf34a064bf1a5a0f6a203995154b0216fb305fbb",
+    "peb_outer.npz": "5ae292d6aee23e2b9631177fb6b7c9931581cdd98ffa0c67ad510ead92c0fe0e",
+    "proposed_peb_exact_errors.npz": "135d04849f3b30d14d0e94e997d160d70b35688624f0bedb2d247818c454496f",
+    "proposed_pb_exact_errors.npz": "77f947ee3adf187ca727858e0dbca9be4a7f749f74f13aee0d6fb70ce3ca6f72",
+    "peb_inner_errors.npz": "6a60887a64c416d276cdb9a80a052638b4f8a9964ae0d96ab0817b056bf0c51b",
+    "pb_inner_errors.npz": "0977035b958933856f43c1bf6b15eafa359502c084d75a93381304132dabca27",
+    "cutting_plane_errors.npz": "190d62481bc14b480276859b0a64f07af2efd2390326b03f4f472b2a8f55a590",
+    "cutting_plane_modified_errors.npz": "dd18961944823a7c15df40ad0274fc828cfbf9a00c820ccbf4d9f44b9455646f",
+    "pve_errors.npz": "50d4008e16824241b3636ab5f8cb43699a3118a643ab792c98d1354f52c7ede2",
+    "pve_modified_errors.npz": "d0a51a0321ebd64680ea72ae80bfabd1875b597fc4e6e3e9a46118066c4bff1b",
+    "federated_peb_errors.npz": "c5243582fec931eeb25457d8a6e3151acfe0854b49d109b8ff3380e7fb0cc5e1",
+    "peb_outer_errors.npz": "8ede26b02c8ad23b761fb27b8327286126587c7d90322c50a4ea19765d874710"
+  }
+}

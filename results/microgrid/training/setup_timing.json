@@ -1,0 +1,9 @@
+{
+  "setup_seconds": 2.5449955000076443,
+  "includes_initial_outer_supports": true,
+  "model_complexity": {
+    "variables": 409,
+    "binary_variables": 120,
+    "constraints": 520
+  }
+}

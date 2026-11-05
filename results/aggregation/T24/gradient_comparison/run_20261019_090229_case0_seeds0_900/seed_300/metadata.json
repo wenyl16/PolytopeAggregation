@@ -1,0 +1,100 @@
+{
+  "status": "completed",
+  "seed": 0,
+  "case_seed": 0,
+  "initialization_seed": 0,
+  "training_seed": 300,
+  "evaluation_seed": 10000,
+  "reference_check": null,
+  "iterations": 1000,
+  "evaluation_directions": 128,
+  "python": "D:\\Anaconda\\envs\\py312_copy\\python.exe",
+  "torch": "2.7.0+cu118",
+  "numpy": "1.26.4",
+  "gurobi": [
+    12,
+    0,
+    2
+  ],
+  "device": "cuda",
+  "device_name": "NVIDIA GeForce RTX 4070",
+  "dtype": "float64",
+  "model": "PreTrainNet",
+  "polytope_shape": [
+    94,
+    24
+  ],
+  "stages": [
+    [
+      300,
+      0.02,
+      1.0
+    ],
+    [
+      200,
+      0.1,
+      0.01
+    ],
+    [
+      500,
+      1.0,
+      1e-06
+    ]
+  ],
+  "solver_options": {
+    "FeasibilityTol": 1e-09,
+    "OptimalityTol": 1e-09,
+    "BarConvTol": 1e-12,
+    "Threads": 1,
+    "Seed": 0
+  },
+  "active_tol": 1e-05,
+  "error_cutoff_both_methods": 0.0,
+  "surrogate_implementation": "shared Approximator.compute_surrogate_error",
+  "gradient_mode": "exact_vs_approx",
+  "active_basis_policy": "qr",
+  "gradient_policy": "Exactly T active rows: direct solve; more than T: thin QR minimum-norm sensitivity; full Gurobi projection duals; no fallback. Nonregular vertices are labelled sensitivities, not certified ordinary derivatives.",
+  "training_directions_sha256": "4337e434911daecc69d20b0e1069b848e3ed350f650dbccb1582e153b05daf7d",
+  "iteration_order": "alternate approximate/exact first each iteration; serial execution",
+  "timing_note": "Sum of synchronized timed steps; excludes setup/warmup/logging/saving/evaluation. Solver time includes Pyomo solve-call overhead. Single paired run.",
+  "initialization_note": "Identical production PreTrainNet initialization (biases created as float32 then promoted to float64), same normalization epsilon 1e-8.",
+  "benchmark_adaptations": "Shared network/loop; dtype-safe unchanged surrogate formula; zero cutoff both methods; no callbacks; identical saved v; 1000 rather than legacy 1003 updates.",
+  "source_sha256": {
+    "compare_gradients.py": "1da70b2c56c75b3624fe424f36aacb80fe3b3c4656cd317504e43bcba214e9c7",
+    "Approximator.py": "51234fa104781c8a6e1fece482ebe96db506fc04e82e49c06bde6f6448656610",
+    "aggregation.py": "417f11e4d7e1721bd65d63959a0dfba1ac7d35bac923f979b6b913d7ff4347a8",
+    "aggregation_case_T24.py": "20bfd4a2fa84a9a8f44bc8e714696c54753a5b117fb3d347e8727bfa69f407fa"
+  },
+  "exact_gradient_configuration": {
+    "active_tol": 1e-05,
+    "dual_tol": 1e-08,
+    "kkt_tol": 1e-05,
+    "max_active_condition": 10000000000.0,
+    "nondifferentiable": "raise",
+    "feas_tol": 0.0,
+    "opt_tol": 0.0
+  },
+  "directions_identical_verified": true,
+  "horizon": 24,
+  "counts": [
+    5,
+    40,
+    5
+  ],
+  "scenario_sha256": "4aa952dedf9b099d1e8e806417c124199762e01a0157b2a102534cafb5ccf151",
+  "physical_scene_manifest": "../physical_scene_manifest.json",
+  "third_stage_learning_rate": 1.0,
+  "stage_count": 3,
+  "phase_end_updates": [
+    300,
+    500,
+    1000
+  ],
+  "fourth_stage_used": false,
+  "training_source_snapshot": {
+    "file": "../executed_compare_gradients.py",
+    "sha256": "1da70b2c56c75b3624fe424f36aacb80fe3b3c4656cd317504e43bcba214e9c7"
+  },
+  "current_cli_source_sha256": "3812468e0c4f4b8970391b17cc8b30d81c4e917ea5a6bdce7e1c1162a75aff1a",
+  "concurrent_seed_timing_note": "Paired methods run serially with alternating order; cohort seeds and evaluations were allowed to overlap. Timings are actual synchronized per-step elapsed measurements, not isolated-process benchmarks."
+}

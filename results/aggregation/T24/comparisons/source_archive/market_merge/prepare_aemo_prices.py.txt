@@ -1,0 +1,343 @@
+"""Prepare the complete UTC year of five AEMO regional spot-price series.
+
+Official monthly PRICE_AND_DEMAND CSVs label five-minute interval endings in
+fixed NEM market time, AEST (UTC+10, no DST). Each UTC hour uses all twelve
+interval prices with equal duration weights. No filling, clipping, currency
+conversion, favorable-day selection, or solver calls are performed.
+"""
+
+import argparse
+from concurrent.futures import ThreadPoolExecutor, wait, FIRST_COMPLETED
+import csv
+from datetime import datetime, timedelta, timezone
+from email.utils import parsedate_to_datetime
+import hashlib
+from http.client import HTTPException
+import io
+import json
+from pathlib import Path
+import shutil
+import tempfile
+import threading
+import time
+from urllib.error import HTTPError, URLError
+from urllib.request import Request, urlopen
+import zipfile
+
+import numpy as np
+
+
+CODE_ROOT = Path(__file__).resolve().parents[2]
+OUTPUT = CODE_ROOT / "data/market_prices/aemo_regional/2025-10-19_2026-10-18_utc"
+RAW_DIR = CODE_ROOT.parent / "tmp/aemo_prices"
+PROBE_DIR = CODE_ROOT.parent / "tmp/us_price_probe"
+START = datetime(2025, 10, 19, tzinfo=timezone.utc)
+END = datetime(2026, 10, 19, tzinfo=timezone.utc)
+AEST = timezone(timedelta(hours=10), "AEST")
+REGIONS = ("SA1", "VIC1", "QLD1", "NSW1", "TAS1")
+AREAS = tuple("AEMO-" + region for region in REGIONS)
+MONTHS = tuple([(2025, month) for month in range(10, 13)] + [(2026, month) for month in range(1, 11)])
+REPORT_ROOT = "https://www.aemo.com.au/aemo/data/nem/priceanddemand/"
+REPORT_PAGE = "https://www.aemo.com.au/energy-systems/electricity/national-electricity-market-nem/data-nem/aggregated-data"
+DOCUMENTATION = {
+    "rrp_spot_price_unit": "https://www.aemo.com.au/energy-systems/electricity/national-electricity-market-nem/data-nem/data-dashboard-nem",
+    "interval_end_and_market_time": "https://www.aemo.com.au/-/media/files/stakeholder_consultation/consultations/nem-consultations/2019/dispatch/guide-to-mis-pricing-information---final.pdf",
+    "nem_time_utc_plus_10": "https://www.aemo.com.au/-/media/files/initiatives/der/2023/project-edge---data-specification-part-a.pdf?la=en",
+    "market_time_no_dst": "https://www.aemo.com.au/-/media/files/electricity/nem/planning_and_forecasting/sa_advisory/2020/2020-south-australian-electricity-report.pdf",
+    "five_minute_trading_price": "https://www.aemo.com.au/energy-systems/electricity/national-electricity-market-nem/data-nem/data-dashboard-nem",
+    "australian_dollars_unit": "https://aemo.com.au/-/media/files/electricity/nem/planning_and_forecasting/demand-forecasts/nefr/historical/nationalelectricityforecastreport2013pdf.pdf",
+}
+HEADER = ["REGION", "SETTLEMENTDATE", "TOTALDEMAND", "RRP", "PERIODTYPE"]
+INTERVAL_SECONDS = 300
+
+
+def iso_utc(value):
+    return value.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
+
+
+def digest(raw):
+    return hashlib.sha256(raw).hexdigest()
+
+
+def file_digest(path):
+    with Path(path).open("rb") as stream:
+        return hashlib.file_digest(stream, "sha256").hexdigest()
+
+
+def write_json(path, value):
+    Path(path).write_text(json.dumps(value, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+
+
+def filename(year, month, region):
+    return f"PRICE_AND_DEMAND_{year:04d}{month:02d}_{region}.csv"
+
+
+def validate_csv(raw, year, month, region):
+    rows = list(csv.reader(io.StringIO(raw.decode("utf-8-sig")), strict=True))
+    if not rows or rows[0] != HEADER or len(rows) < 3:
+        raise ValueError(f"Unexpected official monthly CSV header: {year}-{month}, {region}")
+    times, values = [], []
+    for row in rows[1:]:
+        if len(row) != len(HEADER) or row[0] != region or row[4] != "TRADE" or not row[3].strip():
+            raise ValueError(f"Malformed region/TRADE/RRP row: {year}-{month}, {region}, {row}")
+        ending = datetime.strptime(row[1], "%Y/%m/%d %H:%M:%S")
+        if ending.strftime("%Y/%m/%d %H:%M:%S") != row[1]:
+            raise ValueError(f"Unexpected settlement timestamp formatting: {row[1]}")
+        times.append(int(ending.replace(tzinfo=AEST).timestamp()))
+        values.append(float(row[3]))
+    times, values = np.asarray(times, dtype=np.int64), np.asarray(values, dtype=np.float64)
+    month_first = datetime(year, month, 1, tzinfo=AEST)
+    month_end = datetime(year + (month == 12), month % 12 + 1, 1, tzinfo=AEST)
+    # Current files can end before month-end. Every earlier month must be full;
+    # the current file must still cover the entire fixed requested UTC window.
+    if (times[0] != int(month_first.timestamp()) + INTERVAL_SECONDS
+            or times[-1] > int(month_end.timestamp())
+            or not np.all(np.diff(times) == INTERVAL_SECONDS)
+            or not np.isfinite(values).all()):
+        raise ValueError(f"Missing/duplicate/nonfinite or non-five-minute observations: {year}-{month}, {region}")
+    if (year, month) != MONTHS[-1] and times[-1] != int(month_end.timestamp()):
+        raise ValueError(f"Incomplete historical calendar month: {year}-{month}, {region}")
+    if (year, month) == MONTHS[-1] and times[-1] < int(END.timestamp()):
+        raise ValueError(f"Latest month does not cover the fixed UTC-year boundary: {region}")
+    # SETTLEMENTDATE is the interval ending, so subtract its actual 5-minute
+    # duration before grouping observations by UTC hour start.
+    return times - INTERVAL_SECONDS, values
+
+
+def read_month(raw_dir, year, month, region):
+    name = filename(year, month, region)
+    raw = (Path(raw_dir) / name).read_bytes()
+    request_raw = (Path(raw_dir) / (name + ".request.json")).read_bytes()
+    info = json.loads(request_raw)
+    if (info.get("url") != REPORT_ROOT + name or info.get("final_url") != REPORT_ROOT + name
+            or info.get("http_status") != 200 or info.get("response_bytes") != len(raw)
+            or info.get("sha256") != digest(raw)):
+        raise ValueError(f"Invalid official URL/HTTP/SHA/size request record: {name}")
+    requested = datetime.fromisoformat(info["requested_utc"].replace("Z", "+00:00"))
+    if requested.utcoffset() != timedelta(0):
+        raise ValueError(f"Request timestamp must be UTC: {name}")
+    times, prices = validate_csv(raw, year, month, region)
+    record = {"file": name, "region": region, "report_month_fixed_aest": f"{year:04d}-{month:02d}",
+              "sha256": digest(raw), "bytes": len(raw), "request": info,
+              "request_record_sha256": digest(request_raw), "interval_seconds": INTERVAL_SECONDS,
+              "observations": len(times), "first_interval_start_utc": iso_utc(datetime.fromtimestamp(int(times[0]), timezone.utc)),
+              "last_interval_end_utc": iso_utc(datetime.fromtimestamp(int(times[-1] + INTERVAL_SECONDS), timezone.utc))}
+    return times, prices, record
+
+
+class DownloadControl:
+    def __init__(self):
+        self.stop = threading.Event()
+        self.lock = threading.Lock()
+        self.not_before = 0.0
+
+    def wait_allowed(self):
+        while not self.stop.is_set():
+            with self.lock:
+                delay = self.not_before - time.monotonic()
+                if delay <= 0:
+                    self.not_before = time.monotonic() + 1.1
+                    return
+            self.stop.wait(min(delay, 1.0))
+        raise RuntimeError("AEMO download stopped after a fatal source response")
+
+    def backoff(self, seconds):
+        with self.lock:
+            self.not_before = max(self.not_before, time.monotonic() + seconds)
+
+
+def retry_after_seconds(headers):
+    value = headers.get("Retry-After")
+    if value is None:
+        return 60.0
+    try:
+        return max(0.0, float(value))
+    except ValueError:
+        return max(0.0, (parsedate_to_datetime(value) - datetime.now(timezone.utc)).total_seconds())
+
+
+def fetch_month(raw_dir, year, month, region, control):
+    name = filename(year, month, region)
+    path = Path(raw_dir) / name
+    if path.exists() or path.with_name(name + ".request.json").exists():
+        read_month(raw_dir, year, month, region)
+        return "cached"
+    url, attempts = REPORT_ROOT + name, []
+    for attempt in range(1, 7):
+        control.wait_allowed()
+        requested = iso_utc(datetime.now(timezone.utc))
+        req = Request(url, headers={"Accept": "*/*", "User-Agent": "AggregationResearch/1.0 public-data-source-verification"})
+        try:
+            with urlopen(req, timeout=60) as response:
+                raw = response.read()
+                info = {"url": url, "final_url": response.url, "requested_utc": requested,
+                        "download_completed_at_utc": iso_utc(datetime.now(timezone.utc)),
+                        "http_status": response.status, "request_headers": dict(req.header_items()),
+                        "response_headers": dict(response.headers.items()), "response_bytes": len(raw),
+                        "sha256": digest(raw), "previous_attempts": attempts}
+            if info["http_status"] != 200 or info["final_url"] != url:
+                raise ValueError(f"Unexpected HTTP status or redirected official URL: {name}")
+            validate_csv(raw, year, month, region)
+            temporary = path.with_name(name + ".partial")
+            temporary.write_bytes(raw)
+            temporary.replace(path)
+            write_json(path.with_name(name + ".request.json"), info)
+            read_month(raw_dir, year, month, region)
+            return "downloaded"
+        except HTTPError as error:
+            evidence = {"requested_utc": requested, "http_status": error.code,
+                        "response_headers": dict(error.headers.items()), "body_sha256": digest(error.read())}
+            attempts.append(evidence)
+            if error.code in (401, 403):
+                control.stop.set()
+                raise RuntimeError(f"HTTP {error.code}: stopping all AEMO requests without a bypass") from error
+            if error.code == 429:
+                delay = retry_after_seconds(error.headers)
+                evidence["retry_after_seconds"] = delay
+                control.backoff(delay)
+            elif 500 <= error.code < 600:
+                control.backoff(min(2 ** attempt, 30))
+            else:
+                control.stop.set()
+                raise
+        except (URLError, TimeoutError, OSError, HTTPException) as error:
+            attempts.append({"requested_utc": requested, "transport_error": str(error)})
+            control.backoff(min(2 ** attempt, 30))
+    control.stop.set()
+    raise RuntimeError(f"Exhausted official AEMO request retries: {name}; {attempts}")
+
+
+def download(raw_dir):
+    raw_dir = Path(raw_dir).resolve()
+    raw_dir.mkdir(parents=True, exist_ok=True)
+    probe_name = filename(2026, 10, "SA1")
+    if not (raw_dir / probe_name).exists() and (PROBE_DIR / probe_name).is_file():
+        for name in (probe_name, probe_name + ".request.json"):
+            shutil.copyfile(PROBE_DIR / name, raw_dir / name)
+    jobs = [(year, month, region) for region in REGIONS for year, month in MONTHS]
+    control, started = DownloadControl(), time.monotonic()
+    done, cached = 0, 0
+    print(json.dumps({"status": "downloading", "monthly_reports": len(jobs), "workers": 2,
+                      "request_spacing_seconds": 1.1, "region_order": REGIONS}), flush=True)
+    with ThreadPoolExecutor(max_workers=2) as executor:
+        pending = {executor.submit(fetch_month, raw_dir, *job, control): job for job in jobs}
+        try:
+            while pending:
+                completed, _ = wait(pending, timeout=30, return_when=FIRST_COMPLETED)
+                for future in completed:
+                    del pending[future]
+                    cached += future.result() == "cached"
+                    done += 1
+                print(json.dumps({"status": "downloading", "completed": done, "total": len(jobs),
+                                  "cached": cached, "elapsed_seconds": round(time.monotonic() - started, 1)}), flush=True)
+        except BaseException:
+            control.stop.set()
+            for future in pending:
+                future.cancel()
+            raise
+    return raw_dir
+
+
+def prepare(raw_dir):
+    records, matrices, source_counts = [], [], {}
+    expected = np.arange(int(START.timestamp()), int(END.timestamp()), INTERVAL_SECONDS, dtype=np.int64)
+    if len(expected) != 365 * 24 * 12:
+        raise ValueError("Expected 105120 five-minute intervals in the fixed UTC year")
+    for region in REGIONS:
+        times, prices = [], []
+        for year, month in MONTHS:
+            source_times, values, record = read_month(raw_dir, year, month, region)
+            times.append(source_times)
+            prices.append(values)
+            records.append(record)
+        times, prices = np.concatenate(times), np.concatenate(prices)
+        if not np.all(np.diff(times) == INTERVAL_SECONDS):
+            raise ValueError(f"Missing/duplicate/unordered intervals at month boundaries: {region}")
+        keep = (times >= int(START.timestamp())) & (times < int(END.timestamp()))
+        if not np.array_equal(times[keep], expected) or not np.isfinite(prices).all():
+            raise ValueError(f"Require every finite UTC five-minute interval without filling: {region}")
+        hourly_times = expected.reshape(8760, 12)
+        if (not np.all(hourly_times[:, 0] % 3600 == 0)
+                or not np.all(np.diff(hourly_times, axis=1) == INTERVAL_SECONDS)):
+            raise ValueError("Each UTC hour must contain exactly twelve consecutive complete five-minute intervals")
+        matrices.append(prices[keep].reshape(365, 24, 12).mean(axis=2))
+        source_counts[region] = len(times)
+    daily = np.stack(matrices)
+    dates = np.asarray([(START + timedelta(days=i)).date().isoformat() for i in range(365)])
+    starts = np.asarray([iso_utc(START + timedelta(days=i)) for i in range(365)])
+    ends = np.asarray([iso_utc(START + timedelta(days=i + 1)) for i in range(365)])
+    OUTPUT.parent.mkdir(parents=True, exist_ok=True)
+    with tempfile.TemporaryDirectory(prefix=".aemo-prices-", dir=OUTPUT.parent) as temporary:
+        stage, members = Path(temporary), {}
+        with zipfile.ZipFile(stage / "raw.zip", "w", zipfile.ZIP_DEFLATED, compresslevel=6) as bundle:
+            for record in records:
+                for name, expected_sha in ((record["file"], record["sha256"]),
+                                           (record["file"] + ".request.json", record["request_record_sha256"])):
+                    payload = (Path(raw_dir) / name).read_bytes()
+                    if digest(payload) != expected_sha:
+                        raise ValueError(f"Source changed during preparation: {name}")
+                    bundle.writestr(name, payload)
+                    members[name] = expected_sha
+        with zipfile.ZipFile(stage / "raw.zip") as bundle:
+            if bundle.testzip() is not None or len(bundle.namelist()) != 130 or set(bundle.namelist()) != set(members):
+                raise ValueError("Raw archive has invalid CRC, duplicate/missing members")
+            if any(digest(bundle.read(name)) != expected_sha for name, expected_sha in members.items()):
+                raise ValueError("Raw archive source SHA mismatch")
+        np.savez_compressed(stage / "regional_prices.npz", price_areas=np.asarray(AREAS),
+                            daily_prices_aud_mwh=daily, dates=dates, utc_day_starts=starts, utc_day_ends=ends)
+        proof = {"schema_version": 1, "created_at_utc": iso_utc(datetime.now(timezone.utc)),
+                 "source": {"provider": "Australian Energy Market Operator (AEMO)",
+                            "market": "National Electricity Market five-minute regional spot prices",
+                            "market_key": "real-time-spot", "dataset": "Aggregated price and demand monthly TRADE RRP",
+                            "currency": "AUD", "price_unit": "AUD/MWh", "report_page": REPORT_PAGE,
+                            "report_url_root": REPORT_ROOT, "documentation": DOCUMENTATION,
+                            "source_value_field": "RRP", "source_timestamp_field": "SETTLEMENTDATE",
+                            "source_period_type": "TRADE", "nodes": list(REGIONS),
+                            "node_types": {region: "Region" for region in REGIONS}, "price_areas": list(AREAS),
+                            "candidate_order_basis": "Fixed requested order SA1, VIC1, QLD1, NSW1, TAS1; no ordering by method performance"},
+                 "window": {"start_utc": iso_utc(START), "end_utc_exclusive": iso_utc(END),
+                            "scenario_timezone": "UTC", "raw_first_fixed_aest_month": "2025-10",
+                            "raw_last_fixed_aest_month": "2026-10", "first_utc_delivery_date": str(START.date()),
+                            "last_utc_delivery_date": str((END - timedelta(days=1)).date())},
+                 "preparation": {"source_timezone": "Fixed Australian Eastern Standard Time (AEST, UTC+10); no DST",
+                                 "original_interval_seconds": INTERVAL_SECONDS,
+                                 "actual_interval_check": "Every CSV and all month boundaries have strictly consecutive 300-second SETTLEMENTDATE labels; first monthly label is 00:05",
+                                 "interval_start_rule": "Parse SETTLEMENTDATE as the five-minute interval ending in fixed AEST, convert to UTC, subtract 300 seconds",
+                                 "hourly_aggregation": "Arithmetic mean of all twelve consecutive equal-duration five-minute TRADE RRP values in each complete UTC hour",
+                                 "hourly_cost_equivalence": "For power constant within one hour, sum(RRP * (5/60)h * kW/1000) equals mean(RRP) * 1h * kW/1000",
+                                 "original_price_unit": "AUD/MWh", "hourly_price_unit": "AUD/MWh",
+                                 "price_currency": "AUD", "cost_coefficient_unit": "AUD/kWh",
+                                 "cost_coefficient_rule": "c = -hourly_price * delta_t_hours / 1000; delta_t_hours=1",
+                                 "selection": "start_utc <= interval_start < end_utc_exclusive",
+                                 "daily_scenarios": "All 365 consecutive UTC days; 24 complete hours each",
+                                 "value_changes": "Only the declared complete-hour mean; no filling, clipping, interpolation, rounding, currency conversion, extrema selection or day screening"},
+                 "quality": {"source_files": len(records), "source_months_per_region": 13, "regions": len(REGIONS),
+                             "daily_shape": list(daily.shape), "hours_per_region": 8760,
+                             "source_intervals_per_region": source_counts, "selected_intervals_per_region": len(expected),
+                             "complete_utc_hours_per_node": {region: 8760 for region in REGIONS},
+                             "excluded_boundary_intervals_per_region": {region: count - len(expected) for region, count in source_counts.items()},
+                             "missing_intervals": 0, "duplicate_intervals": 0, "nonfinite_values": 0,
+                             "missing_hours": 0, "duplicate_hours": 0,
+                             "raw_archive_crc_and_source_sha256_verified": True,
+                             "min_aud_mwh": daily.min(axis=(1, 2)).tolist(), "max_aud_mwh": daily.max(axis=(1, 2)).tolist(),
+                             "negative_hours_per_region": (daily < 0).sum(axis=(1, 2)).tolist()},
+                 "requests": records, "preparer_sha256": file_digest(Path(__file__)),
+                 "files_sha256": {name: file_digest(stage / name) for name in ("regional_prices.npz", "raw.zip")}}
+        write_json(stage / "regional_provenance.json", proof)
+        OUTPUT.mkdir(parents=True, exist_ok=True)
+        for name in ("raw.zip", "regional_prices.npz", "regional_provenance.json"):
+            (stage / name).replace(OUTPUT / name)
+    print(json.dumps({"status": "completed", "output": str(OUTPUT), "quality": proof["quality"]}), flush=True)
+    return OUTPUT
+
+
+def main(argv=None):
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--raw-dir", type=Path, default=RAW_DIR)
+    parser.add_argument("--prepare-only", action="store_true", help="Revalidate cached source files without network requests")
+    args = parser.parse_args(argv)
+    return prepare(args.raw_dir if args.prepare_only else download(args.raw_dir))
+
+
+if __name__ == "__main__":
+    main()

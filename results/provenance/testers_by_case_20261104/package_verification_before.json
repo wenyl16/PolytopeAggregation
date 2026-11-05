@@ -1,0 +1,41 @@
+{
+  "date": "2026-11-04",
+  "operation": "Code consolidation and baseline package relocation",
+  "python_files_before": 69,
+  "python_files_after": 59,
+  "runners_direct_python_files": {
+    "before": 15,
+    "after": 4
+  },
+  "testers_direct_python_files": {
+    "before": 25,
+    "after": 20
+  },
+  "support_removed_and_reference_moved": true,
+  "other_methods_package": "Simulator/runners/baselines",
+  "microgrid_count_solver": "Simulator/cases/microgrid_count_solver.py",
+  "original_scientific_data_and_outputs_unchanged": true,
+  "approximator_and_physical_models_byte_unchanged": true,
+  "source_and_destination_all_file_hashes_equal": true,
+  "verification": {
+    "all_python_syntax": "passed",
+    "active_module_import_and_export_closure": "passed",
+    "matlab_relative_roots_and_input_paths": "passed",
+    "tables_I_to_V_outputs_byte_identical": true,
+    "seven_original_plotter_outputs_from_copied_package": "passed",
+    "new_training_scaling_baseline_and_evaluation_help": "passed",
+    "seven_and_21_device_factory_constraints_equal_before_after": true,
+    "federated_volume_old_new_cases_bit_identical": 16,
+    "solver_free_Taheri_geometry_tests_passed": 3,
+    "comparison_source_AST_unchanged_except_references": true,
+    "stage_and_budget_new_help_and_source_paths": "passed"
+  },
+  "full_training_or_solver_runs_performed": false,
+  "runtime_limitations": "Installed environment lacks gurobipy/cvxpy; historical initialization and source-hash limitations remain documented in results/README.md.",
+  "backup_outside_package": "tmp/simulator_consolidation_20261104/before_source_refactor.zip",
+  "comparison_experiments_in_testers": [
+    "compare_gradients",
+    "compare_training_budgets",
+    "compare_training_stages"
+  ]
+}

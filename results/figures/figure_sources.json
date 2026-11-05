@@ -1,0 +1,282 @@
+{
+  "paths_relative_to": "Package root containing Simulator, data and results",
+  "canonical_pdfs_are_exact_author_supplied_bytes": true,
+  "figure_count": 12,
+  "figures": [
+    {
+      "figure": "results/figures/aggregation_training_trajectory_large_scale.pdf",
+      "sha256": "a3bc0aa2d3c605aa62c72c29c9dc58db76b0c5d0d00780e87c5eadd6d3d90687",
+      "manuscript_source_at_cleanup": "figs/results_original/aggregation_training_trajectory_large_scale.pdf",
+      "paper_reference": "Explicitly designated original asset; resource scaling is discussed in V-G / Table III",
+      "saved_result_directories": [
+        "results/aggregation/T24/large_scale/exact/peb"
+      ],
+      "plotting_modules": [
+        "Simulator.drawers.plot_original_training",
+        "Simulator.drawers.plot_training"
+      ],
+      "training_modules": [
+        "Simulator.runners.train_aggregation"
+      ],
+      "testing_modules": [],
+      "provenance_note": "This asset uses EXACT gradients, 100 CL/200 TCL/200 PV, T24. Table III uses the separate APPROX T24 run and T96 run: do not conflate them.",
+      "pre_cleanup_exact_matches": [
+        "code/results/figures_original/aggregation_training_trajectory_large_scale.pdf"
+      ]
+    },
+    {
+      "figure": "results/figures/aggregation_training_trajectory_small_scale_PB.pdf",
+      "sha256": "6368f0cbf8a3f0387be43dd30889ac28c15689fddcf50f39ee4e918b681bbaf6",
+      "manuscript_source_at_cleanup": "figs/results_original/aggregation_training_trajectory_small_scale_PB.pdf",
+      "paper_reference": "Fig. 4(b), Table I",
+      "saved_result_directories": [
+        "results/aggregation/T24/exact/pb"
+      ],
+      "plotting_modules": [
+        "Simulator.drawers.plot_original_training",
+        "Simulator.drawers.plot_training"
+      ],
+      "training_modules": [
+        "Simulator.runners.train_aggregation"
+      ],
+      "testing_modules": [
+        "Simulator.testers.case_methods"
+      ],
+      "provenance_note": "Canonical PDF contains a later vector Phase-to-Stage label edit.",
+      "pre_cleanup_exact_matches": [
+        "code/results/figures_original/aggregation_training_trajectory_small_scale_PB.pdf"
+      ]
+    },
+    {
+      "figure": "results/figures/aggregation_training_trajectory_small_scale_PEB.pdf",
+      "sha256": "4a7183c6568853dd43f5b650a55db43f441157d1d0911f9f8600e3a40707ff44",
+      "manuscript_source_at_cleanup": "figs/results_original/aggregation_training_trajectory_small_scale_PEB.pdf",
+      "paper_reference": "Fig. 4(a), Table I",
+      "saved_result_directories": [
+        "results/aggregation/T24/exact/peb"
+      ],
+      "plotting_modules": [
+        "Simulator.drawers.plot_original_training",
+        "Simulator.drawers.plot_training"
+      ],
+      "training_modules": [
+        "Simulator.runners.train_aggregation"
+      ],
+      "testing_modules": [
+        "Simulator.testers.case_methods"
+      ],
+      "provenance_note": "Canonical PDF contains a later vector Phase-to-Stage label edit; saved training data remain mapped by manifest.",
+      "pre_cleanup_exact_matches": [
+        "code/results/figures_original/aggregation_training_trajectory_small_scale_PEB.pdf"
+      ]
+    },
+    {
+      "figure": "results/figures/A_difference_heatmap_cont_PB.pdf",
+      "sha256": "d88ab6dd03c6dd636eb4c02ddc034a211293ecac78b5e4da0cb835c360ee5f3c",
+      "manuscript_source_at_cleanup": "figs/results_original/A_difference_heatmap_cont_PB.pdf",
+      "paper_reference": "Fig. 5(b)",
+      "saved_result_directories": [
+        "results/aggregation/T24/exact/pb"
+      ],
+      "plotting_modules": [
+        "Simulator.drawers.visualize_A_matrix_evolution"
+      ],
+      "training_modules": [
+        "Simulator.runners.train_aggregation"
+      ],
+      "testing_modules": [],
+      "provenance_note": "Read snapshots/A_0.csv, snapshots/A_1000.csv, final_polytope.npz; canonical initial model in seed_0.",
+      "pre_cleanup_exact_matches": [
+        "code/results/figures_original/A_difference_heatmap_cont_PB.pdf"
+      ]
+    },
+    {
+      "figure": "results/figures/A_difference_heatmap_cont_PEB.pdf",
+      "sha256": "fd1a143f89fbacf072adf8ad6fb51d75ed0b6851012aff63dd1acb76c85b874c",
+      "manuscript_source_at_cleanup": "figs/results_original/A_difference_heatmap_cont_PEB.pdf",
+      "paper_reference": "Fig. 5(a)",
+      "saved_result_directories": [
+        "results/aggregation/T24/exact/peb"
+      ],
+      "plotting_modules": [
+        "Simulator.drawers.visualize_A_matrix_evolution"
+      ],
+      "training_modules": [
+        "Simulator.runners.train_aggregation"
+      ],
+      "testing_modules": [],
+      "provenance_note": "Read snapshots/A_0.csv, snapshots/A_1000.csv, final_polytope.npz; canonical initial model in verified_case0_seed0.",
+      "pre_cleanup_exact_matches": [
+        "code/results/figures_original/A_difference_heatmap_cont_PEB.pdf"
+      ]
+    },
+    {
+      "figure": "results/figures/comparison.pdf",
+      "sha256": "8950e5d3d238e694895e9788d98985b79494d15ad07a7e79af44ab60bf0edbff",
+      "manuscript_source_at_cleanup": "figs/results_original/comparison.pdf",
+      "paper_reference": "Explicitly designated historical original five-method asset; current manuscript Fig.9 is ten-method comparison",
+      "saved_result_directories": [
+        "results/aggregation/T24/comparisons",
+        "results/aggregation/T24/exact/peb",
+        "results/aggregation/T24/exact/pb",
+        "results/aggregation/T24/baselines/box",
+        "results/aggregation/T24/baselines/matlab"
+      ],
+      "plotting_modules": [
+        "Simulator.drawers.plot_original_comparison"
+      ],
+      "training_modules": [
+        "Simulator.runners.train_aggregation",
+        "Simulator.runners.baselines.run"
+      ],
+      "testing_modules": [
+        "Simulator.testers.case_methods"
+      ],
+      "provenance_note": "No exact code/results PDF exists. Keep the supplied manuscript asset byte-for-byte. Its old labels differ materially from the current restored plotting function. Current data maps to the same five method identities, but exact historical plotted-data equivalence has not been established.",
+      "pre_cleanup_exact_matches": []
+    },
+    {
+      "figure": "results/figures/mg_training_trajectory.pdf",
+      "sha256": "2a016c50b1b19b8d9305dc8ced0e9d7b3622b77273597a21ee1687f792704b1c",
+      "manuscript_source_at_cleanup": "figs/results_original/mg_training_trajectory.pdf",
+      "paper_reference": "Fig. 10, Table V",
+      "saved_result_directories": [
+        "results/microgrid/training"
+      ],
+      "plotting_modules": [
+        "Simulator.drawers.plot_original_training",
+        "Simulator.drawers.plot_training"
+      ],
+      "training_modules": [
+        "Simulator.runners.train_microgrid"
+      ],
+      "testing_modules": [
+        "Simulator.testers.case_microgrid_uncertainty"
+      ],
+      "provenance_note": "Historical PDF was generated from conservativeness=0.02, then only stage titles edited. Current main training data are conservativeness=0.05. The old source history SHA 9b8eb442d6c996f74f0ab57b557feb6454f40b61975ac259c758e0b64eed6b14 and config SHA 106b4d2fb243164de5be12568443860931bfcb6d543fc32940cf80b835c5ffdf were not found in code/tmp/output or all workspace PKLs / relevant ZIPs. Do not claim current training reproduces identical curves.",
+      "pre_cleanup_exact_matches": [
+        "code/results/figures_original/mg_training_trajectory.pdf"
+      ]
+    },
+    {
+      "figure": "results/figures/01_gradient_comparison.pdf",
+      "sha256": "071bba18d064c1c2cba4937977c9dbdebd8fe50c7cb8f90f385fdab8b13d7fb1",
+      "manuscript_source_at_cleanup": "figs/results_revision/01_gradient_comparison.pdf",
+      "paper_reference": "Fig. 6; V-D mean errors and ten-seed timing",
+      "saved_result_directories": [
+        "results/aggregation/T24/gradient_comparison/run_20261019_090229_case0_seeds0_900"
+      ],
+      "plotting_modules": [
+        "Simulator.drawers.plot_gradient_comparison",
+        "Simulator.drawers._gradient_comparison_data",
+        "Simulator.drawers._gradient_distribution"
+      ],
+      "training_modules": [],
+      "testing_modules": [
+        "Simulator.testers.case_gradients"
+      ],
+      "provenance_note": "Same extracted text as code figure, different PDF bytes; preserve manuscript PDF. Entire ten-seed cohort (models, directions, all evaluation arrays, metadata, training and source archive) is required.",
+      "pre_cleanup_exact_matches": []
+    },
+    {
+      "figure": "results/figures/02_methods_error_comparison.pdf",
+      "sha256": "77bda83c4e3ac2c9948d1197b20b4c4acc07ec083feac0322240ce79b0339226",
+      "manuscript_source_at_cleanup": "figs/results_revision/02_methods_error_comparison.pdf",
+      "paper_reference": "Fig. 9; V-F1 numerical means; Table II shares methods",
+      "saved_result_directories": [
+        "results/aggregation/T24/comparisons",
+        "results/aggregation/T24/exact/peb",
+        "results/aggregation/T24/exact/pb",
+        "results/aggregation/T24/baselines"
+      ],
+      "plotting_modules": [
+        "Simulator.drawers.plot_comparison",
+        "Simulator.drawers.sync_methods_summary"
+      ],
+      "training_modules": [
+        "Simulator.runners.train_aggregation",
+        "Simulator.runners.baselines.run",
+        "Simulator.runners.baselines.run_federated_peb"
+      ],
+      "testing_modules": [
+        "Simulator.testers.case_methods",
+        "Simulator.testers.polytope_evaluation"
+      ],
+      "provenance_note": "Manuscript footer says Federated PEB; current code PDF says Federated PEB (modified). Otherwise extracted text matches. Keep manuscript PDF; record historical raw baseline files, source archives and strict-singularity evidence.",
+      "pre_cleanup_exact_matches": []
+    },
+    {
+      "figure": "results/figures/05_training_budget_comparison.pdf",
+      "sha256": "f2b0fb5580e1b389e8cc4b53c6e137db9e22b470d0b512b0ff7c0ccc311402e4",
+      "manuscript_source_at_cleanup": "figs/results_revision/05_training_budget_comparison.pdf",
+      "paper_reference": "Fig. 8; V-E2",
+      "saved_result_directories": [
+        "results/aggregation/T24/training_budget_comparison/peb"
+      ],
+      "plotting_modules": [
+        "Simulator.drawers.plot_training_budgets",
+        "Simulator.drawers.plot_training_stages",
+        "Simulator.drawers.plot_training"
+      ],
+      "training_modules": [],
+      "testing_modules": [
+        "Simulator.testers.polytope_evaluation",
+        "Simulator.testers.case_training_budgets"
+      ],
+      "provenance_note": "Figure uses PEB only. Keep shared parent metadata, directions, summary, independent recheck arrays. Actual updates standard1003/doubled2006.",
+      "pre_cleanup_exact_matches": [
+        "code/results/figures_summary/05_training_budget_comparison.pdf",
+        "code/results/aggregation/T24/training_budget_comparison/figures/training_budget_comparison.pdf"
+      ]
+    },
+    {
+      "figure": "results/figures/05_training_stage_comparison.pdf",
+      "sha256": "791e09bc762a9f24b9b02e04a508bae911c35195be9aece82b15c73cdda3b8ac",
+      "manuscript_source_at_cleanup": "figs/results_revision/05_training_stage_comparison.pdf",
+      "paper_reference": "Fig. 7; V-E1",
+      "saved_result_directories": [
+        "results/aggregation/T24/stage_comparison"
+      ],
+      "plotting_modules": [
+        "Simulator.drawers.plot_training_stages",
+        "Simulator.drawers.plot_training"
+      ],
+      "training_modules": [],
+      "testing_modules": [
+        "Simulator.testers.polytope_evaluation",
+        "Simulator.testers.case_training_stages"
+      ],
+      "provenance_note": "Manuscript removes footer notes; current PDF includes them. Three runs have actual 1003 updates, retain exact protocol rather than silently changing to 1000.",
+      "pre_cleanup_exact_matches": []
+    },
+    {
+      "figure": "results/figures/06_uncertainty_error_distribution.pdf",
+      "sha256": "a051f5a02ff10e5f3f80b261847d37b35432af9eb394c8ab4373d2c77b0e8a77",
+      "manuscript_source_at_cleanup": "figs/results_revision/06_uncertainty_error_distribution.pdf",
+      "paper_reference": "Fig. 11; V-H",
+      "saved_result_directories": [
+        "results/microgrid/training",
+        "results/microgrid/disaggregation"
+      ],
+      "plotting_modules": [
+        "Simulator.drawers.plot_microgrid_shift"
+      ],
+      "training_modules": [
+        "Simulator.runners.train_microgrid"
+      ],
+      "testing_modules": [
+        "Simulator.testers.case_microgrid_uncertainty"
+      ],
+      "provenance_note": "Read distribution_shift_samples.csv; keep NPZ, summary, metadata and current c=0.05 trained model. Six conditions, 5000 paired samples per condition.",
+      "pre_cleanup_exact_matches": [
+        "code/results/figures_summary/06_uncertainty_error_distribution.pdf",
+        "code/results/microgrid/disaggregation/figures/distribution_shift.pdf"
+      ]
+    }
+  ],
+  "limitations": [
+    "Historical Fig.10 0.02 training input hashes absent; current .05 models retained but not identical curve reproduction.",
+    "Historical original comparison PDF not matched to current saved figures; current plotting code uses same method family but changed labels."
+  ],
+  "active_module_paths_updated_on": "2026-11-04"
+}

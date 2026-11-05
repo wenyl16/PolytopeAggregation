@@ -1,0 +1,34 @@
+{
+  "sources": [
+    {
+      "historical_source": "tmp/recheck_scale3_without_min_uptime_paired.py",
+      "archived_source": "results/microgrid/scale3/source_snapshot/tmp/recheck_scale3_without_min_uptime_paired.py",
+      "source_sha256": "4c4324eb1d0b7cb055d21351cf4f5f38139afbe73986dd2815f35d183441d6a1",
+      "portable_module": "Simulator/testers/evaluate_microgrid_min_uptime_ablation.py",
+      "numerical_operations": "preserved; changes limited to CLI, execution guard, imports and paths"
+    },
+    {
+      "historical_source": "tmp/summarize_microgrid_scale3_percentage.py",
+      "archived_source": "results/microgrid/scale3/source_snapshot/tmp/summarize_microgrid_scale3_percentage.py",
+      "source_sha256": "2b41d7182ae8fbf210d006b1ca4101d3b270e1ffb3cd47e79fb31d622799a22e",
+      "portable_module": "Simulator/testers/summarize_microgrid_scale3_percentage.py",
+      "numerical_operations": "preserved; changes limited to CLI, execution guard, imports and paths"
+    },
+    {
+      "historical_source": "tmp/summarize_scale3_min_uptime_ablation.py",
+      "archived_source": "results/microgrid/scale3/source_snapshot/tmp/summarize_scale3_min_uptime_ablation.py",
+      "source_sha256": "db17031d842d09a763c7e17373e9811723ec3311ed718423f0c965302cf4094f",
+      "portable_module": "Simulator/testers/summarize_microgrid_min_uptime_ablation.py",
+      "numerical_operations": "preserved; changes limited to CLI, execution guard, imports and paths"
+    },
+    {
+      "historical_source": "tmp/summarize_current_scale3_nonconvexity.py",
+      "archived_source": "results/microgrid/scale3/source_snapshot/tmp/summarize_current_scale3_nonconvexity.py",
+      "source_sha256": "c7f49aebdf530a1a1f379b40ccf64c0ec158ef15b442f4867e91c383b45aaece",
+      "portable_module": "Simulator/testers/summarize_microgrid_scale3_nonconvexity.py",
+      "numerical_operations": "preserved; changes limited to CLI, execution guard, imports and paths"
+    }
+  ],
+  "paired_runner_matches_saved_summary": true,
+  "original_scripts_unchanged": true
+}

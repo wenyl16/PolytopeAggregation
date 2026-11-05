@@ -1,0 +1,169 @@
+{
+  "status": "passed",
+  "training_seeds": [
+    0,
+    100,
+    200,
+    300,
+    400,
+    500,
+    600,
+    700,
+    800,
+    900
+  ],
+  "case_seed": 0,
+  "counts": [
+    5,
+    40,
+    5
+  ],
+  "third_stage_learning_rate": 1.0,
+  "stage_update_counts": [
+    300,
+    200,
+    500
+  ],
+  "samples_per_seed": 10000,
+  "evaluation_seed": 10000,
+  "zero_cutoff_preserved": true,
+  "actual_training_source_sha256": "1da70b2c56c75b3624fe424f36aacb80fe3b3c4656cd317504e43bcba214e9c7",
+  "current_cli_source_sha256": "3812468e0c4f4b8970391b17cc8b30d81c4e917ea5a6bdce7e1c1162a75aff1a",
+  "math_functions_unchanged": true,
+  "scenario_sha256": "4aa952dedf9b099d1e8e806417c124199762e01a0157b2a102534cafb5ccf151",
+  "runs": {
+    "0": {
+      "training_csv_rows": 2000,
+      "actual_updates_per_method": 1000,
+      "paired_directions_exactly_equal": true,
+      "raw_weights_match_final_archives": true,
+      "evaluation_samples": 10000,
+      "extrema_recheck_passed": true
+    },
+    "100": {
+      "training_csv_rows": 2000,
+      "actual_updates_per_method": 1000,
+      "paired_directions_exactly_equal": true,
+      "raw_weights_match_final_archives": true,
+      "evaluation_samples": 10000,
+      "extrema_recheck_passed": true
+    },
+    "200": {
+      "training_csv_rows": 2000,
+      "actual_updates_per_method": 1000,
+      "paired_directions_exactly_equal": true,
+      "raw_weights_match_final_archives": true,
+      "evaluation_samples": 10000,
+      "extrema_recheck_passed": true
+    },
+    "300": {
+      "training_csv_rows": 2000,
+      "actual_updates_per_method": 1000,
+      "paired_directions_exactly_equal": true,
+      "raw_weights_match_final_archives": true,
+      "evaluation_samples": 10000,
+      "extrema_recheck_passed": true
+    },
+    "400": {
+      "training_csv_rows": 2000,
+      "actual_updates_per_method": 1000,
+      "paired_directions_exactly_equal": true,
+      "raw_weights_match_final_archives": true,
+      "evaluation_samples": 10000,
+      "extrema_recheck_passed": true
+    },
+    "500": {
+      "training_csv_rows": 2000,
+      "actual_updates_per_method": 1000,
+      "paired_directions_exactly_equal": true,
+      "raw_weights_match_final_archives": true,
+      "evaluation_samples": 10000,
+      "extrema_recheck_passed": true
+    },
+    "600": {
+      "training_csv_rows": 2000,
+      "actual_updates_per_method": 1000,
+      "paired_directions_exactly_equal": true,
+      "raw_weights_match_final_archives": true,
+      "evaluation_samples": 10000,
+      "extrema_recheck_passed": true
+    },
+    "700": {
+      "training_csv_rows": 2000,
+      "actual_updates_per_method": 1000,
+      "paired_directions_exactly_equal": true,
+      "raw_weights_match_final_archives": true,
+      "evaluation_samples": 10000,
+      "extrema_recheck_passed": true
+    },
+    "800": {
+      "training_csv_rows": 2000,
+      "actual_updates_per_method": 1000,
+      "paired_directions_exactly_equal": true,
+      "raw_weights_match_final_archives": true,
+      "evaluation_samples": 10000,
+      "extrema_recheck_passed": true
+    },
+    "900": {
+      "training_csv_rows": 2000,
+      "actual_updates_per_method": 1000,
+      "paired_directions_exactly_equal": true,
+      "raw_weights_match_final_archives": true,
+      "evaluation_samples": 10000,
+      "extrema_recheck_passed": true
+    }
+  },
+  "included_count": 10,
+  "excluded_count": 0,
+  "updated_at_utc": "2026-10-26T04:39:49.364302+00:00",
+  "complete_retained_cohort": true,
+  "trained_model_count": 20,
+  "paired_seed_count": 10,
+  "actual_updates_each": 1000,
+  "original_zero_cutoff_and_float64_cuda_definitions_preserved": true,
+  "shared_held_out_directions_per_seed": 10000,
+  "independently_rechecked_extrema": 40,
+  "all_ten_seeds_included": true,
+  "no_seed_replacements_or_exclusions": true,
+  "all_20_plotted_coordinates_match_original_seed_means": true,
+  "all_plot_input_and_source_hashes_current": true,
+  "figure_qa": {
+    "status": "passed",
+    "python_in_memory_render_and_visual_qa": true,
+    "pages": 1,
+    "dimensions_pt": [
+      374.1732177734375,
+      277.7952880859375
+    ],
+    "points": 20,
+    "paired_arrows": 10,
+    "bootstrap_clouds": 20,
+    "central_fraction": 0.8,
+    "bootstrap_replicates": 1200,
+    "colors_layout_and_original_coordinates_preserved": true,
+    "formats": [
+      "pdf"
+    ],
+    "large_log_span_axis_tick_readability_repaired": true,
+    "pdf_bytes": 60959
+  },
+  "concurrent_retirement_observed": {
+    "approx_exists": false,
+    "learning_rate_search_exists": false,
+    "scope": "These standalone results were explicitly retired by the completed cleanup plan; retained paired approximate/exact results remain."
+  },
+  "finalized_at_utc": "2026-10-26T04:49:32.275176+00:00",
+  "final_artifact_sha256": {
+    "batch_status.json": "242818548ab49acdff00fa0b5872c4fcd08606402fccd8c545767de03812758c",
+    "experiment_protocol.json": "09ee208347d15791c367b710afde3b53349478f9f22226eabf49cf318f8c8426",
+    "physical_scene.json": "e8011e69babfab078330e6935ee817c917396f5b4451ab44efbc8e790714acf5",
+    "physical_scene_manifest.json": "a66577615b3d6d7200a82458f53d4df570bd4a4c23740ee49020d124f123d68b",
+    "executed_compare_gradients.py": "1da70b2c56c75b3624fe424f36aacb80fe3b3c4656cd317504e43bcba214e9c7",
+    "training_source_snapshot.json": "9837fd250f985a8f1821671e50277aceeaa8f9035017a71eecd32703be28d294",
+    "summary/summary.json": "b000302ba2a619865a63b09e3f03517f2758212d59c6b182369d050b8334b976",
+    "summary/comparison.csv": "3f38690b12fcec63b68c2e49705438335399645c8297723b4269b6a30490c2f2",
+    "figures/gradient_comparison.pdf": "61e73ccdefc2ff96aa7b5b9b44f13fc0775aad19bc3fa078e2be7723eeaf917b",
+    "figures/plot_metadata.json": "5760534587511ae48e9abb4072f8ce7d991f363816951fd25617c4ad77b99f56",
+    "figures/source_data/seed_metrics.csv": "479eac757f5d5f5255d0dd7f0acbfba1800420a1dc193aa509ec4b7779a6ce66"
+  }
+}

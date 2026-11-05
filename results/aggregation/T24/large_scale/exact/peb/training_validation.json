@@ -1,0 +1,48 @@
+{
+  "status": "passed",
+  "checked_at_utc": "2026-10-27T09:46:25.678209+00:00",
+  "horizon": 24,
+  "deltaT_hours": 1,
+  "counts": {
+    "CL": 100,
+    "TCL": 200,
+    "PV": 200
+  },
+  "total_resources": 500,
+  "gradient_mode": "exact",
+  "dtype": "torch.float64",
+  "optimizer_updates": 1000,
+  "phase_end_updates": [
+    300,
+    500,
+    1000
+  ],
+  "polytope_shape": [
+    94,
+    24
+  ],
+  "all_history_and_gradients_finite": true,
+  "training_directions_match_seed": true,
+  "scenario_and_input_hashes_verified": true,
+  "final_model_matches_snapshot": true,
+  "execution_source_hashes_verified": 5,
+  "held_out_evaluation_samples": 0,
+  "elapsed_training_seconds": 762.2461943000089,
+  "last_raw": {
+    "feasibility": 1.3486704530184133e-25,
+    "optimality": 0.10298438123456599
+  },
+  "last20_mean": {
+    "feasibility": 3.13541891925164e-20,
+    "optimality": 0.09483075645149988
+  },
+  "files_sha256": {
+    "training_config.json": "538523378aef08a616fd0ef821a1dbff7aef8afc9623211d1108809a24f372bb",
+    "run_summary.json": "152838fdb6eaccdfe1e5fee7bd2b7c6fd2382cb601e317781c5df3e19beeb571",
+    "scenario.json": "1b203d650eeaa70818e139908bff73cedc6d9b601fbd5c5fef997d8bf6257a75",
+    "metadata.pkl": "7515cc93d47b4799d56e860a2059f45fd65d78013eec6b191d2f348cf116968b",
+    "error_history.pkl": "1725dac72239d35974e1e3ca14c42802a19dbf4a7ab598b3cc7101e6563dfa74",
+    "training_directions.npy": "5adbd99f0f20e9575da996cdcb4406ee2acf13827b65b9ff8b6b2e3e482a71d6",
+    "final_polytope.npz": "cbdcd395dbfa972e7793d7bab2ec206c1b7dae120867f97ae8f9d3a30506f173"
+  }
+}

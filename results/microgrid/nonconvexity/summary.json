@@ -1,0 +1,3387 @@
+{
+  "threshold_percent": 0.01,
+  "sample_count": 5000,
+  "scope": "Finite convex-combination probes; no global nonconvexity upper bound",
+  "groups": {
+    "overall": {
+      "count": 5000,
+      "lower_percent": {
+        "count": 5000,
+        "missing_count": 0,
+        "mean": 0.03510300086569786,
+        "median": 0.0,
+        "p95": 0.23040686818518677,
+        "max": 1.0848923635594705
+      },
+      "upper_percent": {
+        "count": 5000,
+        "missing_count": 0,
+        "mean": 0.035103001582801975,
+        "median": 0.0,
+        "p95": 0.23040686818518677,
+        "max": 1.0848923635594705
+      },
+      "statistic_intervals": {
+        "mean": {
+          "lower": 0.03510300086569786,
+          "upper": 0.035103001582801975
+        },
+        "median": {
+          "lower": 0.0,
+          "upper": 0.0
+        },
+        "p95": {
+          "lower": 0.23040686818518677,
+          "upper": 0.23040686818518677
+        },
+        "max": {
+          "lower": 1.0848923635594705,
+          "upper": 1.0848923635594705
+        }
+      },
+      "classification_counts": {
+        "below_threshold": 4090,
+        "detected_gap": 910
+      },
+      "convergence_counts": {
+        "converged": 5000,
+        "not_converged": 0,
+        "unknown": 0
+      },
+      "same_binary_count": 10,
+      "different_binary_count": 4990,
+      "unknown_binary_mode_count": 0,
+      "detected_nonconvex_count": 910,
+      "max_lower_bound_probe": {
+        "sample_index": 3541,
+        "kind": "local_chord",
+        "lower_percent": 1.0848923635594705,
+        "upper_percent": 1.0848923635594705,
+        "classification": "detected_gap",
+        "gap_converged": true,
+        "same_binary_mode": false
+      },
+      "max_detected_lower_bound_probe": {
+        "sample_index": 3541,
+        "kind": "local_chord",
+        "lower_percent": 1.0848923635594705,
+        "upper_percent": 1.0848923635594705,
+        "classification": "detected_gap",
+        "gap_converged": true,
+        "same_binary_mode": false
+      }
+    },
+    "local": {
+      "count": 2500,
+      "lower_percent": {
+        "count": 2500,
+        "missing_count": 0,
+        "mean": 0.03979909576437269,
+        "median": 0.0,
+        "p95": 0.2834874756344845,
+        "max": 1.0848923635594705
+      },
+      "upper_percent": {
+        "count": 2500,
+        "missing_count": 0,
+        "mean": 0.03979909645904936,
+        "median": 0.0,
+        "p95": 0.2834874756344845,
+        "max": 1.0848923635594705
+      },
+      "statistic_intervals": {
+        "mean": {
+          "lower": 0.03979909576437269,
+          "upper": 0.03979909645904936
+        },
+        "median": {
+          "lower": 0.0,
+          "upper": 0.0
+        },
+        "p95": {
+          "lower": 0.2834874756344845,
+          "upper": 0.2834874756344845
+        },
+        "max": {
+          "lower": 1.0848923635594705,
+          "upper": 1.0848923635594705
+        }
+      },
+      "classification_counts": {
+        "below_threshold": 2018,
+        "detected_gap": 482
+      },
+      "convergence_counts": {
+        "converged": 2500,
+        "not_converged": 0,
+        "unknown": 0
+      },
+      "same_binary_count": 10,
+      "different_binary_count": 2490,
+      "unknown_binary_mode_count": 0,
+      "detected_nonconvex_count": 482,
+      "max_lower_bound_probe": {
+        "sample_index": 3541,
+        "kind": "local_chord",
+        "lower_percent": 1.0848923635594705,
+        "upper_percent": 1.0848923635594705,
+        "classification": "detected_gap",
+        "gap_converged": true,
+        "same_binary_mode": false
+      },
+      "max_detected_lower_bound_probe": {
+        "sample_index": 3541,
+        "kind": "local_chord",
+        "lower_percent": 1.0848923635594705,
+        "upper_percent": 1.0848923635594705,
+        "classification": "detected_gap",
+        "gap_converged": true,
+        "same_binary_mode": false
+      }
+    },
+    "global": {
+      "count": 1500,
+      "lower_percent": {
+        "count": 1500,
+        "missing_count": 0,
+        "mean": 0.04268614838391552,
+        "median": 0.0,
+        "p95": 0.24713635323583463,
+        "max": 0.9868478586749422
+      },
+      "upper_percent": {
+        "count": 1500,
+        "missing_count": 0,
+        "mean": 0.04268614893223307,
+        "median": 0.0,
+        "p95": 0.24713635323583463,
+        "max": 0.9868478586749422
+      },
+      "statistic_intervals": {
+        "mean": {
+          "lower": 0.04268614838391552,
+          "upper": 0.04268614893223307
+        },
+        "median": {
+          "lower": 0.0,
+          "upper": 0.0
+        },
+        "p95": {
+          "lower": 0.24713635323583463,
+          "upper": 0.24713635323583463
+        },
+        "max": {
+          "lower": 0.9868478586749422,
+          "upper": 0.9868478586749422
+        }
+      },
+      "classification_counts": {
+        "below_threshold": 1156,
+        "detected_gap": 344
+      },
+      "convergence_counts": {
+        "converged": 1500,
+        "not_converged": 0,
+        "unknown": 0
+      },
+      "same_binary_count": 0,
+      "different_binary_count": 1500,
+      "unknown_binary_mode_count": 0,
+      "detected_nonconvex_count": 344,
+      "max_lower_bound_probe": {
+        "sample_index": 3537,
+        "kind": "global_chord",
+        "lower_percent": 0.9868478586749422,
+        "upper_percent": 0.9868478586749422,
+        "classification": "detected_gap",
+        "gap_converged": true,
+        "same_binary_mode": false
+      },
+      "max_detected_lower_bound_probe": {
+        "sample_index": 3537,
+        "kind": "global_chord",
+        "lower_percent": 0.9868478586749422,
+        "upper_percent": 0.9868478586749422,
+        "classification": "detected_gap",
+        "gap_converged": true,
+        "same_binary_mode": false
+      }
+    },
+    "three": {
+      "count": 500,
+      "lower_percent": {
+        "count": 500,
+        "missing_count": 0,
+        "mean": 0.02127404705820203,
+        "median": 0.0,
+        "p95": 0.17402521353764547,
+        "max": 0.715524750262277
+      },
+      "upper_percent": {
+        "count": 500,
+        "missing_count": 0,
+        "mean": 0.021274048875150938,
+        "median": 0.0,
+        "p95": 0.17402521353764547,
+        "max": 0.715524750262277
+      },
+      "statistic_intervals": {
+        "mean": {
+          "lower": 0.02127404705820203,
+          "upper": 0.021274048875150938
+        },
+        "median": {
+          "lower": 0.0,
+          "upper": 0.0
+        },
+        "p95": {
+          "lower": 0.17402521353764547,
+          "upper": 0.17402521353764547
+        },
+        "max": {
+          "lower": 0.715524750262277,
+          "upper": 0.715524750262277
+        }
+      },
+      "classification_counts": {
+        "below_threshold": 426,
+        "detected_gap": 74
+      },
+      "convergence_counts": {
+        "converged": 500,
+        "not_converged": 0,
+        "unknown": 0
+      },
+      "same_binary_count": 0,
+      "different_binary_count": 500,
+      "unknown_binary_mode_count": 0,
+      "detected_nonconvex_count": 74,
+      "max_lower_bound_probe": {
+        "sample_index": 898,
+        "kind": "three_point",
+        "lower_percent": 0.715524750262277,
+        "upper_percent": 0.715524750262277,
+        "classification": "detected_gap",
+        "gap_converged": true,
+        "same_binary_mode": false
+      },
+      "max_detected_lower_bound_probe": {
+        "sample_index": 898,
+        "kind": "three_point",
+        "lower_percent": 0.715524750262277,
+        "upper_percent": 0.715524750262277,
+        "classification": "detected_gap",
+        "gap_converged": true,
+        "same_binary_mode": false
+      }
+    },
+    "five": {
+      "count": 500,
+      "lower_percent": {
+        "count": 500,
+        "missing_count": 0,
+        "mean": 0.0027020376251666194,
+        "median": 0.0,
+        "p95": 0.0,
+        "max": 0.3904765613446223
+      },
+      "upper_percent": {
+        "count": 500,
+        "missing_count": 0,
+        "mean": 0.002702037860922865,
+        "median": 0.0,
+        "p95": 0.0,
+        "max": 0.3904765613446223
+      },
+      "statistic_intervals": {
+        "mean": {
+          "lower": 0.0027020376251666194,
+          "upper": 0.002702037860922865
+        },
+        "median": {
+          "lower": 0.0,
+          "upper": 0.0
+        },
+        "p95": {
+          "lower": 0.0,
+          "upper": 0.0
+        },
+        "max": {
+          "lower": 0.3904765613446223,
+          "upper": 0.3904765613446223
+        }
+      },
+      "classification_counts": {
+        "below_threshold": 490,
+        "detected_gap": 10
+      },
+      "convergence_counts": {
+        "converged": 500,
+        "not_converged": 0,
+        "unknown": 0
+      },
+      "same_binary_count": 0,
+      "different_binary_count": 500,
+      "unknown_binary_mode_count": 0,
+      "detected_nonconvex_count": 10,
+      "max_lower_bound_probe": {
+        "sample_index": 4699,
+        "kind": "five_point",
+        "lower_percent": 0.3904765613446223,
+        "upper_percent": 0.3904765613446223,
+        "classification": "detected_gap",
+        "gap_converged": true,
+        "same_binary_mode": false
+      },
+      "max_detected_lower_bound_probe": {
+        "sample_index": 4699,
+        "kind": "five_point",
+        "lower_percent": 0.3904765613446223,
+        "upper_percent": 0.3904765613446223,
+        "classification": "detected_gap",
+        "gap_converged": true,
+        "same_binary_mode": false
+      }
+    },
+    "multi": {
+      "count": 1000,
+      "lower_percent": {
+        "count": 1000,
+        "missing_count": 0,
+        "mean": 0.011988042341684324,
+        "median": 0.0,
+        "p95": 0.06947815426988412,
+        "max": 0.715524750262277
+      },
+      "upper_percent": {
+        "count": 1000,
+        "missing_count": 0,
+        "mean": 0.011988043368036902,
+        "median": 0.0,
+        "p95": 0.06947815426988412,
+        "max": 0.715524750262277
+      },
+      "statistic_intervals": {
+        "mean": {
+          "lower": 0.011988042341684324,
+          "upper": 0.011988043368036902
+        },
+        "median": {
+          "lower": 0.0,
+          "upper": 0.0
+        },
+        "p95": {
+          "lower": 0.06947815426988412,
+          "upper": 0.06947815426988412
+        },
+        "max": {
+          "lower": 0.715524750262277,
+          "upper": 0.715524750262277
+        }
+      },
+      "classification_counts": {
+        "below_threshold": 916,
+        "detected_gap": 84
+      },
+      "convergence_counts": {
+        "converged": 1000,
+        "not_converged": 0,
+        "unknown": 0
+      },
+      "same_binary_count": 0,
+      "different_binary_count": 1000,
+      "unknown_binary_mode_count": 0,
+      "detected_nonconvex_count": 84,
+      "max_lower_bound_probe": {
+        "sample_index": 898,
+        "kind": "three_point",
+        "lower_percent": 0.715524750262277,
+        "upper_percent": 0.715524750262277,
+        "classification": "detected_gap",
+        "gap_converged": true,
+        "same_binary_mode": false
+      },
+      "max_detected_lower_bound_probe": {
+        "sample_index": 898,
+        "kind": "three_point",
+        "lower_percent": 0.715524750262277,
+        "upper_percent": 0.715524750262277,
+        "classification": "detected_gap",
+        "gap_converged": true,
+        "same_binary_mode": false
+      }
+    },
+    "same_binary_mode": {
+      "count": 10,
+      "lower_percent": {
+        "count": 10,
+        "missing_count": 0,
+        "mean": 0.0,
+        "median": 0.0,
+        "p95": 0.0,
+        "max": 0.0
+      },
+      "upper_percent": {
+        "count": 10,
+        "missing_count": 0,
+        "mean": 0.0,
+        "median": 0.0,
+        "p95": 0.0,
+        "max": 0.0
+      },
+      "statistic_intervals": {
+        "mean": {
+          "lower": 0.0,
+          "upper": 0.0
+        },
+        "median": {
+          "lower": 0.0,
+          "upper": 0.0
+        },
+        "p95": {
+          "lower": 0.0,
+          "upper": 0.0
+        },
+        "max": {
+          "lower": 0.0,
+          "upper": 0.0
+        }
+      },
+      "classification_counts": {
+        "below_threshold": 10
+      },
+      "convergence_counts": {
+        "converged": 10,
+        "not_converged": 0,
+        "unknown": 0
+      },
+      "same_binary_count": 10,
+      "different_binary_count": 0,
+      "unknown_binary_mode_count": 0,
+      "detected_nonconvex_count": 0,
+      "max_lower_bound_probe": {
+        "sample_index": 1240,
+        "kind": "local_chord",
+        "lower_percent": 0.0,
+        "upper_percent": 0.0,
+        "classification": "below_threshold",
+        "gap_converged": true,
+        "same_binary_mode": true
+      },
+      "max_detected_lower_bound_probe": null
+    },
+    "different_binary_mode": {
+      "count": 4990,
+      "lower_percent": {
+        "count": 4990,
+        "missing_count": 0,
+        "mean": 0.0351733475608195,
+        "median": 0.0,
+        "p95": 0.23218740506013702,
+        "max": 1.0848923635594705
+      },
+      "upper_percent": {
+        "count": 4990,
+        "missing_count": 0,
+        "mean": 0.0351733482793607,
+        "median": 0.0,
+        "p95": 0.23218740506013702,
+        "max": 1.0848923635594705
+      },
+      "statistic_intervals": {
+        "mean": {
+          "lower": 0.0351733475608195,
+          "upper": 0.0351733482793607
+        },
+        "median": {
+          "lower": 0.0,
+          "upper": 0.0
+        },
+        "p95": {
+          "lower": 0.23218740506013702,
+          "upper": 0.23218740506013702
+        },
+        "max": {
+          "lower": 1.0848923635594705,
+          "upper": 1.0848923635594705
+        }
+      },
+      "classification_counts": {
+        "below_threshold": 4080,
+        "detected_gap": 910
+      },
+      "convergence_counts": {
+        "converged": 4990,
+        "not_converged": 0,
+        "unknown": 0
+      },
+      "same_binary_count": 0,
+      "different_binary_count": 4990,
+      "unknown_binary_mode_count": 0,
+      "detected_nonconvex_count": 910,
+      "max_lower_bound_probe": {
+        "sample_index": 3541,
+        "kind": "local_chord",
+        "lower_percent": 1.0848923635594705,
+        "upper_percent": 1.0848923635594705,
+        "classification": "detected_gap",
+        "gap_converged": true,
+        "same_binary_mode": false
+      },
+      "max_detected_lower_bound_probe": {
+        "sample_index": 3541,
+        "kind": "local_chord",
+        "lower_percent": 1.0848923635594705,
+        "upper_percent": 1.0848923635594705,
+        "classification": "detected_gap",
+        "gap_converged": true,
+        "same_binary_mode": false
+      }
+    },
+    "local_different_binary_mode": {
+      "count": 2490,
+      "lower_percent": {
+        "count": 2490,
+        "missing_count": 0,
+        "mean": 0.03995893149033402,
+        "median": 0.0,
+        "p95": 0.2834874756344845,
+        "max": 1.0848923635594705
+      },
+      "upper_percent": {
+        "count": 2490,
+        "missing_count": 0,
+        "mean": 0.03995893218780056,
+        "median": 0.0,
+        "p95": 0.2834874756344845,
+        "max": 1.0848923635594705
+      },
+      "statistic_intervals": {
+        "mean": {
+          "lower": 0.03995893149033402,
+          "upper": 0.03995893218780056
+        },
+        "median": {
+          "lower": 0.0,
+          "upper": 0.0
+        },
+        "p95": {
+          "lower": 0.2834874756344845,
+          "upper": 0.2834874756344845
+        },
+        "max": {
+          "lower": 1.0848923635594705,
+          "upper": 1.0848923635594705
+        }
+      },
+      "classification_counts": {
+        "below_threshold": 2008,
+        "detected_gap": 482
+      },
+      "convergence_counts": {
+        "converged": 2490,
+        "not_converged": 0,
+        "unknown": 0
+      },
+      "same_binary_count": 0,
+      "different_binary_count": 2490,
+      "unknown_binary_mode_count": 0,
+      "detected_nonconvex_count": 482,
+      "max_lower_bound_probe": {
+        "sample_index": 3541,
+        "kind": "local_chord",
+        "lower_percent": 1.0848923635594705,
+        "upper_percent": 1.0848923635594705,
+        "classification": "detected_gap",
+        "gap_converged": true,
+        "same_binary_mode": false
+      },
+      "max_detected_lower_bound_probe": {
+        "sample_index": 3541,
+        "kind": "local_chord",
+        "lower_percent": 1.0848923635594705,
+        "upper_percent": 1.0848923635594705,
+        "classification": "detected_gap",
+        "gap_converged": true,
+        "same_binary_mode": false
+      }
+    },
+    "global_different_binary_mode": {
+      "count": 1500,
+      "lower_percent": {
+        "count": 1500,
+        "missing_count": 0,
+        "mean": 0.04268614838391552,
+        "median": 0.0,
+        "p95": 0.24713635323583463,
+        "max": 0.9868478586749422
+      },
+      "upper_percent": {
+        "count": 1500,
+        "missing_count": 0,
+        "mean": 0.04268614893223307,
+        "median": 0.0,
+        "p95": 0.24713635323583463,
+        "max": 0.9868478586749422
+      },
+      "statistic_intervals": {
+        "mean": {
+          "lower": 0.04268614838391552,
+          "upper": 0.04268614893223307
+        },
+        "median": {
+          "lower": 0.0,
+          "upper": 0.0
+        },
+        "p95": {
+          "lower": 0.24713635323583463,
+          "upper": 0.24713635323583463
+        },
+        "max": {
+          "lower": 0.9868478586749422,
+          "upper": 0.9868478586749422
+        }
+      },
+      "classification_counts": {
+        "below_threshold": 1156,
+        "detected_gap": 344
+      },
+      "convergence_counts": {
+        "converged": 1500,
+        "not_converged": 0,
+        "unknown": 0
+      },
+      "same_binary_count": 0,
+      "different_binary_count": 1500,
+      "unknown_binary_mode_count": 0,
+      "detected_nonconvex_count": 344,
+      "max_lower_bound_probe": {
+        "sample_index": 3537,
+        "kind": "global_chord",
+        "lower_percent": 0.9868478586749422,
+        "upper_percent": 0.9868478586749422,
+        "classification": "detected_gap",
+        "gap_converged": true,
+        "same_binary_mode": false
+      },
+      "max_detected_lower_bound_probe": {
+        "sample_index": 3537,
+        "kind": "global_chord",
+        "lower_percent": 0.9868478586749422,
+        "upper_percent": 0.9868478586749422,
+        "classification": "detected_gap",
+        "gap_converged": true,
+        "same_binary_mode": false
+      }
+    }
+  },
+  "prefixes": {
+    "500": {
+      "requested_count": 500,
+      "available_count": 500,
+      "complete": true,
+      "groups": {
+        "overall": {
+          "count": 500,
+          "lower_percent": {
+            "count": 500,
+            "missing_count": 0,
+            "mean": 0.027161503607310022,
+            "median": 0.0,
+            "p95": 0.2043016352731433,
+            "max": 0.6847253187743852
+          },
+          "upper_percent": {
+            "count": 500,
+            "missing_count": 0,
+            "mean": 0.027161503786957825,
+            "median": 0.0,
+            "p95": 0.2043016352731433,
+            "max": 0.6847253187743852
+          },
+          "statistic_intervals": {
+            "mean": {
+              "lower": 0.027161503607310022,
+              "upper": 0.027161503786957825
+            },
+            "median": {
+              "lower": 0.0,
+              "upper": 0.0
+            },
+            "p95": {
+              "lower": 0.2043016352731433,
+              "upper": 0.2043016352731433
+            },
+            "max": {
+              "lower": 0.6847253187743852,
+              "upper": 0.6847253187743852
+            }
+          },
+          "classification_counts": {
+            "below_threshold": 432,
+            "detected_gap": 68
+          },
+          "convergence_counts": {
+            "converged": 500,
+            "not_converged": 0,
+            "unknown": 0
+          },
+          "same_binary_count": 0,
+          "different_binary_count": 500,
+          "unknown_binary_mode_count": 0,
+          "detected_nonconvex_count": 68,
+          "max_lower_bound_probe": {
+            "sample_index": 25,
+            "kind": "global_chord",
+            "lower_percent": 0.6847253187743852,
+            "upper_percent": 0.6847253187743852,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          },
+          "max_detected_lower_bound_probe": {
+            "sample_index": 25,
+            "kind": "global_chord",
+            "lower_percent": 0.6847253187743852,
+            "upper_percent": 0.6847253187743852,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          }
+        },
+        "local": {
+          "count": 250,
+          "lower_percent": {
+            "count": 250,
+            "missing_count": 0,
+            "mean": 0.030570963664592905,
+            "median": 0.0,
+            "p95": 0.22620004575430816,
+            "max": 0.597765033510727
+          },
+          "upper_percent": {
+            "count": 250,
+            "missing_count": 0,
+            "mean": 0.03057096402388836,
+            "median": 0.0,
+            "p95": 0.2262000457543082,
+            "max": 0.597765033510727
+          },
+          "statistic_intervals": {
+            "mean": {
+              "lower": 0.030570963664592905,
+              "upper": 0.03057096402388836
+            },
+            "median": {
+              "lower": 0.0,
+              "upper": 0.0
+            },
+            "p95": {
+              "lower": 0.22620004575430816,
+              "upper": 0.2262000457543082
+            },
+            "max": {
+              "lower": 0.597765033510727,
+              "upper": 0.597765033510727
+            }
+          },
+          "classification_counts": {
+            "below_threshold": 213,
+            "detected_gap": 37
+          },
+          "convergence_counts": {
+            "converged": 250,
+            "not_converged": 0,
+            "unknown": 0
+          },
+          "same_binary_count": 0,
+          "different_binary_count": 250,
+          "unknown_binary_mode_count": 0,
+          "detected_nonconvex_count": 37,
+          "max_lower_bound_probe": {
+            "sample_index": 453,
+            "kind": "local_chord",
+            "lower_percent": 0.597765033510727,
+            "upper_percent": 0.597765033510727,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          },
+          "max_detected_lower_bound_probe": {
+            "sample_index": 453,
+            "kind": "local_chord",
+            "lower_percent": 0.597765033510727,
+            "upper_percent": 0.597765033510727,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          }
+        },
+        "global": {
+          "count": 150,
+          "lower_percent": {
+            "count": 150,
+            "missing_count": 0,
+            "mean": 0.03712404183036257,
+            "median": 0.0,
+            "p95": 0.2275749069542454,
+            "max": 0.6847253187743852
+          },
+          "upper_percent": {
+            "count": 150,
+            "missing_count": 0,
+            "mean": 0.037124041830362664,
+            "median": 0.0,
+            "p95": 0.2275749069542454,
+            "max": 0.6847253187743852
+          },
+          "statistic_intervals": {
+            "mean": {
+              "lower": 0.03712404183036257,
+              "upper": 0.037124041830362664
+            },
+            "median": {
+              "lower": 0.0,
+              "upper": 0.0
+            },
+            "p95": {
+              "lower": 0.2275749069542454,
+              "upper": 0.2275749069542454
+            },
+            "max": {
+              "lower": 0.6847253187743852,
+              "upper": 0.6847253187743852
+            }
+          },
+          "classification_counts": {
+            "below_threshold": 125,
+            "detected_gap": 25
+          },
+          "convergence_counts": {
+            "converged": 150,
+            "not_converged": 0,
+            "unknown": 0
+          },
+          "same_binary_count": 0,
+          "different_binary_count": 150,
+          "unknown_binary_mode_count": 0,
+          "detected_nonconvex_count": 25,
+          "max_lower_bound_probe": {
+            "sample_index": 25,
+            "kind": "global_chord",
+            "lower_percent": 0.6847253187743852,
+            "upper_percent": 0.6847253187743852,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          },
+          "max_detected_lower_bound_probe": {
+            "sample_index": 25,
+            "kind": "global_chord",
+            "lower_percent": 0.6847253187743852,
+            "upper_percent": 0.6847253187743852,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          }
+        },
+        "three": {
+          "count": 50,
+          "lower_percent": {
+            "count": 50,
+            "missing_count": 0,
+            "mean": 0.007388092259047987,
+            "median": 0.0,
+            "p95": 0.03904865269664369,
+            "max": 0.1367541835806809
+          },
+          "upper_percent": {
+            "count": 50,
+            "missing_count": 0,
+            "mean": 0.007388092259048344,
+            "median": 0.0,
+            "p95": 0.03904865269664369,
+            "max": 0.1367541835806809
+          },
+          "statistic_intervals": {
+            "mean": {
+              "lower": 0.007388092259047987,
+              "upper": 0.007388092259048344
+            },
+            "median": {
+              "lower": 0.0,
+              "upper": 0.0
+            },
+            "p95": {
+              "lower": 0.03904865269664369,
+              "upper": 0.03904865269664369
+            },
+            "max": {
+              "lower": 0.1367541835806809,
+              "upper": 0.1367541835806809
+            }
+          },
+          "classification_counts": {
+            "below_threshold": 44,
+            "detected_gap": 6
+          },
+          "convergence_counts": {
+            "converged": 50,
+            "not_converged": 0,
+            "unknown": 0
+          },
+          "same_binary_count": 0,
+          "different_binary_count": 50,
+          "unknown_binary_mode_count": 0,
+          "detected_nonconvex_count": 6,
+          "max_lower_bound_probe": {
+            "sample_index": 228,
+            "kind": "three_point",
+            "lower_percent": 0.1367541835806809,
+            "upper_percent": 0.1367541835806809,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          },
+          "max_detected_lower_bound_probe": {
+            "sample_index": 228,
+            "kind": "three_point",
+            "lower_percent": 0.1367541835806809,
+            "upper_percent": 0.1367541835806809,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          }
+        },
+        "five": {
+          "count": 50,
+          "lower_percent": {
+            "count": 50,
+            "missing_count": 0,
+            "mean": 0.0,
+            "median": 0.0,
+            "p95": 0.0,
+            "max": 0.0
+          },
+          "upper_percent": {
+            "count": 50,
+            "missing_count": 0,
+            "mean": 1.3597399555105182e-16,
+            "median": 0.0,
+            "p95": 0.0,
+            "max": 4.532466518368394e-15
+          },
+          "statistic_intervals": {
+            "mean": {
+              "lower": 0.0,
+              "upper": 1.3597399555105182e-16
+            },
+            "median": {
+              "lower": 0.0,
+              "upper": 0.0
+            },
+            "p95": {
+              "lower": 0.0,
+              "upper": 0.0
+            },
+            "max": {
+              "lower": 0.0,
+              "upper": 4.532466518368394e-15
+            }
+          },
+          "classification_counts": {
+            "below_threshold": 50
+          },
+          "convergence_counts": {
+            "converged": 50,
+            "not_converged": 0,
+            "unknown": 0
+          },
+          "same_binary_count": 0,
+          "different_binary_count": 50,
+          "unknown_binary_mode_count": 0,
+          "detected_nonconvex_count": 0,
+          "max_lower_bound_probe": {
+            "sample_index": 9,
+            "kind": "five_point",
+            "lower_percent": 0.0,
+            "upper_percent": 0.0,
+            "classification": "below_threshold",
+            "gap_converged": true,
+            "same_binary_mode": false
+          },
+          "max_detected_lower_bound_probe": null
+        },
+        "multi": {
+          "count": 100,
+          "lower_percent": {
+            "count": 100,
+            "missing_count": 0,
+            "mean": 0.003694046129523994,
+            "median": 0.0,
+            "p95": 0.013086860094855414,
+            "max": 0.1367541835806809
+          },
+          "upper_percent": {
+            "count": 100,
+            "missing_count": 0,
+            "mean": 0.003694046129524241,
+            "median": 0.0,
+            "p95": 0.013086860094855414,
+            "max": 0.1367541835806809
+          },
+          "statistic_intervals": {
+            "mean": {
+              "lower": 0.003694046129523994,
+              "upper": 0.003694046129524241
+            },
+            "median": {
+              "lower": 0.0,
+              "upper": 0.0
+            },
+            "p95": {
+              "lower": 0.013086860094855414,
+              "upper": 0.013086860094855414
+            },
+            "max": {
+              "lower": 0.1367541835806809,
+              "upper": 0.1367541835806809
+            }
+          },
+          "classification_counts": {
+            "below_threshold": 94,
+            "detected_gap": 6
+          },
+          "convergence_counts": {
+            "converged": 100,
+            "not_converged": 0,
+            "unknown": 0
+          },
+          "same_binary_count": 0,
+          "different_binary_count": 100,
+          "unknown_binary_mode_count": 0,
+          "detected_nonconvex_count": 6,
+          "max_lower_bound_probe": {
+            "sample_index": 228,
+            "kind": "three_point",
+            "lower_percent": 0.1367541835806809,
+            "upper_percent": 0.1367541835806809,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          },
+          "max_detected_lower_bound_probe": {
+            "sample_index": 228,
+            "kind": "three_point",
+            "lower_percent": 0.1367541835806809,
+            "upper_percent": 0.1367541835806809,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          }
+        },
+        "same_binary_mode": {
+          "count": 0,
+          "lower_percent": {
+            "count": 0,
+            "missing_count": 0,
+            "mean": null,
+            "median": null,
+            "p95": null,
+            "max": null
+          },
+          "upper_percent": {
+            "count": 0,
+            "missing_count": 0,
+            "mean": null,
+            "median": null,
+            "p95": null,
+            "max": null
+          },
+          "statistic_intervals": {
+            "mean": {
+              "lower": null,
+              "upper": null
+            },
+            "median": {
+              "lower": null,
+              "upper": null
+            },
+            "p95": {
+              "lower": null,
+              "upper": null
+            },
+            "max": {
+              "lower": null,
+              "upper": null
+            }
+          },
+          "classification_counts": {},
+          "convergence_counts": {
+            "converged": 0,
+            "not_converged": 0,
+            "unknown": 0
+          },
+          "same_binary_count": 0,
+          "different_binary_count": 0,
+          "unknown_binary_mode_count": 0,
+          "detected_nonconvex_count": 0,
+          "max_lower_bound_probe": null,
+          "max_detected_lower_bound_probe": null
+        },
+        "different_binary_mode": {
+          "count": 500,
+          "lower_percent": {
+            "count": 500,
+            "missing_count": 0,
+            "mean": 0.027161503607310022,
+            "median": 0.0,
+            "p95": 0.2043016352731433,
+            "max": 0.6847253187743852
+          },
+          "upper_percent": {
+            "count": 500,
+            "missing_count": 0,
+            "mean": 0.027161503786957825,
+            "median": 0.0,
+            "p95": 0.2043016352731433,
+            "max": 0.6847253187743852
+          },
+          "statistic_intervals": {
+            "mean": {
+              "lower": 0.027161503607310022,
+              "upper": 0.027161503786957825
+            },
+            "median": {
+              "lower": 0.0,
+              "upper": 0.0
+            },
+            "p95": {
+              "lower": 0.2043016352731433,
+              "upper": 0.2043016352731433
+            },
+            "max": {
+              "lower": 0.6847253187743852,
+              "upper": 0.6847253187743852
+            }
+          },
+          "classification_counts": {
+            "below_threshold": 432,
+            "detected_gap": 68
+          },
+          "convergence_counts": {
+            "converged": 500,
+            "not_converged": 0,
+            "unknown": 0
+          },
+          "same_binary_count": 0,
+          "different_binary_count": 500,
+          "unknown_binary_mode_count": 0,
+          "detected_nonconvex_count": 68,
+          "max_lower_bound_probe": {
+            "sample_index": 25,
+            "kind": "global_chord",
+            "lower_percent": 0.6847253187743852,
+            "upper_percent": 0.6847253187743852,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          },
+          "max_detected_lower_bound_probe": {
+            "sample_index": 25,
+            "kind": "global_chord",
+            "lower_percent": 0.6847253187743852,
+            "upper_percent": 0.6847253187743852,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          }
+        },
+        "local_different_binary_mode": {
+          "count": 250,
+          "lower_percent": {
+            "count": 250,
+            "missing_count": 0,
+            "mean": 0.030570963664592905,
+            "median": 0.0,
+            "p95": 0.22620004575430816,
+            "max": 0.597765033510727
+          },
+          "upper_percent": {
+            "count": 250,
+            "missing_count": 0,
+            "mean": 0.03057096402388836,
+            "median": 0.0,
+            "p95": 0.2262000457543082,
+            "max": 0.597765033510727
+          },
+          "statistic_intervals": {
+            "mean": {
+              "lower": 0.030570963664592905,
+              "upper": 0.03057096402388836
+            },
+            "median": {
+              "lower": 0.0,
+              "upper": 0.0
+            },
+            "p95": {
+              "lower": 0.22620004575430816,
+              "upper": 0.2262000457543082
+            },
+            "max": {
+              "lower": 0.597765033510727,
+              "upper": 0.597765033510727
+            }
+          },
+          "classification_counts": {
+            "below_threshold": 213,
+            "detected_gap": 37
+          },
+          "convergence_counts": {
+            "converged": 250,
+            "not_converged": 0,
+            "unknown": 0
+          },
+          "same_binary_count": 0,
+          "different_binary_count": 250,
+          "unknown_binary_mode_count": 0,
+          "detected_nonconvex_count": 37,
+          "max_lower_bound_probe": {
+            "sample_index": 453,
+            "kind": "local_chord",
+            "lower_percent": 0.597765033510727,
+            "upper_percent": 0.597765033510727,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          },
+          "max_detected_lower_bound_probe": {
+            "sample_index": 453,
+            "kind": "local_chord",
+            "lower_percent": 0.597765033510727,
+            "upper_percent": 0.597765033510727,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          }
+        },
+        "global_different_binary_mode": {
+          "count": 150,
+          "lower_percent": {
+            "count": 150,
+            "missing_count": 0,
+            "mean": 0.03712404183036257,
+            "median": 0.0,
+            "p95": 0.2275749069542454,
+            "max": 0.6847253187743852
+          },
+          "upper_percent": {
+            "count": 150,
+            "missing_count": 0,
+            "mean": 0.037124041830362664,
+            "median": 0.0,
+            "p95": 0.2275749069542454,
+            "max": 0.6847253187743852
+          },
+          "statistic_intervals": {
+            "mean": {
+              "lower": 0.03712404183036257,
+              "upper": 0.037124041830362664
+            },
+            "median": {
+              "lower": 0.0,
+              "upper": 0.0
+            },
+            "p95": {
+              "lower": 0.2275749069542454,
+              "upper": 0.2275749069542454
+            },
+            "max": {
+              "lower": 0.6847253187743852,
+              "upper": 0.6847253187743852
+            }
+          },
+          "classification_counts": {
+            "below_threshold": 125,
+            "detected_gap": 25
+          },
+          "convergence_counts": {
+            "converged": 150,
+            "not_converged": 0,
+            "unknown": 0
+          },
+          "same_binary_count": 0,
+          "different_binary_count": 150,
+          "unknown_binary_mode_count": 0,
+          "detected_nonconvex_count": 25,
+          "max_lower_bound_probe": {
+            "sample_index": 25,
+            "kind": "global_chord",
+            "lower_percent": 0.6847253187743852,
+            "upper_percent": 0.6847253187743852,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          },
+          "max_detected_lower_bound_probe": {
+            "sample_index": 25,
+            "kind": "global_chord",
+            "lower_percent": 0.6847253187743852,
+            "upper_percent": 0.6847253187743852,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          }
+        }
+      }
+    },
+    "1000": {
+      "requested_count": 1000,
+      "available_count": 1000,
+      "complete": true,
+      "groups": {
+        "overall": {
+          "count": 1000,
+          "lower_percent": {
+            "count": 1000,
+            "missing_count": 0,
+            "mean": 0.030284691571326888,
+            "median": 0.0,
+            "p95": 0.2267598485457977,
+            "max": 0.715524750262277
+          },
+          "upper_percent": {
+            "count": 1000,
+            "missing_count": 0,
+            "mean": 0.030284691661150838,
+            "median": 0.0,
+            "p95": 0.2267598485457977,
+            "max": 0.715524750262277
+          },
+          "statistic_intervals": {
+            "mean": {
+              "lower": 0.030284691571326888,
+              "upper": 0.030284691661150838
+            },
+            "median": {
+              "lower": 0.0,
+              "upper": 0.0
+            },
+            "p95": {
+              "lower": 0.2267598485457977,
+              "upper": 0.2267598485457977
+            },
+            "max": {
+              "lower": 0.715524750262277,
+              "upper": 0.715524750262277
+            }
+          },
+          "classification_counts": {
+            "below_threshold": 848,
+            "detected_gap": 152
+          },
+          "convergence_counts": {
+            "converged": 1000,
+            "not_converged": 0,
+            "unknown": 0
+          },
+          "same_binary_count": 0,
+          "different_binary_count": 1000,
+          "unknown_binary_mode_count": 0,
+          "detected_nonconvex_count": 152,
+          "max_lower_bound_probe": {
+            "sample_index": 898,
+            "kind": "three_point",
+            "lower_percent": 0.715524750262277,
+            "upper_percent": 0.715524750262277,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          },
+          "max_detected_lower_bound_probe": {
+            "sample_index": 898,
+            "kind": "three_point",
+            "lower_percent": 0.715524750262277,
+            "upper_percent": 0.715524750262277,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          }
+        },
+        "local": {
+          "count": 500,
+          "lower_percent": {
+            "count": 500,
+            "missing_count": 0,
+            "mean": 0.029488575113613087,
+            "median": 0.0,
+            "p95": 0.2237046014348751,
+            "max": 0.5979273026968039
+          },
+          "upper_percent": {
+            "count": 500,
+            "missing_count": 0,
+            "mean": 0.02948857529326082,
+            "median": 0.0,
+            "p95": 0.2237046014348752,
+            "max": 0.5979273026968039
+          },
+          "statistic_intervals": {
+            "mean": {
+              "lower": 0.029488575113613087,
+              "upper": 0.02948857529326082
+            },
+            "median": {
+              "lower": 0.0,
+              "upper": 0.0
+            },
+            "p95": {
+              "lower": 0.2237046014348751,
+              "upper": 0.2237046014348752
+            },
+            "max": {
+              "lower": 0.5979273026968039,
+              "upper": 0.5979273026968039
+            }
+          },
+          "classification_counts": {
+            "below_threshold": 425,
+            "detected_gap": 75
+          },
+          "convergence_counts": {
+            "converged": 500,
+            "not_converged": 0,
+            "unknown": 0
+          },
+          "same_binary_count": 0,
+          "different_binary_count": 500,
+          "unknown_binary_mode_count": 0,
+          "detected_nonconvex_count": 75,
+          "max_lower_bound_probe": {
+            "sample_index": 821,
+            "kind": "local_chord",
+            "lower_percent": 0.5979273026968039,
+            "upper_percent": 0.5979273026968039,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          },
+          "max_detected_lower_bound_probe": {
+            "sample_index": 821,
+            "kind": "local_chord",
+            "lower_percent": 0.5979273026968039,
+            "upper_percent": 0.5979273026968039,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          }
+        },
+        "global": {
+          "count": 300,
+          "lower_percent": {
+            "count": 300,
+            "missing_count": 0,
+            "mean": 0.0470175324589814,
+            "median": 0.0,
+            "p95": 0.2968987500296822,
+            "max": 0.6847253187743852
+          },
+          "upper_percent": {
+            "count": 300,
+            "missing_count": 0,
+            "mean": 0.047017532458981486,
+            "median": 0.0,
+            "p95": 0.2968987500296822,
+            "max": 0.6847253187743852
+          },
+          "statistic_intervals": {
+            "mean": {
+              "lower": 0.0470175324589814,
+              "upper": 0.047017532458981486
+            },
+            "median": {
+              "lower": 0.0,
+              "upper": 0.0
+            },
+            "p95": {
+              "lower": 0.2968987500296822,
+              "upper": 0.2968987500296822
+            },
+            "max": {
+              "lower": 0.6847253187743852,
+              "upper": 0.6847253187743852
+            }
+          },
+          "classification_counts": {
+            "below_threshold": 234,
+            "detected_gap": 66
+          },
+          "convergence_counts": {
+            "converged": 300,
+            "not_converged": 0,
+            "unknown": 0
+          },
+          "same_binary_count": 0,
+          "different_binary_count": 300,
+          "unknown_binary_mode_count": 0,
+          "detected_nonconvex_count": 66,
+          "max_lower_bound_probe": {
+            "sample_index": 25,
+            "kind": "global_chord",
+            "lower_percent": 0.6847253187743852,
+            "upper_percent": 0.6847253187743852,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          },
+          "max_detected_lower_bound_probe": {
+            "sample_index": 25,
+            "kind": "global_chord",
+            "lower_percent": 0.6847253187743852,
+            "upper_percent": 0.6847253187743852,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          }
+        },
+        "three": {
+          "count": 100,
+          "lower_percent": {
+            "count": 100,
+            "missing_count": 0,
+            "mean": 0.014351439417179219,
+            "median": 0.0,
+            "p95": 0.051455229195759504,
+            "max": 0.715524750262277
+          },
+          "upper_percent": {
+            "count": 100,
+            "missing_count": 0,
+            "mean": 0.014351439417179661,
+            "median": 0.0,
+            "p95": 0.051455229195759504,
+            "max": 0.715524750262277
+          },
+          "statistic_intervals": {
+            "mean": {
+              "lower": 0.014351439417179219,
+              "upper": 0.014351439417179661
+            },
+            "median": {
+              "lower": 0.0,
+              "upper": 0.0
+            },
+            "p95": {
+              "lower": 0.051455229195759504,
+              "upper": 0.051455229195759504
+            },
+            "max": {
+              "lower": 0.715524750262277,
+              "upper": 0.715524750262277
+            }
+          },
+          "classification_counts": {
+            "below_threshold": 89,
+            "detected_gap": 11
+          },
+          "convergence_counts": {
+            "converged": 100,
+            "not_converged": 0,
+            "unknown": 0
+          },
+          "same_binary_count": 0,
+          "different_binary_count": 100,
+          "unknown_binary_mode_count": 0,
+          "detected_nonconvex_count": 11,
+          "max_lower_bound_probe": {
+            "sample_index": 898,
+            "kind": "three_point",
+            "lower_percent": 0.715524750262277,
+            "upper_percent": 0.715524750262277,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          },
+          "max_detected_lower_bound_probe": {
+            "sample_index": 898,
+            "kind": "three_point",
+            "lower_percent": 0.715524750262277,
+            "upper_percent": 0.715524750262277,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          }
+        },
+        "five": {
+          "count": 100,
+          "lower_percent": {
+            "count": 100,
+            "missing_count": 0,
+            "mean": 3.351080051586992e-09,
+            "median": 0.0,
+            "p95": 0.0,
+            "max": 3.351080051586992e-07
+          },
+          "upper_percent": {
+            "count": 100,
+            "missing_count": 0,
+            "mean": 3.3510801195796406e-09,
+            "median": 0.0,
+            "p95": 0.0,
+            "max": 3.351080051592643e-07
+          },
+          "statistic_intervals": {
+            "mean": {
+              "lower": 3.351080051586992e-09,
+              "upper": 3.3510801195796406e-09
+            },
+            "median": {
+              "lower": 0.0,
+              "upper": 0.0
+            },
+            "p95": {
+              "lower": 0.0,
+              "upper": 0.0
+            },
+            "max": {
+              "lower": 3.351080051586992e-07,
+              "upper": 3.351080051592643e-07
+            }
+          },
+          "classification_counts": {
+            "below_threshold": 100
+          },
+          "convergence_counts": {
+            "converged": 100,
+            "not_converged": 0,
+            "unknown": 0
+          },
+          "same_binary_count": 0,
+          "different_binary_count": 100,
+          "unknown_binary_mode_count": 0,
+          "detected_nonconvex_count": 0,
+          "max_lower_bound_probe": {
+            "sample_index": 849,
+            "kind": "five_point",
+            "lower_percent": 3.351080051586992e-07,
+            "upper_percent": 3.351080051592643e-07,
+            "classification": "below_threshold",
+            "gap_converged": true,
+            "same_binary_mode": false
+          },
+          "max_detected_lower_bound_probe": null
+        },
+        "multi": {
+          "count": 200,
+          "lower_percent": {
+            "count": 200,
+            "missing_count": 0,
+            "mean": 0.007175721384129636,
+            "median": 0.0,
+            "p95": 0.011962042276465204,
+            "max": 0.715524750262277
+          },
+          "upper_percent": {
+            "count": 200,
+            "missing_count": 0,
+            "mean": 0.007175721384129891,
+            "median": 0.0,
+            "p95": 0.011962042276465204,
+            "max": 0.715524750262277
+          },
+          "statistic_intervals": {
+            "mean": {
+              "lower": 0.007175721384129636,
+              "upper": 0.007175721384129891
+            },
+            "median": {
+              "lower": 0.0,
+              "upper": 0.0
+            },
+            "p95": {
+              "lower": 0.011962042276465204,
+              "upper": 0.011962042276465204
+            },
+            "max": {
+              "lower": 0.715524750262277,
+              "upper": 0.715524750262277
+            }
+          },
+          "classification_counts": {
+            "below_threshold": 189,
+            "detected_gap": 11
+          },
+          "convergence_counts": {
+            "converged": 200,
+            "not_converged": 0,
+            "unknown": 0
+          },
+          "same_binary_count": 0,
+          "different_binary_count": 200,
+          "unknown_binary_mode_count": 0,
+          "detected_nonconvex_count": 11,
+          "max_lower_bound_probe": {
+            "sample_index": 898,
+            "kind": "three_point",
+            "lower_percent": 0.715524750262277,
+            "upper_percent": 0.715524750262277,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          },
+          "max_detected_lower_bound_probe": {
+            "sample_index": 898,
+            "kind": "three_point",
+            "lower_percent": 0.715524750262277,
+            "upper_percent": 0.715524750262277,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          }
+        },
+        "same_binary_mode": {
+          "count": 0,
+          "lower_percent": {
+            "count": 0,
+            "missing_count": 0,
+            "mean": null,
+            "median": null,
+            "p95": null,
+            "max": null
+          },
+          "upper_percent": {
+            "count": 0,
+            "missing_count": 0,
+            "mean": null,
+            "median": null,
+            "p95": null,
+            "max": null
+          },
+          "statistic_intervals": {
+            "mean": {
+              "lower": null,
+              "upper": null
+            },
+            "median": {
+              "lower": null,
+              "upper": null
+            },
+            "p95": {
+              "lower": null,
+              "upper": null
+            },
+            "max": {
+              "lower": null,
+              "upper": null
+            }
+          },
+          "classification_counts": {},
+          "convergence_counts": {
+            "converged": 0,
+            "not_converged": 0,
+            "unknown": 0
+          },
+          "same_binary_count": 0,
+          "different_binary_count": 0,
+          "unknown_binary_mode_count": 0,
+          "detected_nonconvex_count": 0,
+          "max_lower_bound_probe": null,
+          "max_detected_lower_bound_probe": null
+        },
+        "different_binary_mode": {
+          "count": 1000,
+          "lower_percent": {
+            "count": 1000,
+            "missing_count": 0,
+            "mean": 0.030284691571326888,
+            "median": 0.0,
+            "p95": 0.2267598485457977,
+            "max": 0.715524750262277
+          },
+          "upper_percent": {
+            "count": 1000,
+            "missing_count": 0,
+            "mean": 0.030284691661150838,
+            "median": 0.0,
+            "p95": 0.2267598485457977,
+            "max": 0.715524750262277
+          },
+          "statistic_intervals": {
+            "mean": {
+              "lower": 0.030284691571326888,
+              "upper": 0.030284691661150838
+            },
+            "median": {
+              "lower": 0.0,
+              "upper": 0.0
+            },
+            "p95": {
+              "lower": 0.2267598485457977,
+              "upper": 0.2267598485457977
+            },
+            "max": {
+              "lower": 0.715524750262277,
+              "upper": 0.715524750262277
+            }
+          },
+          "classification_counts": {
+            "below_threshold": 848,
+            "detected_gap": 152
+          },
+          "convergence_counts": {
+            "converged": 1000,
+            "not_converged": 0,
+            "unknown": 0
+          },
+          "same_binary_count": 0,
+          "different_binary_count": 1000,
+          "unknown_binary_mode_count": 0,
+          "detected_nonconvex_count": 152,
+          "max_lower_bound_probe": {
+            "sample_index": 898,
+            "kind": "three_point",
+            "lower_percent": 0.715524750262277,
+            "upper_percent": 0.715524750262277,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          },
+          "max_detected_lower_bound_probe": {
+            "sample_index": 898,
+            "kind": "three_point",
+            "lower_percent": 0.715524750262277,
+            "upper_percent": 0.715524750262277,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          }
+        },
+        "local_different_binary_mode": {
+          "count": 500,
+          "lower_percent": {
+            "count": 500,
+            "missing_count": 0,
+            "mean": 0.029488575113613087,
+            "median": 0.0,
+            "p95": 0.2237046014348751,
+            "max": 0.5979273026968039
+          },
+          "upper_percent": {
+            "count": 500,
+            "missing_count": 0,
+            "mean": 0.02948857529326082,
+            "median": 0.0,
+            "p95": 0.2237046014348752,
+            "max": 0.5979273026968039
+          },
+          "statistic_intervals": {
+            "mean": {
+              "lower": 0.029488575113613087,
+              "upper": 0.02948857529326082
+            },
+            "median": {
+              "lower": 0.0,
+              "upper": 0.0
+            },
+            "p95": {
+              "lower": 0.2237046014348751,
+              "upper": 0.2237046014348752
+            },
+            "max": {
+              "lower": 0.5979273026968039,
+              "upper": 0.5979273026968039
+            }
+          },
+          "classification_counts": {
+            "below_threshold": 425,
+            "detected_gap": 75
+          },
+          "convergence_counts": {
+            "converged": 500,
+            "not_converged": 0,
+            "unknown": 0
+          },
+          "same_binary_count": 0,
+          "different_binary_count": 500,
+          "unknown_binary_mode_count": 0,
+          "detected_nonconvex_count": 75,
+          "max_lower_bound_probe": {
+            "sample_index": 821,
+            "kind": "local_chord",
+            "lower_percent": 0.5979273026968039,
+            "upper_percent": 0.5979273026968039,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          },
+          "max_detected_lower_bound_probe": {
+            "sample_index": 821,
+            "kind": "local_chord",
+            "lower_percent": 0.5979273026968039,
+            "upper_percent": 0.5979273026968039,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          }
+        },
+        "global_different_binary_mode": {
+          "count": 300,
+          "lower_percent": {
+            "count": 300,
+            "missing_count": 0,
+            "mean": 0.0470175324589814,
+            "median": 0.0,
+            "p95": 0.2968987500296822,
+            "max": 0.6847253187743852
+          },
+          "upper_percent": {
+            "count": 300,
+            "missing_count": 0,
+            "mean": 0.047017532458981486,
+            "median": 0.0,
+            "p95": 0.2968987500296822,
+            "max": 0.6847253187743852
+          },
+          "statistic_intervals": {
+            "mean": {
+              "lower": 0.0470175324589814,
+              "upper": 0.047017532458981486
+            },
+            "median": {
+              "lower": 0.0,
+              "upper": 0.0
+            },
+            "p95": {
+              "lower": 0.2968987500296822,
+              "upper": 0.2968987500296822
+            },
+            "max": {
+              "lower": 0.6847253187743852,
+              "upper": 0.6847253187743852
+            }
+          },
+          "classification_counts": {
+            "below_threshold": 234,
+            "detected_gap": 66
+          },
+          "convergence_counts": {
+            "converged": 300,
+            "not_converged": 0,
+            "unknown": 0
+          },
+          "same_binary_count": 0,
+          "different_binary_count": 300,
+          "unknown_binary_mode_count": 0,
+          "detected_nonconvex_count": 66,
+          "max_lower_bound_probe": {
+            "sample_index": 25,
+            "kind": "global_chord",
+            "lower_percent": 0.6847253187743852,
+            "upper_percent": 0.6847253187743852,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          },
+          "max_detected_lower_bound_probe": {
+            "sample_index": 25,
+            "kind": "global_chord",
+            "lower_percent": 0.6847253187743852,
+            "upper_percent": 0.6847253187743852,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          }
+        }
+      }
+    },
+    "2000": {
+      "requested_count": 2000,
+      "available_count": 2000,
+      "complete": true,
+      "groups": {
+        "overall": {
+          "count": 2000,
+          "lower_percent": {
+            "count": 2000,
+            "missing_count": 0,
+            "mean": 0.03689094630744348,
+            "median": 0.0,
+            "p95": 0.24700549691914858,
+            "max": 0.7411453494530459
+          },
+          "upper_percent": {
+            "count": 2000,
+            "missing_count": 0,
+            "mean": 0.036890947603798026,
+            "median": 0.0,
+            "p95": 0.24700549691914858,
+            "max": 0.7411453494530459
+          },
+          "statistic_intervals": {
+            "mean": {
+              "lower": 0.03689094630744348,
+              "upper": 0.036890947603798026
+            },
+            "median": {
+              "lower": 0.0,
+              "upper": 0.0
+            },
+            "p95": {
+              "lower": 0.24700549691914858,
+              "upper": 0.24700549691914858
+            },
+            "max": {
+              "lower": 0.7411453494530459,
+              "upper": 0.7411453494530459
+            }
+          },
+          "classification_counts": {
+            "below_threshold": 1639,
+            "detected_gap": 361
+          },
+          "convergence_counts": {
+            "converged": 2000,
+            "not_converged": 0,
+            "unknown": 0
+          },
+          "same_binary_count": 5,
+          "different_binary_count": 1995,
+          "unknown_binary_mode_count": 0,
+          "detected_nonconvex_count": 361,
+          "max_lower_bound_probe": {
+            "sample_index": 1423,
+            "kind": "local_chord",
+            "lower_percent": 0.7411453494530459,
+            "upper_percent": 0.7411453494530459,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          },
+          "max_detected_lower_bound_probe": {
+            "sample_index": 1423,
+            "kind": "local_chord",
+            "lower_percent": 0.7411453494530459,
+            "upper_percent": 0.7411453494530459,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          }
+        },
+        "local": {
+          "count": 1000,
+          "lower_percent": {
+            "count": 1000,
+            "missing_count": 0,
+            "mean": 0.046521818035539585,
+            "median": 0.0,
+            "p95": 0.31960445024052514,
+            "max": 0.7411453494530459
+          },
+          "upper_percent": {
+            "count": 1000,
+            "missing_count": 0,
+            "mean": 0.046521819622512624,
+            "median": 0.0,
+            "p95": 0.31960445024052514,
+            "max": 0.7411453494530459
+          },
+          "statistic_intervals": {
+            "mean": {
+              "lower": 0.046521818035539585,
+              "upper": 0.046521819622512624
+            },
+            "median": {
+              "lower": 0.0,
+              "upper": 0.0
+            },
+            "p95": {
+              "lower": 0.31960445024052514,
+              "upper": 0.31960445024052514
+            },
+            "max": {
+              "lower": 0.7411453494530459,
+              "upper": 0.7411453494530459
+            }
+          },
+          "classification_counts": {
+            "below_threshold": 787,
+            "detected_gap": 213
+          },
+          "convergence_counts": {
+            "converged": 1000,
+            "not_converged": 0,
+            "unknown": 0
+          },
+          "same_binary_count": 5,
+          "different_binary_count": 995,
+          "unknown_binary_mode_count": 0,
+          "detected_nonconvex_count": 213,
+          "max_lower_bound_probe": {
+            "sample_index": 1423,
+            "kind": "local_chord",
+            "lower_percent": 0.7411453494530459,
+            "upper_percent": 0.7411453494530459,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          },
+          "max_detected_lower_bound_probe": {
+            "sample_index": 1423,
+            "kind": "local_chord",
+            "lower_percent": 0.7411453494530459,
+            "upper_percent": 0.7411453494530459,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          }
+        },
+        "global": {
+          "count": 600,
+          "lower_percent": {
+            "count": 600,
+            "missing_count": 0,
+            "mean": 0.037568330378186694,
+            "median": 0.0,
+            "p95": 0.2295462444752042,
+            "max": 0.6847253187743852
+          },
+          "upper_percent": {
+            "count": 600,
+            "missing_count": 0,
+            "mean": 0.03756833037818677,
+            "median": 0.0,
+            "p95": 0.22954624447520428,
+            "max": 0.6847253187743852
+          },
+          "statistic_intervals": {
+            "mean": {
+              "lower": 0.037568330378186694,
+              "upper": 0.03756833037818677
+            },
+            "median": {
+              "lower": 0.0,
+              "upper": 0.0
+            },
+            "p95": {
+              "lower": 0.2295462444752042,
+              "upper": 0.22954624447520428
+            },
+            "max": {
+              "lower": 0.6847253187743852,
+              "upper": 0.6847253187743852
+            }
+          },
+          "classification_counts": {
+            "below_threshold": 482,
+            "detected_gap": 118
+          },
+          "convergence_counts": {
+            "converged": 600,
+            "not_converged": 0,
+            "unknown": 0
+          },
+          "same_binary_count": 0,
+          "different_binary_count": 600,
+          "unknown_binary_mode_count": 0,
+          "detected_nonconvex_count": 118,
+          "max_lower_bound_probe": {
+            "sample_index": 25,
+            "kind": "global_chord",
+            "lower_percent": 0.6847253187743852,
+            "upper_percent": 0.6847253187743852,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          },
+          "max_detected_lower_bound_probe": {
+            "sample_index": 25,
+            "kind": "global_chord",
+            "lower_percent": 0.6847253187743852,
+            "upper_percent": 0.6847253187743852,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          }
+        },
+        "three": {
+          "count": 200,
+          "lower_percent": {
+            "count": 200,
+            "missing_count": 0,
+            "mean": 0.021111413572909764,
+            "median": 0.0,
+            "p95": 0.14854570267841805,
+            "max": 0.715524750262277
+          },
+          "upper_percent": {
+            "count": 200,
+            "missing_count": 0,
+            "mean": 0.0211114180121993,
+            "median": 0.0,
+            "p95": 0.14854570267841805,
+            "max": 0.715524750262277
+          },
+          "statistic_intervals": {
+            "mean": {
+              "lower": 0.021111413572909764,
+              "upper": 0.0211114180121993
+            },
+            "median": {
+              "lower": 0.0,
+              "upper": 0.0
+            },
+            "p95": {
+              "lower": 0.14854570267841805,
+              "upper": 0.14854570267841805
+            },
+            "max": {
+              "lower": 0.715524750262277,
+              "upper": 0.715524750262277
+            }
+          },
+          "classification_counts": {
+            "below_threshold": 173,
+            "detected_gap": 27
+          },
+          "convergence_counts": {
+            "converged": 200,
+            "not_converged": 0,
+            "unknown": 0
+          },
+          "same_binary_count": 0,
+          "different_binary_count": 200,
+          "unknown_binary_mode_count": 0,
+          "detected_nonconvex_count": 27,
+          "max_lower_bound_probe": {
+            "sample_index": 898,
+            "kind": "three_point",
+            "lower_percent": 0.715524750262277,
+            "upper_percent": 0.715524750262277,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          },
+          "max_detected_lower_bound_probe": {
+            "sample_index": 898,
+            "kind": "three_point",
+            "lower_percent": 0.715524750262277,
+            "upper_percent": 0.715524750262277,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          }
+        },
+        "five": {
+          "count": 200,
+          "lower_percent": {
+            "count": 200,
+            "missing_count": 0,
+            "mean": 0.00248396818926709,
+            "median": 0.0,
+            "p95": 0.0,
+            "max": 0.2865781365031452
+          },
+          "upper_percent": {
+            "count": 200,
+            "missing_count": 0,
+            "mean": 0.0024839687786576093,
+            "median": 0.0,
+            "p95": 0.0,
+            "max": 0.2865781365031452
+          },
+          "statistic_intervals": {
+            "mean": {
+              "lower": 0.00248396818926709,
+              "upper": 0.0024839687786576093
+            },
+            "median": {
+              "lower": 0.0,
+              "upper": 0.0
+            },
+            "p95": {
+              "lower": 0.0,
+              "upper": 0.0
+            },
+            "max": {
+              "lower": 0.2865781365031452,
+              "upper": 0.2865781365031452
+            }
+          },
+          "classification_counts": {
+            "below_threshold": 197,
+            "detected_gap": 3
+          },
+          "convergence_counts": {
+            "converged": 200,
+            "not_converged": 0,
+            "unknown": 0
+          },
+          "same_binary_count": 0,
+          "different_binary_count": 200,
+          "unknown_binary_mode_count": 0,
+          "detected_nonconvex_count": 3,
+          "max_lower_bound_probe": {
+            "sample_index": 1679,
+            "kind": "five_point",
+            "lower_percent": 0.2865781365031452,
+            "upper_percent": 0.2865781365031452,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          },
+          "max_detected_lower_bound_probe": {
+            "sample_index": 1679,
+            "kind": "five_point",
+            "lower_percent": 0.2865781365031452,
+            "upper_percent": 0.2865781365031452,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          }
+        },
+        "multi": {
+          "count": 400,
+          "lower_percent": {
+            "count": 400,
+            "missing_count": 0,
+            "mean": 0.011797690881088427,
+            "median": 0.0,
+            "p95": 0.051455229195758935,
+            "max": 0.715524750262277
+          },
+          "upper_percent": {
+            "count": 400,
+            "missing_count": 0,
+            "mean": 0.011797693395428455,
+            "median": 0.0,
+            "p95": 0.051455229195758935,
+            "max": 0.715524750262277
+          },
+          "statistic_intervals": {
+            "mean": {
+              "lower": 0.011797690881088427,
+              "upper": 0.011797693395428455
+            },
+            "median": {
+              "lower": 0.0,
+              "upper": 0.0
+            },
+            "p95": {
+              "lower": 0.051455229195758935,
+              "upper": 0.051455229195758935
+            },
+            "max": {
+              "lower": 0.715524750262277,
+              "upper": 0.715524750262277
+            }
+          },
+          "classification_counts": {
+            "below_threshold": 370,
+            "detected_gap": 30
+          },
+          "convergence_counts": {
+            "converged": 400,
+            "not_converged": 0,
+            "unknown": 0
+          },
+          "same_binary_count": 0,
+          "different_binary_count": 400,
+          "unknown_binary_mode_count": 0,
+          "detected_nonconvex_count": 30,
+          "max_lower_bound_probe": {
+            "sample_index": 898,
+            "kind": "three_point",
+            "lower_percent": 0.715524750262277,
+            "upper_percent": 0.715524750262277,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          },
+          "max_detected_lower_bound_probe": {
+            "sample_index": 898,
+            "kind": "three_point",
+            "lower_percent": 0.715524750262277,
+            "upper_percent": 0.715524750262277,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          }
+        },
+        "same_binary_mode": {
+          "count": 5,
+          "lower_percent": {
+            "count": 5,
+            "missing_count": 0,
+            "mean": 0.0,
+            "median": 0.0,
+            "p95": 0.0,
+            "max": 0.0
+          },
+          "upper_percent": {
+            "count": 5,
+            "missing_count": 0,
+            "mean": 0.0,
+            "median": 0.0,
+            "p95": 0.0,
+            "max": 0.0
+          },
+          "statistic_intervals": {
+            "mean": {
+              "lower": 0.0,
+              "upper": 0.0
+            },
+            "median": {
+              "lower": 0.0,
+              "upper": 0.0
+            },
+            "p95": {
+              "lower": 0.0,
+              "upper": 0.0
+            },
+            "max": {
+              "lower": 0.0,
+              "upper": 0.0
+            }
+          },
+          "classification_counts": {
+            "below_threshold": 5
+          },
+          "convergence_counts": {
+            "converged": 5,
+            "not_converged": 0,
+            "unknown": 0
+          },
+          "same_binary_count": 5,
+          "different_binary_count": 0,
+          "unknown_binary_mode_count": 0,
+          "detected_nonconvex_count": 0,
+          "max_lower_bound_probe": {
+            "sample_index": 1240,
+            "kind": "local_chord",
+            "lower_percent": 0.0,
+            "upper_percent": 0.0,
+            "classification": "below_threshold",
+            "gap_converged": true,
+            "same_binary_mode": true
+          },
+          "max_detected_lower_bound_probe": null
+        },
+        "different_binary_mode": {
+          "count": 1995,
+          "lower_percent": {
+            "count": 1995,
+            "missing_count": 0,
+            "mean": 0.036983404819492215,
+            "median": 0.0,
+            "p95": 0.24821820559557717,
+            "max": 0.7411453494530459
+          },
+          "upper_percent": {
+            "count": 1995,
+            "missing_count": 0,
+            "mean": 0.036983406119095764,
+            "median": 0.0,
+            "p95": 0.24821820559557717,
+            "max": 0.7411453494530459
+          },
+          "statistic_intervals": {
+            "mean": {
+              "lower": 0.036983404819492215,
+              "upper": 0.036983406119095764
+            },
+            "median": {
+              "lower": 0.0,
+              "upper": 0.0
+            },
+            "p95": {
+              "lower": 0.24821820559557717,
+              "upper": 0.24821820559557717
+            },
+            "max": {
+              "lower": 0.7411453494530459,
+              "upper": 0.7411453494530459
+            }
+          },
+          "classification_counts": {
+            "below_threshold": 1634,
+            "detected_gap": 361
+          },
+          "convergence_counts": {
+            "converged": 1995,
+            "not_converged": 0,
+            "unknown": 0
+          },
+          "same_binary_count": 0,
+          "different_binary_count": 1995,
+          "unknown_binary_mode_count": 0,
+          "detected_nonconvex_count": 361,
+          "max_lower_bound_probe": {
+            "sample_index": 1423,
+            "kind": "local_chord",
+            "lower_percent": 0.7411453494530459,
+            "upper_percent": 0.7411453494530459,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          },
+          "max_detected_lower_bound_probe": {
+            "sample_index": 1423,
+            "kind": "local_chord",
+            "lower_percent": 0.7411453494530459,
+            "upper_percent": 0.7411453494530459,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          }
+        },
+        "local_different_binary_mode": {
+          "count": 995,
+          "lower_percent": {
+            "count": 995,
+            "missing_count": 0,
+            "mean": 0.04675559601561767,
+            "median": 0.0,
+            "p95": 0.3196517171915239,
+            "max": 0.7411453494530459
+          },
+          "upper_percent": {
+            "count": 995,
+            "missing_count": 0,
+            "mean": 0.04675559761056545,
+            "median": 0.0,
+            "p95": 0.319651717191524,
+            "max": 0.7411453494530459
+          },
+          "statistic_intervals": {
+            "mean": {
+              "lower": 0.04675559601561767,
+              "upper": 0.04675559761056545
+            },
+            "median": {
+              "lower": 0.0,
+              "upper": 0.0
+            },
+            "p95": {
+              "lower": 0.3196517171915239,
+              "upper": 0.319651717191524
+            },
+            "max": {
+              "lower": 0.7411453494530459,
+              "upper": 0.7411453494530459
+            }
+          },
+          "classification_counts": {
+            "below_threshold": 782,
+            "detected_gap": 213
+          },
+          "convergence_counts": {
+            "converged": 995,
+            "not_converged": 0,
+            "unknown": 0
+          },
+          "same_binary_count": 0,
+          "different_binary_count": 995,
+          "unknown_binary_mode_count": 0,
+          "detected_nonconvex_count": 213,
+          "max_lower_bound_probe": {
+            "sample_index": 1423,
+            "kind": "local_chord",
+            "lower_percent": 0.7411453494530459,
+            "upper_percent": 0.7411453494530459,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          },
+          "max_detected_lower_bound_probe": {
+            "sample_index": 1423,
+            "kind": "local_chord",
+            "lower_percent": 0.7411453494530459,
+            "upper_percent": 0.7411453494530459,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          }
+        },
+        "global_different_binary_mode": {
+          "count": 600,
+          "lower_percent": {
+            "count": 600,
+            "missing_count": 0,
+            "mean": 0.037568330378186694,
+            "median": 0.0,
+            "p95": 0.2295462444752042,
+            "max": 0.6847253187743852
+          },
+          "upper_percent": {
+            "count": 600,
+            "missing_count": 0,
+            "mean": 0.03756833037818677,
+            "median": 0.0,
+            "p95": 0.22954624447520428,
+            "max": 0.6847253187743852
+          },
+          "statistic_intervals": {
+            "mean": {
+              "lower": 0.037568330378186694,
+              "upper": 0.03756833037818677
+            },
+            "median": {
+              "lower": 0.0,
+              "upper": 0.0
+            },
+            "p95": {
+              "lower": 0.2295462444752042,
+              "upper": 0.22954624447520428
+            },
+            "max": {
+              "lower": 0.6847253187743852,
+              "upper": 0.6847253187743852
+            }
+          },
+          "classification_counts": {
+            "below_threshold": 482,
+            "detected_gap": 118
+          },
+          "convergence_counts": {
+            "converged": 600,
+            "not_converged": 0,
+            "unknown": 0
+          },
+          "same_binary_count": 0,
+          "different_binary_count": 600,
+          "unknown_binary_mode_count": 0,
+          "detected_nonconvex_count": 118,
+          "max_lower_bound_probe": {
+            "sample_index": 25,
+            "kind": "global_chord",
+            "lower_percent": 0.6847253187743852,
+            "upper_percent": 0.6847253187743852,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          },
+          "max_detected_lower_bound_probe": {
+            "sample_index": 25,
+            "kind": "global_chord",
+            "lower_percent": 0.6847253187743852,
+            "upper_percent": 0.6847253187743852,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          }
+        }
+      }
+    },
+    "5000": {
+      "requested_count": 5000,
+      "available_count": 5000,
+      "complete": true,
+      "groups": {
+        "overall": {
+          "count": 5000,
+          "lower_percent": {
+            "count": 5000,
+            "missing_count": 0,
+            "mean": 0.03510300086569786,
+            "median": 0.0,
+            "p95": 0.23040686818518677,
+            "max": 1.0848923635594705
+          },
+          "upper_percent": {
+            "count": 5000,
+            "missing_count": 0,
+            "mean": 0.035103001582801975,
+            "median": 0.0,
+            "p95": 0.23040686818518677,
+            "max": 1.0848923635594705
+          },
+          "statistic_intervals": {
+            "mean": {
+              "lower": 0.03510300086569786,
+              "upper": 0.035103001582801975
+            },
+            "median": {
+              "lower": 0.0,
+              "upper": 0.0
+            },
+            "p95": {
+              "lower": 0.23040686818518677,
+              "upper": 0.23040686818518677
+            },
+            "max": {
+              "lower": 1.0848923635594705,
+              "upper": 1.0848923635594705
+            }
+          },
+          "classification_counts": {
+            "below_threshold": 4090,
+            "detected_gap": 910
+          },
+          "convergence_counts": {
+            "converged": 5000,
+            "not_converged": 0,
+            "unknown": 0
+          },
+          "same_binary_count": 10,
+          "different_binary_count": 4990,
+          "unknown_binary_mode_count": 0,
+          "detected_nonconvex_count": 910,
+          "max_lower_bound_probe": {
+            "sample_index": 3541,
+            "kind": "local_chord",
+            "lower_percent": 1.0848923635594705,
+            "upper_percent": 1.0848923635594705,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          },
+          "max_detected_lower_bound_probe": {
+            "sample_index": 3541,
+            "kind": "local_chord",
+            "lower_percent": 1.0848923635594705,
+            "upper_percent": 1.0848923635594705,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          }
+        },
+        "local": {
+          "count": 2500,
+          "lower_percent": {
+            "count": 2500,
+            "missing_count": 0,
+            "mean": 0.03979909576437269,
+            "median": 0.0,
+            "p95": 0.2834874756344845,
+            "max": 1.0848923635594705
+          },
+          "upper_percent": {
+            "count": 2500,
+            "missing_count": 0,
+            "mean": 0.03979909645904936,
+            "median": 0.0,
+            "p95": 0.2834874756344845,
+            "max": 1.0848923635594705
+          },
+          "statistic_intervals": {
+            "mean": {
+              "lower": 0.03979909576437269,
+              "upper": 0.03979909645904936
+            },
+            "median": {
+              "lower": 0.0,
+              "upper": 0.0
+            },
+            "p95": {
+              "lower": 0.2834874756344845,
+              "upper": 0.2834874756344845
+            },
+            "max": {
+              "lower": 1.0848923635594705,
+              "upper": 1.0848923635594705
+            }
+          },
+          "classification_counts": {
+            "below_threshold": 2018,
+            "detected_gap": 482
+          },
+          "convergence_counts": {
+            "converged": 2500,
+            "not_converged": 0,
+            "unknown": 0
+          },
+          "same_binary_count": 10,
+          "different_binary_count": 2490,
+          "unknown_binary_mode_count": 0,
+          "detected_nonconvex_count": 482,
+          "max_lower_bound_probe": {
+            "sample_index": 3541,
+            "kind": "local_chord",
+            "lower_percent": 1.0848923635594705,
+            "upper_percent": 1.0848923635594705,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          },
+          "max_detected_lower_bound_probe": {
+            "sample_index": 3541,
+            "kind": "local_chord",
+            "lower_percent": 1.0848923635594705,
+            "upper_percent": 1.0848923635594705,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          }
+        },
+        "global": {
+          "count": 1500,
+          "lower_percent": {
+            "count": 1500,
+            "missing_count": 0,
+            "mean": 0.04268614838391552,
+            "median": 0.0,
+            "p95": 0.24713635323583463,
+            "max": 0.9868478586749422
+          },
+          "upper_percent": {
+            "count": 1500,
+            "missing_count": 0,
+            "mean": 0.04268614893223307,
+            "median": 0.0,
+            "p95": 0.24713635323583463,
+            "max": 0.9868478586749422
+          },
+          "statistic_intervals": {
+            "mean": {
+              "lower": 0.04268614838391552,
+              "upper": 0.04268614893223307
+            },
+            "median": {
+              "lower": 0.0,
+              "upper": 0.0
+            },
+            "p95": {
+              "lower": 0.24713635323583463,
+              "upper": 0.24713635323583463
+            },
+            "max": {
+              "lower": 0.9868478586749422,
+              "upper": 0.9868478586749422
+            }
+          },
+          "classification_counts": {
+            "below_threshold": 1156,
+            "detected_gap": 344
+          },
+          "convergence_counts": {
+            "converged": 1500,
+            "not_converged": 0,
+            "unknown": 0
+          },
+          "same_binary_count": 0,
+          "different_binary_count": 1500,
+          "unknown_binary_mode_count": 0,
+          "detected_nonconvex_count": 344,
+          "max_lower_bound_probe": {
+            "sample_index": 3537,
+            "kind": "global_chord",
+            "lower_percent": 0.9868478586749422,
+            "upper_percent": 0.9868478586749422,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          },
+          "max_detected_lower_bound_probe": {
+            "sample_index": 3537,
+            "kind": "global_chord",
+            "lower_percent": 0.9868478586749422,
+            "upper_percent": 0.9868478586749422,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          }
+        },
+        "three": {
+          "count": 500,
+          "lower_percent": {
+            "count": 500,
+            "missing_count": 0,
+            "mean": 0.02127404705820203,
+            "median": 0.0,
+            "p95": 0.17402521353764547,
+            "max": 0.715524750262277
+          },
+          "upper_percent": {
+            "count": 500,
+            "missing_count": 0,
+            "mean": 0.021274048875150938,
+            "median": 0.0,
+            "p95": 0.17402521353764547,
+            "max": 0.715524750262277
+          },
+          "statistic_intervals": {
+            "mean": {
+              "lower": 0.02127404705820203,
+              "upper": 0.021274048875150938
+            },
+            "median": {
+              "lower": 0.0,
+              "upper": 0.0
+            },
+            "p95": {
+              "lower": 0.17402521353764547,
+              "upper": 0.17402521353764547
+            },
+            "max": {
+              "lower": 0.715524750262277,
+              "upper": 0.715524750262277
+            }
+          },
+          "classification_counts": {
+            "below_threshold": 426,
+            "detected_gap": 74
+          },
+          "convergence_counts": {
+            "converged": 500,
+            "not_converged": 0,
+            "unknown": 0
+          },
+          "same_binary_count": 0,
+          "different_binary_count": 500,
+          "unknown_binary_mode_count": 0,
+          "detected_nonconvex_count": 74,
+          "max_lower_bound_probe": {
+            "sample_index": 898,
+            "kind": "three_point",
+            "lower_percent": 0.715524750262277,
+            "upper_percent": 0.715524750262277,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          },
+          "max_detected_lower_bound_probe": {
+            "sample_index": 898,
+            "kind": "three_point",
+            "lower_percent": 0.715524750262277,
+            "upper_percent": 0.715524750262277,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          }
+        },
+        "five": {
+          "count": 500,
+          "lower_percent": {
+            "count": 500,
+            "missing_count": 0,
+            "mean": 0.0027020376251666194,
+            "median": 0.0,
+            "p95": 0.0,
+            "max": 0.3904765613446223
+          },
+          "upper_percent": {
+            "count": 500,
+            "missing_count": 0,
+            "mean": 0.002702037860922865,
+            "median": 0.0,
+            "p95": 0.0,
+            "max": 0.3904765613446223
+          },
+          "statistic_intervals": {
+            "mean": {
+              "lower": 0.0027020376251666194,
+              "upper": 0.002702037860922865
+            },
+            "median": {
+              "lower": 0.0,
+              "upper": 0.0
+            },
+            "p95": {
+              "lower": 0.0,
+              "upper": 0.0
+            },
+            "max": {
+              "lower": 0.3904765613446223,
+              "upper": 0.3904765613446223
+            }
+          },
+          "classification_counts": {
+            "below_threshold": 490,
+            "detected_gap": 10
+          },
+          "convergence_counts": {
+            "converged": 500,
+            "not_converged": 0,
+            "unknown": 0
+          },
+          "same_binary_count": 0,
+          "different_binary_count": 500,
+          "unknown_binary_mode_count": 0,
+          "detected_nonconvex_count": 10,
+          "max_lower_bound_probe": {
+            "sample_index": 4699,
+            "kind": "five_point",
+            "lower_percent": 0.3904765613446223,
+            "upper_percent": 0.3904765613446223,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          },
+          "max_detected_lower_bound_probe": {
+            "sample_index": 4699,
+            "kind": "five_point",
+            "lower_percent": 0.3904765613446223,
+            "upper_percent": 0.3904765613446223,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          }
+        },
+        "multi": {
+          "count": 1000,
+          "lower_percent": {
+            "count": 1000,
+            "missing_count": 0,
+            "mean": 0.011988042341684324,
+            "median": 0.0,
+            "p95": 0.06947815426988412,
+            "max": 0.715524750262277
+          },
+          "upper_percent": {
+            "count": 1000,
+            "missing_count": 0,
+            "mean": 0.011988043368036902,
+            "median": 0.0,
+            "p95": 0.06947815426988412,
+            "max": 0.715524750262277
+          },
+          "statistic_intervals": {
+            "mean": {
+              "lower": 0.011988042341684324,
+              "upper": 0.011988043368036902
+            },
+            "median": {
+              "lower": 0.0,
+              "upper": 0.0
+            },
+            "p95": {
+              "lower": 0.06947815426988412,
+              "upper": 0.06947815426988412
+            },
+            "max": {
+              "lower": 0.715524750262277,
+              "upper": 0.715524750262277
+            }
+          },
+          "classification_counts": {
+            "below_threshold": 916,
+            "detected_gap": 84
+          },
+          "convergence_counts": {
+            "converged": 1000,
+            "not_converged": 0,
+            "unknown": 0
+          },
+          "same_binary_count": 0,
+          "different_binary_count": 1000,
+          "unknown_binary_mode_count": 0,
+          "detected_nonconvex_count": 84,
+          "max_lower_bound_probe": {
+            "sample_index": 898,
+            "kind": "three_point",
+            "lower_percent": 0.715524750262277,
+            "upper_percent": 0.715524750262277,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          },
+          "max_detected_lower_bound_probe": {
+            "sample_index": 898,
+            "kind": "three_point",
+            "lower_percent": 0.715524750262277,
+            "upper_percent": 0.715524750262277,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          }
+        },
+        "same_binary_mode": {
+          "count": 10,
+          "lower_percent": {
+            "count": 10,
+            "missing_count": 0,
+            "mean": 0.0,
+            "median": 0.0,
+            "p95": 0.0,
+            "max": 0.0
+          },
+          "upper_percent": {
+            "count": 10,
+            "missing_count": 0,
+            "mean": 0.0,
+            "median": 0.0,
+            "p95": 0.0,
+            "max": 0.0
+          },
+          "statistic_intervals": {
+            "mean": {
+              "lower": 0.0,
+              "upper": 0.0
+            },
+            "median": {
+              "lower": 0.0,
+              "upper": 0.0
+            },
+            "p95": {
+              "lower": 0.0,
+              "upper": 0.0
+            },
+            "max": {
+              "lower": 0.0,
+              "upper": 0.0
+            }
+          },
+          "classification_counts": {
+            "below_threshold": 10
+          },
+          "convergence_counts": {
+            "converged": 10,
+            "not_converged": 0,
+            "unknown": 0
+          },
+          "same_binary_count": 10,
+          "different_binary_count": 0,
+          "unknown_binary_mode_count": 0,
+          "detected_nonconvex_count": 0,
+          "max_lower_bound_probe": {
+            "sample_index": 1240,
+            "kind": "local_chord",
+            "lower_percent": 0.0,
+            "upper_percent": 0.0,
+            "classification": "below_threshold",
+            "gap_converged": true,
+            "same_binary_mode": true
+          },
+          "max_detected_lower_bound_probe": null
+        },
+        "different_binary_mode": {
+          "count": 4990,
+          "lower_percent": {
+            "count": 4990,
+            "missing_count": 0,
+            "mean": 0.0351733475608195,
+            "median": 0.0,
+            "p95": 0.23218740506013702,
+            "max": 1.0848923635594705
+          },
+          "upper_percent": {
+            "count": 4990,
+            "missing_count": 0,
+            "mean": 0.0351733482793607,
+            "median": 0.0,
+            "p95": 0.23218740506013702,
+            "max": 1.0848923635594705
+          },
+          "statistic_intervals": {
+            "mean": {
+              "lower": 0.0351733475608195,
+              "upper": 0.0351733482793607
+            },
+            "median": {
+              "lower": 0.0,
+              "upper": 0.0
+            },
+            "p95": {
+              "lower": 0.23218740506013702,
+              "upper": 0.23218740506013702
+            },
+            "max": {
+              "lower": 1.0848923635594705,
+              "upper": 1.0848923635594705
+            }
+          },
+          "classification_counts": {
+            "below_threshold": 4080,
+            "detected_gap": 910
+          },
+          "convergence_counts": {
+            "converged": 4990,
+            "not_converged": 0,
+            "unknown": 0
+          },
+          "same_binary_count": 0,
+          "different_binary_count": 4990,
+          "unknown_binary_mode_count": 0,
+          "detected_nonconvex_count": 910,
+          "max_lower_bound_probe": {
+            "sample_index": 3541,
+            "kind": "local_chord",
+            "lower_percent": 1.0848923635594705,
+            "upper_percent": 1.0848923635594705,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          },
+          "max_detected_lower_bound_probe": {
+            "sample_index": 3541,
+            "kind": "local_chord",
+            "lower_percent": 1.0848923635594705,
+            "upper_percent": 1.0848923635594705,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          }
+        },
+        "local_different_binary_mode": {
+          "count": 2490,
+          "lower_percent": {
+            "count": 2490,
+            "missing_count": 0,
+            "mean": 0.03995893149033402,
+            "median": 0.0,
+            "p95": 0.2834874756344845,
+            "max": 1.0848923635594705
+          },
+          "upper_percent": {
+            "count": 2490,
+            "missing_count": 0,
+            "mean": 0.03995893218780056,
+            "median": 0.0,
+            "p95": 0.2834874756344845,
+            "max": 1.0848923635594705
+          },
+          "statistic_intervals": {
+            "mean": {
+              "lower": 0.03995893149033402,
+              "upper": 0.03995893218780056
+            },
+            "median": {
+              "lower": 0.0,
+              "upper": 0.0
+            },
+            "p95": {
+              "lower": 0.2834874756344845,
+              "upper": 0.2834874756344845
+            },
+            "max": {
+              "lower": 1.0848923635594705,
+              "upper": 1.0848923635594705
+            }
+          },
+          "classification_counts": {
+            "below_threshold": 2008,
+            "detected_gap": 482
+          },
+          "convergence_counts": {
+            "converged": 2490,
+            "not_converged": 0,
+            "unknown": 0
+          },
+          "same_binary_count": 0,
+          "different_binary_count": 2490,
+          "unknown_binary_mode_count": 0,
+          "detected_nonconvex_count": 482,
+          "max_lower_bound_probe": {
+            "sample_index": 3541,
+            "kind": "local_chord",
+            "lower_percent": 1.0848923635594705,
+            "upper_percent": 1.0848923635594705,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          },
+          "max_detected_lower_bound_probe": {
+            "sample_index": 3541,
+            "kind": "local_chord",
+            "lower_percent": 1.0848923635594705,
+            "upper_percent": 1.0848923635594705,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          }
+        },
+        "global_different_binary_mode": {
+          "count": 1500,
+          "lower_percent": {
+            "count": 1500,
+            "missing_count": 0,
+            "mean": 0.04268614838391552,
+            "median": 0.0,
+            "p95": 0.24713635323583463,
+            "max": 0.9868478586749422
+          },
+          "upper_percent": {
+            "count": 1500,
+            "missing_count": 0,
+            "mean": 0.04268614893223307,
+            "median": 0.0,
+            "p95": 0.24713635323583463,
+            "max": 0.9868478586749422
+          },
+          "statistic_intervals": {
+            "mean": {
+              "lower": 0.04268614838391552,
+              "upper": 0.04268614893223307
+            },
+            "median": {
+              "lower": 0.0,
+              "upper": 0.0
+            },
+            "p95": {
+              "lower": 0.24713635323583463,
+              "upper": 0.24713635323583463
+            },
+            "max": {
+              "lower": 0.9868478586749422,
+              "upper": 0.9868478586749422
+            }
+          },
+          "classification_counts": {
+            "below_threshold": 1156,
+            "detected_gap": 344
+          },
+          "convergence_counts": {
+            "converged": 1500,
+            "not_converged": 0,
+            "unknown": 0
+          },
+          "same_binary_count": 0,
+          "different_binary_count": 1500,
+          "unknown_binary_mode_count": 0,
+          "detected_nonconvex_count": 344,
+          "max_lower_bound_probe": {
+            "sample_index": 3537,
+            "kind": "global_chord",
+            "lower_percent": 0.9868478586749422,
+            "upper_percent": 0.9868478586749422,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          },
+          "max_detected_lower_bound_probe": {
+            "sample_index": 3537,
+            "kind": "global_chord",
+            "lower_percent": 0.9868478586749422,
+            "upper_percent": 0.9868478586749422,
+            "classification": "detected_gap",
+            "gap_converged": true,
+            "same_binary_mode": false
+          }
+        }
+      }
+    }
+  },
+  "max_lower_bound_probe": {
+    "sample_index": 3541,
+    "kind": "local_chord",
+    "lower_percent": 1.0848923635594705,
+    "upper_percent": 1.0848923635594705,
+    "classification": "detected_gap",
+    "gap_converged": true,
+    "same_binary_mode": false
+  },
+  "max_detected_lower_bound_probe": {
+    "sample_index": 3541,
+    "kind": "local_chord",
+    "lower_percent": 1.0848923635594705,
+    "upper_percent": 1.0848923635594705,
+    "classification": "detected_gap",
+    "gap_converged": true,
+    "same_binary_mode": false
+  },
+  "formal_probes_expected": 5000,
+  "completed": 5000,
+  "controls": {
+    "passed": true,
+    "count": 100,
+    "max_upper_percent": 0.0,
+    "gap_converged_count": 100,
+    "construction": "20 opposite LP endpoint pairs with one fixed feasible binary schedule; five weights per pair",
+    "projection": "Original mixed-integer region; all original binary bounds restored"
+  },
+  "interpretation": "The maximum lower distance is a sampled lower bound on global nonconvexity. Maximum upper distance only bounds the finite-sample maximum; it is not a global upper bound.",
+  "metric": "100 * sqrt(min sum(((P-Q)/(p_max-p_min))**2) / 24)",
+  "numerical_threshold_percent": 0.001,
+  "reporting_threshold_percent": 0.01,
+  "reporting_note": "Strict lower-bound exceedance; upper bounds at or below the reporting threshold are below_threshold, not numerical zeros. Original numerical controls and sample classifications are unchanged."
+}

@@ -1,0 +1,19 @@
+{
+  "status": "verified",
+  "source_file": "executed_compare_gradients.py",
+  "sha256": "1da70b2c56c75b3624fe424f36aacb80fe3b3c4656cd317504e43bcba214e9c7",
+  "training_seeds": [
+    0,
+    100,
+    200,
+    300,
+    400,
+    500,
+    600,
+    700,
+    800,
+    900
+  ],
+  "all_ten_metadata_source_hashes_equal": true,
+  "note": "Exact source bytes actually loaded by all ten workers. Later CLI-only output-default maintenance does not alter their executed algorithm."
+}

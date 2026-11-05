@@ -1,0 +1,8 @@
+{
+  "observed_at_utc": "2026-10-25T07:49:13.570625+00:00",
+  "device_scale": 3,
+  "training_pid": 48212,
+  "training_pid_creation": 134373879391689132,
+  "source": "explicit --training-pid; read-only observation",
+  "training_config": "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\microgrid\\scale3\\training\\training_config.json"
+}

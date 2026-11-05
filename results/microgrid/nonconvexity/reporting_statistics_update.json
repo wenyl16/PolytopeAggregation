@@ -1,0 +1,25 @@
+{
+  "updated_utc": "2026-10-28T09:56:31.190723+00:00",
+  "source_fingerprint": "3e1bb6905960b10d64f27c4838b824930d5a9a0bd1f051427d428f75f8f925ca",
+  "metadata_before_sha256": "8cfeba26776648ce10128fab56fae6b54278b97e69676320edc7f94e876b09f2",
+  "metadata_after_sha256": "dd82c5498b223d95303e06975c6f2618112c3f31eb73e6f28bc3863cad2e87ae",
+  "previous_reporting_threshold_percent": 0.001,
+  "reporting_threshold_percent": 0.01,
+  "numerical_threshold_percent": 0.001,
+  "optimization_rerun": false,
+  "unchanged_raw_files_sha256": {
+    "samples.csv": "8f2dd3e930e695e1c2c2f0bcac39ab9844245c9f509f28c7e67b22f7f194dad8",
+    "endpoints.npz": "e5199f24463691097a9ce8befb25bea6b80a4095efdb5186e55147972880905e",
+    "probes.npz": "e4506238c0c97ee3abc6947fa9efca78d486d3d3e26e25855534e1c444009144",
+    "projections.npz": "a91a15e955767f88a36c43a91cafb269270021bb781425409f7702f2da85e949",
+    "projection_diagnostics.json": "15626b6004421577f349eba81425d6d25f5bb3883469448cc88e43601569b830",
+    "controls.npz": "5972870b3c94f4315f8ca747b3b29fe05d4af48a696fffe4039fe52c7ca5afff",
+    "controls.csv": "adfc13560209cdcf8c44aaa93bf464078fe0179a99d07409966262782bbc6ae0",
+    "controls_diagnostics.json": "e5cdba1fb9d387c6f169352c7352da9f1a15d5fcdf80f2f38afdc43e2acdb604"
+  },
+  "classification_counts": {
+    "below_threshold": 4090,
+    "detected_gap": 910
+  },
+  "postprocessing_source_sha256": "b3e5c000ca6f3e19834a56ff52ddbd8bb61f493d10ec00edafb6b741fd92a9fc"
+}

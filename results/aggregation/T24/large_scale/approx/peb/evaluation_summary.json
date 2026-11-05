@@ -1,0 +1,27 @@
+{
+  "status": "completed",
+  "horizon": 24,
+  "devices": 500,
+  "gradient_mode": "approx",
+  "samples": 5000,
+  "direction_seed": 1,
+  "metric": "sum of squared normalized-power distances",
+  "feasibility": {
+    "count": 5000,
+    "mean": 2.6572434348616173e-13,
+    "max": 1.3286203668415406e-09,
+    "median": 7.23476991095787e-22,
+    "p95": 1.3964410829848141e-18
+  },
+  "optimality": {
+    "count": 5000,
+    "mean": 0.2083484257270198,
+    "max": 0.5770203894011567,
+    "median": 0.19939137114787764,
+    "p95": 0.37994772314475894
+  },
+  "evaluation_seconds": 111.21600999985822,
+  "scenario_sha256": "403d6554dd788dad8dbeae379a660c9408d594988122896b736a7f8b0a10a5b9",
+  "errors_file_sha256": "78f658cee1dc3db5e049a41cb9796801c999adb6e50f29972c9a09853ac0ee28",
+  "protected_training_files_unchanged": true
+}

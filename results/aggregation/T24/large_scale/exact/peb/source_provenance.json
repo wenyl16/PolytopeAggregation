@@ -1,0 +1,48 @@
+{
+  "status": "completed",
+  "created_at_utc": "2026-10-27T09:46:25.679716+00:00",
+  "experiment": "resource-count scaling at fixed T=24; separate from the T=96 experiment",
+  "command": "python -X utf8 -m Simulator.runners.train_aggregation --mode exact --horizon 24 --counts 100 200 200 --template peb --case-seed 0 --training-seed 0 --evaluation-samples 0 --device cpu --output-dir results/aggregation/T24/large_scale/exact/peb",
+  "runtime": {
+    "python": "3.12.3 | packaged by conda-forge | (main, Apr 15 2024, 18:20:11) [MSC v.1938 64 bit (AMD64)]",
+    "executable": "D:\\Anaconda\\envs\\py312_copy\\python.exe",
+    "numpy": "1.26.4",
+    "torch": "2.7.0+cu118",
+    "gurobi": [
+      12,
+      0,
+      2
+    ],
+    "device": "cpu"
+  },
+  "scenario_sha256": "403d6554dd788dad8dbeae379a660c9408d594988122896b736a7f8b0a10a5b9",
+  "source_snapshot": {
+    "Simulator\\runners\\train_aggregation.py": {
+      "execution_sha256": "c7c98b60afd8e1a29eefa7078c533024828eab9d9cf4ace70835fe6cf84b45ea",
+      "snapshot": "results/aggregation/T24/large_scale/exact/peb/source_snapshot/Simulator/runners/train_aggregation.py",
+      "snapshot_sha256": "c7c98b60afd8e1a29eefa7078c533024828eab9d9cf4ace70835fe6cf84b45ea"
+    },
+    "Simulator\\Approximator.py": {
+      "execution_sha256": "51234fa104781c8a6e1fece482ebe96db506fc04e82e49c06bde6f6448656610",
+      "snapshot": "results/aggregation/T24/large_scale/exact/peb/source_snapshot/Simulator/Approximator.py",
+      "snapshot_sha256": "51234fa104781c8a6e1fece482ebe96db506fc04e82e49c06bde6f6448656610"
+    },
+    "Simulator\\testers\\compute_polytope_errors_and_costs_gurobi.py": {
+      "execution_sha256": "004caed55c637baa08624c3c624820688c6f8c7305db07fd4dd680da5de0760b",
+      "snapshot": "results/aggregation/T24/large_scale/exact/peb/source_snapshot/Simulator/testers/compute_polytope_errors_and_costs_gurobi.py",
+      "snapshot_sha256": "004caed55c637baa08624c3c624820688c6f8c7305db07fd4dd680da5de0760b"
+    },
+    "Simulator\\cases\\aggregation.py": {
+      "execution_sha256": "417f11e4d7e1721bd65d63959a0dfba1ac7d35bac923f979b6b913d7ff4347a8",
+      "snapshot": "results/aggregation/T24/large_scale/exact/peb/source_snapshot/Simulator/cases/aggregation.py",
+      "snapshot_sha256": "417f11e4d7e1721bd65d63959a0dfba1ac7d35bac923f979b6b913d7ff4347a8"
+    },
+    "Simulator\\cases\\aggregation_case_T24.py": {
+      "execution_sha256": "20bfd4a2fa84a9a8f44bc8e714696c54753a5b117fb3d347e8727bfa69f407fa",
+      "snapshot": "results/aggregation/T24/large_scale/exact/peb/source_snapshot/Simulator/cases/aggregation_case_T24.py",
+      "snapshot_sha256": "20bfd4a2fa84a9a8f44bc8e714696c54753a5b117fb3d347e8727bfa69f407fa"
+    }
+  },
+  "training_log": "../tmp/t24_resource_scale_500_training_20261027.log",
+  "validation_file": "training_validation.json"
+}

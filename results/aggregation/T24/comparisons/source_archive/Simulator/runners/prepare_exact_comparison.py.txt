@@ -1,0 +1,310 @@
+"""Verify a T24 PEB run and prepare the missing exact-gradient PB comparison.
+
+All outputs use Aggregator(seed=0), CL/TCL/PV counts (5, 40, 5), and
+continuous devices. Historical results are retained without overwriting them.
+"""
+
+import argparse
+import ast
+import hashlib
+import json
+import os
+from pathlib import Path
+import sys
+
+if __package__ in (None, ""):
+    sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+os.environ.setdefault("KMP_DUPLICATE_LIB_OK", "TRUE")
+
+import numpy as np
+import torch
+
+from Simulator.Approximator import ErrorCalculator, PreTrainNet
+from Simulator.baselines import build_cube
+from Simulator.paths import CODE_ROOT, DATA_ROOT, RESULTS_ROOT
+from Simulator.runners.train_aggregation import build_aggregator, new_run_dir, train_case
+
+
+OPTIONS = {"FeasibilityTol": 1e-9, "OptimalityTol": 1e-9,
+           "BarConvTol": 1e-12, "Threads": 1, "Seed": 0}
+STAGES = [(299, .02, 1.), (199, .1, .01), (499, 1., 1e-6)]
+BASE = RESULTS_ROOT / "aggregation" / "T24"
+
+
+def json_value(value):
+    if isinstance(value, np.ndarray):
+        return value.tolist()
+    if isinstance(value, np.generic):
+        return value.item()
+    raise TypeError(type(value).__name__)
+
+
+def write_json(path, value):
+    path.write_text(json.dumps(value, default=json_value, indent=2,
+                               ensure_ascii=False, allow_nan=False), encoding="utf-8")
+
+
+def digest(path):
+    return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+
+
+def configure(calculator):
+    calculator.configure(feas_tol=0., opt_tol=0., active_tol=1e-5)
+    for solver in (calculator.solver, calculator.cvx_solver):
+        solver.options.update(OPTIONS)
+
+
+def scenario(agg):
+    """Include generated devices, input profiles, and physical coordinates."""
+    record = {"aggregator_class": "Simulator.cases.aggregation_case_T24.Aggregator",
+              "case_seed": 0, "T": 24, "n_cl": 5, "n_tcl": 40, "n_pv": 5,
+              "n_ev": len(agg.EV_list), "n_ess": len(agg.ESS_list),
+              "discrete_rate": 0., "deltaT": agg.deltaT,
+              "pmin": np.asarray(agg.pmin), "pmax": np.asarray(agg.pmax),
+              "CL_list": agg.CL_list, "TCL_list": agg.TCL_list,
+              "PV_list": agg.PV_list, "EV_list": agg.EV_list,
+              "ESS_list": agg.ESS_list, "theta_amb": agg.theta_amb,
+              "pv_profiles": agg.pv_profiles, "load_profiles": agg.load_profiles,
+              "input_sha256": {str(p.relative_to(DATA_ROOT)): digest(p) for p in (
+                  DATA_ROOT / "profiles_data" / "profiles_data.npz",
+                  DATA_ROOT / "aggregator_data" / "ZH_buildings.csv")}}
+    payload = json.dumps(record, default=json_value, sort_keys=True,
+                         separators=(",", ":"), allow_nan=False).encode("utf-8")
+    record["scenario_sha256"] = hashlib.sha256(payload).hexdigest()
+    return record
+
+
+def source_hashes():
+    return {str(p.resolve().relative_to(CODE_ROOT.resolve())): digest(p) for p in (
+        Path(__file__).resolve(), CODE_ROOT / "Simulator" / "Approximator.py",
+        CODE_ROOT / "Simulator" / "baselines.py",
+        CODE_ROOT / "Simulator" / "runners" / "train_aggregation.py",
+        CODE_ROOT / "Simulator" / "cases" / "aggregation.py",
+        CODE_ROOT / "Simulator" / "cases" / "aggregation_case_T24.py")}
+
+
+def common_archive(agg, scene, method):
+    return {"method": method, "case_seed": 0, "T": 24,
+            "n_cl": 5, "n_tcl": 40, "n_pv": 5,
+            "discrete_rate": 0., "pmin": np.asarray(agg.pmin),
+            "pmax": np.asarray(agg.pmax), "scenario_sha256": scene["scenario_sha256"]}
+
+
+def reuse(path, scene, *, training=False):
+    if not path.exists():
+        return False
+    if not any(path.iterdir()):
+        return False
+    provenance_path = path / "provenance.json"
+    if not provenance_path.is_file():
+        raise FileExistsError(f"Refusing to overwrite an unverified directory: {path}")
+    record = json.loads(provenance_path.read_text(encoding="utf-8"))
+    if (record.get("status") != "completed" or
+            record.get("scenario_sha256") != scene["scenario_sha256"] or
+            record.get("final_polytope_sha256") != digest(path / "final_polytope.npz")):
+        raise ValueError(f"Existing output is incomplete or has a different scene: {path}")
+    if training:
+        expected_stages = [{"n_train": n, "epochs": n + 1, "lr": lr, "rate_opt_feas": rate}
+                           for n, lr, rate in STAGES]
+        config_path = path / "training_config.json"
+        if config_path.is_file():
+            config = json.loads(config_path.read_text(encoding="utf-8"))
+            if (config.get("status") != "completed" or config.get("optimizer_updates") != 1000
+                    or config.get("gradient_mode") != "exact" or config.get("training_seed") != 0
+                    or config.get("stages") != expected_stages
+                    or config.get("phase_end_updates") != [300, 500, 1000]):
+                raise ValueError(f"Existing training does not match the final-lr-1 protocol: {path}")
+        elif (record.get("optimizer_updates") != 1000
+              or record.get("third_stage_learning_rate") != 1.
+              or record.get("training_stages") != expected_stages):
+            raise ValueError(f"Existing training has no verified final-lr-1 schedule: {path}")
+    print(f"Reusing verified completed output: {path}", flush=True)
+    return True
+
+
+def verify_paired_execution_snapshot(source, recorded_hash, current_path):
+    """Allow a CLI-only update only when the executed numerical AST is equal."""
+    snapshot = source.parent / "executed_compare_gradients.py"
+    if not snapshot.is_file() or snapshot.is_symlink() or digest(snapshot) != recorded_hash:
+        raise ValueError("The paired source wrapper changed without its exact recorded execution snapshot")
+    required = ("sample_errors", "take_step", "make_optimizer", "surrogate", "configure", "sync")
+    def numerical_ast(path):
+        module = ast.parse(path.read_text(encoding="utf-8-sig"))
+        functions = {node.name: ast.dump(node, include_attributes=False) for node in module.body
+                     if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)) and node.name in required}
+        constants = {}
+        for node in module.body:
+            if isinstance(node, ast.Assign):
+                for target in node.targets:
+                    if isinstance(target, ast.Name) and target.id in ("STAGES", "OPTIONS"):
+                        constants[target.id] = ast.dump(node.value, include_attributes=False)
+        if set(functions) != set(required) or set(constants) != {"STAGES", "OPTIONS"}:
+            raise ValueError("The paired execution snapshot lacks a required numerical definition")
+        return functions, constants
+    executed, current = numerical_ast(snapshot), numerical_ast(current_path)
+    if executed != current:
+        raise ValueError("Paired numerical functions or STAGES/OPTIONS changed after training")
+    return {"snapshot_verified": True, "execution_snapshot": str(snapshot.resolve()),
+            "recorded_execution_sha256": recorded_hash, "current_cli_sha256": digest(current_path),
+            "current_wrapper_differs": digest(current_path) != recorded_hash,
+            "numerical_functions_ast_equal": list(required), "numerical_constants_ast_equal": ["STAGES", "OPTIONS"]}
+
+
+def verify_peb(source, original):
+    metadata = json.loads((source / "metadata.json").read_text(encoding="utf-8"))
+    for key, expected in {"status": "completed", "case_seed": 0,
+                          "training_seed": 0, "iterations": 1000,
+                          "polytope_shape": [94, 24]}.items():
+        if metadata.get(key) != expected:
+            raise ValueError(f"PEB source {key} differs: {metadata.get(key)!r}")
+    if metadata.get("stages") != [[300, .02, 1.], [200, .1, .01], [500, 1., 1e-6]]:
+        raise ValueError("PEB source must use the current final-stage learning rate 1")
+    paths = {"compare_gradients.py": CODE_ROOT / "Simulator/runners/compare_gradients.py",
+             "Approximator.py": CODE_ROOT / "Simulator/Approximator.py",
+             "aggregation.py": CODE_ROOT / "Simulator/cases/aggregation.py",
+             "aggregation_case_T24.py": CODE_ROOT / "Simulator/cases/aggregation_case_T24.py"}
+    checks = {name: digest(path) == metadata.get("source_sha256", {}).get(name)
+              for name, path in paths.items()}
+    if not all(value for name, value in checks.items() if name != "compare_gradients.py"):
+        raise ValueError(f"PEB numerical core source hashes differ from current implementation: {checks}")
+    snapshot_proof = None
+    if not checks["compare_gradients.py"]:
+        snapshot_proof = verify_paired_execution_snapshot(
+            source, metadata.get("source_sha256", {}).get("compare_gradients.py"), paths["compare_gradients.py"])
+    directions = np.random.RandomState(0).randn(1000, 24)
+    for name in ("training_directions.npy", "exact_used_directions.npy"):
+        np.testing.assert_array_equal(np.load(source / name), directions)
+    direction_hash = hashlib.sha256(directions.tobytes()).hexdigest()
+    if direction_hash != metadata["training_directions_sha256"]:
+        raise ValueError("PEB source direction hash differs")
+    cumulative = np.tril(np.ones((24, 24)))
+    cumulative /= cumulative.sum(axis=1, keepdims=True)
+    initial_A = np.vstack((np.eye(24), -np.eye(24), cumulative[1:], -cumulative[1:]))
+    calculator = ErrorCalculator({"model": original}, initial_A, np.zeros(94))
+    configure(calculator)
+    initial_b = np.array([row @ calculator.optimize_direction(-row) for row in initial_A])
+    network = PreTrainNet(initial_A, initial_b, device="cpu").double()
+    with torch.no_grad():
+        A, b = network()
+    with np.load(source / "initial_polytope.npz", allow_pickle=False) as saved:
+        np.testing.assert_array_equal(A[0].numpy(), saved["A"])
+        np.testing.assert_array_equal(b[0].numpy(), saved["b"])
+    with np.load(source / "exact_final.npz", allow_pickle=False) as saved:
+        final = {name: saved[name].copy() for name in ("A", "b")}
+    if final["A"].shape != (94, 24) or final["b"].shape != (94,):
+        raise ValueError("Unexpected final PEB dimensions")
+    print("PEB verified: source hashes, training directions, and current-case initialization match", flush=True)
+    return final, {"source": str(source.resolve()), "source_hash_checks": checks,
+                   "paired_execution_snapshot_proof": snapshot_proof,
+                   "source_metadata_sha256": digest(source / "metadata.json"),
+                   "source_polytope_sha256": digest(source / "exact_final.npz"),
+                   "current_case_initial_polytope_exactly_equal": True,
+                   "training_directions_sha256": direction_hash}
+
+
+def main(argv=None):
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--peb-source", required=True, type=Path,
+                        help="Completed paired case-0/training-seed-0 PEB run")
+    parser.add_argument("--device", default="cpu")
+    args = parser.parse_args(argv)
+    # build_aggregator explicitly imports aggregation_case_T24.Aggregator and
+    # generates gen_CL(5), gen_TCL(40), gen_PV(5), in that order.
+    agg = build_aggregator(24, 0)
+    original = agg.case_aggregator(build_only=True)
+    scene = scenario(agg)
+    sources = source_hashes()
+    peb, peb_checks = verify_peb(args.peb_source.resolve(), original)
+    peb_output = BASE / "exact/peb/verified_case0_seed0"
+    if not reuse(peb_output, scene, training=True):
+        peb_output.mkdir(parents=True, exist_ok=True)
+        np.savez(peb_output / "final_polytope.npz", **peb,
+                 **common_archive(agg, scene, "peb_exact"), training_seed=0)
+        write_json(peb_output / "scenario.json", scene)
+        write_json(peb_output / "provenance.json", {
+            "status": "completed", "scenario_sha256": scene["scenario_sha256"],
+            "source_sha256": sources, **peb_checks,
+            "optimizer_updates": 1000, "third_stage_learning_rate": 1.,
+            "training_stages": [{"n_train": n, "epochs": n + 1, "lr": lr, "rate_opt_feas": rate}
+                                for n, lr, rate in STAGES],
+            "final_polytope_sha256": digest(peb_output / "final_polytope.npz")})
+
+    box_output = BASE / "baselines/box/verified_case0"
+    if reuse(box_output, scene):
+        with np.load(box_output / "final_polytope.npz", allow_pickle=False) as saved:
+            A_cube, b_cube = saved["A"].copy(), saved["b"].copy()
+    else:
+        (A_cube, b_cube), elapsed = build_cube(agg)
+        box_output.mkdir(parents=True, exist_ok=True)
+        np.savetxt(box_output / "A_cube.csv", A_cube, delimiter=",")
+        np.savetxt(box_output / "b_cube.csv", b_cube, delimiter=",")
+        np.savez(box_output / "final_polytope.npz", A=A_cube, b=b_cube,
+                 **common_archive(agg, scene, "pb_inner"), comp_time=elapsed)
+        old_box = BASE / "baselines/box"
+        differences = {}
+        for name, values in (("A_cube.csv", A_cube), ("b_cube.csv", b_cube)):
+            old = np.loadtxt(old_box / name, delimiter=",")
+            if name.startswith("b"):
+                old = old.reshape(-1)
+            differences[name] = {"old_shape": list(old.shape), "new_shape": list(values.shape),
+                                 "max_abs_difference": (float(np.max(np.abs(old - values)))
+                                                        if old.shape == values.shape else None),
+                                 "exactly_equal": bool(np.array_equal(old, values)),
+                                 "old_sha256": digest(old_box / name)}
+        write_json(box_output / "scenario.json", scene)
+        write_json(box_output / "provenance.json", {
+            "status": "completed", "scenario_sha256": scene["scenario_sha256"],
+            "source_sha256": sources, "builder": "Simulator.baselines.build_cube",
+            "legacy_box_comparison": differences, "comp_time": elapsed,
+            "final_polytope_sha256": digest(box_output / "final_polytope.npz")})
+        print(f"PB inner recomputed: {differences}", flush=True)
+
+    pb_output = BASE / "exact/pb/seed_0"
+    if not reuse(pb_output, scene, training=True):
+        pb_output = new_run_dir(pb_output, pb_output)
+        case = agg.case_aggregator(A=A_cube, b=b_cube, gradient_mode="exact", template="pb")
+        configure(case["errorcalculator"])
+        case["trainer_configure"].update(feas_tol=0., opt_tol=0., active_tol=1e-5)
+        directions = np.random.RandomState(0).randn(1000, 24)
+        np.save(pb_output / "training_directions.npy", directions)
+        write_json(pb_output / "scenario.json", scene)
+        provenance = {"status": "running", "scenario_sha256": scene["scenario_sha256"],
+                      "source_sha256": sources, "training_seed": 0,
+                      "training_directions_sha256": hashlib.sha256(directions.tobytes()).hexdigest(),
+                      "training_directions_note": "Trainer seeded with 0, n_cal=1; same RandomState(0) directions as paired PEB",
+                      "solver_options": OPTIONS, "actual_stage_updates": [300, 200, 500],
+                      "box_source": str(box_output), "peb_reference": str(peb_output)}
+        write_json(pb_output / "provenance.json", provenance)
+        print(f"Starting PB exact, 1000 updates: {pb_output}", flush=True)
+        try:
+            trainer = train_case(case, mode="exact", stages=STAGES, output_dir=pb_output,
+                                 seed=0, device=args.device,
+                                 case_config={"horizon": 24, "template": "pb", "case_seed": 0,
+                                              "counts": [5, 40, 5], "solver_options": OPTIONS,
+                                              "error_cutoff": 0., "active_tol": 1e-5,
+                                              "scenario_sha256": scene["scenario_sha256"],
+                                              "box_dir": str(box_output)})
+            if len(trainer.loss_history) != 1000:
+                raise RuntimeError("PB training did not perform exactly 1000 updates")
+            # No NumPy draws occur between the last direction and train_case's
+            # return; this checks the consumed direction sequence, not just seed.
+            expected_rng = np.random.RandomState(0)
+            expected_rng.randn(1000, 24)
+            np.testing.assert_array_equal(np.random.randn(24), expected_rng.randn(24))
+            with np.load(pb_output / "final_polytope.npz", allow_pickle=False) as saved:
+                final = {key: saved[key].copy() for key in ("A", "b")}
+            np.savez(pb_output / "final_polytope.npz", **final,
+                     **common_archive(agg, scene, "pb_exact"), training_seed=0)
+            provenance.update(status="completed", optimizer_updates=1000,
+                              random_stream_consumption_verified=True,
+                              final_polytope_sha256=digest(pb_output / "final_polytope.npz"))
+        except Exception as exc:
+            provenance.update(status="failed", failure=f"{type(exc).__name__}: {exc}")
+            raise
+        finally:
+            write_json(pb_output / "provenance.json", provenance)
+    print(f"Prepared PEB exact: {peb_output}\nPrepared PB inner: {box_output}\nPrepared PB exact: {pb_output}", flush=True)
+
+
+if __name__ == "__main__":
+    main()

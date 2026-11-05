@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "optimizer_updates": 1003,
+  "phase_end_updates": [
+    301,
+    502,
+    1003
+  ],
+  "scenario_sha256": "d9d71b533dcd1214df980431e6d2ed61a0887586b7c603efd371f76a888d2ee4",
+  "initial_forward_matches_archived_raw_initialization": true,
+  "training_directions_match_seed": true,
+  "finite_gradients": true,
+  "polytope_shape": [
+    384,
+    96
+  ],
+  "dtype": "torch.float32",
+  "elapsed_training_seconds": 3262.0634208000265
+}

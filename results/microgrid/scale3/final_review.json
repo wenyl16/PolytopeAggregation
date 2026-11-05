@@ -1,0 +1,25 @@
+{
+  "status": "passed",
+  "checked_at_utc": "2026-11-01T07:55:26.609965+00:00",
+  "current_experiment": "scale3 trained c=0.05; physical evaluation c=0; same perturbed reference",
+  "training_verification": {
+    "path": "training_verification.json",
+    "sha256": "341f4b71f09a6d7d88a066d5371f7d8e08f00c5afd3755110f098fc055848ddf"
+  },
+  "verification": {
+    "path": "verification.json",
+    "sha256": "9ed292f85c872cfff99570809f61a6dd28c651936f47487eb783be1864826a3c"
+  },
+  "current_summary": {
+    "path": "summary.json",
+    "sha256": "7ee10c46078fd66dde570355c283f68bdcd02b47f83275e355ff200b255ffe0e"
+  },
+  "historical_artifacts_note": [
+    "source_provenance.json",
+    "evaluation_source_provenance.json",
+    "attainability_recheck.json",
+    "attainability_recheck.npz",
+    "projection_recheck.json",
+    "old nominal-reference verification/report"
+  ]
+}

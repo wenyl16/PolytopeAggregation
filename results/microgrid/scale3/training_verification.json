@@ -1,0 +1,59 @@
+{
+  "status": "passed",
+  "checks": {
+    "scale3_T24_c005": true,
+    "original_21_devices": true,
+    "current_corrected_physical_model": true,
+    "2000_updates_and_phase_ends": true,
+    "three_phase_counts": true,
+    "uncertain_approx_seed42": true,
+    "training_distribution": true,
+    "float32_training": true,
+    "original_stage_settings": true,
+    "count_and_storage_acceleration": true,
+    "solver_protocol": true,
+    "history_feasibility_errors_2000_finite": true,
+    "history_optimality_errors_2000_finite": true,
+    "history_objective_history_2000_finite": true,
+    "history_surrogate_history_2000_finite": true,
+    "finite_positive_training_time": true,
+    "phase_timing_consistency": true,
+    "finite_final_geometry": true,
+    "executed_source_train_microgrid.py": true,
+    "executed_source_train_aggregation.py": true,
+    "executed_source_microgrid_case.py": true,
+    "executed_source_Approximator.py": true,
+    "executed_source_microgrid_count_solver.py": true,
+    "physical_profiles_match_training": true,
+    "training_solver_diagnostics_all_passed": true
+  },
+  "training_seconds": 2843.943294500001,
+  "setup_seconds": 4.1653756000014255,
+  "setup_plus_training_seconds": 2848.108670100002,
+  "phase_seconds": [
+    1076.111499999999,
+    834.2290874999962,
+    933.6027010999969
+  ],
+  "source_configuration_sha256": "ec2d194765f489ee5b3b507af2dfdbfa52c7829ad108cbe7a35c04a67222a222",
+  "weights_sha256": "0ff677318b8f635614666980065380aa3109d45bf97b69d1b0898b55a2a3991e",
+  "solver_diagnostics": {
+    "status": "passed",
+    "checks": {
+      "exact_physical_solve_count": true,
+      "all_physical_solves_optimal": true,
+      "no_nonoptimal_solves": true,
+      "no_solver_exceptions": true,
+      "unrelaxed_physical_integer_domain": true,
+      "all_original_binary_variables_360": true
+    },
+    "expected_physical_solves": 20000,
+    "recorded_solve_count": 20000,
+    "recorded_rows": 20000,
+    "nonoptimal_solves": 0,
+    "exception_count": 0,
+    "physical_integer_constraints": "unrelaxed",
+    "solver_diagnostics_sha256": "74820bdf597a9284f90e4accd08860b4571ae6766a11ecb2766f2a28d425eab9"
+  },
+  "additional_solves": 0
+}

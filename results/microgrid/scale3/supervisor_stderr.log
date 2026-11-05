@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "E:\OneDrive\Working\Research\12多种设备运行域聚合的通用框架\code\Simulator\runners\run_microgrid_scale.py", line 473, in <module>
+    main()
+  File "E:\OneDrive\Working\Research\12多种设备运行域聚合的通用框架\code\Simulator\runners\run_microgrid_scale.py", line 463, in main
+    pipeline.run(args.wait_training_pid)
+  File "E:\OneDrive\Working\Research\12多种设备运行域聚合的通用框架\code\Simulator\runners\run_microgrid_scale.py", line 435, in run
+    self.launch("verification", [sys.executable, "-u", str(VERIFIER), "--device-scale", str(self.device_scale), "--result-dir", str(self.output)])
+  File "E:\OneDrive\Working\Research\12多种设备运行域聚合的通用框架\code\Simulator\runners\run_microgrid_scale.py", line 365, in launch
+    self.wait(process.pid, stage, process=process,
+  File "E:\OneDrive\Working\Research\12多种设备运行域聚合的通用框架\code\Simulator\runners\run_microgrid_scale.py", line 333, in wait
+    raise RuntimeError(f"{stage} process {pid} exited with code {exit_code}")
+RuntimeError: verification process 18320 exited with code 1

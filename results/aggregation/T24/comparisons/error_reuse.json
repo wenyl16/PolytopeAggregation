@@ -1,0 +1,31 @@
+{
+  "source": "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\aggregation\\T24\\comparisons",
+  "source_metadata_sha256": "08077b6fcd9be0b69e7ddf7eb79a4b463c9ff19b4e851a7ae953e313c5884274",
+  "direction_seed": 1,
+  "num_error_samples": 5000,
+  "original_evaluation_sources_sha256": {
+    "Simulator/testers/evaluate_aggregation.py": "3f6fe487a580cc62eb35ada8a96cd35724cbc531909997f4719536195f5f1776",
+    "Simulator/evaluation.py": "502080f58cede229dfa3c27c1578e0147994a306442c232662417fed1d82d7a6",
+    "Simulator/evaluation_native.py": "004caed55c637baa08624c3c624820688c6f8c7305db07fd4dd680da5de0760b"
+  },
+  "bitwise_preserved_files": {
+    "directions.npy": "7f1ab3ff18e64b781605f070e457a7eaa6c5b7f7272ea9e2088f3dba9ca241a5",
+    "error_comparison.pkl": "8c7b29eaa8beb4ef5941377dc1293797e8e7a5c182c3d72130dc3c310cab95d6",
+    "error_samples.csv": "fafde84cf0eb6e0b8195619dbf34a064bf1a5a0f6a203995154b0216fb305fbb",
+    "peb_outer.npz": "5ae292d6aee23e2b9631177fb6b7c9931581cdd98ffa0c67ad510ead92c0fe0e",
+    "proposed_peb_exact_errors.npz": "135d04849f3b30d14d0e94e997d160d70b35688624f0bedb2d247818c454496f",
+    "proposed_pb_exact_errors.npz": "77f947ee3adf187ca727858e0dbca9be4a7f749f74f13aee0d6fb70ce3ca6f72",
+    "peb_inner_errors.npz": "6a60887a64c416d276cdb9a80a052638b4f8a9964ae0d96ab0817b056bf0c51b",
+    "pb_inner_errors.npz": "0977035b958933856f43c1bf6b15eafa359502c084d75a93381304132dabca27",
+    "cutting_plane_errors.npz": "190d62481bc14b480276859b0a64f07af2efd2390326b03f4f472b2a8f55a590",
+    "cutting_plane_modified_errors.npz": "dd18961944823a7c15df40ad0274fc828cfbf9a00c820ccbf4d9f44b9455646f",
+    "pve_errors.npz": "50d4008e16824241b3636ab5f8cb43699a3118a643ab792c98d1354f52c7ede2",
+    "pve_modified_errors.npz": "d0a51a0321ebd64680ea72ae80bfabd1875b597fc4e6e3e9a46118066c4bff1b",
+    "federated_peb_errors.npz": "c5243582fec931eeb25457d8a6e3151acfe0854b49d109b8ff3380e7fb0cc5e1",
+    "peb_outer_errors.npz": "8ede26b02c8ad23b761fb27b8327286126587c7d90322c50a4ea19765d874710",
+    "proposed_peb_exact_checkpoint.npz": "c82d4d2e5d766633826ce555369d7211217ac1f599aa702d411c13a45a902df2",
+    "proposed_peb_exact_progress.json": "486fe2a3cb7778f752f31ccc4be3b043230e771e9ec8bb0c5caae349e454e751",
+    "proposed_pb_exact_checkpoint.npz": "3d387c96c8a0ef76352cd8d9eb191a2e55636923338cdaa9ab9e1c4e22f2ee0e",
+    "proposed_pb_exact_progress.json": "ee88261909bf92b445de104f4381b1c4f92a93f6272cf0f51f2163a6190afe4b"
+  }
+}

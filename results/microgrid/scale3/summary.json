@@ -1,0 +1,56 @@
+{
+  "status": "completed",
+  "T": 24,
+  "device_counts": {
+    "MT": 3,
+    "PV": 3,
+    "TL": 3,
+    "CL": 3,
+    "ESS": 3,
+    "HP": 6
+  },
+  "training_conservativeness": 0.05,
+  "evaluation_conservativeness": 0.0,
+  "optimality_reference": "perturbed",
+  "paired_samples": 5000,
+  "mean_shift": 0.0,
+  "noise_scale": 0.05,
+  "metrics": {
+    "feasibility_error_rated": {
+      "mean": 3.6277083306545267e-10,
+      "max": 1.2632112749344785e-07
+    },
+    "optimality_error_rated": {
+      "mean": 0.5413613749253012,
+      "max": 0.7823528104250772
+    }
+  },
+  "training_seconds": 2843.943294500001,
+  "setup_seconds": 4.1653756000014255,
+  "setup_plus_training_seconds": 2848.108670100002,
+  "provenance": {
+    "executed_training_source_sha256": {
+      "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\Simulator\\runners\\train_microgrid.py": "4198f4a442cd742cd7fd7dae90018fc1aa5023f0a40e9ab9989c345d1ef007ba",
+      "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\Simulator\\runners\\train_aggregation.py": "6e9c3b56fc0a25a45d1bcc5bba7880d8b712f05a378b43236d16509d540eae9b",
+      "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\Simulator\\cases\\microgrid_case.py": "6443c234dc60828a734615e0c703efdda6fb63b7fcd2a456d07530eb5b708a5d",
+      "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\Simulator\\Approximator.py": "51234fa104781c8a6e1fece482ebe96db506fc04e82e49c06bde6f6448656610",
+      "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\Simulator\\microgrid_count_solver.py": "9988ae0f7eaeebee7f240fc6ca21f7a9a67f03a0ac725b255cb650560e9f1bd2"
+    },
+    "case_source_sha256": "6443c234dc60828a734615e0c703efdda6fb63b7fcd2a456d07530eb5b708a5d",
+    "evaluator_source_sha256": "816001e1fb42f6a807d302c37abe288a44b0e418e4e00d6bb454b90f9a3935f9",
+    "training_weights_sha256": "0ff677318b8f635614666980065380aa3109d45bf97b69d1b0898b55a2a3991e",
+    "historical_source_snapshot": "scale3/source_snapshot is retained for historical/nonconvexity experiments and is not the source used for this run.",
+    "historical_diagnostics_excluded": [
+      "source_provenance.json",
+      "evaluation_source_provenance.json",
+      "attainability_recheck.json",
+      "attainability_recheck.npz",
+      "projection_recheck.json",
+      "old nominal-reference verification/report"
+    ],
+    "sampling": "One np.random.randn(24) direction and one independent torch resource realization per pair, drawn before any solve.",
+    "reference": "Both geometric errors use exactly the same sampled physical realization; training c=.05, physical evaluation c=0.",
+    "metric_unit": "Sum of squared differences in fixed nominal normalized power coordinates; not percentage or RMSE."
+  },
+  "verification_status": "passed"
+}

@@ -1,0 +1,119 @@
+{
+  "status": "completed",
+  "method": "peb_inner",
+  "template_id": 1,
+  "scenario_sha256": "4aa952dedf9b099d1e8e806417c124199762e01a0157b2a102534cafb5ccf151",
+  "case": {
+    "aggregator_class": "Simulator.cases.aggregation_case_T24.Aggregator",
+    "case_seed": 0,
+    "T": 24,
+    "counts": [
+      5,
+      40,
+      5
+    ],
+    "discrete_rate": 0.0
+  },
+  "boundary_column_order": [
+    "PV",
+    "CL",
+    "TCL"
+  ],
+  "boundary_file_sha256": "7828655e93022878b978efa9fd6219511d1f5405953d427e2fd25a676eabab0b",
+  "boundary_matrix_sha256": {
+    "pmin": "61dea0779874a7a732595f0d9cd9a04726323ac95d8a7022d24bdbb0781107e5",
+    "pmax": "997221f4787464810ac1eeb29f26096538aff91111d8c4fdf200951b243d0c5f",
+    "emin": "904e0ed9a4ce2605f48a5aee4c61fd21876d31475a67b725e9db90b3a61d4a3a",
+    "emax": "2d8531917f56504fe830cf5914cd055475a8ceb5532d3155f1e8cd661dbb2f82"
+  },
+  "source_sha256": {
+    "Simulator\\runners\\prepare_inner_comparison.py": "1decb3cea29921441bffaa5ab30834d061678140c1dbef6ec88b5b38a04b7d23",
+    "Simulator\\runners\\prepare_exact_comparison.py": "8b33077ef0bc6e79eeced512d3c54ed145709807b742b67ab23549a25ce1140f",
+    "Simulator\\runners\\train_aggregation.py": "4915bf5005b7b4af97ec150377d698cdaf44ed0ac43f29cd3a8fe959b42b6634",
+    "Simulator\\cases\\aggregation.py": "417f11e4d7e1721bd65d63959a0dfba1ac7d35bac923f979b6b913d7ff4347a8",
+    "Simulator\\cases\\aggregation_case_T24.py": "20bfd4a2fa84a9a8f44bc8e714696c54753a5b117fb3d347e8727bfa69f407fa",
+    "Simulator\\matlab\\run_baseline.m": "42f0386abda8ac9c3fe9d50d30e12b96bfa2ca094989ed9edf545ef43c7cf9a4",
+    "Simulator\\matlab\\data\\Aggs_data.mat": "e30e291ee0ed4408f1a604c11678fdb8770816494ccead579ff5d59ef09fc9dc",
+    "Simulator\\matlab\\@Aggregator\\Aggregator.m": "0cb653ab52a6ffbb7b7313745cc2b1ada26c67cb94b09009f129a37b69f2f7ca",
+    "Simulator\\matlab\\@Aggregator\\cal_AFR1.m": "e5435819a707f56c3c1bfa503b21582a875cc1f6842e738743568e62301528bc",
+    "Simulator\\matlab\\@Aggregator\\cal_AFR2.m": "40520603b41678f890f53a510892f37b1b40845a818b261e464018ed7d5a20e5",
+    "Simulator\\matlab\\@Aggregator\\cal_AFRbox.m": "06b98523bb7b17df577d1fae39005aca5232242c1835a1e2e865fa5a624bfd3a",
+    "Simulator\\matlab\\@Aggregator\\cal_AFRwang.m": "f0acb059c6ab332ff38469923518a17b89650dd7774f036832e202da31928806",
+    "Simulator\\matlab\\@Aggregator\\cal_baseline.m": "6c685d37abfc0504e31511c9742a669d49429a48c7b6e68aa75166710d06c197",
+    "Simulator\\matlab\\@Aggregator\\gen_boundaries.m": "7a993666c37b51e1e590d1f4f0222783220e6352e735ed3048912928ef9bef89",
+    "Simulator\\matlab\\@Aggregator\\gen_ESS.m": "403c31fdd23cf8986ba2789610b8467ab58dd0167539dc6e225813df353e02e0",
+    "Simulator\\matlab\\@Aggregator\\gen_EV.m": "8a73f927d8eaa9e4c72ad3932e096bb8e916027b1b609c6192c55a19e2d7ceff",
+    "Simulator\\matlab\\@Aggregator\\gen_HVAC.m": "77e1bd718e97fb32111763d052ac8db4ad7a00a0a24644359553cb7eb5e7e5ec",
+    "Simulator\\matlab\\@Aggregator\\gen_PV.m": "74479e6628b547d43608d04d7f04f667e415d32eb990d8e616fe6e72b98f21be",
+    "Simulator\\matlab\\@Aggregator\\innerapprox_mine.m": "04281fffc83bf5330979924f7b55e5c877fe4f425e43f99e40f3f604a2699659"
+  },
+  "algorithm": "Original MATLAB run_baseline(template_id=1) and innerapprox_mine; CPLEX; original 20-round cap and 1e-4 stopping tolerance",
+  "model_limitation": "The original MATLAB PEB-inner method operates on per-device power and ordinary cumulative-energy envelopes from gen_boundaries(). For TCLs these envelopes are a surrogate, not equivalent to the original exponentially decaying temperature dynamics in case_aggregator(). gen_boundaries advances temperature at t=0 while case_aggregator fixes the initial temperature and starts transitions at t=1. Consequently inner describes the surrogate approximation; feasibility against the original device model must be measured separately.",
+  "legacy_200_second_baseline_audit": {
+    "source_ast_checks": {
+      "gen_CL_ast_equal": true,
+      "gen_PV_ast_equal": true,
+      "device_model_ast_equal": true,
+      "gen_TCL_after_removing_input_path_ast_equal": true
+    },
+    "source_sha256": {
+      "Simulator_v6\\cases\\aggregation_case.py": "18e053236b02640a258de2639c28d86d9a1ca58befaac8d828aa5e3a025abc8b",
+      "Simulator\\cases\\aggregation.py": "417f11e4d7e1721bd65d63959a0dfba1ac7d35bac923f979b6b913d7ff4347a8"
+    },
+    "archives": {
+      "cutting_plane": {
+        "path": "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\aggregation\\T24\\baselines\\cutting plane\\cutting_plane.npz",
+        "sha256": "61b5fabd4ed6ff39ef35828ed7821005c0031bf5fde10b62dff40f667bba75a8",
+        "metadata_and_full_physical_coordinate_checks": "passed"
+      },
+      "cutting_plane_modified": {
+        "path": "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\aggregation\\T24\\baselines\\cutting plane\\cutting_plane_modified.npz",
+        "sha256": "ca8d5969a485715c0e4e0d765717bd8e49df04ab508ed8c6efec34dc5956da94",
+        "metadata_and_full_physical_coordinate_checks": "passed"
+      },
+      "pve": {
+        "path": "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\aggregation\\T24\\baselines\\pve\\pve.npz",
+        "sha256": "35a4267efeb53a5b56a3f3cbfeebe29a72e041af0c6575e2937df078f37cd988",
+        "metadata_and_full_physical_coordinate_checks": "passed"
+      },
+      "pve_modified": {
+        "path": "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\aggregation\\T24\\baselines\\pve\\pve_modified.npz",
+        "sha256": "7d71e528aa86e93b3a4786831661f8c8bec8a647aeab6c0c776d1032b91fd405",
+        "metadata_and_full_physical_coordinate_checks": "passed"
+      }
+    }
+  },
+  "matlab_command": [
+    "D:\\MATLAB2024b\\bin\\matlab.exe",
+    "-batch",
+    "disp(version); fprintf('PEB_INNER_STARTED %s\\n',datestr(now,31)); addpath('E:/OneDrive/Working/Research/12多种设备运行域聚合的通用框架/code/Simulator/matlab'); [polytope,diagnostics]=run_baseline(1,'E:/OneDrive/Working/Research/12多种设备运行域聚合的通用框架/code/results/aggregation/T24/baselines/matlab/verified_case0/boundaries.mat','E:/OneDrive/Working/Research/12多种设备运行域聚合的通用框架/code/results/aggregation/T24/baselines/matlab/verified_case0/polytope_params.mat'); disp(diagnostics); fprintf('PEB_INNER_FINISHED %s\\n',datestr(now,31))"
+  ],
+  "elapsed_seconds": 30.01091929996619,
+  "algorithm_converged": true,
+  "termination": "stopping_tolerance",
+  "matlab_diagnostics": [
+    {
+      "errors": [
+        1062.7016443280531,
+        686.9071114266794,
+        448.00221311112233,
+        181.81057040453746,
+        94.06414033729519,
+        47.67341152537103,
+        21.973694824415034,
+        3.725290298461914e-08
+      ],
+      "iterations": 8,
+      "converged": true,
+      "solvertime": 8.425194999999999
+    }
+  ],
+  "final_polytope_sha256": "ec93664882a1dbf010154657860c80ba6c1d3a47d33890f10580768f28f03989",
+  "matlab_result_sha256": "6e2bd3f9a18a53784509775db6d6538e4f1bcc0631034c1c4dc5acaba7f4771b",
+  "matlab_log_sha256": "75b1830bba142ec5e817fc212e22fc7ac118f79651f208c3009b52b317fcfb8a",
+  "final_shape": [
+    96,
+    24
+  ],
+  "validation": "finite; exact archive reload; existing .mat loader row normalization"
+}

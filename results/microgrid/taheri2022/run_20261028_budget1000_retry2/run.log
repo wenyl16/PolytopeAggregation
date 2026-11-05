@@ -1,0 +1,16 @@
+{"stage": "building_physical_oracle", "utc": "2026-10-28T10:16:04Z"}
+MT (MicroTurbine) generated
+PV (Photovoltaic) generated
+TL (Transferable Load) generated
+CL (Interruptible Load) generated
+ESS (Energy Storage System) generated
+HP (Heat Pump/Air Conditioning) generated
+Set parameter Username
+Set parameter LicenseID to value 2837180
+Academic license - for non-commercial use only - expires 2027-06-20
+{"stage": "labeling", "utc": "2026-10-28T10:16:04Z", "data_seconds": 166.03280487757175, "target_points": 7244, "K": 25}
+{"stage": "data_checkpoint", "utc": "2026-10-28T10:18:50Z", "samples": 2106, "feasible": 1047, "infeasible": 1059, "remaining_seconds": 179.9016768282745}
+{"stage": "fitting_sdp", "utc": "2026-10-28T10:18:50Z", "time_limit": 90.0}
+{"stage": "geometry_or_sdp_incomplete", "utc": "2026-10-28T10:18:58Z", "geometry": "row_guard", "classifier": "optimal"}
+{"stage": "evaluating_intermediate_ellipsoid", "utc": "2026-10-28T10:18:58Z"}
+{"stage": "finished", "utc": "2026-10-28T10:19:39Z", "elapsed_seconds": 215.9220000000205, "final_polytope_available": false}

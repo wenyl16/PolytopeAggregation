@@ -1,0 +1,529 @@
+"""Compare the ordinary T24 training budget with twice as many stage updates.
+
+Both budgets use the unmodified exact-gradient Trainer and its default error
+cutoff. The default three-stage runner executes 301/201/501 actual updates;
+the doubled budget executes 602/402/1002; both start their final stage at lr=1.
+All four final regions are evaluated on the same 1000 seed-3 directions.
+One identified experiment directory is overwritten on subsequent runs.
+"""
+
+import argparse
+from datetime import datetime, timezone
+import hashlib
+import json
+import os
+from pathlib import Path
+import pickle
+import shutil
+import sys
+
+if __package__ in (None, ""):
+    sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+os.environ.setdefault("KMP_DUPLICATE_LIB_OK", "TRUE")
+
+import numpy as np
+import torch
+
+from Simulator.Approximator import PreTrainNet
+from Simulator.testers.compute_polytope_errors_and_costs_gurobi import SOLVER_OPTIONS, evaluate_native
+from Simulator.paths import CODE_ROOT, RESULTS_ROOT
+from Simulator.runners.compare_training_stages import clear_owned_directory, comparison_stages, digest, history_stats, metric_stats, write_json
+from Simulator.runners.train_aggregation import common_archive, scenario
+from Simulator.runners.train_aggregation import build_aggregator, build_stages, train_case
+from Simulator.testers.compare_aggregation_methods import verify_scenario
+
+
+EXPERIMENT = "t24-exact-standard-vs-doubled-stage-updates-v1"
+BASE = RESULTS_ROOT / "aggregation" / "T24" / "training_budget_comparison"
+TEMPLATES = ("peb", "pb")
+BUDGETS = {"standard": 1, "doubled": 2}
+EVALUATION_SEED = 3
+EVALUATION_SAMPLES = 1000
+
+
+def source_hashes():
+    names = ("runners/compare_training_budgets.py", "runners/train_aggregation.py",
+             "runners/compare_training_stages.py", "testers/compare_aggregation_methods.py", "Approximator.py", "testers/compute_polytope_errors_and_costs_gurobi.py",
+             "cases/aggregation.py", "cases/aggregation_case_T24.py")
+    return {"Simulator/" + name: digest(CODE_ROOT / "Simulator" / name) for name in names}
+
+
+def prepare_output(templates, *, training_seed, device, sources, resume=False):
+    """Clear only requested templates belonging to this identified experiment."""
+    base, root = BASE.resolve(), RESULTS_ROOT.resolve()
+    if not base.is_relative_to(root) or len(base.relative_to(root).parts) < 3:
+        raise ValueError("Training-budget output must be a true experiment directory inside results")
+    if BASE.is_symlink():
+        raise ValueError(f"Refusing a symlink experiment directory: {BASE}")
+    previous, summary = {}, {"experiment": EXPERIMENT, "training": {}, "evaluation": {}}
+    if base.exists() and any(base.iterdir()):
+        marker = base / "metadata.json"
+        if (not marker.is_file() or
+                json.loads(marker.read_text(encoding="utf-8")).get("experiment") != EXPERIMENT):
+            raise FileExistsError(f"Refusing to overwrite an unidentified experiment: {base}")
+        previous = json.loads(marker.read_text(encoding="utf-8"))
+        if resume:
+            if previous.get("training_seed") != training_seed or previous.get("device") != device:
+                raise ValueError("Resume seed or device differs from the saved experiment")
+            allowed = {"Simulator/runners/compare_training_budgets.py", "Simulator/Approximator.py"}
+            old_sources = previous.get("source_sha256", {})
+            changed = {key for key in set(old_sources) | set(sources)
+                       if old_sources.get(key) != sources.get(key)}
+            if changed - allowed:
+                raise ValueError(f"Resume source changes are not numerical-retry/runner changes: {sorted(changed - allowed)}")
+        retained = set(previous.get("templates", [])) - set(templates)
+        if not resume and retained and (previous.get("training_seed") != training_seed or
+                         previous.get("device") != device or
+                         previous.get("source_sha256") != sources):
+            raise ValueError("Retained template has a different seed, device or source; rerun --template both")
+        if (base / "summary.json").is_file():
+            summary = json.loads((base / "summary.json").read_text(encoding="utf-8"))
+        if resume:
+            return base, previous, summary
+        for template in templates:
+            owned = base / template
+            if owned.exists():
+                if owned.is_symlink() or owned.resolve().parent != base:
+                    raise ValueError(f"Refusing to remove a template directory outside {base}: {owned}")
+                clear_owned_directory(owned)
+        for relative in ("figures/training_budget_comparison.pdf", "figures/error_comparison.pdf",
+                         "figures/error_budget_comparison.pdf"):
+            owned = base / relative
+            if owned.exists():
+                if not owned.resolve().is_relative_to(base) or not owned.is_file():
+                    raise ValueError(f"Unsafe experiment output: {owned}")
+                if owned.suffix.lower() != ".pdf":
+                    owned.unlink()
+        for filename in ("verification.json", "independent_recheck.json", "independent_coordinates.npz"):
+            path = base / filename
+            if path.is_file():
+                path.unlink()
+    if resume:
+        raise FileNotFoundError(f"No identified training-budget experiment to resume: {base}")
+    base.mkdir(parents=True, exist_ok=True)
+    for category in ("training", "evaluation"):
+        for template in templates:
+            summary.setdefault(category, {}).pop(template, None)
+    return base, previous, summary
+
+
+def check_training_files(output, stages, template):
+    """Check actual optimizer updates and the complete saved training payload."""
+    expected = sum(n + 1 for n, _lr, _weight in stages)
+    ends = np.cumsum([n + 1 for n, _lr, _weight in stages]).tolist()
+    config = json.loads((output / "training_config.json").read_text(encoding="utf-8"))
+    if (config["status"] != "completed" or config["optimizer_updates"] != expected or
+            config["phase_end_updates"] != ends):
+        raise RuntimeError(f"Unexpected completion/update counts: {output}")
+    if [call["optimizer_updates"] for call in config["train_calls"]] != [n + 1 for n, _, _ in stages]:
+        raise RuntimeError(f"Unexpected per-stage update counts: {output}")
+    with np.load(output / "final_polytope.npz", allow_pickle=False) as saved:
+        region = {key: saved[key].copy() for key in ("A", "b")}
+    rows = 94 if template == "peb" else 48
+    if region["A"].shape != (rows, 24) or region["b"].shape != (rows,):
+        raise RuntimeError(f"Unexpected final polytope shape: {output}")
+    if not all(np.isfinite(value).all() for value in region.values()):
+        raise RuntimeError(f"Nonfinite final region: {output}")
+    state = torch.load(output / "pretrainnet_weights.pth", map_location="cpu", weights_only=True)
+    if not state or not all(value.dtype == torch.float64 and torch.isfinite(value).all().item()
+                            for value in state.values()):
+        raise RuntimeError(f"Nonfinite or empty final weights: {output}")
+    model = PreTrainNet(state["A_net.0.bias"].reshape(rows, 24).numpy(),
+                       state["b_net.0.bias"].numpy()).double()
+    model.load_state_dict(state)
+    with torch.no_grad():
+        weights_A, weights_b = model()
+    np.testing.assert_array_equal(weights_A[0].numpy(), region["A"])
+    np.testing.assert_array_equal(weights_b[0].numpy(), region["b"])
+    with (output / "error_history.pkl").open("rb") as stream:
+        history = pickle.load(stream)
+    for key in ("feasibility_errors", "optimality_errors", "objective_history"):
+        values = np.asarray(history[key], dtype=float)
+        if values.shape != (expected,) or not np.isfinite(values).all():
+            raise RuntimeError(f"Invalid saved training history {key}: {output}")
+        if key != "objective_history" and np.any(values < 0):
+            raise RuntimeError(f"Negative distance in {key}: {output}")
+    return config, region, history
+
+
+def check_saved_protocol(config, stages, template, args, scene, initial_source):
+    expected = {"horizon": 24, "counts": [5, 40, 5], "case_seed": 0,
+                "template": template, "schedule": "three-stage", "error_cutoff": 1e-8,
+                "scenario_sha256": scene["scenario_sha256"], "training_seed": args.training_seed,
+                "gradient_mode": args.mode, "dtype": "torch.float64", "network": "PreTrainNet",
+                "is_uncertain": False, "solver_threads": 1, "solver_seed": 0,
+                "initialization_source": initial_source,
+                "stage_multiplier": sum(n + 1 for n, _, _ in stages) // 1003,
+                "stages": [{"n_train": n, "epochs": n + 1, "lr": lr, "rate_opt_feas": weight}
+                           for n, lr, weight in stages]}
+    for key, value in expected.items():
+        if config.get(key) != value:
+            raise ValueError(f"Saved training protocol differs for {template}: {key}")
+
+
+def check_initial_snapshot(target, case):
+    model = PreTrainNet(case["A_hat"], case["b_hat"]).double()
+    with torch.no_grad():
+        A, b = model()
+    for stem, expected in (("A", A[0].numpy()), ("b", b[0].numpy())):
+        np.testing.assert_array_equal(np.loadtxt(target / "snapshots" / f"{stem}_0.csv", delimiter=","), expected)
+
+
+def reuse_stage_control(target, case, stages, args, scene, initial_source, agg):
+    """Reuse only a completed, identically parameterized 1003-update PEB fit."""
+    source = RESULTS_ROOT / "aggregation" / "T24" / "stage_comparison" / "three_stage"
+    config_path = source / "training_config.json"
+    if not config_path.is_file():
+        return None
+    config = json.loads(config_path.read_text(encoding="utf-8"))
+    expected_stages = [{"n_train": n, "epochs": n + 1, "lr": lr, "rate_opt_feas": weight}
+                       for n, lr, weight in stages]
+    if (config.get("status") != "completed" or config.get("stages") != expected_stages
+            or config.get("training_seed") != args.training_seed or config.get("gradient_mode") != "exact"
+            or config.get("scenario_sha256") != scene["scenario_sha256"]
+            or config.get("error_cutoff") != 1e-8 or config.get("final_stage_initial_lr") != 1.):
+        return None
+    check_initial_snapshot(source, case)
+    _, region, history = check_training_files(source, stages, "peb")
+    directions = np.load(source / "training_directions.npy", allow_pickle=False)
+    np.testing.assert_array_equal(directions, np.random.RandomState(args.training_seed).randn(1003, 24))
+    files = [source / name for name in ("training_config.json", "metadata.pkl", "pretrainnet_weights.pth",
+                                       "final_polytope.npz", "error_history.pkl", "projection_retries.json")]
+    files.extend(path for path in (source / "snapshots").glob("*.csv") if path.is_file())
+    hashes = {str(path.relative_to(source)): digest(path) for path in files}
+    for path in files:
+        destination = target / path.relative_to(source)
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(path, destination)
+        if digest(destination) != digest(path):
+            raise RuntimeError("Copied shared three-stage result differs from its source")
+    np.save(target / "directions.npy", directions)
+    config.update(stage_multiplier=1, initialization_source=initial_source, solver_threads=1, solver_seed=0,
+                  reused_training_source=str(source), reused_training_source_files_sha256=hashes)
+    np.savez(target / "final_polytope.npz", **region,
+             **common_archive(agg, scene, "peb_standard"), training_seed=args.training_seed,
+             optimizer_updates=1003, final_stage_initial_lr=1.)
+    write_json(target / "training_config.json", config)
+    check_saved_protocol(config, stages, "peb", args, scene, initial_source)
+    return config, region, history, directions
+
+
+def main(argv=None):
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--template", choices=(*TEMPLATES, "both"), default="both")
+    parser.add_argument("--mode", choices=("exact",), default="exact",
+                        help="This controlled experiment currently supports exact gradients only")
+    parser.add_argument("--training-seed", type=int, default=0)
+    parser.add_argument("--device", default="cpu")
+    parser.add_argument("--resume", action="store_true",
+                        help="Reuse verified completed training/checkpoints; restart only incomplete budgets")
+    args = parser.parse_args(argv)
+    templates = TEMPLATES if args.template == "both" else (args.template,)
+    stages = {name: comparison_stages(multiplier=multiplier)
+              for name, multiplier in BUDGETS.items()}
+    expected_updates = {name: sum(n + 1 for n, _, _ in values) for name, values in stages.items()}
+    if expected_updates != {"standard": 1003, "doubled": 2006}:
+        raise RuntimeError(f"Unexpected standard/doubled update budgets: {expected_updates}")
+    directions = np.random.RandomState(EVALUATION_SEED).randn(EVALUATION_SAMPLES, 24)
+    sources = source_hashes()
+    output, previous, summary = prepare_output(templates, training_seed=args.training_seed,
+                                                device=args.device, sources=sources, resume=args.resume)
+    selected = {f"{template}/{budget}" for template in templates for budget in BUDGETS}
+    retained = set(previous.get("templates", [])) - set(templates)
+    evaluation_path = output / "evaluation_directions.npy"
+    if evaluation_path.exists():
+        np.testing.assert_array_equal(np.load(evaluation_path, allow_pickle=False), directions)
+    elif args.resume:
+        raise FileNotFoundError(f"Resume requires saved evaluation directions: {evaluation_path}")
+    else:
+        np.save(evaluation_path, directions)
+    if args.resume:
+        for key, value in (("horizon", 24), ("counts", [5, 40, 5]), ("case_seed", 0),
+                           ("gradient_mode", args.mode), ("optimizer_updates", expected_updates),
+                           ("evaluation_seed", EVALUATION_SEED), ("evaluation_samples", EVALUATION_SAMPLES),
+                           ("evaluation_direction_file_sha256", digest(evaluation_path))):
+            if previous.get(key) != value:
+                raise ValueError(f"Saved experiment protocol differs: {key}")
+        if previous.get("schedules") != {name: [list(stage) for stage in values]
+                                         for name, values in stages.items()}:
+            raise ValueError("Saved stage schedules differ")
+    metadata = {**previous, "experiment": EXPERIMENT, "status": "running", "horizon": 24,
+                "counts": [5, 40, 5], "case_seed": 0, "training_seed": args.training_seed,
+                "gradient_mode": args.mode, "device": args.device,
+                "templates": [name for name in TEMPLATES if name in set(templates) | retained],
+                "selected_templates": list(templates), "optimizer_updates": expected_updates,
+                "schedules": stages, "scheduler": {"type": "StepLR", "step_size": 100, "gamma": 0.98},
+                "training_error_cutoff": {"feas_tol": 1e-8, "opt_tol": 1e-8},
+                "final_stage_initial_lr": 1.,
+                "training_note": "Only per-stage actual update counts are multiplied. Both final stages start at lr=1; "
+                                 "weights, error cutoffs, ordinary Trainer and per-stage StepLR are unchanged.",
+                "historical_result_note": "The retained nine-method training has 1000 updates; "
+                                          "this experiment freshly compares the current runner's "
+                                          "1003-update default with 2006 updates.",
+                "evaluation_samples": EVALUATION_SAMPLES, "evaluation_seed": EVALUATION_SEED,
+                "evaluation_direction_file_sha256": digest(evaluation_path),
+                "evaluation_solver_options": SOLVER_OPTIONS, "source_sha256": sources,
+                "started_at_utc": datetime.now(timezone.utc).isoformat(),
+                "result_policy": "One fixed training-budget experiment; selected templates overwrite in place",
+                "completed_training": [name for name in previous.get("completed_training", []) if name not in selected],
+                "completed_evaluation": [name for name in previous.get("completed_evaluation", []) if name not in selected]}
+    metadata["projection_retry_policy"] = {
+        "projection_only": True, "retry_methods": [1, 0], "require_optimal": True,
+        "same_objective_constraints_and_tolerances": True,
+        "restore_original_solver_options": True,
+        "note": "Failed projection solves may retry the identical QP with another numerical method; "
+                "no error, gradient, constraint or tolerance is replaced or relaxed."}
+    if args.resume:
+        metadata["resume_history"] = [*previous.get("resume_history", []), {
+            "resumed_at_utc": datetime.now(timezone.utc).isoformat(),
+            "previous_status": previous.get("status"), "previous_phase": previous.get("phase"),
+            "previous_failure": previous.get("failure"),
+            "previous_source_sha256": previous.get("source_sha256", {}), "current_source_sha256": sources,
+            "reused_completed_training": [], "restarted_incomplete_training": []}]
+    for key in ("failure", "completed_at_utc"):
+        metadata.pop(key, None)
+    metadata.setdefault("native_evaluation", {})
+    metadata.setdefault("template_checks", {})
+    for template in templates:
+        metadata["native_evaluation"].pop(template, None)
+        metadata["template_checks"].pop(template, None)
+    metadata_path = output / "metadata.json"
+    write_json(metadata_path, metadata)
+    try:
+        agg = build_aggregator(24, 0)
+        # Physical normalization is populated when the actual model is built;
+        # build_only avoids unnecessary initial support-LP solves here.
+        agg.case_aggregator(build_only=True)
+        scene = scenario(agg)
+        if args.resume:
+            # Compare the full generated scene, including every input hash and
+            # physical normalization, before reusing or removing any budget.
+            current_scene = json.loads(json.dumps(scene, default=lambda value: value.tolist()))
+            if current_scene != previous.get("scene"):
+                raise ValueError("Resume physical scene or its input data differs")
+        metadata["scene"] = scene
+        metadata["scenario_sha256"] = scene["scenario_sha256"]
+        # PB goes first while the independent stage-comparison process produces
+        # its identically parameterized PEB standard-budget control.
+        for template in sorted(templates, key=lambda value: value != "pb"):
+            template_output = output / template
+            if template_output.exists() and (template_output.is_symlink() or
+                                               template_output.resolve().parent != output.resolve()):
+                raise ValueError(f"Unsafe resume template directory: {template_output}")
+            template_output.mkdir(exist_ok=True)
+            if template == "peb":
+                cumulative = np.tril(np.ones((24, 24)))
+                cumulative /= cumulative.sum(axis=1, keepdims=True)
+                initial_A = np.vstack((np.eye(24), -np.eye(24), cumulative[1:], -cumulative[1:]))
+                initial_b = None
+                initial_source = "Exact PEB 94-row template from train_aggregation.main"
+            else:
+                box = RESULTS_ROOT / "aggregation" / "T24" / "baselines" / "box" / "verified_case0"
+                verify_scenario(box, agg, 0, required=True)
+                initial_A = np.loadtxt(box / "A_cube.csv", delimiter=",")
+                initial_b = np.loadtxt(box / "b_cube.csv", delimiter=",").reshape(-1)
+                if initial_A.shape != (48, 24) or initial_b.shape != (48,):
+                    raise RuntimeError("Verified PB initialization does not have 48 rows and 24 coordinates")
+                initial_source = str(box.resolve())
+            original = agg.case_aggregator(A=initial_A, b=initial_b,
+                                           gradient_mode=args.mode, template=template)
+            initial_path = template_output / "initial_polytope.npz"
+            if args.resume and initial_path.exists():
+                with np.load(initial_path, allow_pickle=False) as saved:
+                    for key in ("A_hat", "b_hat"):
+                        np.testing.assert_array_equal(saved[key[0]], original[key])
+            else:
+                np.savez(initial_path, A=original["A_hat"], b=original["b_hat"])
+            # Copy before either budget can change the learned approximation.
+            cases = {name: {**original, "A_hat": original["A_hat"].copy(),
+                            "b_hat": original["b_hat"].copy(),
+                            "trainer_configure": dict(original["trainer_configure"]),
+                            "errorcalculator": original["errorcalculator"].copy()} for name in BUDGETS}
+            final_regions, trained_directions = {}, {}
+            summary["training"][template] = {}
+            summary["evaluation"][template] = {}
+            for name, multiplier in BUDGETS.items():
+                target, case = template_output / name, cases[name]
+                if args.resume and target.exists():
+                    if (target.is_symlink() or target.resolve().parent != template_output.resolve() or
+                            template_output.resolve().parent != output.resolve()):
+                        raise ValueError(f"Unsafe resume training directory: {target}")
+                    config_path = target / "training_config.json"
+                    config = json.loads(config_path.read_text(encoding="utf-8"))
+                    check_saved_protocol(config, stages[name], template, args, scene, initial_source)
+                    check_initial_snapshot(target, case)
+                    if config["status"] == "completed":
+                        config, final_regions[name], history = check_training_files(target, stages[name], template)
+                        used = np.load(target / "directions.npy", allow_pickle=False)
+                        np.testing.assert_array_equal(used, np.random.RandomState(args.training_seed).randn(expected_updates[name], 24))
+                        trained_directions[name] = used
+                        summary["training"][template][name] = {
+                            "elapsed_seconds": config["elapsed_seconds"], "updates": config["optimizer_updates"],
+                            "phase_end_updates": config["phase_end_updates"],
+                            "feasibility_errors": history_stats(history["feasibility_errors"]),
+                            "optimality_errors": history_stats(history["optimality_errors"])}
+                        metadata["completed_training"].append(f"{template}/{name}")
+                        metadata["resume_history"][-1]["reused_completed_training"].append(f"{template}/{name}")
+                        summary["training"][template][name]["projection_retries"] = (
+                            json.loads((target / "projection_retries.json").read_text(encoding="utf-8"))
+                            if (target / "projection_retries.json").is_file() else
+                            {"status": "not_recorded_with_previous_solver_implementation"})
+                        write_json(output / "summary.json", summary)
+                        write_json(metadata_path, metadata)
+                        print(f"Reusing verified completed training: {template}/{name}", flush=True)
+                        continue
+                    if config["status"] not in ("failed", "running"):
+                        raise ValueError(f"Unknown incomplete training status: {target}")
+                    metadata["resume_history"][-1]["restarted_incomplete_training"].append({
+                        "name": f"{template}/{name}", "previous_config": config,
+                        "previous_training_config_sha256": digest(config_path)})
+                    # Canonical parent checks above keep this recursive removal
+                    # inside the single, identified incomplete budget directory.
+                    clear_owned_directory(target)
+                target.mkdir(exist_ok=True)
+                reused = (reuse_stage_control(target, case, stages[name], args, scene, initial_source, agg)
+                          if template == "peb" and name == "standard" and not args.resume else None)
+                if reused is not None:
+                    config, final_regions[name], history, used = reused
+                    trained_directions[name] = used
+                    summary["training"][template][name] = {
+                        "elapsed_seconds": config["elapsed_seconds"], "updates": config["optimizer_updates"],
+                        "phase_end_updates": config["phase_end_updates"], "reused_training": True,
+                        "reused_training_source": config["reused_training_source"],
+                        "projection_retries": json.loads((target / "projection_retries.json").read_text(encoding="utf-8")),
+                        "feasibility_errors": history_stats(history["feasibility_errors"]),
+                        "optimality_errors": history_stats(history["optimality_errors"])}
+                    metadata["completed_training"].append(f"{template}/{name}")
+                    write_json(output / "summary.json", summary)
+                    write_json(metadata_path, metadata)
+                    print("Reused identical stage_comparison/three_stage for peb/standard", flush=True)
+                    continue
+                calculator = case["errorcalculator"]
+                for solver in (calculator.solver, calculator.cvx_solver):
+                    solver.options.update(SOLVER_OPTIONS)
+                recorded = []
+                calculate = calculator.calculate
+
+                def calculate_with_record(*positional, _calculate=calculate, **kwargs):
+                    if kwargs.get("directions") is None:
+                        raise RuntimeError("The ordinary Trainer must pass explicit directions")
+                    used = np.asarray(kwargs["directions"], dtype=float).copy()
+                    values = _calculate(*positional, **kwargs)
+                    recorded.append(used)
+                    return values
+
+                calculator.calculate = calculate_with_record
+                metadata["phase"] = f"training:{template}/{name}"
+                write_json(metadata_path, metadata)
+                print(f"Starting {template}/{name}: {expected_updates[name]} updates; stages={stages[name]}", flush=True)
+                try:
+                    trainer = train_case(case, mode=args.mode, stages=stages[name], output_dir=target,
+                                         seed=args.training_seed, device=args.device,
+                                         case_config={"horizon": 24, "counts": [5, 40, 5], "case_seed": 0,
+                                                      "template": template, "schedule": "three-stage",
+                                                      "stage_multiplier": multiplier,
+                                                      "error_cutoff": 1e-8,
+                                                      "final_stage_initial_lr": 1.,
+                                                      "source_sha256": metadata["source_sha256"],
+                                                      "scenario_sha256": scene["scenario_sha256"],
+                                                      "initialization_source": initial_source,
+                                                      "solver_threads": 1, "solver_seed": 0})
+                finally:
+                    used = np.concatenate(recorded, axis=0) if recorded else np.empty((0, 24))
+                    np.save(target / "directions.npy", used)
+                    records = getattr(calculator, "projection_retry_records", None)
+                    retry_report = ({"status": "recorded", "retry_count": sum(len(record["attempts"]) for record in records),
+                                     "records": records} if records is not None else
+                                    {"status": "not_recorded_with_previous_solver_implementation"})
+                    write_json(target / "projection_retries.json", retry_report)
+                expected = np.random.RandomState(args.training_seed).randn(expected_updates[name], 24)
+                np.testing.assert_array_equal(used, expected)
+                trained_directions[name] = used
+                config, final_regions[name], history = check_training_files(target, stages[name], template)
+                if not np.isfinite(np.asarray(trainer.grad_history)).all():
+                    raise RuntimeError(f"Nonfinite training gradient: {template}/{name}")
+                if calculator.params["feas_tol"] != 1e-8 or calculator.params["opt_tol"] != 1e-8:
+                    raise RuntimeError("The ordinary Trainer's default error cutoff changed")
+                history["gradient_norms"] = np.asarray(trainer.grad_history, dtype=float)
+                with (target / "error_history.pkl").open("wb") as stream:
+                    pickle.dump(history, stream)
+                config.update(final_stage_initial_lr=1., scheduler_last_epoch=int(trainer.scheduler.last_epoch),
+                              scheduler_step_count=int(trainer.scheduler.state_dict()["_step_count"]),
+                              final_learning_rates=[float(group["lr"]) for group in trainer.optimizer.param_groups],
+                              finite_gradient_norms_verified=True, actual_training_directions_verified=True)
+                write_json(target / "training_config.json", config)
+                np.savez(target / "final_polytope.npz", **final_regions[name],
+                         **common_archive(agg, scene, template + "_" + name),
+                         training_seed=args.training_seed, optimizer_updates=expected_updates[name], final_stage_initial_lr=1.)
+                summary["training"][template][name] = {
+                    "elapsed_seconds": config["elapsed_seconds"], "updates": config["optimizer_updates"],
+                    "phase_end_updates": config["phase_end_updates"],
+                    "projection_retries": retry_report,
+                    "feasibility_errors": history_stats(history["feasibility_errors"]),
+                    "optimality_errors": history_stats(history["optimality_errors"])}
+                metadata["completed_training"].append(f"{template}/{name}")
+                write_json(output / "summary.json", summary)
+                write_json(metadata_path, metadata)
+            np.testing.assert_array_equal(trained_directions["standard"],
+                                          trained_directions["doubled"][:expected_updates["standard"]])
+            for stem in ("A", "b"):
+                snapshots = [np.loadtxt(template_output / name / "snapshots" / f"{stem}_0.csv", delimiter=",")
+                             for name in BUDGETS]
+                np.testing.assert_array_equal(*snapshots)
+            metadata["template_checks"][template] = {
+                "initial_polytopes_exactly_equal": True, "training_direction_common_prefix_exactly_equal": True,
+                "training_directions_match_seed": True,
+                "standard_direction_prefix_sha256": hashlib.sha256(trained_directions["standard"].tobytes()).hexdigest(),
+                "initialization_source": initial_source,
+                "initial_polytope_file_sha256": digest(template_output / "initial_polytope.npz")}
+            metadata["native_evaluation"][template] = {}
+            for name in BUDGETS:
+                target = template_output / name
+                metadata["phase"] = f"evaluation:{template}/{name}"
+                write_json(metadata_path, metadata)
+
+                def progress(record, _target=target, _label=f"{template}/{name}"):
+                    write_json(_target / "evaluation_progress.json", record)
+                    print(f"{_label} evaluation: {record['completed']}/{record['total']}", flush=True)
+
+                result = evaluate_native(agg, directions, final_regions[name], progress=progress,
+                                         checkpoint_path=target / "evaluation_checkpoint.npz")
+                errors_path = target / "evaluation_errors.npz"
+                if args.resume and errors_path.is_file():
+                    with np.load(errors_path, allow_pickle=False) as saved:
+                        for key in ("error_feas", "error_opt"):
+                            np.testing.assert_array_equal(saved[key], result[key])
+                        # Retain the completed evaluation artifact byte-for-byte.
+                        result = {key: saved[key].copy() if saved[key].ndim else saved[key].item() for key in saved}
+                else:
+                    np.savez(errors_path, **{key: value for key, value in result.items() if value is not None})
+                summary["evaluation"][template][name] = {
+                    key: metric_stats(result[key]) for key in ("error_feas", "error_opt")}
+                with np.load(target / "evaluation_checkpoint.npz", allow_pickle=False) as saved:
+                    manifest = json.loads(str(saved["manifest"].item()))
+                metadata["native_evaluation"][template][name] = {
+                    **{key: value for key, value in result.items() if key.startswith("native_")},
+                    "manifest": manifest, "final_polytope_file_sha256": digest(target / "final_polytope.npz")}
+                metadata["completed_evaluation"].append(f"{template}/{name}")
+                write_json(output / "summary.json", summary)
+                write_json(metadata_path, metadata)
+        manifests = [values["manifest"] for template in metadata["native_evaluation"].values()
+                     for values in template.values()]
+        for manifest in manifests[1:]:
+            for key in ("directions_sha256", "model_sha256", "solver_options", "gurobi_version"):
+                if manifest[key] != manifests[0][key]:
+                    raise RuntimeError(f"Evaluation protocol differs between methods: {key}")
+        metadata.update(status="completed", phase="completed", evaluation_protocol_identical=True,
+                        completed_at_utc=datetime.now(timezone.utc).isoformat())
+        print(f"Saved training-budget comparison: {output}", flush=True)
+    except BaseException as exc:
+        metadata.update(status="failed", failure=f"{type(exc).__name__}: {exc}")
+        raise
+    finally:
+        write_json(metadata_path, metadata)
+        write_json(output / "summary.json", summary)
+    return output
+
+
+if __name__ == "__main__":
+    main()

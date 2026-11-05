@@ -1,0 +1,17 @@
+{
+  "source_hash_matches": {
+    "run_taheri2022.py": true,
+    "taheri_data.py": true,
+    "taheri_geometry.py": true
+  },
+  "independent_numeric_tests_passed": 7,
+  "test_command": "python -m Simulator.runners.test_taheri2022",
+  "geometry_status": "row_guard",
+  "has_final_polytope": false,
+  "metadata_in_dataset": true,
+  "dataset_shape": [
+    2106,
+    24
+  ],
+  "row_guard_not_a_completed_projection": true
+}

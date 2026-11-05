@@ -1,0 +1,11 @@
+# Historical runs did not preserve a complete version-locked environment.
+numpy
+scipy
+pandas
+matplotlib
+torch
+pyomo
+gurobipy
+# Taheri benchmark classifier:
+cvxpy
+clarabel

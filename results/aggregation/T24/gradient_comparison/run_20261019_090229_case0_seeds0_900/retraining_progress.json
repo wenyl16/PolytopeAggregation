@@ -1,0 +1,175 @@
+{
+  "status": "completed",
+  "learning_rate": 1.0,
+  "max_parallel": 6,
+  "available_memory_gb": 10.013671875,
+  "cpu_percent": 14.5,
+  "active_jobs": 0,
+  "pending_jobs": 0,
+  "jobs": [
+    {
+      "kind": "train",
+      "seed": 300,
+      "status": "completed",
+      "pid": 8792,
+      "adopted": true,
+      "completed_paired_updates": 1000,
+      "returncode": null
+    },
+    {
+      "kind": "train",
+      "seed": 200,
+      "status": "completed",
+      "pid": 25296,
+      "adopted": true,
+      "completed_paired_updates": 1000,
+      "returncode": null
+    },
+    {
+      "kind": "approx",
+      "seed": "peb",
+      "status": "completed",
+      "pid": 46980,
+      "returncode": 0
+    },
+    {
+      "kind": "approx",
+      "seed": "pb",
+      "status": "completed",
+      "pid": 13620,
+      "returncode": 0
+    },
+    {
+      "kind": "train",
+      "seed": 0,
+      "status": "completed",
+      "adopted_complete": true
+    },
+    {
+      "kind": "evaluate",
+      "seed": 0,
+      "status": "completed",
+      "pid": 25992,
+      "returncode": 0
+    },
+    {
+      "kind": "train",
+      "seed": 100,
+      "status": "completed",
+      "adopted_complete": true
+    },
+    {
+      "kind": "evaluate",
+      "seed": 100,
+      "status": "completed",
+      "pid": 62496,
+      "returncode": 0
+    },
+    {
+      "kind": "train",
+      "seed": 400,
+      "status": "completed",
+      "pid": 59476,
+      "completed_paired_updates": 1000,
+      "returncode": 0
+    },
+    {
+      "kind": "train",
+      "seed": 500,
+      "status": "completed",
+      "pid": 26768,
+      "completed_paired_updates": 1000,
+      "returncode": 0
+    },
+    {
+      "kind": "evaluate",
+      "seed": 300,
+      "status": "completed",
+      "pid": 44728,
+      "returncode": 0
+    },
+    {
+      "kind": "evaluate",
+      "seed": 200,
+      "status": "completed",
+      "pid": 60080,
+      "returncode": 0
+    },
+    {
+      "kind": "train",
+      "seed": 600,
+      "status": "completed",
+      "pid": 42184,
+      "completed_paired_updates": 1000,
+      "returncode": 0
+    },
+    {
+      "kind": "train",
+      "seed": 700,
+      "status": "completed",
+      "pid": 51320,
+      "completed_paired_updates": 1000,
+      "returncode": 0
+    },
+    {
+      "kind": "train",
+      "seed": 800,
+      "status": "completed",
+      "pid": 52916,
+      "completed_paired_updates": 1000,
+      "returncode": 0
+    },
+    {
+      "kind": "train",
+      "seed": 900,
+      "status": "completed",
+      "pid": 47400,
+      "completed_paired_updates": 1000,
+      "returncode": 0
+    },
+    {
+      "kind": "evaluate",
+      "seed": 400,
+      "status": "completed",
+      "pid": 60764,
+      "returncode": 0
+    },
+    {
+      "kind": "evaluate",
+      "seed": 500,
+      "status": "completed",
+      "pid": 55956,
+      "returncode": 0
+    },
+    {
+      "kind": "evaluate",
+      "seed": 600,
+      "status": "completed",
+      "pid": 43456,
+      "returncode": 0
+    },
+    {
+      "kind": "evaluate",
+      "seed": 700,
+      "status": "completed",
+      "pid": 8212,
+      "returncode": 0
+    },
+    {
+      "kind": "evaluate",
+      "seed": 800,
+      "status": "completed",
+      "pid": 27000,
+      "returncode": 0
+    },
+    {
+      "kind": "evaluate",
+      "seed": 900,
+      "status": "completed",
+      "pid": 29384,
+      "returncode": 0
+    }
+  ],
+  "failures": [],
+  "updated_at_utc": "2026-10-26T04:38:45.310730+00:00"
+}

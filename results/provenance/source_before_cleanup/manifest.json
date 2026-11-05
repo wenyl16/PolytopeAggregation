@@ -1,0 +1,127 @@
+[
+  {
+    "source": "code/Simulator/paths.py",
+    "archive": "results/provenance/source_before_cleanup/Simulator/paths.py",
+    "sha256": "dcf4eaadd5b1a84504e50eb5f9c0c9dc45d3ffc92e60194e48e979e21487fab6"
+  },
+  {
+    "source": "code/Simulator/drawers/plot_comparison.py",
+    "archive": "results/provenance/source_before_cleanup/Simulator/drawers/plot_comparison.py",
+    "sha256": "a204c4df0502ec58755e20e23ca00fe8b15b706be87bf2d4c48e3ab2a6ea42a6"
+  },
+  {
+    "source": "code/Simulator/drawers/plot_gradient_comparison.py",
+    "archive": "results/provenance/source_before_cleanup/Simulator/drawers/plot_gradient_comparison.py",
+    "sha256": "c6cebf0a062851837d2dead90aa068d55150325217410efca0cac98f50a4a10e"
+  },
+  {
+    "source": "code/Simulator/drawers/plot_microgrid_nonconvexity.py",
+    "archive": "results/provenance/source_before_cleanup/Simulator/drawers/plot_microgrid_nonconvexity.py",
+    "sha256": "d0279423514ae53184405a2e203d307bc27d00c1bae224dd4f81888f3ae9c379"
+  },
+  {
+    "source": "code/Simulator/drawers/plot_microgrid_shift.py",
+    "archive": "results/provenance/source_before_cleanup/Simulator/drawers/plot_microgrid_shift.py",
+    "sha256": "9d3f3f8ab744e53c2a9cd9bba3bf2207372a11ed1e2cae468fc818fc9ad02ed4"
+  },
+  {
+    "source": "code/Simulator/drawers/plot_original_comparison.py",
+    "archive": "results/provenance/source_before_cleanup/Simulator/drawers/plot_original_comparison.py",
+    "sha256": "7af9d92dd9c8e191d4605ea4a4b1de513a8b81e6f75923c1490d0b381d054af0"
+  },
+  {
+    "source": "code/Simulator/drawers/plot_original_training.py",
+    "archive": "results/provenance/source_before_cleanup/Simulator/drawers/plot_original_training.py",
+    "sha256": "5d31aa86a8fcd3fd7c952e6d769b374613164a97221de11a8c4137196e5f0410"
+  },
+  {
+    "source": "code/Simulator/drawers/plot_training.py",
+    "archive": "results/provenance/source_before_cleanup/Simulator/drawers/plot_training.py",
+    "sha256": "3c8deeea62bb4790e3ac1fe55ab4fd938abfc4cf470a4a9493007532b363a149"
+  },
+  {
+    "source": "code/Simulator/drawers/plot_training_budgets.py",
+    "archive": "results/provenance/source_before_cleanup/Simulator/drawers/plot_training_budgets.py",
+    "sha256": "c76c0a9d563762fb625ff89938fe67c14fc3197d8c5c609a0a2eb3b49f16726f"
+  },
+  {
+    "source": "code/Simulator/drawers/plot_training_stages.py",
+    "archive": "results/provenance/source_before_cleanup/Simulator/drawers/plot_training_stages.py",
+    "sha256": "535bafa80fa31a79ca61cf9b13e940d45cd2661a15877a9ac1a4df0335e69634"
+  },
+  {
+    "source": "code/Simulator/drawers/refresh_original_figures.py",
+    "archive": "results/provenance/source_before_cleanup/Simulator/drawers/refresh_original_figures.py",
+    "sha256": "b47349709f7191e779ed8bd56d29f00a889f76bb4c2b728ed0e62e64d01fffac"
+  },
+  {
+    "source": "code/Simulator/drawers/sync_methods_summary.py",
+    "archive": "results/provenance/source_before_cleanup/Simulator/drawers/sync_methods_summary.py",
+    "sha256": "264172be1f2631ddce5cfd3c5a05163d98dbc5dade5cc7e7d9d5ef3311368fb0"
+  },
+  {
+    "source": "code/Simulator/drawers/visualize_A_matrix_evolution.py",
+    "archive": "results/provenance/source_before_cleanup/Simulator/drawers/visualize_A_matrix_evolution.py",
+    "sha256": "3ad6ec6a0aa772ba9d7f1ef3a3bb51d287156529632cfaac6513dd8216af0c33"
+  },
+  {
+    "source": "code/Simulator/runners/compare_baselines.py",
+    "archive": "results/provenance/source_before_cleanup/Simulator/runners/compare_baselines.py",
+    "sha256": "056283cff2bb92ba8c056ebae16be70f5bd1573817e650aa1f7c6c82306ab7c0"
+  },
+  {
+    "source": "code/Simulator/runners/compare_training_budgets.py",
+    "archive": "results/provenance/source_before_cleanup/Simulator/runners/compare_training_budgets.py",
+    "sha256": "99bcdded50e4fc89c2b9626232ac9b4c1e2b8e4746c622e66a3a24ec4e0abf27"
+  },
+  {
+    "source": "code/Simulator/runners/run_federated_peb.py",
+    "archive": "results/provenance/source_before_cleanup/Simulator/runners/run_federated_peb.py",
+    "sha256": "949e2e3f794e365dbc557f0fd103fb4300026d39962bd8c78f0f6e05a8c127cb"
+  },
+  {
+    "source": "code/Simulator/runners/run_microgrid_scale.py",
+    "archive": "results/provenance/source_before_cleanup/Simulator/runners/run_microgrid_scale.py",
+    "sha256": "d71150b0363223574060cc9c0899ef373968aebffa020888037532ff7cee6cf9"
+  },
+  {
+    "source": "code/Simulator/runners/run_taheri2022.py",
+    "archive": "results/provenance/source_before_cleanup/Simulator/runners/run_taheri2022.py",
+    "sha256": "913d4f13136c620ce418e3f5db14959ad65fb9cddcea770ceaba554ce438405c"
+  },
+  {
+    "source": "code/Simulator/runners/train_aggregation_t96.py",
+    "archive": "results/provenance/source_before_cleanup/Simulator/runners/train_aggregation_t96.py",
+    "sha256": "5803dfd265c21e92a93ab02b9dbb2a8852dccfe7b5cc3948f4c303b8848f1fa4"
+  },
+  {
+    "source": "code/Simulator/testers/compare_costs_with_real_prices.py",
+    "archive": "results/provenance/source_before_cleanup/Simulator/testers/compare_costs_with_real_prices.py",
+    "sha256": "7bb618fbe80ec0070e76e447fce82ece7148afb1d9d376408ebf14535572eb7d"
+  },
+  {
+    "source": "code/Simulator/testers/evaluate_microgrid_nonconvexity.py",
+    "archive": "results/provenance/source_before_cleanup/Simulator/testers/evaluate_microgrid_nonconvexity.py",
+    "sha256": "2d28ba3d9d7d850f8545314b855bbf74afaa3f7c207126e5270a236e837985c4"
+  },
+  {
+    "source": "code/Simulator/testers/evaluate_microgrid_uncertainty_distribution.py",
+    "archive": "results/provenance/source_before_cleanup/Simulator/testers/evaluate_microgrid_uncertainty_distribution.py",
+    "sha256": "ef423cda07359f5332c828c707567d068ec3633514b075a326cb8047bbcaf07f"
+  },
+  {
+    "source": "code/Simulator/testers/summarize_aggregation_scaling.py",
+    "archive": "results/provenance/source_before_cleanup/Simulator/testers/summarize_aggregation_scaling.py",
+    "sha256": "c207c7ec29bc057ad2eb85b138b90d1a3f768cab896ca9780438ed25fd66c6f3"
+  },
+  {
+    "source": "code/Simulator/testers/verify_microgrid_storage_diagnostic.py",
+    "archive": "results/provenance/source_before_cleanup/Simulator/testers/verify_microgrid_storage_diagnostic.py",
+    "sha256": "af71973932df6c96e5ad13a7c48a0e9bf6fd27ceb5febf429d0b140011bfdb33"
+  },
+  {
+    "source": "tmp/verify_microgrid_scale.py",
+    "archive": "results/provenance/source_before_cleanup/tmp/verify_microgrid_scale.py",
+    "sha256": "d3744fd52a53abf22779431084e12ae8cbd59019e9fd9c0cc42e91660785186f"
+  }
+]

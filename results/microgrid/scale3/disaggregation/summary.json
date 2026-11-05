@@ -1,0 +1,67 @@
+{
+  "status": "completed",
+  "T": 24,
+  "device_counts": {
+    "MT": 3,
+    "PV": 3,
+    "TL": 3,
+    "CL": 3,
+    "ESS": 3,
+    "HP": 6
+  },
+  "num_samples": 5000,
+  "seed": 1,
+  "noise_scale": 0.05,
+  "recorded_samples": 5000,
+  "completed_samples": 5000,
+  "failed_samples": 0,
+  "solver_status_counts": {
+    "completed": 5000
+  },
+  "elapsed_seconds": 1065.6882259999984,
+  "load_initialization_seconds": 0.06387740000354825,
+  "evaluation_elapsed_seconds": 1065.1415147000007,
+  "training_sources_unchanged": true,
+  "metrics": {
+    "feasibility_error": {
+      "finite_count": 5000,
+      "missing_or_nonfinite_count": 0,
+      "mean": 0.0011650623299812438,
+      "median": 0.0,
+      "p95": 9.159897727678883e-05,
+      "max": 0.4220054380874102
+    },
+    "feasibility_error_rated": {
+      "finite_count": 5000,
+      "missing_or_nonfinite_count": 0,
+      "mean": 3.6277083306545267e-10,
+      "median": 0.0,
+      "p95": 2.5620538258382206e-11,
+      "max": 1.2632112749344785e-07
+    },
+    "optimality_error_rated": {
+      "finite_count": 5000,
+      "missing_or_nonfinite_count": 0,
+      "mean": 0.5413613749253012,
+      "median": 0.5427493187467389,
+      "p95": 0.6574955188808832,
+      "max": 0.7823528104250772
+    },
+    "objective_error": {
+      "finite_count": 5000,
+      "missing_or_nonfinite_count": 0,
+      "mean": 4723.396887759982,
+      "median": 4683.236157968556,
+      "p95": 6160.867995340503,
+      "max": 8633.806164141672
+    },
+    "objective_error_rated": {
+      "finite_count": 5000,
+      "missing_or_nonfinite_count": 0,
+      "mean": 0.3279546635021103,
+      "median": 0.3215703025562612,
+      "p95": 0.44476667403589576,
+      "max": 0.8723982911043826
+    }
+  }
+}

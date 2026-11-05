@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "directions_checked": 128,
+  "differences": {
+    "approximate": {
+      "feasibility": {
+        "max_absolute_difference": 2.5261351334578115e-12,
+        "rtol": 1e-06,
+        "atol": 1e-09
+      },
+      "optimality": {
+        "max_absolute_difference": 1.1102230246251565e-15,
+        "rtol": 1e-06,
+        "atol": 1e-09
+      }
+    },
+    "exact": {
+      "feasibility": {
+        "max_absolute_difference": 1.1376515659935309e-20,
+        "rtol": 1e-06,
+        "atol": 1e-09
+      },
+      "optimality": {
+        "max_absolute_difference": 8.881784197001252e-16,
+        "rtol": 1e-06,
+        "atol": 1e-09
+      }
+    }
+  }
+}

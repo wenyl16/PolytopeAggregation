@@ -1,0 +1,40 @@
+{
+  "case_seed": 42,
+  "sampling_seed": 42,
+  "horizon": 24,
+  "K": 25,
+  "epsilon": 0.04,
+  "noise_scale": 0.05,
+  "conservativeness": 0.02,
+  "device_scale": 1,
+  "device_counts": {
+    "MT": 1,
+    "PV": 1,
+    "TL": 1,
+    "CL": 1,
+    "ESS": 1,
+    "HP": 2
+  },
+  "physical_binary_variables": 120,
+  "physical_variables": 409,
+  "physical_constraints": 689,
+  "coordinates": "project normalized; raw power = x*width+pmin",
+  "objective": "raw-kW L1 = sum(width[t]*abs(x[t]-target[t]))",
+  "scenario_policy": "fresh independent K Gaussian scenarios for every candidate label",
+  "clipping": "none; reject invalid negative PV/CL parameter draw and redraw",
+  "sampling_window": [
+    -0.2,
+    1.2
+  ],
+  "sampling_window_is_global_bound": false,
+  "adaptations": [
+    "existing T24 seven-device microgrid, not paper 200-device T8",
+    "Gaussian 5% existing project externality distribution",
+    "finite heuristic sampling window because Gaussian support is unbounded"
+  ],
+  "labeled_points": 2106,
+  "feasible": 1047,
+  "infeasible": 1059,
+  "solve_count": 52650,
+  "label_attempts": 2106
+}

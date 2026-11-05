@@ -1,0 +1,703 @@
+{
+  "status": "completed",
+  "created_at_utc": "2026-10-27T09:46:49.805191+00:00",
+  "figure_count": 7,
+  "backend": "Python / Matplotlib",
+  "formats": [
+    "pdf"
+  ],
+  "operation": "Regenerate original-manuscript figures from retained current result arrays",
+  "training_or_solving_performed": false,
+  "source_arrays_unchanged_verified": true,
+  "sources_sha256": {
+    "results/aggregation/T24/exact/peb/error_history.pkl": "8cf9894d7fc025554ebbed68dd6f9630c2aff309d661c1873b30ecf6ef7b47ac",
+    "results/aggregation/T24/exact/peb/training_config.json": "4330628ab14660834a1ed0000823ef28313c891740a1b359a83ea8b4f76864bd",
+    "results/aggregation/T24/exact/peb/scenario.json": "9cf2a6b58687bb9a5d61636f02fb502706aa98f9710f30c15111f34dc6d5ede2",
+    "results/aggregation/T24/exact/peb/final_polytope.npz": "2f871d9d287d6b961dc5f6b4d8285b9dc5fc9cc88d855cef9f135572d2af9fa0",
+    "Simulator/drawers/plot_original_training.py": "5d31aa86a8fcd3fd7c952e6d769b374613164a97221de11a8c4137196e5f0410",
+    "Simulator/drawers/plot_training.py": "4572cd82797b88a34ba018dcfd0a6860a674057301d61cba438013791928f19a",
+    "results/aggregation/T24/exact/pb/error_history.pkl": "30358d39adeffedae22ed4424bfa1c12b2bdce05ea42f926ef3272a475bc9fa6",
+    "results/aggregation/T24/exact/pb/training_config.json": "a74a012c42e5d93be2e4b757ec0e13152d19a6f4de81a155393dde25cd13f440",
+    "results/aggregation/T24/exact/pb/scenario.json": "9cf2a6b58687bb9a5d61636f02fb502706aa98f9710f30c15111f34dc6d5ede2",
+    "results/aggregation/T24/exact/pb/final_polytope.npz": "eadb8e1871a1a320a2002459396b70fc1165dd2b79a98c87e49a3ac99af58974",
+    "results/aggregation/T24/large_scale/exact/peb/error_history.pkl": "1725dac72239d35974e1e3ca14c42802a19dbf4a7ab598b3cc7101e6563dfa74",
+    "results/aggregation/T24/large_scale/exact/peb/training_config.json": "538523378aef08a616fd0ef821a1dbff7aef8afc9623211d1108809a24f372bb",
+    "results/aggregation/T24/large_scale/exact/peb/scenario.json": "1b203d650eeaa70818e139908bff73cedc6d9b601fbd5c5fef997d8bf6257a75",
+    "results/aggregation/T24/large_scale/exact/peb/final_polytope.npz": "cbdcd395dbfa972e7793d7bab2ec206c1b7dae120867f97ae8f9d3a30506f173",
+    "results/aggregation/T24/large_scale/exact/peb/original_experiment_provenance.json": "f8ad701de2b396509772be7d13ad88638777306f2245d5e3efce48b698ff7d26",
+    "results/microgrid/training/error_history.pkl": "9b8eb442d6c996f74f0ab57b557feb6454f40b61975ac259c758e0b64eed6b14",
+    "results/microgrid/training/training_config.json": "106b4d2fb243164de5be12568443860931bfcb6d543fc32940cf80b835c5ffdf",
+    "results/aggregation/T24/exact/peb/snapshots/A_0.csv": "2128bb1db496922a64359a4da879c06bb44b0c26b0019470b5d46269339d2734",
+    "results/aggregation/T24/exact/peb/snapshots/A_1000.csv": "a3a7a89d1c8c6d1e62a084153b47e06d456b5ab49ee4b2bdfee510b21e82e911",
+    "results/aggregation/T24/exact/peb/verified_case0_seed0/initial_polytope.npz": "1c5b27870d9a93712673349c3e656bb369e4e4b89938d71a4f9d8f4211ad56b5",
+    "results/aggregation/T24/exact/pb/snapshots/A_0.csv": "562d3ad88db0f25041ecc21956ffb425ad3ee42e8f147c5f1c1bf4a676fd9496",
+    "results/aggregation/T24/exact/pb/snapshots/A_1000.csv": "c2775c0f229127b505aa850c8fe17e5228352399eae0b8c8fb8ad6ca4bded1a5",
+    "results/aggregation/T24/exact/pb/seed_0/initial_polytope.npz": "256a9f8febb05fec68e2dbe29bac848ec25502a4a1751ee0106debd60d5f53f1",
+    "results/aggregation/T24/comparisons/metadata.json": "8ea46a0d2c7ddc3c515283de7d48b2d853a1f9fdbfe55937b448fa880c7811e4",
+    "results/aggregation/T24/comparisons/error_comparison.pkl": "8c7b29eaa8beb4ef5941377dc1293797e8e7a5c182c3d72130dc3c310cab95d6",
+    "results/aggregation/T24/comparisons/directions.npy": "7f1ab3ff18e64b781605f070e457a7eaa6c5b7f7272ea9e2088f3dba9ca241a5",
+    "Simulator/cases/aggregation.py": "417f11e4d7e1721bd65d63959a0dfba1ac7d35bac923f979b6b913d7ff4347a8",
+    "Simulator/cases/aggregation_case_T24.py": "20bfd4a2fa84a9a8f44bc8e714696c54753a5b117fb3d347e8727bfa69f407fa",
+    "results/aggregation/T24/baselines/box/verified_case0/final_polytope.npz": "49b6d45a29277eaddda9d68c1e17555f87cc28475e60237f97f94d0ead404520",
+    "results/aggregation/T24/exact/pb/seed_0/final_polytope.npz": "eadb8e1871a1a320a2002459396b70fc1165dd2b79a98c87e49a3ac99af58974",
+    "results/aggregation/T24/baselines/matlab/verified_case0/final_polytope.npz": "ec93664882a1dbf010154657860c80ba6c1d3a47d33890f10580768f28f03989",
+    "results/aggregation/T24/exact/peb/verified_case0_seed0/final_polytope.npz": "2f871d9d287d6b961dc5f6b4d8285b9dc5fc9cc88d855cef9f135572d2af9fa0",
+    "results/aggregation/T24/comparisons/peb_outer.npz": "5ae292d6aee23e2b9631177fb6b7c9931581cdd98ffa0c67ad510ead92c0fe0e"
+  },
+  "plotting_sources_sha256": {
+    "Simulator/drawers/refresh_original_figures.py": "b47349709f7191e779ed8bd56d29f00a889f76bb4c2b728ed0e62e64d01fffac",
+    "Simulator/drawers/plot_original_training.py": "5d31aa86a8fcd3fd7c952e6d769b374613164a97221de11a8c4137196e5f0410",
+    "Simulator/drawers/visualize_A_matrix_evolution.py": "3ad6ec6a0aa772ba9d7f1ef3a3bb51d287156529632cfaac6513dd8216af0c33",
+    "Simulator/drawers/plot_original_comparison.py": "7af9d92dd9c8e191d4605ea4a4b1de513a8b81e6f75923c1490d0b381d054af0",
+    "Simulator/drawers/plot_training.py": "4572cd82797b88a34ba018dcfd0a6860a674057301d61cba438013791928f19a"
+  },
+  "legacy_sources_sha256": {
+    "Simulator_v6/drawers/plot_aggregation_comparison.py": "0279830e94152452025166530f227b1b254eabfc5ae5c707c62303ffaad19b1c",
+    "Simulator_v6/drawers/plot_aggregation_training.py": "9813f1cbacaa02a3a138549338dd2e621a1bf97a1551f402688a0e5540decfd6",
+    "Simulator_v6/drawers/plot_mg_training.py": "373b6344dfee89bf2da024d0c711be9896285ad27f02c129bb562f53f869003d",
+    "Simulator_v6/drawers/visualize_A_matrix_evolution.py": "6ed7761294b9173a8e9d42652f5b0467fe3220b8910870b52980390af5eb3cbe"
+  },
+  "previous_pdfs_backup": "F:\\Working\\Research\\12多种设备运行域聚合的通用框架\\tmp\\figures_original_before_refresh_20261027T094649793604Z.zip",
+  "notes": [
+    "T24 formal small-scene exact PEB/PB runs supply both small trajectories and matrix differences.",
+    "The seven-device main microgrid model is used; scale3 belongs to the revision experiments.",
+    "The original large-scale trajectory uses T24 with 100 CL, 200 TCL and 200 PV; T96 is a separate revision experiment.",
+    "comparison.pdf keeps the original five methods, using the latest completed common-direction evaluation.",
+    "PEB has 94 rows; matrix ticks are based on actual saved dimensions.",
+    "Heatmap color limits cover both matrix differences without clipping.",
+    "Training display floor 1e-6 retains the original zero tick label; it does not certify zero raw error."
+  ],
+  "figures": [
+    {
+      "output_path": "results/figures_original/aggregation_training_trajectory_small_scale_PEB.pdf",
+      "filename": "aggregation_training_trajectory_small_scale_PEB.pdf",
+      "source_directory": "results/aggregation/T24/exact/peb",
+      "source_history": "results/aggregation/T24/exact/peb/error_history.pkl",
+      "source_config": "results/aggregation/T24/exact/peb/training_config.json",
+      "source_sha256": {
+        "results/aggregation/T24/exact/peb/error_history.pkl": "8cf9894d7fc025554ebbed68dd6f9630c2aff309d661c1873b30ecf6ef7b47ac",
+        "results/aggregation/T24/exact/peb/training_config.json": "4330628ab14660834a1ed0000823ef28313c891740a1b359a83ea8b4f76864bd",
+        "results/aggregation/T24/exact/peb/scenario.json": "9cf2a6b58687bb9a5d61636f02fb502706aa98f9710f30c15111f34dc6d5ede2",
+        "results/aggregation/T24/exact/peb/final_polytope.npz": "2f871d9d287d6b961dc5f6b4d8285b9dc5fc9cc88d855cef9f135572d2af9fa0"
+      },
+      "restored_from": "Simulator_v6/drawers/plot_aggregation_training.py",
+      "plotting_implementation": "Simulator.drawers.plot_training.plot_runs(style='v6')",
+      "plot_source_sha256": {
+        "Simulator/drawers/plot_original_training.py": "5d31aa86a8fcd3fd7c952e6d769b374613164a97221de11a8c4137196e5f0410",
+        "Simulator/drawers/plot_training.py": "4572cd82797b88a34ba018dcfd0a6860a674057301d61cba438013791928f19a"
+      },
+      "source_status": "completed",
+      "gradient_mode": "exact",
+      "horizon": 24,
+      "dtype": "torch.float64",
+      "device_counts": [
+        5,
+        40,
+        5
+      ],
+      "scenario_sha256": "4aa952dedf9b099d1e8e806417c124199762e01a0157b2a102534cafb5ccf151",
+      "conservativeness": null,
+      "optimizer_updates": 1000,
+      "phase_end_updates": [
+        300,
+        500,
+        1000
+      ],
+      "phase_updates": [
+        300,
+        200,
+        500
+      ],
+      "stages": [
+        {
+          "n_train": 299,
+          "epochs": 300,
+          "lr": 0.02,
+          "rate_opt_feas": 1.0
+        },
+        {
+          "n_train": 199,
+          "epochs": 200,
+          "lr": 0.1,
+          "rate_opt_feas": 0.01
+        },
+        {
+          "n_train": 499,
+          "epochs": 500,
+          "lr": 1.0,
+          "rate_opt_feas": 1e-06
+        }
+      ],
+      "moving_average_window": 20,
+      "scenario_label": null,
+      "smoothing": "trailing arithmetic mean of original unfloored real errors",
+      "display_floor": 1e-06,
+      "display_floor_tick_label": "0",
+      "all_recorded_updates_displayed": true,
+      "metric": "sum of squared distances in normalized aggregate-power coordinates",
+      "historical_protocol_limit": null,
+      "pdf_sha256": "4a7183c6568853dd43f5b650a55db43f441157d1d0911f9f8600e3a40707ff44",
+      "label_postprocessing": {
+        "filename": "aggregation_training_trajectory_small_scale_PEB.pdf",
+        "input_pdf_backup": "tmp\\phase_to_stage_label_edit\\aggregation_training_trajectory_small_scale_PEB.pdf",
+        "input_pdf_sha256": "f061eeffb583c3b561cf0d885c12f816435bd4a1eb0ca71dfe361b3933b3f9bc",
+        "pdf_sha256": "4a7183c6568853dd43f5b650a55db43f441157d1d0911f9f8600e3a40707ff44",
+        "stage_headings": [
+          "Stage 1: Balancing",
+          "Stage 2: Refining",
+          "Stage 3: Converging"
+        ],
+        "all_other_text_preserved": true,
+        "plot_area_pixels_identical": true,
+        "raster_images_added": false,
+        "script": "tmp\\phase_to_stage_label_edit\\update_titles.py",
+        "script_sha256": "224ad08d74deaa78511cdeec0e05e6ca017ec6cf7246aa95dd0764e3278e0ba0"
+      }
+    },
+    {
+      "output_path": "results/figures_original/aggregation_training_trajectory_small_scale_PB.pdf",
+      "filename": "aggregation_training_trajectory_small_scale_PB.pdf",
+      "source_directory": "results/aggregation/T24/exact/pb",
+      "source_history": "results/aggregation/T24/exact/pb/error_history.pkl",
+      "source_config": "results/aggregation/T24/exact/pb/training_config.json",
+      "source_sha256": {
+        "results/aggregation/T24/exact/pb/error_history.pkl": "30358d39adeffedae22ed4424bfa1c12b2bdce05ea42f926ef3272a475bc9fa6",
+        "results/aggregation/T24/exact/pb/training_config.json": "a74a012c42e5d93be2e4b757ec0e13152d19a6f4de81a155393dde25cd13f440",
+        "results/aggregation/T24/exact/pb/scenario.json": "9cf2a6b58687bb9a5d61636f02fb502706aa98f9710f30c15111f34dc6d5ede2",
+        "results/aggregation/T24/exact/pb/final_polytope.npz": "eadb8e1871a1a320a2002459396b70fc1165dd2b79a98c87e49a3ac99af58974"
+      },
+      "restored_from": "Simulator_v6/drawers/plot_aggregation_training.py",
+      "plotting_implementation": "Simulator.drawers.plot_training.plot_runs(style='v6')",
+      "plot_source_sha256": {
+        "Simulator/drawers/plot_original_training.py": "5d31aa86a8fcd3fd7c952e6d769b374613164a97221de11a8c4137196e5f0410",
+        "Simulator/drawers/plot_training.py": "4572cd82797b88a34ba018dcfd0a6860a674057301d61cba438013791928f19a"
+      },
+      "source_status": "completed",
+      "gradient_mode": "exact",
+      "horizon": 24,
+      "dtype": "torch.float64",
+      "device_counts": [
+        5,
+        40,
+        5
+      ],
+      "scenario_sha256": "4aa952dedf9b099d1e8e806417c124199762e01a0157b2a102534cafb5ccf151",
+      "conservativeness": null,
+      "optimizer_updates": 1000,
+      "phase_end_updates": [
+        300,
+        500,
+        1000
+      ],
+      "phase_updates": [
+        300,
+        200,
+        500
+      ],
+      "stages": [
+        {
+          "n_train": 299,
+          "epochs": 300,
+          "lr": 0.02,
+          "rate_opt_feas": 1.0
+        },
+        {
+          "n_train": 199,
+          "epochs": 200,
+          "lr": 0.1,
+          "rate_opt_feas": 0.01
+        },
+        {
+          "n_train": 499,
+          "epochs": 500,
+          "lr": 1.0,
+          "rate_opt_feas": 1e-06
+        }
+      ],
+      "moving_average_window": 20,
+      "scenario_label": null,
+      "smoothing": "trailing arithmetic mean of original unfloored real errors",
+      "display_floor": 1e-06,
+      "display_floor_tick_label": "0",
+      "all_recorded_updates_displayed": true,
+      "metric": "sum of squared distances in normalized aggregate-power coordinates",
+      "historical_protocol_limit": null,
+      "pdf_sha256": "6368f0cbf8a3f0387be43dd30889ac28c15689fddcf50f39ee4e918b681bbaf6",
+      "label_postprocessing": {
+        "filename": "aggregation_training_trajectory_small_scale_PB.pdf",
+        "input_pdf_backup": "tmp\\phase_to_stage_label_edit\\aggregation_training_trajectory_small_scale_PB.pdf",
+        "input_pdf_sha256": "9fc5c13ae311944295d53989c606851f07d7666481b8a24ca2c9eb9e534383e2",
+        "pdf_sha256": "6368f0cbf8a3f0387be43dd30889ac28c15689fddcf50f39ee4e918b681bbaf6",
+        "stage_headings": [
+          "Stage 1: Balancing",
+          "Stage 2: Refining",
+          "Stage 3: Converging"
+        ],
+        "all_other_text_preserved": true,
+        "plot_area_pixels_identical": true,
+        "raster_images_added": false,
+        "script": "tmp\\phase_to_stage_label_edit\\update_titles.py",
+        "script_sha256": "224ad08d74deaa78511cdeec0e05e6ca017ec6cf7246aa95dd0764e3278e0ba0"
+      }
+    },
+    {
+      "output_path": "results/figures_original/aggregation_training_trajectory_large_scale.pdf",
+      "filename": "aggregation_training_trajectory_large_scale.pdf",
+      "source_directory": "results/aggregation/T24/large_scale/exact/peb",
+      "source_history": "results/aggregation/T24/large_scale/exact/peb/error_history.pkl",
+      "source_config": "results/aggregation/T24/large_scale/exact/peb/training_config.json",
+      "source_sha256": {
+        "results/aggregation/T24/large_scale/exact/peb/error_history.pkl": "1725dac72239d35974e1e3ca14c42802a19dbf4a7ab598b3cc7101e6563dfa74",
+        "results/aggregation/T24/large_scale/exact/peb/training_config.json": "538523378aef08a616fd0ef821a1dbff7aef8afc9623211d1108809a24f372bb",
+        "results/aggregation/T24/large_scale/exact/peb/scenario.json": "1b203d650eeaa70818e139908bff73cedc6d9b601fbd5c5fef997d8bf6257a75",
+        "results/aggregation/T24/large_scale/exact/peb/final_polytope.npz": "cbdcd395dbfa972e7793d7bab2ec206c1b7dae120867f97ae8f9d3a30506f173",
+        "results/aggregation/T24/large_scale/exact/peb/original_experiment_provenance.json": "f8ad701de2b396509772be7d13ad88638777306f2245d5e3efce48b698ff7d26"
+      },
+      "restored_from": "Simulator_v6/drawers/plot_aggregation_training.py",
+      "plotting_implementation": "Simulator.drawers.plot_training.plot_runs(style='v6')",
+      "plot_source_sha256": {
+        "Simulator/drawers/plot_original_training.py": "5d31aa86a8fcd3fd7c952e6d769b374613164a97221de11a8c4137196e5f0410",
+        "Simulator/drawers/plot_training.py": "4572cd82797b88a34ba018dcfd0a6860a674057301d61cba438013791928f19a"
+      },
+      "source_status": "completed",
+      "gradient_mode": "exact",
+      "horizon": 24,
+      "dtype": "torch.float64",
+      "device_counts": [
+        100,
+        200,
+        200
+      ],
+      "scenario_sha256": "403d6554dd788dad8dbeae379a660c9408d594988122896b736a7f8b0a10a5b9",
+      "conservativeness": null,
+      "optimizer_updates": 1000,
+      "phase_end_updates": [
+        300,
+        500,
+        1000
+      ],
+      "phase_updates": [
+        300,
+        200,
+        500
+      ],
+      "stages": [
+        {
+          "n_train": 299,
+          "epochs": 300,
+          "lr": 0.02,
+          "rate_opt_feas": 1.0
+        },
+        {
+          "n_train": 199,
+          "epochs": 200,
+          "lr": 0.1,
+          "rate_opt_feas": 0.01
+        },
+        {
+          "n_train": 499,
+          "epochs": 500,
+          "lr": 1.0,
+          "rate_opt_feas": 1e-06
+        }
+      ],
+      "moving_average_window": 20,
+      "scenario_label": "T = 24; 200 TCLs, 200 PVs and 100 CLs (500 resources).",
+      "smoothing": "trailing arithmetic mean of original unfloored real errors",
+      "display_floor": 1e-06,
+      "display_floor_tick_label": "0",
+      "all_recorded_updates_displayed": true,
+      "metric": "sum of squared distances in normalized aggregate-power coordinates",
+      "historical_protocol_limit": null,
+      "pdf_sha256": "a3bc0aa2d3c605aa62c72c29c9dc58db76b0c5d0d00780e87c5eadd6d3d90687"
+    },
+    {
+      "output_path": "results/figures_original/mg_training_trajectory.pdf",
+      "filename": "mg_training_trajectory.pdf",
+      "source_directory": "results/microgrid/training",
+      "source_history": "results/microgrid/training/error_history.pkl",
+      "source_config": "results/microgrid/training/training_config.json",
+      "source_sha256": {
+        "results/microgrid/training/error_history.pkl": "9b8eb442d6c996f74f0ab57b557feb6454f40b61975ac259c758e0b64eed6b14",
+        "results/microgrid/training/training_config.json": "106b4d2fb243164de5be12568443860931bfcb6d543fc32940cf80b835c5ffdf"
+      },
+      "restored_from": "Simulator_v6/drawers/plot_mg_training.py",
+      "plotting_implementation": "Simulator.drawers.plot_training.plot_runs(style='v6')",
+      "plot_source_sha256": {
+        "Simulator/drawers/plot_original_training.py": "5d31aa86a8fcd3fd7c952e6d769b374613164a97221de11a8c4137196e5f0410",
+        "Simulator/drawers/plot_training.py": "4572cd82797b88a34ba018dcfd0a6860a674057301d61cba438013791928f19a"
+      },
+      "source_status": "completed",
+      "gradient_mode": "approx",
+      "horizon": 24,
+      "dtype": "torch.float32",
+      "device_counts": {
+        "MT": 1,
+        "PV": 1,
+        "TL": 1,
+        "CL": 1,
+        "ESS": 1,
+        "HP": 2
+      },
+      "scenario_sha256": null,
+      "conservativeness": 0.02,
+      "optimizer_updates": 2000,
+      "phase_end_updates": [
+        600,
+        1200,
+        2000
+      ],
+      "phase_updates": [
+        600,
+        600,
+        800
+      ],
+      "stages": [
+        {
+          "n_train": 29,
+          "epochs": 30,
+          "lr": 0.05,
+          "rate_opt_feas": 1.0
+        },
+        {
+          "n_train": 29,
+          "epochs": 30,
+          "lr": 0.1,
+          "rate_opt_feas": 0.01
+        },
+        {
+          "n_train": 39,
+          "epochs": 40,
+          "lr": 0.2,
+          "rate_opt_feas": 1e-06
+        }
+      ],
+      "moving_average_window": 20,
+      "scenario_label": null,
+      "smoothing": "trailing arithmetic mean of original unfloored real errors",
+      "display_floor": 1e-06,
+      "display_floor_tick_label": "0",
+      "all_recorded_updates_displayed": true,
+      "metric": "sum of squared distances in normalized aggregate-power coordinates",
+      "historical_protocol_limit": null,
+      "pdf_sha256": "2a016c50b1b19b8d9305dc8ced0e9d7b3622b77273597a21ee1687f792704b1c",
+      "label_postprocessing": {
+        "filename": "mg_training_trajectory.pdf",
+        "input_pdf_backup": "tmp\\phase_to_stage_label_edit\\mg_training_trajectory.pdf",
+        "input_pdf_sha256": "69bae843cb814c5275f41f10a589d2ccd521d204d8d5e70c6bd0b4f0a50e7809",
+        "pdf_sha256": "2a016c50b1b19b8d9305dc8ced0e9d7b3622b77273597a21ee1687f792704b1c",
+        "stage_headings": [
+          "Stage 1: Balancing",
+          "Stage 2: Refining",
+          "Stage 3: Converging"
+        ],
+        "all_other_text_preserved": true,
+        "plot_area_pixels_identical": true,
+        "raster_images_added": false,
+        "script": "tmp\\phase_to_stage_label_edit\\update_titles.py",
+        "script_sha256": "224ad08d74deaa78511cdeec0e05e6ca017ec6cf7246aa95dd0764e3278e0ba0"
+      }
+    },
+    {
+      "result_dir": "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\aggregation\\T24\\exact\\peb",
+      "template": "peb",
+      "horizon": 24,
+      "case_seed": 0,
+      "training_seed": 0,
+      "scenario_sha256": "4aa952dedf9b099d1e8e806417c124199762e01a0157b2a102534cafb5ccf151",
+      "optimizer_updates": 1000,
+      "matrix_shape": [
+        94,
+        24
+      ],
+      "matrix_representation": "saved row-normalized network outputs; no extra normalization",
+      "difference_definition": "A_final - A_initial",
+      "difference_min": -0.4629416174632484,
+      "difference_max": 0.301619915512443,
+      "difference_nonzero_count": 2245,
+      "final_snapshot_matches_model": true,
+      "sources": {
+        "training_config": {
+          "path": "results/aggregation/T24/exact/peb/training_config.json",
+          "sha256": "4330628ab14660834a1ed0000823ef28313c891740a1b359a83ea8b4f76864bd"
+        },
+        "initial_matrix": {
+          "path": "results/aggregation/T24/exact/peb/snapshots/A_0.csv",
+          "sha256": "2128bb1db496922a64359a4da879c06bb44b0c26b0019470b5d46269339d2734"
+        },
+        "final_model": {
+          "path": "results/aggregation/T24/exact/peb/final_polytope.npz",
+          "sha256": "2f871d9d287d6b961dc5f6b4d8285b9dc5fc9cc88d855cef9f135572d2af9fa0"
+        },
+        "final_snapshot": {
+          "path": "results/aggregation/T24/exact/peb/snapshots/A_1000.csv",
+          "sha256": "a3a7a89d1c8c6d1e62a084153b47e06d456b5ab49ee4b2bdfee510b21e82e911"
+        },
+        "canonical_initial_crosscheck": {
+          "path": "results/aggregation/T24/exact/peb/verified_case0_seed0/initial_polytope.npz",
+          "sha256": "1c5b27870d9a93712673349c3e656bb369e4e4b89938d71a4f9d8f4211ad56b5"
+        }
+      },
+      "output_path": "results/figures_original/A_difference_heatmap_cont_PEB.pdf",
+      "output_sha256": "fd1a143f89fbacf072adf8ad6fb51d75ed0b6851012aff63dd1acb76c85b874c",
+      "restored_from": "Simulator_v6/drawers/visualize_A_matrix_evolution.py",
+      "colormap": "RdBu_r",
+      "common_color_limits": [
+        -0.5,
+        0.5
+      ],
+      "color_clipped_coefficients": 0,
+      "x_axis": "constraint row index (one-based)",
+      "y_axis": "time coordinate index (one-based)",
+      "pdf_sha256": "fd1a143f89fbacf072adf8ad6fb51d75ed0b6851012aff63dd1acb76c85b874c"
+    },
+    {
+      "result_dir": "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\aggregation\\T24\\exact\\pb",
+      "template": "pb",
+      "horizon": 24,
+      "case_seed": 0,
+      "training_seed": 0,
+      "scenario_sha256": "4aa952dedf9b099d1e8e806417c124199762e01a0157b2a102534cafb5ccf151",
+      "optimizer_updates": 1000,
+      "matrix_shape": [
+        48,
+        24
+      ],
+      "matrix_representation": "saved row-normalized network outputs; no extra normalization",
+      "difference_definition": "A_final - A_initial",
+      "difference_min": -0.15723689471679547,
+      "difference_max": 0.1607506305819498,
+      "difference_nonzero_count": 1152,
+      "final_snapshot_matches_model": true,
+      "sources": {
+        "training_config": {
+          "path": "results/aggregation/T24/exact/pb/training_config.json",
+          "sha256": "a74a012c42e5d93be2e4b757ec0e13152d19a6f4de81a155393dde25cd13f440"
+        },
+        "initial_matrix": {
+          "path": "results/aggregation/T24/exact/pb/snapshots/A_0.csv",
+          "sha256": "562d3ad88db0f25041ecc21956ffb425ad3ee42e8f147c5f1c1bf4a676fd9496"
+        },
+        "final_model": {
+          "path": "results/aggregation/T24/exact/pb/final_polytope.npz",
+          "sha256": "eadb8e1871a1a320a2002459396b70fc1165dd2b79a98c87e49a3ac99af58974"
+        },
+        "final_snapshot": {
+          "path": "results/aggregation/T24/exact/pb/snapshots/A_1000.csv",
+          "sha256": "c2775c0f229127b505aa850c8fe17e5228352399eae0b8c8fb8ad6ca4bded1a5"
+        },
+        "canonical_initial_crosscheck": {
+          "path": "results/aggregation/T24/exact/pb/seed_0/initial_polytope.npz",
+          "sha256": "256a9f8febb05fec68e2dbe29bac848ec25502a4a1751ee0106debd60d5f53f1"
+        }
+      },
+      "output_path": "results/figures_original/A_difference_heatmap_cont_PB.pdf",
+      "output_sha256": "d88ab6dd03c6dd636eb4c02ddc034a211293ecac78b5e4da0cb835c360ee5f3c",
+      "restored_from": "Simulator_v6/drawers/visualize_A_matrix_evolution.py",
+      "colormap": "RdBu_r",
+      "common_color_limits": [
+        -0.5,
+        0.5
+      ],
+      "color_clipped_coefficients": 0,
+      "x_axis": "constraint row index (one-based)",
+      "y_axis": "time coordinate index (one-based)",
+      "pdf_sha256": "d88ab6dd03c6dd636eb4c02ddc034a211293ecac78b5e4da0cb835c360ee5f3c"
+    },
+    {
+      "sources": [
+        {
+          "path": "results/aggregation/T24/comparisons/metadata.json",
+          "sha256": "8ea46a0d2c7ddc3c515283de7d48b2d853a1f9fdbfe55937b448fa880c7811e4"
+        },
+        {
+          "path": "results/aggregation/T24/comparisons/error_comparison.pkl",
+          "sha256": "8c7b29eaa8beb4ef5941377dc1293797e8e7a5c182c3d72130dc3c310cab95d6"
+        },
+        {
+          "path": "results/aggregation/T24/comparisons/directions.npy",
+          "sha256": "7f1ab3ff18e64b781605f070e457a7eaa6c5b7f7272ea9e2088f3dba9ca241a5"
+        },
+        {
+          "path": "Simulator/cases/aggregation.py",
+          "sha256": "417f11e4d7e1721bd65d63959a0dfba1ac7d35bac923f979b6b913d7ff4347a8"
+        },
+        {
+          "path": "Simulator/cases/aggregation_case_T24.py",
+          "sha256": "20bfd4a2fa84a9a8f44bc8e714696c54753a5b117fb3d347e8727bfa69f407fa"
+        },
+        {
+          "path": "results/aggregation/T24/baselines/box/verified_case0/final_polytope.npz",
+          "sha256": "49b6d45a29277eaddda9d68c1e17555f87cc28475e60237f97f94d0ead404520"
+        },
+        {
+          "path": "results/aggregation/T24/exact/pb/seed_0/final_polytope.npz",
+          "sha256": "eadb8e1871a1a320a2002459396b70fc1165dd2b79a98c87e49a3ac99af58974"
+        },
+        {
+          "path": "results/aggregation/T24/exact/pb/final_polytope.npz",
+          "sha256": "eadb8e1871a1a320a2002459396b70fc1165dd2b79a98c87e49a3ac99af58974"
+        },
+        {
+          "path": "results/aggregation/T24/baselines/matlab/verified_case0/final_polytope.npz",
+          "sha256": "ec93664882a1dbf010154657860c80ba6c1d3a47d33890f10580768f28f03989"
+        },
+        {
+          "path": "results/aggregation/T24/exact/peb/verified_case0_seed0/final_polytope.npz",
+          "sha256": "2f871d9d287d6b961dc5f6b4d8285b9dc5fc9cc88d855cef9f135572d2af9fa0"
+        },
+        {
+          "path": "results/aggregation/T24/exact/peb/final_polytope.npz",
+          "sha256": "2f871d9d287d6b961dc5f6b4d8285b9dc5fc9cc88d855cef9f135572d2af9fa0"
+        },
+        {
+          "path": "results/aggregation/T24/comparisons/peb_outer.npz",
+          "sha256": "5ae292d6aee23e2b9631177fb6b7c9931581cdd98ffa0c67ad510ead92c0fe0e"
+        }
+      ],
+      "restored_from": "Simulator_v6/drawers/plot_aggregation_comparison.py",
+      "methods": [
+        "pb_inner",
+        "proposed_pb_exact",
+        "peb_outer",
+        "peb_inner",
+        "proposed_peb_exact"
+      ],
+      "direction_seed": 1,
+      "samples_per_method": 5000,
+      "statistics": {
+        "pb_inner": {
+          "error_feas": {
+            "mean": 9.489903646345895e-26,
+            "max": 8.178529209129802e-25,
+            "n": 5000
+          },
+          "error_opt": {
+            "mean": 4.154485927424282,
+            "max": 5.6641667239745965,
+            "n": 5000
+          }
+        },
+        "proposed_pb_exact": {
+          "error_feas": {
+            "mean": 2.2898798625743026e-08,
+            "max": 9.695552164096966e-05,
+            "n": 5000
+          },
+          "error_opt": {
+            "mean": 0.7537759767520613,
+            "max": 1.1791303781598006,
+            "n": 5000
+          }
+        },
+        "peb_outer": {
+          "error_feas": {
+            "mean": 0.4562867645023376,
+            "max": 1.3572779140564601,
+            "n": 5000
+          },
+          "error_opt": {
+            "mean": 2.3993054282496897e-12,
+            "max": 4.925198112256484e-12,
+            "n": 5000
+          }
+        },
+        "peb_inner": {
+          "error_feas": {
+            "mean": 1.4479103183936795e-21,
+            "max": 9.763241658430087e-20,
+            "n": 5000
+          },
+          "error_opt": {
+            "mean": 1.5166100393559543,
+            "max": 2.6367557859859296,
+            "n": 5000
+          }
+        },
+        "proposed_peb_exact": {
+          "error_feas": {
+            "mean": 3.4351571398297646e-09,
+            "max": 9.262099849874991e-06,
+            "n": 5000
+          },
+          "error_opt": {
+            "mean": 0.44422666933322397,
+            "max": 0.7412120499447772,
+            "n": 5000
+          }
+        }
+      },
+      "display_floor": 1e-06,
+      "contract": {
+        "archetype": "quantitative grid",
+        "backend": "Python / Matplotlib",
+        "purpose": "Compare the original five aggregation methods using current common-direction squared distances",
+        "statistic": "Violin density, raw arithmetic mean and observed range; no confidence interval",
+        "labels": "Initialization labels replace obsolete 2T/4T inner guarantees"
+      },
+      "output_path": "results/figures_original/comparison.pdf",
+      "pdf_sha256": "d0365bb5ebe9fcf4e820a4a833e2db6be23be1fcc037e527248f13c6c945fad9"
+    }
+  ],
+  "validation": {
+    "original_large_scale_contract": "T=24; CL=100; TCL=200; PV=200; independent current training",
+    "large_scale_pdf_opened_and_rendered": true,
+    "scenario_caption_matches_source": true,
+    "all_7_pdf_hashes_verified": true,
+    "protected_existing_result_files_unchanged": 285,
+    "original_T96_mapping_replaced": true
+  },
+  "latest_label_update": {
+    "operation": "Replace Phase with Stage in the three existing vector-PDF headings",
+    "training_or_solving_performed": false,
+    "curves_recomputed": false,
+    "script": "tmp\\phase_to_stage_label_edit\\update_titles.py",
+    "script_sha256": "224ad08d74deaa78511cdeec0e05e6ca017ec6cf7246aa95dd0764e3278e0ba0",
+    "future_plotting_source_sha256": "3c8deeea62bb4790e3ac1fe55ab4fd938abfc4cf470a4a9493007532b363a149",
+    "protected_files_unchanged": true,
+    "figures": [
+      {
+        "filename": "aggregation_training_trajectory_small_scale_PB.pdf",
+        "input_pdf_backup": "tmp\\phase_to_stage_label_edit\\aggregation_training_trajectory_small_scale_PB.pdf",
+        "input_pdf_sha256": "9fc5c13ae311944295d53989c606851f07d7666481b8a24ca2c9eb9e534383e2",
+        "pdf_sha256": "6368f0cbf8a3f0387be43dd30889ac28c15689fddcf50f39ee4e918b681bbaf6",
+        "stage_headings": [
+          "Stage 1: Balancing",
+          "Stage 2: Refining",
+          "Stage 3: Converging"
+        ],
+        "all_other_text_preserved": true,
+        "plot_area_pixels_identical": true,
+        "raster_images_added": false
+      },
+      {
+        "filename": "aggregation_training_trajectory_small_scale_PEB.pdf",
+        "input_pdf_backup": "tmp\\phase_to_stage_label_edit\\aggregation_training_trajectory_small_scale_PEB.pdf",
+        "input_pdf_sha256": "f061eeffb583c3b561cf0d885c12f816435bd4a1eb0ca71dfe361b3933b3f9bc",
+        "pdf_sha256": "4a7183c6568853dd43f5b650a55db43f441157d1d0911f9f8600e3a40707ff44",
+        "stage_headings": [
+          "Stage 1: Balancing",
+          "Stage 2: Refining",
+          "Stage 3: Converging"
+        ],
+        "all_other_text_preserved": true,
+        "plot_area_pixels_identical": true,
+        "raster_images_added": false
+      },
+      {
+        "filename": "mg_training_trajectory.pdf",
+        "input_pdf_backup": "tmp\\phase_to_stage_label_edit\\mg_training_trajectory.pdf",
+        "input_pdf_sha256": "69bae843cb814c5275f41f10a589d2ccd521d204d8d5e70c6bd0b4f0a50e7809",
+        "pdf_sha256": "2a016c50b1b19b8d9305dc8ced0e9d7b3622b77273597a21ee1687f792704b1c",
+        "stage_headings": [
+          "Stage 1: Balancing",
+          "Stage 2: Refining",
+          "Stage 3: Converging"
+        ],
+        "all_other_text_preserved": true,
+        "plot_area_pixels_identical": true,
+        "raster_images_added": false
+      }
+    ]
+  }
+}

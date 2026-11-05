@@ -1,0 +1,25 @@
+{
+  "status": "passed",
+  "active_python_modules": 68,
+  "missing_local_imports": [],
+  "solver_execution": false,
+  "optional_missing_packages": [
+    "gurobipy",
+    "cvxpy"
+  ],
+  "central_pdfs": [
+    "01_gradient_comparison.pdf",
+    "02_methods_error_comparison.pdf",
+    "05_training_budget_comparison.pdf",
+    "05_training_stage_comparison.pdf",
+    "06_uncertainty_error_distribution.pdf",
+    "A_difference_heatmap_cont_PB.pdf",
+    "A_difference_heatmap_cont_PEB.pdf",
+    "aggregation_training_trajectory_large_scale.pdf",
+    "aggregation_training_trajectory_small_scale_PB.pdf",
+    "aggregation_training_trajectory_small_scale_PEB.pdf",
+    "comparison.pdf",
+    "mg_training_trajectory.pdf"
+  ],
+  "note": "Static local import closure; archived source snapshots and the legacy AST-only reference are excluded."
+}

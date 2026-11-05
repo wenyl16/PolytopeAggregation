@@ -1,0 +1,101 @@
+{
+  "horizon": 24,
+  "case_seed": 42,
+  "device_scale": 3,
+  "conservativeness": 0.05,
+  "device_counts": {
+    "MT": 3,
+    "PV": 3,
+    "TL": 3,
+    "CL": 3,
+    "ESS": 3,
+    "HP": 6
+  },
+  "portfolio_definition": "repeat_original_devices",
+  "model_complexity": {
+    "variables": 1179,
+    "binary_variables": 360,
+    "constraints": 1512
+  },
+  "setup_seconds": 4.1653756000014255,
+  "solver_options": {
+    "Threads": 8,
+    "Seed": 0,
+    "MIPFocus": 2,
+    "Symmetry": 2,
+    "Presolve": 0
+  },
+  "approximation_solver_options": {
+    "Threads": 8,
+    "Seed": 0,
+    "MIPFocus": 2,
+    "Symmetry": 2
+  },
+  "count_branching": true,
+  "storage_headroom": true,
+  "physical_solver_backend": "gurobi_persistent_integer_counts",
+  "source_sha256": {
+    "E:\\OneDrive\\Working\\Research\\12\u591a\u79cd\u8bbe\u5907\u8fd0\u884c\u57df\u805a\u5408\u7684\u901a\u7528\u6846\u67b6\\code\\Simulator\\runners\\train_microgrid.py": "4198f4a442cd742cd7fd7dae90018fc1aa5023f0a40e9ab9989c345d1ef007ba",
+    "E:\\OneDrive\\Working\\Research\\12\u591a\u79cd\u8bbe\u5907\u8fd0\u884c\u57df\u805a\u5408\u7684\u901a\u7528\u6846\u67b6\\code\\Simulator\\runners\\train_aggregation.py": "6e9c3b56fc0a25a45d1bcc5bba7880d8b712f05a378b43236d16509d540eae9b",
+    "E:\\OneDrive\\Working\\Research\\12\u591a\u79cd\u8bbe\u5907\u8fd0\u884c\u57df\u805a\u5408\u7684\u901a\u7528\u6846\u67b6\\code\\Simulator\\cases\\microgrid_case.py": "6443c234dc60828a734615e0c703efdda6fb63b7fcd2a456d07530eb5b708a5d",
+    "E:\\OneDrive\\Working\\Research\\12\u591a\u79cd\u8bbe\u5907\u8fd0\u884c\u57df\u805a\u5408\u7684\u901a\u7528\u6846\u67b6\\code\\Simulator\\Approximator.py": "51234fa104781c8a6e1fece482ebe96db506fc04e82e49c06bde6f6448656610",
+    "E:\\OneDrive\\Working\\Research\\12\u591a\u79cd\u8bbe\u5907\u8fd0\u884c\u57df\u805a\u5408\u7684\u901a\u7528\u6846\u67b6\\code\\Simulator\\microgrid_count_solver.py": "9988ae0f7eaeebee7f240fc6ca21f7a9a67f03a0ac725b255cb650560e9f1bd2"
+  },
+  "profiles_sha256": "eb5aa8f8047afa2572bcfce1a5fb4358e8bc21ee92618bbb2fcc315a637735d7",
+  "num_samples": 100,
+  "batch_size": 5,
+  "noise_scale": 0.05,
+  "gradient_mode": "approx",
+  "network": "PreTrainNet",
+  "training_seed": 42,
+  "dtype": "torch.float32",
+  "is_uncertain": true,
+  "stages": [
+    {
+      "n_train": 29,
+      "epochs": 30,
+      "lr": 0.05,
+      "rate_opt_feas": 1.0
+    },
+    {
+      "n_train": 29,
+      "epochs": 30,
+      "lr": 0.1,
+      "rate_opt_feas": 0.01
+    },
+    {
+      "n_train": 39,
+      "epochs": 40,
+      "lr": 0.2,
+      "rate_opt_feas": 1e-06
+    }
+  ],
+  "status": "completed",
+  "elapsed_seconds": 2843.943294500001,
+  "train_calls": [
+    {
+      "n_train": 29,
+      "epochs": 30,
+      "optimizer_updates": 600,
+      "elapsed_seconds": 1076.111499999999
+    },
+    {
+      "n_train": 29,
+      "epochs": 30,
+      "optimizer_updates": 600,
+      "elapsed_seconds": 834.2290874999962
+    },
+    {
+      "n_train": 39,
+      "epochs": 40,
+      "optimizer_updates": 800,
+      "elapsed_seconds": 933.6027010999969
+    }
+  ],
+  "optimizer_updates": 2000,
+  "phase_end_updates": [
+    600,
+    1200,
+    2000
+  ]
+}

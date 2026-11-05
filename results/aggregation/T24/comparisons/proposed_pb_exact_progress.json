@@ -1,0 +1,14 @@
+{
+  "method": "proposed_pb_exact",
+  "event": "completed",
+  "completed": 5000,
+  "total": 5000,
+  "elapsed_seconds": 47.43088999995962,
+  "solver_seconds": 44.25299382209778,
+  "retry_count": 0,
+  "build_seconds": 0.13906529999803752,
+  "original_variables": 2184,
+  "original_rows": 5304,
+  "approximation_variables": 24,
+  "approximation_rows": 48
+}

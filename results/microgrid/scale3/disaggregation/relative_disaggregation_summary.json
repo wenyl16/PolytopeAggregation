@@ -1,0 +1,41 @@
+{
+  "status": "completed",
+  "method": "postprocess_existing_trajectories",
+  "additional_solver_calls": 0,
+  "T": 24,
+  "device_counts": {
+    "MT": 3,
+    "PV": 3,
+    "TL": 3,
+    "CL": 3,
+    "ESS": 3,
+    "HP": 6
+  },
+  "training_conservativeness": 0.05,
+  "evaluation_conservativeness": 0.0,
+  "seed": 1,
+  "noise_scale": 0.05,
+  "mean_shifts": {
+    "pv_shift": 0.0,
+    "cl_shift": 0.0,
+    "temp_shift": 0.0
+  },
+  "metric": "relative_disaggregation_error_percent",
+  "unit": "percent",
+  "formula": "100*sqrt(sum((P_command-P_projected)**2)/sum(P_command**2))",
+  "projection_definition": "Reuse the original projection minimizing squared distance in fixed nominal normalized power coordinates.",
+  "valid_samples": 5000,
+  "failed_samples": 0,
+  "zero_denominator_samples": 0,
+  "mean": 0.00017078574346985877,
+  "max": 0.015905121483017697,
+  "max_sample_index": 687,
+  "physical_squared_error_recompute_max_abs_difference": 0.0,
+  "source_sha256": {
+    "code\\results\\microgrid\\scale3\\disaggregation\\results.pkl": "a2a73d3b3f1934d607e8ef100504463e8aa64e2b87e0309ddd14e4f2a88b217a",
+    "code\\results\\microgrid\\scale3\\disaggregation\\metadata.json": "3fac4127e76ffb4b2dd822b419ea118ca03106158fab978eb2e476ce65e3eeac",
+    "code\\results\\microgrid\\scale3\\disaggregation\\errors.csv": "71850031cf60f7550f408f56c3a11b421c224900503bcb4759ff5c18421df980",
+    "code\\results\\microgrid\\scale3\\training\\pretrainnet_weights.pth": "0ff677318b8f635614666980065380aa3109d45bf97b69d1b0898b55a2a3991e",
+    "code\\results\\microgrid\\scale3\\training\\training_config.json": "ec2d194765f489ee5b3b507af2dfdbfa52c7829ad108cbe7a35c04a67222a222"
+  }
+}

@@ -1,0 +1,225 @@
+{
+  "scope": "Saved-data recalculation only; no solver or training calls",
+  "table_I": {
+    "source": "aggregation/T24/exact/peb/training_config.json",
+    "rows": [
+      {
+        "stage": 1,
+        "first_update": 1,
+        "last_update": 300,
+        "updates": 300,
+        "learning_rate": 0.02,
+        "saved_optimality_to_feasibility_ratio": 1.0,
+        "equivalent_lambda": 0.5
+      },
+      {
+        "stage": 2,
+        "first_update": 301,
+        "last_update": 500,
+        "updates": 200,
+        "learning_rate": 0.1,
+        "saved_optimality_to_feasibility_ratio": 0.01,
+        "equivalent_lambda": 0.9900990099009901
+      },
+      {
+        "stage": 3,
+        "first_update": 501,
+        "last_update": 1000,
+        "updates": 500,
+        "learning_rate": 1.0,
+        "saved_optimality_to_feasibility_ratio": 1e-06,
+        "equivalent_lambda": 0.9999990000010001
+      }
+    ],
+    "optimizer_updates": 1000,
+    "elapsed_seconds": 307.89215580001473
+  },
+  "table_II": [
+    {
+      "method": "Proposed method (PEB initialization)",
+      "key": "proposed_peb_exact",
+      "days": 365,
+      "mean_cost_deviation_usd_day": 8.645068044913994
+    },
+    {
+      "method": "PEB inner",
+      "key": "peb_inner",
+      "days": 365,
+      "mean_cost_deviation_usd_day": 9.816639332692965
+    },
+    {
+      "method": "PEB outer",
+      "key": "peb_outer",
+      "days": 365,
+      "mean_cost_deviation_usd_day": -7.216175514006622
+    },
+    {
+      "method": "Federated PEB",
+      "key": "federated_peb",
+      "days": 365,
+      "mean_cost_deviation_usd_day": 56.077928555222584
+    },
+    {
+      "method": "Proposed method (PB initialization)",
+      "key": "proposed_pb_exact",
+      "days": 365,
+      "mean_cost_deviation_usd_day": 27.07989596620534
+    },
+    {
+      "method": "PB inner",
+      "key": "pb_inner",
+      "days": 365,
+      "mean_cost_deviation_usd_day": 65.2871450831962
+    },
+    {
+      "method": "Cutting plane (original)",
+      "key": "cutting_plane",
+      "days": 365,
+      "mean_cost_deviation_usd_day": -11.103901367464978
+    },
+    {
+      "method": "Cutting plane (modified)",
+      "key": "cutting_plane_modified",
+      "days": 365,
+      "mean_cost_deviation_usd_day": -5.766406570521943
+    },
+    {
+      "method": "PVE (original)",
+      "key": "pve",
+      "days": 365,
+      "mean_cost_deviation_usd_day": 16.761950342562745
+    },
+    {
+      "method": "PVE (modified)",
+      "key": "pve_modified",
+      "days": 365,
+      "mean_cost_deviation_usd_day": 34.371352599384664
+    }
+  ],
+  "table_III": [
+    {
+      "horizon": 24,
+      "devices": 500,
+      "training_seconds": 741.3367320001125,
+      "actual_optimizer_updates": 1000,
+      "samples": 5000,
+      "mean_feasibility": 2.6572434348616173e-13,
+      "max_feasibility": 1.3286203668415406e-09,
+      "mean_optimality": 0.2083484257270198,
+      "max_optimality": 0.5770203894011567
+    },
+    {
+      "horizon": 96,
+      "devices": 500,
+      "training_seconds": 3262.0634208000265,
+      "actual_optimizer_updates": 1003,
+      "samples": 5000,
+      "mean_feasibility": 1.617594219510376e-08,
+      "max_feasibility": 3.185153018176617e-05,
+      "mean_optimality": 0.2799739816661022,
+      "max_optimality": 0.5411063310134305
+    }
+  ],
+  "table_IV": [
+    {
+      "portfolio_minimum_on_time": "7 devices / 4 h",
+      "samples": 5000,
+      "mean_gap_percent": 0.03510300158280198,
+      "max_gap_percent": 1.0848923635594703,
+      "mean_gap_lower_percent": 0.03510300086569787,
+      "max_gap_lower_percent": 1.0848923635594703,
+      "sample_file": "microgrid/nonconvexity/samples.csv"
+    },
+    {
+      "portfolio_minimum_on_time": "21 devices / 4 h",
+      "samples": 5000,
+      "mean_gap_percent": 0.011283498675189088,
+      "max_gap_percent": 0.36708257986999593,
+      "mean_gap_lower_percent": 0.011283287330307068,
+      "max_gap_lower_percent": 0.36708257986999593,
+      "sample_file": "microgrid/scale3/nonconvexity/samples.csv"
+    },
+    {
+      "portfolio_minimum_on_time": "21 devices / removed",
+      "samples": 5000,
+      "mean_gap_percent": 0.0001005430744763388,
+      "max_gap_percent": 0.04804356567574834,
+      "mean_gap_lower_percent": 0.00010021019587498685,
+      "max_gap_lower_percent": 0.0480435656757474,
+      "sample_file": "microgrid/scale3/nonconvexity_no_min_uptime/paired_samples.csv"
+    }
+  ],
+  "table_V": {
+    "source": "microgrid/training/training_config.json",
+    "rows": [
+      {
+        "stage": 1,
+        "first_update": 1,
+        "last_update": 600,
+        "updates": 600,
+        "learning_rate": 0.05,
+        "saved_optimality_to_feasibility_ratio": 1.0,
+        "equivalent_lambda": 0.5
+      },
+      {
+        "stage": 2,
+        "first_update": 601,
+        "last_update": 1200,
+        "updates": 600,
+        "learning_rate": 0.1,
+        "saved_optimality_to_feasibility_ratio": 0.01,
+        "equivalent_lambda": 0.9900990099009901
+      },
+      {
+        "stage": 3,
+        "first_update": 1201,
+        "last_update": 2000,
+        "updates": 800,
+        "learning_rate": 0.2,
+        "saved_optimality_to_feasibility_ratio": 1e-06,
+        "equivalent_lambda": 0.9999990000010001
+      }
+    ],
+    "optimizer_updates": 2000,
+    "elapsed_seconds": 980.6117743998766
+  },
+  "validation": {
+    "tables_II_III_IV_match_manuscript_reported_precision": true
+  },
+  "notes": [
+    "Cost is each method's saved native daily optimum minus the same day's original physical optimum.",
+    "Table III errors are normalized squared Euclidean distances, not percentage or RMS distances.",
+    "Table IV uses upper certified distances for reported values; lower interval endpoints are retained too.",
+    "The removed-minimum-on-time row uses paired_samples.csv; generic samples.csv is a different experiment.",
+    "Stage lambda is shown as 1/(1+saved_optimality_to_feasibility_ratio); the manuscript rounds these weights.",
+    "The saved T96 run has 1003 updates. Historical counts, timings and array values are preserved.",
+    "Manuscript gradient timings 197.215/195.594 seconds were author supplied; current retained run logs differ.",
+    "Budget-study logs contain 1003/2006 updates and 225.768/461.017 seconds, versus manuscript 1000/2000 and 197.2/390.7."
+  ],
+  "source_sha256": {
+    "aggregation/T24/exact/peb/training_config.json": "4330628ab14660834a1ed0000823ef28313c891740a1b359a83ea8b4f76864bd",
+    "microgrid/training/training_config.json": "cd8813dadcd24651f9291d3d8c7fdb8d123d73a27643d4c5e1a9023164773fbb",
+    "aggregation/T24/comparisons/original_costs.npy": "15724199effc0a5e33c6246948c596356b8c7c2564ca1ad4212577682d2698af",
+    "aggregation/T24/comparisons/summary.json": "8cd3013d7c44a292a842c4dceb46d761a6fa5ab4d78ca31270c45ee53f9b52d8",
+    "aggregation/T24/comparisons/proposed_peb_exact_costs.npy": "b6597feeae454c87cd65632a1420c6e7e3b7155bdfc1fda6e13ab0b7f07ce6c8",
+    "aggregation/T24/comparisons/peb_inner_costs.npy": "38873876895bd97b21173e7004ada62f4181decb87c8db436370a4ed92451290",
+    "aggregation/T24/comparisons/peb_outer_costs.npy": "69546c88c81e73204143ac5464096fe0145100f64479508d6aea3c9b689566c2",
+    "aggregation/T24/comparisons/federated_peb_costs.npy": "332552444cfd85f582a4a9c5376e2f6cb852df0afcca38e8871dd212b3a46b7e",
+    "aggregation/T24/comparisons/proposed_pb_exact_costs.npy": "37377c0f0d0d3450b95eb6d656d49ff67a812eb7272c7bb20245eb3cd39c65cd",
+    "aggregation/T24/comparisons/pb_inner_costs.npy": "475863ed2698ebbea1d041b6ac82c3b69886eeb7ec5766ec3b62a426b6f20ba1",
+    "aggregation/T24/comparisons/cutting_plane_costs.npy": "859cac6930112f0a2843106f1979f6b47b6c069ddc08bb2313b5f902d0849121",
+    "aggregation/T24/comparisons/cutting_plane_modified_costs.npy": "67c6f316c927fbadac799d424f0e8029d0a24a2134f00a8358c1669513d5fedd",
+    "aggregation/T24/comparisons/pve_costs.npy": "377d03df6becffc5b0d2d7e462f1ff37cb61ce25f0aabe9fc03284787e1cfed3",
+    "aggregation/T24/comparisons/pve_modified_costs.npy": "b71518e2d942af74246d32a56970ceb0ef257530e21608fa000662638517e31e",
+    "aggregation/T24/large_scale/approx/peb/training_config.json": "5fde5bb1029999450e1f6ece44171dae40174ab68592b30a09a3e294c39bdb33",
+    "aggregation/T24/large_scale/approx/peb/evaluation_errors.npz": "78f658cee1dc3db5e049a41cb9796801c999adb6e50f29972c9a09853ac0ee28",
+    "aggregation/T96/approx/peb/training_config.json": "fde399b7026dabf8035f93a12f5eeb2925eb45537455073d259e68754a390e08",
+    "aggregation/T96/approx/peb/evaluation_errors.npz": "40fdac5c28e93e838ce2745e22e98e3ab2d80b036181a95e3a2437ae09c623ee",
+    "microgrid/nonconvexity/samples.csv": "8f2dd3e930e695e1c2c2f0bcac39ab9844245c9f509f28c7e67b22f7f194dad8",
+    "microgrid/nonconvexity/summary.json": "545f1a80879375553d9cc4b8ec5140bd95a9713c464b653b80481d4c46767d93",
+    "microgrid/scale3/nonconvexity/samples.csv": "4f45d5b19d09c2bf3a0f72e601f246c8b43d03fc23fdd901c043ee808958521c",
+    "microgrid/scale3/nonconvexity/summary.json": "7544d3b2902576c61e23f8a20a1ee17a7e4426866b3cff2f4e65402148949aad",
+    "microgrid/scale3/nonconvexity_no_min_uptime/paired_samples.csv": "b1354c1fd5833e700c95a1545cfb25e2ff3674aa53a9e9bc0ecfa84a7a2e24d8",
+    "microgrid/scale3/nonconvexity_no_min_uptime/paired_summary.json": "a76636ba7409d1c95d4a19ddb8016fdbf2cb5a4e2eab7bbf9215a69facea336a"
+  }
+}

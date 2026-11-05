@@ -1,0 +1,29 @@
+Output: E:\OneDrive\Working\Research\12多种设备运行域聚合的通用框架\code\results\aggregation\T24\gradient_comparison\run_20261019_090229_case0_seeds0_900\seed_800
+CL (Interruptible Load) generated: 5 units with ±20% variation
+TCL generated
+PV (Photovoltaic) generated: 5 units with ±20% variation
+Seeds: case/initialization=0, training=800, evaluation=10000; reference check=None
+Paired iteration 50/1000: approximate: feas=8.986e-02, opt=1.108e-01, time=10.84s | exact: feas=7.608e-02, opt=1.128e-01, time=11.53s
+Paired iteration 100/1000: approximate: feas=1.179e-05, opt=9.200e-02, time=21.77s | exact: feas=2.297e-03, opt=7.575e-02, time=22.72s
+Paired iteration 150/1000: approximate: feas=4.934e-02, opt=9.599e-02, time=34.06s | exact: feas=4.328e-02, opt=9.513e-02, time=34.78s
+Paired iteration 200/1000: approximate: feas=4.377e-05, opt=8.145e-02, time=49.72s | exact: feas=1.495e-03, opt=5.589e-02, time=49.66s
+Paired iteration 250/1000: approximate: feas=9.630e-05, opt=7.939e-02, time=63.89s | exact: feas=2.271e-03, opt=3.132e-02, time=63.30s
+Paired iteration 300/1000: approximate: feas=1.771e-01, opt=3.466e-02, time=77.23s | exact: feas=1.094e-01, opt=3.689e-02, time=76.85s
+Paired iteration 350/1000: approximate: feas=3.263e-25, opt=1.741e-01, time=88.23s | exact: feas=1.986e-23, opt=1.831e-01, time=88.51s
+Paired iteration 400/1000: approximate: feas=6.850e-24, opt=1.317e-01, time=99.05s | exact: feas=6.573e-04, opt=2.254e-01, time=99.36s
+Paired iteration 450/1000: approximate: feas=3.321e-26, opt=1.290e-01, time=110.24s | exact: feas=9.431e-27, opt=1.432e-01, time=110.68s
+Paired iteration 500/1000: approximate: feas=4.432e-24, opt=1.947e-01, time=121.04s | exact: feas=5.017e-04, opt=1.565e-01, time=121.12s
+Paired iteration 550/1000: approximate: feas=5.045e-23, opt=2.000e-01, time=131.87s | exact: feas=3.381e-19, opt=6.972e-01, time=131.86s
+Paired iteration 600/1000: approximate: feas=4.793e-23, opt=4.841e-01, time=146.21s | exact: feas=4.392e-26, opt=9.310e-01, time=143.28s
+Paired iteration 650/1000: approximate: feas=5.334e-26, opt=5.863e-01, time=156.47s | exact: feas=1.292e-06, opt=8.998e-01, time=154.32s
+Paired iteration 700/1000: approximate: feas=1.075e-24, opt=1.209e+00, time=167.05s | exact: feas=3.597e-23, opt=8.174e-01, time=165.24s
+Paired iteration 750/1000: approximate: feas=4.176e-22, opt=1.075e+00, time=177.46s | exact: feas=6.628e-25, opt=8.514e-01, time=175.82s
+Paired iteration 800/1000: approximate: feas=2.125e-21, opt=4.802e-01, time=187.62s | exact: feas=2.233e-22, opt=6.529e-01, time=185.98s
+Paired iteration 850/1000: approximate: feas=6.079e-21, opt=2.228e+00, time=197.90s | exact: feas=2.226e-22, opt=8.084e-01, time=196.33s
+Paired iteration 900/1000: approximate: feas=1.171e-20, opt=1.121e+00, time=208.05s | exact: feas=3.676e-27, opt=6.410e-01, time=206.90s
+Paired iteration 950/1000: approximate: feas=1.252e-25, opt=4.191e-01, time=218.01s | exact: feas=2.663e-26, opt=5.809e-01, time=217.45s
+Paired iteration 1000/1000: approximate: feas=4.652e-27, opt=1.484e+00, time=227.78s | exact: feas=4.048e-28, opt=9.562e-01, time=227.27s
+approximate: training=227.782s; evaluation={'feasibility_error': {'mean': 8.189631018606851e-21, 'median': 7.167047175985088e-23, 'max': 1.5680704876061793e-19, 'min': 2.9631782150918018e-27, 'p95': 4.2644276266273636e-20, 'last': 6.636604328736564e-24}, 'optimality_error': {'mean': 0.988227131408195, 'median': 0.9225258726489826, 'max': 2.273435351853405, 'min': 0.18397762030143774, 'p95': 1.869639467930266, 'last': 1.6045091780993133}}
+exact: training=227.274s; evaluation={'feasibility_error': {'mean': 1.4082976963817975e-22, 'median': 1.8141660201913159e-25, 'max': 2.794888767848119e-21, 'min': 5.490441085459132e-30, 'p95': 9.230591112626627e-22, 'last': 2.2627510496862886e-22}, 'optimality_error': {'mean': 0.8989551058000294, 'median': 0.8932973355038784, 'max': 1.6140031152222725, 'min': 0.4387712762475866, 'p95': 1.197617141736244, 'last': 0.7018077676765015}}
+Completed: E:\OneDrive\Working\Research\12多种设备运行域聚合的通用框架\code\results\aggregation\T24\gradient_comparison\run_20261019_090229_case0_seeds0_900\seed_800
+Batch completed: E:\OneDrive\Working\Research\12多种设备运行域聚合的通用框架\code\results\aggregation\T24\gradient_comparison\run_20261019_090229_case0_seeds0_900\seed_800

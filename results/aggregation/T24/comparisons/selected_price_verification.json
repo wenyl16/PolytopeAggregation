@@ -1,0 +1,43 @@
+{
+  "status": "passed",
+  "selected": {
+    "price_area": "CAISO-POD_CONTRL_1_POOLE-APND",
+    "pricing_node": "POD_CONTRL_1_POOLE-APND",
+    "source_DOI": "10.5281/zenodo.21522100",
+    "currency": "USD",
+    "window": {
+      "start_utc": "2025-01-01T00:00:00Z",
+      "end_utc_exclusive": "2026-01-01T00:00:00Z",
+      "scenario_timezone": "UTC",
+      "first_utc_delivery_date": "2025-01-01",
+      "last_utc_delivery_date": "2025-12-31",
+      "days": 365,
+      "window_locked_before_cost_tests": true,
+      "selection": "Complete calendar2025 was specified by user before node screening"
+    },
+    "mean_cost_deviations_USD_per_day": {
+      "proposed_peb_exact": 8.645068044913994,
+      "proposed_pb_exact": 27.07989596620534,
+      "peb_inner": 9.816639332692965,
+      "pb_inner": 65.2871450831962,
+      "cutting_plane": -11.103901367464978,
+      "cutting_plane_modified": -5.766406570521943,
+      "pve": 16.761950342562745,
+      "pve_modified": 34.371352599384664,
+      "federated_peb": 56.077928555222584,
+      "peb_outer": -7.216175514006622
+    },
+    "strict_mean_checks": {
+      "peb_inner": true,
+      "pve": true,
+      "pve_modified": true
+    },
+    "PEB_fraction_lower_than_comparator": {
+      "peb_inner": 0.11934545500487259,
+      "pve": 0.4842445020874435,
+      "pve_modified": 0.7484804236342808
+    }
+  },
+  "source_verification_level": "passed_at_public_author_release_tier",
+  "physical_intersection_sensitivity_pass": true
+}

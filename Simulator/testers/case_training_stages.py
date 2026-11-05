@@ -1,0 +1,550 @@
+"""Compare three-stage training with one-stage and merged two-stage controls.
+
+Both runs use the ordinary Trainer, identical initial values and 1003 updates.
+Every control starts its final stage at learning rate 1 and retains the
+ordinary StepLR schedule; the learning rate is not held constant.
+"""
+
+import argparse
+import ast
+from datetime import datetime, timezone
+import hashlib
+import json
+import os
+from pathlib import Path
+import shutil
+import sys
+
+if __package__ in (None, ""):
+    sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+os.environ.setdefault("KMP_DUPLICATE_LIB_OK", "TRUE")
+
+import numpy as np
+import torch
+
+from Simulator.Approximator import PreTrainNet
+from Simulator.testers.polytope_evaluation import SOLVER_OPTIONS, evaluate_native
+from Simulator.paths import CODE_ROOT, RESULTS_ROOT
+from Simulator.runners.train_aggregation import common_archive, scenario
+from Simulator.runners.train_aggregation import build_aggregator, build_stages, train_case
+
+
+EXPERIMENT = "t24-peb-exact-single-vs-three-stage-v1"
+BASE = RESULTS_ROOT / "aggregation" / "T24" / "stage_comparison"
+NAMES = ("three_stage", "two_stage", "single_stage")
+SCHEDULES = ("three-stage", "two-stage", "single-stage")
+SCHEDULER = {"type": "StepLR", "step_size": 100, "gamma": 0.98}
+
+
+def comparison_stages(schedule="three-stage", multiplier=1):
+    """Retain the historical update budget while setting the final lr to 1."""
+    stages = build_stages(24, schedule=schedule, stage_multiplier=multiplier)
+    stages[-1] = (stages[-1][0], 1., stages[-1][2])
+    return stages
+
+
+def clear_owned_directory(directory):
+    """Clear files inside a validated experiment subdirectory, keeping folders."""
+    directory = Path(directory)
+    resolved = directory.resolve()
+    if directory.is_symlink() or not resolved.is_relative_to(RESULTS_ROOT.resolve()):
+        raise ValueError(f"Unsafe owned experiment directory: {directory}")
+    paths = list(directory.rglob("*"))
+    if any(path.is_symlink() or not path.resolve().is_relative_to(resolved) for path in paths):
+        raise ValueError("An owned experiment contains an unsafe link")
+    for path in paths:
+        if path.is_file():
+            path.unlink()
+
+
+def write_json(path, value):
+    def convert(item):
+        if isinstance(item, np.ndarray):
+            return item.tolist()
+        if isinstance(item, np.generic):
+            return item.item()
+        raise TypeError(type(item).__name__)
+    path.write_text(json.dumps(value, default=convert, indent=2, ensure_ascii=False,
+                               allow_nan=False), encoding="utf-8")
+
+
+def digest(path):
+    return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+
+
+def prepare_output():
+    """Replace only this identified experiment's explicitly owned outputs."""
+    base, root = BASE.resolve(), RESULTS_ROOT.resolve()
+    if not base.is_relative_to(root) or len(base.relative_to(root).parts) < 3:
+        raise ValueError("Stage comparison must be a true experiment directory inside results")
+    if base.exists() and any(base.iterdir()):
+        marker = base / "metadata.json"
+        if (not marker.is_file() or
+                json.loads(marker.read_text(encoding="utf-8")).get("experiment") != EXPERIMENT):
+            raise FileExistsError(f"Refusing to overwrite an unidentified experiment: {base}")
+        for name in NAMES:
+            owned = base / name
+            if owned.exists():
+                if owned.resolve().parent != base or owned.is_symlink():
+                    raise ValueError(f"Refusing to remove an experiment directory outside {base}: {owned}")
+                clear_owned_directory(owned)
+        for relative in ("summary.json", "initial_polytope.npz", "evaluation_directions.npy",
+                         "figures/training_stage_comparison.pdf",
+                         "figures/error_stage_comparison.pdf", "verification.json",
+                         "independent_recheck.json", "independent_coordinates.npz"):
+            owned = base / relative
+            if owned.exists():
+                if not owned.resolve().is_relative_to(base) or not owned.is_file():
+                    raise ValueError(f"Unsafe experiment output: {owned}")
+                if owned.suffix.lower() != ".pdf":
+                    owned.unlink()
+    base.mkdir(parents=True, exist_ok=True)
+    return base
+
+
+def metric_stats(values):
+    values = np.asarray(values, dtype=float)
+    return {"mean": float(values.mean()), "median": float(np.median(values)),
+            "max": float(values.max()), "p95": float(np.quantile(values, 0.95)),
+            "count_gt1e4": int(np.count_nonzero(values > 1e-4)),
+            "count_threshold": 1e-4}
+
+
+def history_stats(values):
+    return {"last": float(values[-1]), "last100_mean": float(np.mean(values[-100:]))}
+
+
+def source_hashes():
+    relatives = ("testers/case_training_stages.py", "runners/train_aggregation.py",
+                 "Approximator.py", "testers/polytope_evaluation.py",
+                 "cases/aggregation.py", "cases/aggregation_case_T24.py")
+    return {"Simulator/" + name: digest(CODE_ROOT / "Simulator" / name) for name in relatives}
+
+
+def check_training_files(output, expected_updates):
+    config = json.loads((output / "training_config.json").read_text(encoding="utf-8"))
+    if config["status"] != "completed" or config["optimizer_updates"] != expected_updates:
+        raise RuntimeError(f"Unexpected training completion/update count: {output}")
+    with np.load(output / "final_polytope.npz", allow_pickle=False) as saved:
+        region = {key: saved[key].copy() for key in ("A", "b")}
+    if region["A"].shape != (94, 24) or region["b"].shape != (94,):
+        raise RuntimeError(f"Unexpected final polytope shape: {output}")
+    if not all(np.isfinite(array).all() for array in region.values()):
+        raise RuntimeError(f"Nonfinite final polytope: {output}")
+    state = torch.load(output / "pretrainnet_weights.pth", map_location="cpu", weights_only=True)
+    if not state or not all(torch.isfinite(value).all().item() for value in state.values()):
+        raise RuntimeError(f"Nonfinite or empty final weights: {output}")
+    return config, region
+
+
+def _validate_retained_sources(output, metadata):
+    """Accept only the verified numerical-retry and timing-only later changes."""
+    sources = metadata["source_sha256"]
+    for relative in ("Simulator/cases/aggregation.py", "Simulator/cases/aggregation_case_T24.py",
+                     "Simulator/testers/polytope_evaluation.py"):
+        expected = sources.get(relative)
+        if relative == "Simulator/testers/polytope_evaluation.py":
+            # Moves and renaming preserve the original backend bytes.
+            for legacy in ("Simulator/testers/evaluation_native.py", "Simulator/evaluation_native.py"):
+                if expected is None:
+                    expected = sources.get(legacy)
+        if digest(CODE_ROOT / relative) != expected:
+            raise ValueError(f"Retained controls use a different physical/evaluation implementation: {relative}")
+    training_source = CODE_ROOT / "Simulator/runners/train_aggregation.py"
+    if digest(training_source) != sources["Simulator/runners/train_aggregation.py"]:
+        archive = output / "three_stage/train_aggregation_at_run.py"
+        if not archive.is_file():
+            raise ValueError("Retained training has a historical source SHA but no per-run execution archive; "
+                             "the pre-migration sources are preserved in comparisons/source_archive. "
+                             "They do not prove current-source equivalence; start a fresh run or provide "
+                             "the original per-run archive before resuming.")
+        if digest(archive) != sources["Simulator/runners/train_aggregation.py"]:
+            raise ValueError("Retained training-source archive differs from its recorded SHA")
+        def normalized(text):
+            text = text.replace("snapshots.mkdir(exist_ok=True)", "snapshots.mkdir()")
+            text = text.replace("            phase_started = time.perf_counter()\n", "")
+            return text.replace('            trainer.train_calls[-1]["elapsed_seconds"] = time.perf_counter() - phase_started\n', "")
+        old_tree = ast.parse(normalized(archive.read_text(encoding="utf-8")))
+        new_tree = ast.parse(normalized(training_source.read_text(encoding="utf-8")))
+        for name in ("build_aggregator", "train_case"):
+            old = next(node for node in old_tree.body if isinstance(node, ast.FunctionDef) and node.name == name)
+            new = next(node for node in new_tree.body if isinstance(node, ast.FunctionDef) and node.name == name)
+            if ast.dump(old) != ast.dump(new):
+                raise ValueError(f"Retained controls use a different training algorithm: {name}")
+    approximator = CODE_ROOT / "Simulator/Approximator.py"
+    expected = sources["Simulator/Approximator.py"]
+    if digest(approximator) != expected:
+        # These additions leave normally optimal LP/QP solves unchanged. A
+        # nonoptimal projection is retried with the same objective/tolerances.
+        text = approximator.read_text(encoding="utf-8")
+        text = text.replace("cvx_solver='gurobi', gradient_mode='approx', solver_options=None):",
+                            "cvx_solver='gurobi', gradient_mode='approx'):")
+        text = text.replace("        for optimizer in (self.solver, self.cvx_solver):\n            optimizer.options.update(solver_options or {})\n", "")
+        text = text.replace("        self.projection_retry_records = []\n", "")
+        start = text.index("        solver_name = self.cvx_solver_str if in_approx else self.solver_str\n")
+        marker = "                self.projection_retry_records.append(record)\n"
+        end = text.index(marker, start) + len(marker)
+        text = text[:start] + text[end:]
+        candidates = (text.encode("utf-8"), text.replace("\n", "\r\n").encode("utf-8"))
+        if not any(hashlib.sha256(candidate).hexdigest() == expected for candidate in candidates):
+            raise ValueError("Cannot prove the retained controls have the same gradient implementation")
+
+
+def _rebuild_region(output, initial_A, initial_b):
+    model = PreTrainNet(initial_A, initial_b, device="cpu").double()
+    model.load_state_dict(torch.load(output / "pretrainnet_weights.pth", map_location="cpu", weights_only=True))
+    with torch.no_grad():
+        A, b = model()
+    with np.load(output / "final_polytope.npz", allow_pickle=False) as saved:
+        np.testing.assert_array_equal(A[0].numpy(), saved["A"])
+        np.testing.assert_array_equal(b[0].numpy(), saved["b"])
+
+
+def add_two_stage(args):
+    """Append the merged-stage control without changing retained run files."""
+    output, root = BASE.resolve(), RESULTS_ROOT.resolve()
+    if not output.is_relative_to(root) or len(output.relative_to(root).parts) < 3:
+        raise ValueError("Stage comparison must be a true experiment directory inside results")
+    metadata = json.loads((output / "metadata.json").read_text(encoding="utf-8"))
+    summary = json.loads((output / "summary.json").read_text(encoding="utf-8"))
+    if (metadata.get("experiment") != EXPERIMENT or
+            (metadata.get("status") != "completed" and metadata.get("two_stage_status") != "failed") or
+            metadata.get("case_seed") != 0 or metadata.get("training_seed") != args.training_seed or
+            metadata.get("device") != args.device):
+        raise ValueError("Retained experiment identity, completion, seeds or device differs")
+    _validate_retained_sources(output, metadata)
+    with np.load(output / "initial_polytope.npz", allow_pickle=False) as saved:
+        initial_A, initial_b = saved["A"].copy(), saved["b"].copy()
+    if (initial_A.shape != (94, 24) or initial_b.shape != (94,) or
+            not np.isfinite(initial_A).all() or not np.isfinite(initial_b).all()):
+        raise ValueError("Retained initial polytope is invalid")
+    expected = np.random.RandomState(args.training_seed).randn(1003, 24)
+    directions = np.load(output / "evaluation_directions.npy", allow_pickle=False)
+    np.testing.assert_array_equal(directions, np.random.RandomState(3).randn(1000, 24))
+    if (metadata.get("evaluation_seed") != 3 or metadata.get("evaluation_samples") != 1000 or
+            digest(output / "evaluation_directions.npy") != metadata["evaluation_direction_file_sha256"]):
+        raise ValueError("Retained evaluation protocol differs")
+    initial_model = PreTrainNet(initial_A, initial_b, device="cpu").double()
+    with torch.no_grad():
+        normalized_A, normalized_b = initial_model()
+    controls = ("three_stage", "single_stage")
+    for name, schedule in zip(controls, ("three-stage", "single-stage")):
+        target = output / name
+        config, _ = check_training_files(target, 1003)
+        expected_stages = [{"n_train": n, "epochs": n + 1, "lr": lr, "rate_opt_feas": rate}
+                           for n, lr, rate in comparison_stages(schedule)]
+        if (config["stages"] != expected_stages or config["scenario_sha256"] != metadata["scenario_sha256"] or
+                config["training_seed"] != args.training_seed or config["scheduler"] != SCHEDULER):
+            raise ValueError(f"Retained control protocol differs: {name}")
+        np.testing.assert_array_equal(np.load(target / "training_directions.npy"), expected)
+        np.testing.assert_array_equal(np.loadtxt(target / "snapshots/A_0.csv", delimiter=","), normalized_A[0].numpy())
+        np.testing.assert_array_equal(np.loadtxt(target / "snapshots/b_0.csv", delimiter=","), normalized_b[0].numpy())
+        _rebuild_region(target, initial_A, initial_b)
+        with np.load(target / "evaluation_errors.npz", allow_pickle=False) as saved:
+            for key in ("error_feas", "error_opt"):
+                values = saved[key]
+                if values.shape != (1000,) or not np.isfinite(values).all():
+                    raise ValueError(f"Invalid retained evaluation: {name}/{key}")
+                if metric_stats(values) != summary["evaluation"][name][key]:
+                    raise ValueError(f"Retained evaluation and summary disagree: {name}/{key}")
+    protected = {str(path.relative_to(output)): digest(path) for name in controls
+                 for path in (output / name).rglob("*") if path.is_file()}
+    protected.update({name: digest(output / name) for name in ("initial_polytope.npz", "evaluation_directions.npy")})
+    agg = build_aggregator(24, 0)
+    case = agg.case_aggregator(A=initial_A.copy(), b=initial_b.copy(), gradient_mode="exact", template="peb")
+    if scenario(agg)["scenario_sha256"] != metadata["scenario_sha256"]:
+        raise ValueError("Current physical scene differs from retained controls")
+    np.testing.assert_array_equal(case["A_hat"], initial_A)
+    np.testing.assert_array_equal(case["b_hat"], initial_b)
+    target = output / "two_stage"
+    if target.resolve().parent != output or target.is_symlink():
+        raise ValueError("Unsafe two-stage experiment directory")
+    # All retained-input checks precede removal of the one owned new control.
+    if target.exists():
+        clear_owned_directory(target)
+    target.mkdir(exist_ok=True)
+    run = {"experiment": EXPERIMENT, "status": "running", "schedule": "two-stage",
+           "training_seed": args.training_seed, "case_seed": 0, "device": args.device,
+           "scenario_sha256": metadata["scenario_sha256"], "source_sha256": source_hashes(),
+           "source_archives": {}, "retained_control_files_sha256": protected,
+           "started_at_utc": datetime.now(timezone.utc).isoformat()}
+    for relative in ("Simulator/runners/train_aggregation.py", "Simulator/Approximator.py",
+                     "Simulator/testers/case_training_stages.py"):
+        name = Path(relative).stem + "_at_run.py"
+        raw = (CODE_ROOT / relative).read_bytes()
+        (target / name).write_bytes(raw)
+        if digest(target / name) != run["source_sha256"][relative]:
+            raise RuntimeError(f"Source changed while archiving: {relative}")
+        run["source_archives"][relative] = {"path": name, "sha256": digest(target / name)}
+    run_path = target / "run_metadata.json"
+    write_json(run_path, run)
+    calculator, recorded = case["errorcalculator"], []
+    for solver in (calculator.solver, calculator.cvx_solver):
+        solver.options.update({"Threads": 1, "Seed": 0})
+    original_calculate = calculator.calculate
+
+    def calculate_with_record(*positional, **kwargs):
+        if kwargs.get("directions") is None:
+            raise RuntimeError("Training must pass explicit directions")
+        used = np.asarray(kwargs["directions"], dtype=float).copy()
+        result = original_calculate(*positional, **kwargs)
+        recorded.append(used)
+        return result
+
+    calculator.calculate = calculate_with_record
+    metadata.update(status="running", two_stage_status="running", phase="training:two_stage",
+                    two_stage_run_metadata="two_stage/run_metadata.json")
+    write_json(output / "metadata.json", metadata)
+    try:
+        stages = comparison_stages("two-stage")
+        if stages != [(300, .02, 1.), (701, 1., 1e-6)]:
+            raise ValueError(f"Unexpected merged-stage schedule: {stages}")
+        try:
+            trainer = train_case(case, mode="exact", stages=stages, output_dir=target,
+                                 seed=args.training_seed, device=args.device,
+                                 case_config={"horizon": 24, "template": "peb", "case_seed": 0,
+                                              "counts": [5, 40, 5], "schedule": "two-stage",
+                                              "scheduler": SCHEDULER, "stage_multiplier": 1,
+                                              "scenario_sha256": metadata["scenario_sha256"]})
+        finally:
+            used = np.concatenate(recorded) if recorded else np.empty((0, 24))
+            np.save(target / "training_directions.npy", used)
+        np.testing.assert_array_equal(used, expected)
+        config, region = check_training_files(target, 1003)
+        if len(config["train_calls"]) != 2 or config["phase_end_updates"] != [301, 1003]:
+            raise RuntimeError("Two-stage update counts differ")
+        for stem in ("A", "b"):
+            np.testing.assert_array_equal(np.loadtxt(target / "snapshots" / f"{stem}_0.csv", delimiter=","),
+                                          np.loadtxt(output / "three_stage/snapshots" / f"{stem}_0.csv", delimiter=","))
+        _rebuild_region(target, initial_A, initial_b)
+        history = np.asarray(trainer.loss_history)
+        with (output / "three_stage/error_history.pkl").open("rb") as stream:
+            import pickle
+            old_history = pickle.load(stream)
+        first_phase = np.column_stack((old_history["feasibility_errors"], old_history["optimality_errors"]))[:301]
+        np.testing.assert_allclose(history[:301], first_phase, rtol=1e-8, atol=1e-10)
+        run["first_301_history_max_absolute_difference"] = float(np.max(np.abs(history[:301] - first_phase)))
+        summary["training"]["two_stage"] = {"elapsed_seconds": config["elapsed_seconds"], "updates": 1003,
+                                               "phase_end_updates": [301, 1003],
+                                               "feasibility_errors": history_stats(history[:, 0]),
+                                               "optimality_errors": history_stats(history[:, 1])}
+        metadata["phase"] = "evaluation:two_stage"
+        write_json(output / "metadata.json", metadata)
+
+        def progress(record):
+            write_json(target / "evaluation_progress.json", record)
+            print(f"two_stage evaluation: {record['completed']}/{record['total']}", flush=True)
+
+        result = evaluate_native(agg, directions, region, progress=progress,
+                                 checkpoint_path=target / "evaluation_checkpoint.npz")
+        np.savez(target / "evaluation_errors.npz", **result)
+        with np.load(target / "evaluation_checkpoint.npz", allow_pickle=False) as saved:
+            manifest = json.loads(str(saved["manifest"].item()))
+        for name in controls:
+            previous = metadata["native_evaluation"][name]["manifest"]
+            for key in ("directions_sha256", "model_sha256", "solver_options", "gurobi_version"):
+                if manifest[key] != previous[key]:
+                    raise RuntimeError(f"Evaluation protocol differs from retained {name}: {key}")
+        summary["evaluation"]["two_stage"] = {key: metric_stats(result[key]) for key in ("error_feas", "error_opt")}
+        metadata["native_evaluation"]["two_stage"] = {
+            **{key: value for key, value in result.items() if key.startswith("native_")},
+            "manifest": manifest, "final_polytope_file_sha256": digest(target / "final_polytope.npz")}
+        for relative, expected_hash in protected.items():
+            if digest(output / relative) != expected_hash:
+                raise RuntimeError(f"Retained control was changed: {relative}")
+        summary["two_stage_verification"] = {"status": "passed", "updates": 1003,
+            "phase_end_updates": [301, 1003], "training_directions_match_retained": True,
+            "initial_polytope_matches_retained": True, "first_301_history_matches_three_stage": True,
+            "retained_files_sha256_unchanged": len(protected), "physical_model_sha256": manifest["model_sha256"]}
+        for key in ("training", "evaluation"):
+            summary[key] = {name: summary[key][name] for name in NAMES}
+        metadata["optimizer_updates"]["two_stage"] = 1003
+        metadata["schedules"]["two_stage"] = stages
+        metadata.update(status="completed", two_stage_status="completed", phase="completed",
+                        method_order=list(NAMES), completed_training=list(NAMES), completed_evaluation=list(NAMES),
+                        updated_at_utc=datetime.now(timezone.utc).isoformat())
+        run.update(status="completed", native_evaluation=metadata["native_evaluation"]["two_stage"],
+                   completed_at_utc=datetime.now(timezone.utc).isoformat())
+        print(f"Added two-stage comparison: {output}", flush=True)
+    except BaseException as exc:
+        run.update(status="failed", failure=f"{type(exc).__name__}: {exc}")
+        metadata.update(status="failed", two_stage_status="failed", failure=run["failure"])
+        raise
+    finally:
+        run["projection_retry_records"] = getattr(calculator, "projection_retry_records", [])
+        write_json(run_path, run)
+        write_json(output / "metadata.json", metadata)
+        write_json(output / "summary.json", summary)
+    return output
+
+
+def main(argv=None):
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--device", default="cpu")
+    parser.add_argument("--training-seed", type=int, default=0)
+    parser.add_argument("--add-two-stage", action="store_true",
+                        help="Train only the merged-stage control and retain existing three/single-stage files")
+    args = parser.parse_args(argv)
+    if args.add_two_stage:
+        return add_two_stage(args)
+    evaluation_directions = np.random.RandomState(3).randn(1000, 24)
+    schedules = {name: comparison_stages(schedule)
+                 for name, schedule in zip(NAMES, SCHEDULES)}
+    updates = {name: sum(stage[0] + 1 for stage in stages) for name, stages in schedules.items()}
+    if set(updates.values()) != {1003}:
+        raise RuntimeError(f"Expected 1003 actual updates in each run, got {updates}")
+    output = prepare_output()
+    metadata = {"experiment": EXPERIMENT, "status": "running", "horizon": 24,
+                "template": "peb", "gradient_mode": "exact", "counts": [5, 40, 5],
+                "case_seed": 0, "training_seed": args.training_seed, "device": args.device,
+                "started_at_utc": datetime.now(timezone.utc).isoformat(),
+                "optimizer_updates": updates, "schedules": schedules, "scheduler": SCHEDULER,
+                "final_stage_initial_lr": 1.,
+                "learning_rate_note": "Every final stage starts at lr=1 and retains StepLR(100, 0.98); update budgets are unchanged.",
+                "evaluation_samples": 1000, "evaluation_seed": 3,
+                "evaluation_direction_source": "numpy.random.RandomState(3).randn(1000, 24)",
+                "evaluation_directions_sha256": hashlib.sha256(evaluation_directions.tobytes()).hexdigest(),
+                "evaluation_solver_options": SOLVER_OPTIONS, "source_sha256": source_hashes(),
+                "completed_training": [], "completed_evaluation": []}
+    summary = {"experiment": EXPERIMENT, "training": {}, "evaluation": {}}
+    metadata_path = output / "metadata.json"
+    write_json(metadata_path, metadata)
+    try:
+        agg = build_aggregator(24, 0)
+        cumulative = np.tril(np.ones((24, 24)))
+        cumulative /= cumulative.sum(axis=1, keepdims=True)
+        initial_A = np.vstack((np.eye(24), -np.eye(24), cumulative[1:], -cumulative[1:]))
+        original_case = agg.case_aggregator(A=initial_A, b=None, gradient_mode="exact", template="peb")
+        metadata["scene"] = scenario(agg)
+        metadata["scenario_sha256"] = metadata["scene"]["scenario_sha256"]
+        metadata["initial_solver_options"] = dict(original_case["errorcalculator"].solver.options)
+        np.savez(output / "initial_polytope.npz", A=original_case["A_hat"], b=original_case["b_hat"])
+        np.save(output / "evaluation_directions.npy", evaluation_directions)
+        metadata["evaluation_direction_file_sha256"] = digest(output / "evaluation_directions.npy")
+        # Copy both calculators before either run can mutate a learned polytope.
+        cases = {name: {**original_case, "A_hat": original_case["A_hat"].copy(),
+                        "b_hat": original_case["b_hat"].copy(),
+                        "trainer_configure": dict(original_case["trainer_configure"]),
+                        "errorcalculator": original_case["errorcalculator"].copy()} for name in NAMES}
+        expected_directions = np.random.RandomState(args.training_seed).randn(1003, 24)
+        final_regions = {}
+        for name in NAMES:
+            target, case = output / name, cases[name]
+            target.mkdir(exist_ok=True)
+            calculator = case["errorcalculator"]
+            for solver in (calculator.solver, calculator.cvx_solver):
+                solver.options.update(SOLVER_OPTIONS)
+            recorded = []
+            original_calculate = calculator.calculate
+
+            def calculate_with_record(*positional, _calculate=original_calculate, **kwargs):
+                if kwargs.get("directions") is None:
+                    raise RuntimeError("Training must pass explicit evaluation directions")
+                used = np.asarray(kwargs["directions"], dtype=float).copy()
+                result = _calculate(*positional, **kwargs)
+                recorded.append(used)
+                return result
+
+            calculator.calculate = calculate_with_record
+            metadata["phase"] = f"training:{name}"
+            write_json(metadata_path, metadata)
+            print(f"Starting {name}: {updates[name]} updates, stages={schedules[name]}", flush=True)
+            try:
+                trainer = train_case(case, mode="exact", stages=schedules[name], output_dir=target,
+                                     seed=args.training_seed, device=args.device,
+                                     case_config={"horizon": 24, "template": "peb", "case_seed": 0,
+                                                  "counts": [5, 40, 5], "schedule": SCHEDULES[NAMES.index(name)],
+                                                  "scheduler": SCHEDULER,
+                                                  "error_cutoff": 1e-8, "final_stage_initial_lr": 1.,
+                                                  "solver_threads": 1, "solver_seed": 0,
+                                                  "source_sha256": metadata["source_sha256"],
+                                                  "scenario_sha256": metadata["scenario_sha256"]})
+            finally:
+                used = np.concatenate(recorded, axis=0) if recorded else np.empty((0, 24))
+                np.save(target / "training_directions.npy", used)
+                retries = calculator.projection_retry_records
+                write_json(target / "projection_retries.json", {"status": "recorded", "records": retries,
+                           "retry_count": sum(len(row["attempts"]) for row in retries)})
+            np.testing.assert_array_equal(used, expected_directions)
+            config, final_regions[name] = check_training_files(target, updates[name])
+            if len(config["train_calls"]) != len(schedules[name]):
+                raise RuntimeError(f"Unexpected number of training phases: {name}")
+            history = np.asarray(trainer.loss_history)
+            gradients = np.asarray(trainer.grad_history, dtype=float)
+            if gradients.shape != (updates[name],) or not np.isfinite(gradients).all():
+                raise RuntimeError("Missing or nonfinite actual gradient history")
+            import pickle
+            with (target / "error_history.pkl").open("rb") as stream:
+                saved_history = pickle.load(stream)
+            saved_history["gradient_norms"] = gradients
+            with (target / "error_history.pkl").open("wb") as stream:
+                pickle.dump(saved_history, stream)
+            config.update(final_stage_initial_lr=1., scheduler_last_epoch=int(trainer.scheduler.last_epoch),
+                          scheduler_step_count=int(trainer.scheduler.state_dict()["_step_count"]),
+                          final_learning_rates=[float(group["lr"]) for group in trainer.optimizer.param_groups],
+                          finite_gradient_norms_verified=True, actual_training_directions_verified=True)
+            write_json(target / "training_config.json", config)
+            np.savez(target / "final_polytope.npz", **final_regions[name],
+                     **common_archive(agg, metadata["scene"], name), training_seed=args.training_seed,
+                     optimizer_updates=updates[name], final_stage_initial_lr=1.)
+            for relative in ("Simulator/runners/train_aggregation.py", "Simulator/Approximator.py"):
+                (target / (Path(relative).stem + "_at_run.py")).write_bytes((CODE_ROOT / relative).read_bytes())
+            summary["training"][name] = {"elapsed_seconds": config["elapsed_seconds"],
+                                          "updates": config["optimizer_updates"],
+                                          "phase_end_updates": config["phase_end_updates"],
+                                          "feasibility_errors": history_stats(history[:, 0]),
+                                          "optimality_errors": history_stats(history[:, 1])}
+            metadata["completed_training"].append(name)
+            write_json(output / "summary.json", summary)
+            write_json(metadata_path, metadata)
+        for stem in ("A", "b"):
+            initial = [np.loadtxt(output / name / "snapshots" / f"{stem}_0.csv", delimiter=",") for name in NAMES]
+            for other in initial[1:]:
+                np.testing.assert_array_equal(initial[0], other)
+        for name in NAMES[1:]:
+            np.testing.assert_array_equal(np.load(output / NAMES[0] / "training_directions.npy"),
+                                          np.load(output / name / "training_directions.npy"))
+        metadata["initial_polytopes_exactly_equal"] = True
+        metadata["training_directions_exactly_equal"] = True
+        metadata["training_directions_match_seed"] = True
+        metadata["training_directions_sha256"] = hashlib.sha256(expected_directions.tobytes()).hexdigest()
+        metadata["native_evaluation"] = {}
+        for name in NAMES:
+            target = output / name
+            metadata["phase"] = f"evaluation:{name}"
+            write_json(metadata_path, metadata)
+
+            def progress(record):
+                write_json(target / "evaluation_progress.json", record)
+                print(f"{name} evaluation: {record['completed']}/{record['total']}", flush=True)
+
+            result = evaluate_native(agg, evaluation_directions, final_regions[name], progress=progress,
+                                     checkpoint_path=target / "evaluation_checkpoint.npz")
+            np.savez(target / "evaluation_errors.npz", **result)
+            summary["evaluation"][name] = {key: metric_stats(result[key]) for key in ("error_feas", "error_opt")}
+            with np.load(target / "evaluation_checkpoint.npz", allow_pickle=False) as saved:
+                manifest = json.loads(str(saved["manifest"].item()))
+            metadata["native_evaluation"][name] = {
+                **{key: value for key, value in result.items() if key.startswith("native_")},
+                "manifest": manifest, "final_polytope_file_sha256": digest(target / "final_polytope.npz")}
+            metadata["completed_evaluation"].append(name)
+            write_json(output / "summary.json", summary)
+            write_json(metadata_path, metadata)
+        manifests = [metadata["native_evaluation"][name]["manifest"] for name in NAMES]
+        for key in ("directions_sha256", "model_sha256", "solver_options", "gurobi_version"):
+            if any(manifest[key] != manifests[0][key] for manifest in manifests[1:]):
+                raise RuntimeError(f"Native evaluation protocol differs: {key}")
+        metadata.update(status="completed", phase="completed",
+                        completed_at_utc=datetime.now(timezone.utc).isoformat())
+        print(f"Saved stage comparison: {output}", flush=True)
+    except BaseException as exc:
+        metadata.update(status="failed", failure=f"{type(exc).__name__}: {exc}")
+        raise
+    finally:
+        write_json(metadata_path, metadata)
+        write_json(output / "summary.json", summary)
+    return output
+
+
+if __name__ == "__main__":
+    main()

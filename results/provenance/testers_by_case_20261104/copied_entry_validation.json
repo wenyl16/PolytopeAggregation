@@ -1,0 +1,38 @@
+{
+  "copied_case_help": [
+    {
+      "module": "case_gradients",
+      "returncode": 0
+    },
+    {
+      "module": "case_training_stages",
+      "returncode": 0
+    },
+    {
+      "module": "case_training_budgets",
+      "returncode": 0
+    },
+    {
+      "module": "case_methods",
+      "returncode": 0
+    },
+    {
+      "module": "case_scaling",
+      "returncode": 0
+    },
+    {
+      "module": "case_microgrid_uncertainty",
+      "returncode": 0
+    },
+    {
+      "module": "case_microgrid_scale",
+      "returncode": 0
+    },
+    {
+      "module": "case_microgrid_nonconvexity",
+      "returncode": 0
+    }
+  ],
+  "copied_paper_tables_byte_identical": true,
+  "training_or_optimization_run": false
+}

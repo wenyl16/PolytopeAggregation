@@ -1,0 +1,55 @@
+{
+  "source": "tmp/gradient_runtime_and_baseline_budget/manifest.json",
+  "source_sha256": "2f1f1191c14c99ec08757df2e6018c48ff10eed4811d6567e9c1777bedf758bc",
+  "source_created_at_utc": "2026-10-28T11:53:12.349639+00:00",
+  "author_supplied_training_times": {
+    "complete_runs_per_variant": 10,
+    "updates_per_run": 1000,
+    "exact_mean_seconds": "197.215",
+    "approximate_mean_seconds": "195.594",
+    "difference_seconds": "1.621",
+    "relative_difference_percent": "0.8287575283495403744491139810",
+    "not_a_new_experiment": true
+  },
+  "interpretation": "This is an author-supplied manuscript timing statement, not a new raw experiment or a replacement for retained measured logs.",
+  "retained_gradient_summary_path": "results/aggregation/T24/gradient_comparison/run_20261019_090229_case0_seeds0_900/summary/summary.json",
+  "retained_gradient_summary_sha256": "b000302ba2a619865a63b09e3f03517f2758212d59c6b182369d050b8334b976",
+  "retained_gradient_timing_summary": {
+    "included_count": 10,
+    "excluded_count": 0,
+    "averaging": "Equal weight per complete seed; exclusions are listed, never replaced.",
+    "training_seconds": {
+      "approximate_mean": 226.19717995030805,
+      "exact_mean": 228.33527783041353,
+      "approximate_wins": 8,
+      "exact_wins": 2,
+      "ties": 0
+    }
+  },
+  "budget_actual_training": {
+    "standard": {
+      "path": "results/aggregation/T24/training_budget_comparison/peb/standard/training_config.json",
+      "source_sha256": "5621b5b2c88eb0ac1b596aa3e352a3b4bcb091930c5c884b78b12753fe2f64c2",
+      "elapsed_seconds": 225.76759130007122,
+      "optimizer_updates": 1003
+    },
+    "doubled": {
+      "path": "results/aggregation/T24/training_budget_comparison/peb/doubled/training_config.json",
+      "source_sha256": "f14f83d94e6d5111db292e018f7f88a6fc01736a75e02c8e5b38e84b7693456d",
+      "elapsed_seconds": 461.01739399996586,
+      "optimizer_updates": 2006
+    }
+  },
+  "reported_budget_training": {
+    "standard_seconds": 197.2,
+    "doubled_seconds": 390.7,
+    "standard_updates": 1000,
+    "doubled_updates": 2000
+  },
+  "unresolved_provenance": [
+    "No raw per-run measurements corresponding to author-supplied gradient means were found in the audited result directories.",
+    "No direct raw evidence for the manuscript budget runtime 390.7 s was identified; saved PEB budget files report 461.01739399996586 s.",
+    "The paper says 5000 gradient-evaluation directions, while retained figure source_data uses evaluation_10000_seed10000; original prefixes and input hashes must remain.",
+    "Repeated microgrid timing ranges (roughly 200--1500 s and over 7000 s) are author-reported text; matching raw run records were not identified in active results."
+  ]
+}

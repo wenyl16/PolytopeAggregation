@@ -1,0 +1,15 @@
+# CAISO POD_CONTRL_1_POOLE-APND: actual day-ahead energy prices
+
+The selected dataset contains all 8,760 actual hourly quotes in the full 2025 UTC calendar year. Prices are USD/MWh. This is a specific CAISO aggregate pricing node, rather than a statewide average or retail tariff. Its exact mapping to a named physical power plant has not been independently authenticated.
+
+Origin: California ISO (CAISO), OASIS `PRC_LMP`, market run `DAM`, component `LMP` (the total locational marginal energy price, carried in the source `MW` field). These are ordinary day-ahead electricity prices. No reserve, ancillary-service, capacity or imbalance-settlement price is used.
+
+The downloaded source is the authors' public, raw-preserving research release, **not a newly retrieved original CAISO CSV/parquet response**: Zhang, J., Zhang, H., Shen, L., and Xu, Z. (2026), *CBD: Nodal electricity price field tensors and forecasting pipeline (CAISO/MISO/NYISO, 2023-2026)*, [Zenodo DOI 10.5281/zenodo.21522100](https://doi.org/10.5281/zenodo.21522100). The release's float32 quote precision is retained exactly. Its data license is [Creative Commons Attribution 4.0](https://creativecommons.org/licenses/by/4.0/); underlying [CAISO terms and attribution](https://www.caiso.com/privacy-terms-of-use) remain applicable.
+
+The compact source archive contains exact node-column extracts with their original source row/column coordinates, source-member checksums and ZIP CRC verification, timestamp/node metadata, author pipeline and attribution. It does not contain redistributed LCG verification data. The original author pipeline initializes missing quotes as NaN and directly assigns the published LMP values; it does not fill missing values or clip prices. Independent source checks and their primary-source verification limits are recorded in `source_audit.json` and `node_identity_review.json`.
+
+Changes from the public release: select this node and the entire 2025 UTC year; retain 8,759 quotes from the GMT tensor and recover the one existing quote at 2025-11-03 07:00 UTC from the independent original local-day member (2025-11-02, OPR_HR=24). No estimated filling, interpolation, clipping, price normalization, currency conversion or intraday shifting is performed. Both repeated fall-back hours are retained from their GMT timestamps.
+
+`prices.npz` contains the 365-by-24 hourly prices and matching coefficients. For the unchanged one-hour physical model, `c = -price / 1000` and `P = x * (pmax - pmin) + pmin` in kW, with net generation positive. The complete objective is `c @ P`, including the power offset, in USD/day.
+
+This curve was selected after market/node screening because the unchanged Proposed PEB model has a lower annual mean cost deviation than PVE original, PVE modified and PEB inner. The full year is retained without selecting favorable days. This is a selected-node sensitivity case; it does not establish a universal ranking across electricity markets. The cost benchmark retains each original approximation, while separate physical-intersection and dispatch-projection audits disclose its remaining feasibility errors.

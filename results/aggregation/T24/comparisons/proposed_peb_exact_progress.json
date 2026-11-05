@@ -1,0 +1,14 @@
+{
+  "method": "proposed_peb_exact",
+  "event": "completed",
+  "completed": 5000,
+  "total": 5000,
+  "elapsed_seconds": 51.58562530006748,
+  "solver_seconds": 48.46499943733215,
+  "retry_count": 0,
+  "build_seconds": 0.1498974000569433,
+  "original_variables": 2184,
+  "original_rows": 5304,
+  "approximation_variables": 24,
+  "approximation_rows": 94
+}

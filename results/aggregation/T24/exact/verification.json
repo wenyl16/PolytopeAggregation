@@ -1,0 +1,100 @@
+{
+  "status": "passed",
+  "formal_main_results": true,
+  "third_stage_learning_rate": 1,
+  "training_updates_each": 1000,
+  "stage_update_counts": [
+    300,
+    200,
+    500
+  ],
+  "training_seed": 0,
+  "evaluation_seed": 1,
+  "evaluation": {
+    "peb": {
+      "lr": 1,
+      "samples": 5000,
+      "threshold_achieved": true,
+      "maximum_feasibility": 9.262099849874991e-06,
+      "mean_feasibility": 3.4351571398297646e-09,
+      "count_exceeding_threshold": 0,
+      "mean_optimality": 0.44422666933322397,
+      "successful_solves": 20000,
+      "retries": 0
+    },
+    "pb": {
+      "lr": 1,
+      "samples": 5000,
+      "threshold_achieved": true,
+      "maximum_feasibility": 9.695552164096966e-05,
+      "mean_feasibility": 2.2898798625743026e-08,
+      "count_exceeding_threshold": 0,
+      "mean_optimality": 0.7537759767520613,
+      "successful_solves": 20000,
+      "retries": 0
+    }
+  },
+  "all_10000_raw_feasibility_samples_pass": true,
+  "csv_rows_verified": 10000,
+  "shared_build_stages_preserves_1003_contract": true,
+  "actual_training_elapsed_seconds_verified": true,
+  "root_template_labels_lr1_verified": true,
+  "summary_checkpoint_pickle_csv_all_values_equal": true,
+  "training_payloads": {
+    "peb": {
+      "files": 52,
+      "sha256": "a9dae36fe8592edda653338c5ed3ab849bafc28445128fa60731914e004cf765"
+    },
+    "pb": {
+      "files": 52,
+      "sha256": "680168f19ffcc88305469673e79cf3baf64e4495b67abc8b966a20fa1de056c7"
+    }
+  },
+  "training_payloads_unchanged_during_evaluation": true,
+  "raw_weights_npz_csv_snapshot_all_equal": true,
+  "snapshots_each_exactly_42": true,
+  "all_four_training_histories_finite_and_first_500_unchanged": true,
+  "scheduler_last_epoch_each": 500,
+  "scheduler_step_count_each": 501,
+  "old_owned_logs_migration_and_figures_removed": true,
+  "fourth_stage_used": false,
+  "third_stage_extended": false,
+  "threshold_achieved": true,
+  "threshold": 0.0001,
+  "independent_recheck": {
+    "status": "passed",
+    "raw_samples_checked": 10000,
+    "extrema_metrics_recomputed": 4,
+    "whole_batch_recomputed": false,
+    "maximum_saved_native_absolute_difference": 0.0,
+    "maximum_saved_fixed_target_pyomo_difference": 2.220446049250313e-16,
+    "input_files_verified_unchanged": 138
+  },
+  "pdf_qa": {
+    "status": "passed",
+    "bytes": 266462,
+    "pages": 1,
+    "primary_agent_visual_qa_passed": true,
+    "labels_peb_pb_lr1": true,
+    "only_pdf_saved": true
+  },
+  "checked_at_utc": "2026-10-26T04:28:48.700768+00:00",
+  "output_files_sha256": {
+    "metadata.json": "1328847bf3b78ad9d961fd3b7ceaa0f13c9f6fc9623f018910da38d142da2e83",
+    "summary.json": "4117811e8bf46261ae9bcb65df96e2e1985bfefb3da072d57b2252e8f90472e5",
+    "error_comparison.pkl": "6280f91fc4b3af9ec3dc374b646e494b507f45b7df65e59c7a673946dfbcb1b0",
+    "error_samples.csv": "35c8133f1a8d70e8ff5eef3e6ff0fbe7b401718f3a40e5c23036181ca3051cf2",
+    "independent_recheck.json": "c605e9febd87e12e0c7cf1b9fd222b49cf0893c00bb54fa9f16d74a5aaa03ba5",
+    "figures/error_comparison.pdf": "2120037e88f0f5c2eaef7422d618823214010fbc094fd55d07faa3910fa1de3e",
+    "peb/training_config.json": "4330628ab14660834a1ed0000823ef28313c891740a1b359a83ea8b4f76864bd",
+    "peb/final_polytope.npz": "2f871d9d287d6b961dc5f6b4d8285b9dc5fc9cc88d855cef9f135572d2af9fa0",
+    "peb/evaluation_errors.npz": "8ff0bca4f22e96ab0ca5ca88ffda5f8a7fba77de16a78c8c3af324c65814aeef",
+    "pb/training_config.json": "a74a012c42e5d93be2e4b757ec0e13152d19a6f4de81a155393dde25cd13f440",
+    "pb/final_polytope.npz": "eadb8e1871a1a320a2002459396b70fc1165dd2b79a98c87e49a3ac99af58974",
+    "pb/evaluation_errors.npz": "9a59e6f910a203d7203a7487564dc56c0434d05905093ca4074970c8726c4950"
+  },
+  "protection_scope_note": "Baseline inputs remain fixed; all basic-scene training studies are explicitly authorized for lr=1 replacement.",
+  "baseline_input_files": 18,
+  "uniform_final_stage_learning_rate": 1.0,
+  "prior_global_protection_superseded_by_uniform_lr_update": true
+}

@@ -1,0 +1,30 @@
+{
+  "status": "merged",
+  "archives": [
+    {
+      "original_path": "code/Simulator/runners/prepare_aemo_prices.py",
+      "archive_path": "code/results/aggregation/T24/comparisons/source_archive/market_merge/prepare_aemo_prices.py.txt",
+      "sha256": "ec56c6bbb3713191361b9aa9bedd860fd7c7826aa114d12e10729f164ad6108b"
+    },
+    {
+      "original_path": "code/Simulator/runners/update_multimethod_comparison.py",
+      "archive_path": "code/results/aggregation/T24/comparisons/source_archive/market_merge/update_multimethod_comparison.py.txt",
+      "sha256": "cb9fcc96ab9a8a796c658534fe7a15c9284b91606218799b46a9ede046b5db3e"
+    },
+    {
+      "original_path": "code/Simulator/testers/evaluate_market_costs.py",
+      "archive_path": "code/results/aggregation/T24/comparisons/source_archive/market_merge/evaluate_market_costs.py.txt",
+      "sha256": "abe8b0d6df94d92709aaa401429987d2bcd8e32936fb024e87cfdd10e1b616ab"
+    }
+  ],
+  "target": "code/Simulator/testers/evaluate_market_costs.py",
+  "cost_evaluation_ast_unchanged": true,
+  "aemo_numerical_function_asts_unchanged": [
+    "validate_csv",
+    "read_month",
+    "fetch_month",
+    "download",
+    "prepare"
+  ],
+  "existing_data_modified": false
+}

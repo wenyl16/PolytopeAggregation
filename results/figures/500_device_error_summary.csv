@@ -1,0 +1,3 @@
+﻿T,devices,samples,seed,feasibility_mean,feasibility_max,optimality_mean,optimality_max,source
+24,500,5000,1,2.6572434348616173e-13,1.3286203668415406e-09,0.2083484257270198,0.5770203894011567,aggregation/T24/large_scale/approx/peb/evaluation_summary.json
+96,500,5000,1,1.617594219510376e-08,3.185153018176617e-05,0.2799739816661022,0.5411063310134305,aggregation/T96/approx/peb/evaluation_summary.json

@@ -1,0 +1,133 @@
+{
+  "metadata": {
+    "status": "completed",
+    "samples": 10000,
+    "direction_seed": 10000,
+    "case_seed": 0,
+    "python": "D:\\Anaconda\\envs\\py312_copy\\python.exe",
+    "gurobi_version": [
+      12,
+      0,
+      2
+    ],
+    "solver_options": {
+      "FeasibilityTol": 1e-09,
+      "OptimalityTol": 1e-09,
+      "BarConvTol": 1e-12,
+      "Threads": 1,
+      "Seed": 0
+    },
+    "final_polytope_sha256": {
+      "approximate": "0b703ae0425252fe57b6f472ebc292d186f87ce6e49d103d8aaa30f1667d5380",
+      "exact": "c87ed93e5ddd5ec8c2ad13d779f5632bb5e12abc8908786f23b7f580c19f18af"
+    },
+    "directions_sha256": "5fc04509baeda6ef45a33004744234d854f010108901be123c4e77f70d628b0e",
+    "validation_reference": "saved_original_interface_prefix",
+    "validation_directions": 128,
+    "source_sha256": "2dc6b5b3c1d5c521481eceb338c4c19095779ccabdcb2aa1638daaa9006f81e4",
+    "feasibility_count_threshold": 0.0001,
+    "definition": "Real squared-distance errors of fixed final polytopes; no gradients or training.",
+    "implementation": "Import unchanged Pyomo models via gurobi_persistent; native setObjective/reset(0)/optimize with explicit identical tolerances. One common original-domain support LP per direction for both methods.",
+    "timing_note": "Combined evaluation wall time, not training or a method speed benchmark.",
+    "final_polytopes_unchanged": true,
+    "same_directions_both_methods": true
+  },
+  "prefix_validation": {
+    "passed": true,
+    "directions_checked": 128,
+    "differences": {
+      "approximate": {
+        "feasibility": {
+          "max_absolute_difference": 3.5815882016158675e-12,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "optimality": {
+          "max_absolute_difference": 1.5543122344752192e-15,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        }
+      },
+      "exact": {
+        "feasibility": {
+          "max_absolute_difference": 5.476954831200993e-21,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "optimality": {
+          "max_absolute_difference": 8.881784197001252e-16,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        }
+      }
+    }
+  },
+  "combined_evaluation_seconds": 224.21183149993885,
+  "evaluation": {
+    "approximate": {
+      "feasibility_error": {
+        "count": 10000,
+        "mean": 8.512874086862605e-13,
+        "median": 5.92601883737829e-14,
+        "p95": 2.4055230322741723e-12,
+        "p99": 2.8139823999646936e-12,
+        "max": 3.588491014181656e-12,
+        "min": 1.0410614314385203e-29,
+        "max_direction_index_one_based": 7081,
+        "count_gt_1e-4": 0
+      },
+      "optimality_error": {
+        "count": 10000,
+        "mean": 0.5402438646134631,
+        "median": 0.5020490324566448,
+        "p95": 0.9021080141954255,
+        "p99": 1.2711297320724992,
+        "max": 1.820590886007413,
+        "min": 0.09694532498729115,
+        "max_direction_index_one_based": 7259
+      }
+    },
+    "exact": {
+      "feasibility_error": {
+        "count": 10000,
+        "mean": 3.4351541221418025e-07,
+        "median": 1.1981588947045507e-25,
+        "p95": 6.447315120704772e-22,
+        "p99": 3.771120021579487e-21,
+        "max": 0.0018040446712712496,
+        "min": 3.237295643520505e-30,
+        "max_direction_index_one_based": 4352,
+        "count_gt_1e-4": 2
+      },
+      "optimality_error": {
+        "count": 10000,
+        "mean": 0.6156553522782413,
+        "median": 0.6137521564341825,
+        "p95": 0.7827896323073068,
+        "p99": 0.8813049750133682,
+        "max": 1.0487218898084998,
+        "min": 0.1565863700809526,
+        "max_direction_index_one_based": 1313
+      }
+    }
+  },
+  "paired_optimality": {
+    "exact_lower_count": 2454,
+    "mean_exact_minus_approximate": 0.07541148766477823,
+    "relative_mean_reduction_percent": -13.958786504449083
+  },
+  "solver_quality": {
+    "original": {
+      "solves": 30000,
+      "maximum_violation": 5.286437954055145e-12
+    },
+    "approximate": {
+      "solves": 20000,
+      "maximum_violation": 7.771561172376096e-16
+    },
+    "exact": {
+      "solves": 20000,
+      "maximum_violation": 7.771561172376096e-16
+    }
+  }
+}

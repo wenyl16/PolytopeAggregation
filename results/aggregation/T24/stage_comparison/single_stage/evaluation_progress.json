@@ -1,0 +1,13 @@
+{
+  "event": "completed",
+  "completed": 1000,
+  "total": 1000,
+  "elapsed_seconds": 14.211068299948238,
+  "solver_seconds": 13.191003322601318,
+  "retry_count": 0,
+  "build_seconds": 0.17410469998139888,
+  "original_variables": 2184,
+  "original_rows": 5304,
+  "approximation_variables": 24,
+  "approximation_rows": 94
+}

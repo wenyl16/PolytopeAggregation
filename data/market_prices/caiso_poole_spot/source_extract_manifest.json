@@ -1,0 +1,22 @@
+{
+  "source_record": "https://zenodo.org/records/21522100",
+  "source_DOI": "10.5281/zenodo.21522100",
+  "source_tier": "Author public research release of CAISO OASIS DAM LMP; exact float32 node-column extracts, not an independently retrieved primary OASIS response",
+  "pricing_node": "POD_CONTRL_1_POOLE-APND",
+  "node_column_zero_based": 972,
+  "original_tensor_sha256": "ed90e49b266c3732468e2353d78e0aa7fe4e3ede33b24cca2d93f4a396150e5a",
+  "original_dayblock_sha256": "777bfc4cbff638ce64f70113729903bfce739a071ab3842c65de9113ce85202d",
+  "original_time_axis_sha256": "e6dc130d3db68156fdd246b74ae188570a02b6e45a4390de50e44542fdf9cefa",
+  "original_node_order_sha256": "1687d5be85d88946d0ceacb93c9ecc98083bcdb58257086c074e96429903bd80",
+  "source_precision": "Published float32 retained exactly; no rounding, normalization or price estimation",
+  "quote_count": 8760,
+  "tensor_quote_count": 8759,
+  "actual_dayblock_quote_count": 1,
+  "recovered_quote": {
+    "utc_interval_start": "2025-11-03T07:00:00Z",
+    "OPR_DT": "2025-11-02",
+    "OPR_HR": 24,
+    "price_usd_mwh": -39.9900016784668
+  },
+  "public_data_license": "Creative Commons Attribution 4.0; retain CAISO attribution and underlying ISO terms"
+}

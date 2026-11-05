@@ -1,0 +1,355 @@
+{
+  "metadata": {
+    "status": "completed",
+    "seed": 0,
+    "case_seed": 0,
+    "initialization_seed": 0,
+    "training_seed": 300,
+    "evaluation_seed": 10000,
+    "reference_check": null,
+    "iterations": 1000,
+    "evaluation_directions": 128,
+    "python": "D:\\Anaconda\\envs\\py312_copy\\python.exe",
+    "torch": "2.7.0+cu118",
+    "numpy": "1.26.4",
+    "gurobi": [
+      12,
+      0,
+      2
+    ],
+    "device": "cuda",
+    "device_name": "NVIDIA GeForce RTX 4070",
+    "dtype": "float64",
+    "model": "PreTrainNet",
+    "polytope_shape": [
+      94,
+      24
+    ],
+    "stages": [
+      [
+        300,
+        0.02,
+        1.0
+      ],
+      [
+        200,
+        0.1,
+        0.01
+      ],
+      [
+        500,
+        1.0,
+        1e-06
+      ]
+    ],
+    "solver_options": {
+      "FeasibilityTol": 1e-09,
+      "OptimalityTol": 1e-09,
+      "BarConvTol": 1e-12,
+      "Threads": 1,
+      "Seed": 0
+    },
+    "active_tol": 1e-05,
+    "error_cutoff_both_methods": 0.0,
+    "surrogate_implementation": "shared Approximator.compute_surrogate_error",
+    "gradient_mode": "exact_vs_approx",
+    "active_basis_policy": "qr",
+    "gradient_policy": "Exactly T active rows: direct solve; more than T: thin QR minimum-norm sensitivity; full Gurobi projection duals; no fallback. Nonregular vertices are labelled sensitivities, not certified ordinary derivatives.",
+    "training_directions_sha256": "4337e434911daecc69d20b0e1069b848e3ed350f650dbccb1582e153b05daf7d",
+    "iteration_order": "alternate approximate/exact first each iteration; serial execution",
+    "timing_note": "Sum of synchronized timed steps; excludes setup/warmup/logging/saving/evaluation. Solver time includes Pyomo solve-call overhead. Single paired run.",
+    "initialization_note": "Identical production PreTrainNet initialization (biases created as float32 then promoted to float64), same normalization epsilon 1e-8.",
+    "benchmark_adaptations": "Shared network/loop; dtype-safe unchanged surrogate formula; zero cutoff both methods; no callbacks; identical saved v; 1000 rather than legacy 1003 updates.",
+    "source_sha256": {
+      "compare_gradients.py": "1da70b2c56c75b3624fe424f36aacb80fe3b3c4656cd317504e43bcba214e9c7",
+      "Approximator.py": "51234fa104781c8a6e1fece482ebe96db506fc04e82e49c06bde6f6448656610",
+      "aggregation.py": "417f11e4d7e1721bd65d63959a0dfba1ac7d35bac923f979b6b913d7ff4347a8",
+      "aggregation_case_T24.py": "20bfd4a2fa84a9a8f44bc8e714696c54753a5b117fb3d347e8727bfa69f407fa"
+    },
+    "exact_gradient_configuration": {
+      "active_tol": 1e-05,
+      "dual_tol": 1e-08,
+      "kkt_tol": 1e-05,
+      "max_active_condition": 10000000000.0,
+      "nondifferentiable": "raise",
+      "feas_tol": 0.0,
+      "opt_tol": 0.0
+    },
+    "directions_identical_verified": true,
+    "horizon": 24,
+    "counts": [
+      5,
+      40,
+      5
+    ],
+    "scenario_sha256": "4aa952dedf9b099d1e8e806417c124199762e01a0157b2a102534cafb5ccf151",
+    "physical_scene_manifest": "../physical_scene_manifest.json",
+    "third_stage_learning_rate": 1.0,
+    "stage_count": 3,
+    "phase_end_updates": [
+      300,
+      500,
+      1000
+    ],
+    "fourth_stage_used": false,
+    "training_source_snapshot": {
+      "file": "../executed_compare_gradients.py",
+      "sha256": "1da70b2c56c75b3624fe424f36aacb80fe3b3c4656cd317504e43bcba214e9c7"
+    },
+    "current_cli_source_sha256": "3812468e0c4f4b8970391b17cc8b30d81c4e917ea5a6bdce7e1c1162a75aff1a",
+    "concurrent_seed_timing_note": "Paired methods run serially with alternating order; cohort seeds and evaluations were allowed to overlap. Timings are actual synchronized per-step elapsed measurements, not isolated-process benchmarks."
+  },
+  "training": {
+    "approximate": {
+      "step_seconds": 228.9732740004547,
+      "solve_seconds": 218.30155770014971,
+      "analytic_gradient_seconds": 0.1279773024143651,
+      "backward_update_seconds": 5.750607900088653,
+      "prepare_seconds": 4.740879497374408,
+      "feasibility_error": {
+        "mean": 0.015322664748635178,
+        "median": 3.1520746666791975e-21,
+        "max": 0.5596799153701835,
+        "min": 8.256081624166894e-28,
+        "p95": 0.0947462738216809,
+        "last": 1.522392300664231e-20
+      },
+      "feasibility_error_last100_mean": 7.366193142565504e-21,
+      "optimality_error": {
+        "mean": 0.3267196756010837,
+        "median": 0.2775999975169652,
+        "max": 0.9531042154445177,
+        "min": 6.933427599884625e-13,
+        "p95": 0.6937005311201282,
+        "last": 0.437979959612358
+      },
+      "optimality_error_last100_mean": 0.534363628610051,
+      "gradient_status_counts": {
+        "feasibility": {
+          "surrogate": 1000
+        },
+        "optimality": {
+          "surrogate": 1000
+        }
+      },
+      "active_set_diagnostics": {
+        "feasibility": {
+          "active_matrix_rank": null,
+          "active_matrix_condition": null,
+          "adjoint_residual_inf": null,
+          "active_constraint_residual_inf": null,
+          "linearization_incompatibility_dimension": null
+        },
+        "optimality": {
+          "active_matrix_rank": null,
+          "active_matrix_condition": null,
+          "adjoint_residual_inf": null,
+          "active_constraint_residual_inf": null,
+          "linearization_incompatibility_dimension": null
+        }
+      }
+    },
+    "exact": {
+      "step_seconds": 230.2467706996249,
+      "solve_seconds": 219.59142719989177,
+      "analytic_gradient_seconds": 0.9983453025342897,
+      "backward_update_seconds": 4.916589502594434,
+      "prepare_seconds": 4.691945998114534,
+      "feasibility_error": {
+        "mean": 0.014208430014440925,
+        "median": 3.739157057695242e-21,
+        "max": 0.5370352926065673,
+        "min": 2.262101016180028e-29,
+        "p95": 0.08429974184550175,
+        "last": 2.245540414332486e-23
+      },
+      "feasibility_error_last100_mean": 4.272827068619482e-20,
+      "optimality_error": {
+        "mean": 0.2343638562456321,
+        "median": 0.22951897217320905,
+        "max": 0.6688234476156932,
+        "min": 6.933427599884625e-13,
+        "p95": 0.4851400326398409,
+        "last": 0.2545281094765477
+      },
+      "optimality_error_last100_mean": 0.3596477340751656,
+      "gradient_status_counts": {
+        "feasibility": {
+          "ok": 999,
+          "qr_minimum_norm_sensitivity": 1
+        },
+        "optimality": {
+          "dual_selection": 1,
+          "ok": 999
+        }
+      },
+      "active_set_diagnostics": {
+        "feasibility": {
+          "active_matrix_rank": 24,
+          "active_matrix_condition": 66.2828628201412,
+          "adjoint_residual_inf": 2.7755575615628914e-16,
+          "active_constraint_residual_inf": 2.2941804705967073e-13,
+          "linearization_incompatibility_dimension": 1
+        },
+        "optimality": {
+          "active_matrix_rank": null,
+          "active_matrix_condition": null,
+          "adjoint_residual_inf": null,
+          "active_constraint_residual_inf": null,
+          "linearization_incompatibility_dimension": null
+        }
+      }
+    }
+  },
+  "evaluation": {
+    "approximate": {
+      "feasibility_error": {
+        "mean": 5.610197872206445e-21,
+        "median": 1.7753066538523315e-22,
+        "max": 1.5834733041768627e-19,
+        "min": 3.1315030116726014e-27,
+        "p95": 2.1641715802173397e-20,
+        "last": 8.183295124759091e-26
+      },
+      "optimality_error": {
+        "mean": 0.5487938519325881,
+        "median": 0.5477805052380136,
+        "max": 0.8920126178558441,
+        "min": 0.2084299087949817,
+        "p95": 0.7726860499126453,
+        "last": 0.8176988215619851
+      }
+    },
+    "exact": {
+      "feasibility_error": {
+        "mean": 5.268086714780979e-10,
+        "median": 2.2768656486107013e-22,
+        "max": 6.743150994745369e-08,
+        "min": 7.173425680347234e-28,
+        "p95": 3.686163563583323e-20,
+        "last": 2.746288397645844e-20
+      },
+      "optimality_error": {
+        "mean": 0.35815917552944243,
+        "median": 0.35584000068299637,
+        "max": 0.6140637678748814,
+        "min": 0.14071085056840305,
+        "p95": 0.5107924394845145,
+        "last": 0.5594291096395985
+      }
+    }
+  },
+  "same_point_gradients": [
+    {
+      "iteration": 1,
+      "kind": "feasibility",
+      "true_error": 0.5370352926065673,
+      "gradient_status": "ok",
+      "surrogate_value": 0.5701628429584268,
+      "exact_norm": 5.739258834744674,
+      "approximate_norm": 4.642623370265145,
+      "relative_gradient_difference": 0.40907577162733966,
+      "cosine": 0.9191315149711452
+    },
+    {
+      "iteration": 1,
+      "kind": "optimality",
+      "true_error": 6.933427599884625e-13,
+      "gradient_status": "ok",
+      "surrogate_value": 7.395570986446986e-32,
+      "exact_norm": 1.8792658503452947e-14,
+      "approximate_norm": 1.7144567687998231e-15,
+      "relative_gradient_difference": null,
+      "cosine": null
+    },
+    {
+      "iteration": 100,
+      "kind": "feasibility",
+      "true_error": 0.013161701710914216,
+      "gradient_status": "ok",
+      "surrogate_value": 0.016833200034933757,
+      "exact_norm": 0.6229207427888251,
+      "approximate_norm": 0.7582374101450073,
+      "relative_gradient_difference": 0.28543753488324053,
+      "cosine": 0.9859163779037725
+    },
+    {
+      "iteration": 100,
+      "kind": "optimality",
+      "true_error": 0.06011306990404087,
+      "gradient_status": "ok",
+      "surrogate_value": 0.06722232458778253,
+      "exact_norm": 1.322195371706663,
+      "approximate_norm": 1.5699575778232684,
+      "relative_gradient_difference": 0.23098786533059304,
+      "cosine": 0.9923186326477356
+    },
+    {
+      "iteration": 300,
+      "kind": "feasibility",
+      "true_error": 0.029309878636341116,
+      "gradient_status": "ok",
+      "surrogate_value": 0.04019330367204059,
+      "exact_norm": 0.9540233023002147,
+      "approximate_norm": 1.2050180421111087,
+      "relative_gradient_difference": 0.38662458937233685,
+      "cosine": 0.9682280115084138
+    },
+    {
+      "iteration": 300,
+      "kind": "optimality",
+      "true_error": 0.1255517690718983,
+      "gradient_status": "ok",
+      "surrogate_value": 0.14425065056006517,
+      "exact_norm": 1.8834469183737619,
+      "approximate_norm": 2.3148863485315374,
+      "relative_gradient_difference": 0.3145477608658626,
+      "cosine": 0.9810964016679846
+    },
+    {
+      "iteration": 500,
+      "kind": "feasibility",
+      "true_error": 3.4962031622617147e-20,
+      "gradient_status": "ok",
+      "surrogate_value": 3.536703155925565e-20,
+      "exact_norm": 1.0751210208613402e-09,
+      "approximate_norm": 1.0737467041946994e-09,
+      "relative_gradient_difference": 0.15937099945467376,
+      "cosine": 0.9872850058268626
+    },
+    {
+      "iteration": 500,
+      "kind": "optimality",
+      "true_error": 0.19420767553136492,
+      "gradient_status": "ok",
+      "surrogate_value": 0.22764588971583696,
+      "exact_norm": 2.1871101747002273,
+      "approximate_norm": 2.8250622322171632,
+      "relative_gradient_difference": 0.41309482747396475,
+      "cosine": 0.9668782389748992
+    },
+    {
+      "iteration": 1000,
+      "kind": "feasibility",
+      "true_error": 2.245540414332486e-23,
+      "gradient_status": "ok",
+      "surrogate_value": 2.279941567116699e-23,
+      "exact_norm": 2.5098494717506805e-11,
+      "approximate_norm": 2.529249143631558e-11,
+      "relative_gradient_difference": 0.12299767190865124,
+      "cosine": 0.9925234476788813
+    },
+    {
+      "iteration": 1000,
+      "kind": "optimality",
+      "true_error": 0.2545281094765477,
+      "gradient_status": "ok",
+      "surrogate_value": 0.26383822939663587,
+      "exact_norm": 2.64947305452659,
+      "approximate_norm": 3.0281502103465074,
+      "relative_gradient_difference": 0.32216912377866486,
+      "cosine": 0.9635298801116324
+    }
+  ],
+  "result_note": "All compared errors are real squared distances, not surrogate loss. Evaluation is on a shared independent sample of directions, not a worst-case certificate."
+}

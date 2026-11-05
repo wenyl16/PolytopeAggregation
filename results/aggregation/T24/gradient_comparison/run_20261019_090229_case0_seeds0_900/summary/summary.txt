@@ -1,0 +1,8 @@
+training seeds: 10 complete; 0 excluded.
+Feasibility count: squared error strictly > 1e-4.
+mean_feasibility: {"approximate_mean": 2.0377581658409614e-07, "exact_mean": 1.5875551756502997e-07, "approximate_wins": 4, "exact_wins": 6, "ties": 0}
+max_feasibility: {"approximate_mean": 0.0005233691050215112, "exact_mean": 0.0007405170932552492, "approximate_wins": 5, "exact_wins": 5, "ties": 0}
+feasibility_count_gt_1e_4: {"approximate_mean": 4.9, "exact_mean": 2.7, "approximate_wins": 1, "exact_wins": 7, "ties": 2}
+mean_optimality: {"approximate_mean": 0.5418603686553519, "exact_mean": 0.5390740297336375, "approximate_wins": 6, "exact_wins": 4, "ties": 0}
+max_optimality: {"approximate_mean": 1.366121752363497, "exact_mean": 1.1889132703411378, "approximate_wins": 3, "exact_wins": 7, "ties": 0}
+training_seconds: {"approximate_mean": 226.19717995030805, "exact_mean": 228.33527783041353, "approximate_wins": 8, "exact_wins": 2, "ties": 0}

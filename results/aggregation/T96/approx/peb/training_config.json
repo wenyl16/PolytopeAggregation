@@ -1,0 +1,106 @@
+{
+  "horizon": 96,
+  "template": "peb",
+  "counts": [
+    100,
+    200,
+    200
+  ],
+  "case_seed": 0,
+  "schedule": "three-stage",
+  "stage_count": 3,
+  "third_stage_initial_lr": 0.5,
+  "optimizer": "SGD",
+  "scheduler": {
+    "type": "StepLR",
+    "step_size": 100,
+    "gamma": 0.98
+  },
+  "fourth_stage_used": false,
+  "device": "cpu",
+  "batch_size": 1,
+  "scenario_sha256": "d9d71b533dcd1214df980431e6d2ed61a0887586b7c603efd371f76a888d2ee4",
+  "source_sha256": {
+    "Simulator\\runners\\train_aggregation_t96.py": "5803dfd265c21e92a93ab02b9dbb2a8852dccfe7b5cc3948f4c303b8848f1fa4",
+    "Simulator\\runners\\train_aggregation.py": "6e9c3b56fc0a25a45d1bcc5bba7880d8b712f05a378b43236d16509d540eae9b",
+    "Simulator\\Approximator.py": "51234fa104781c8a6e1fece482ebe96db506fc04e82e49c06bde6f6448656610",
+    "Simulator\\cases\\aggregation.py": "417f11e4d7e1721bd65d63959a0dfba1ac7d35bac923f979b6b913d7ff4347a8",
+    "Simulator\\cases\\aggregation_case_T96.py": "d25dca121f5260f144606c58aca160f4e91e8dab5c0ab75f34dd0aefd37112aa"
+  },
+  "solver_options": {
+    "FeasibilityTol": 1e-09,
+    "OptimalityTol": 1e-09,
+    "BarConvTol": 1e-12,
+    "Threads": 1,
+    "Seed": 0,
+    "OutputFlag": 0
+  },
+  "solver_threads": 1,
+  "solver_seed": 0,
+  "feas_tol": 1e-08,
+  "opt_tol": 1e-08,
+  "initialization": "archived raw 384-row PEB template and support bounds",
+  "historical_training_directions_available": false,
+  "output_policy": "fixed main T96 approximate run overwritten",
+  "gradient_mode": "approx",
+  "network": "PreTrainNet",
+  "training_seed": 0,
+  "dtype": "torch.float32",
+  "is_uncertain": false,
+  "stages": [
+    {
+      "n_train": 300,
+      "epochs": 301,
+      "lr": 0.01,
+      "rate_opt_feas": 1.0
+    },
+    {
+      "n_train": 200,
+      "epochs": 201,
+      "lr": 0.05,
+      "rate_opt_feas": 0.01
+    },
+    {
+      "n_train": 500,
+      "epochs": 501,
+      "lr": 0.5,
+      "rate_opt_feas": 1e-06
+    }
+  ],
+  "status": "completed",
+  "elapsed_seconds": 3262.0634208000265,
+  "train_calls": [
+    {
+      "n_train": 300,
+      "epochs": 301,
+      "optimizer_updates": 301,
+      "elapsed_seconds": 969.3854870998766
+    },
+    {
+      "n_train": 200,
+      "epochs": 201,
+      "optimizer_updates": 201,
+      "elapsed_seconds": 653.2043769999873
+    },
+    {
+      "n_train": 500,
+      "epochs": 501,
+      "optimizer_updates": 501,
+      "elapsed_seconds": 1639.4735505001154
+    }
+  ],
+  "optimizer_updates": 1003,
+  "phase_end_updates": [
+    301,
+    502,
+    1003
+  ],
+  "actual_training_directions_verified": true,
+  "finite_gradient_norms_verified": true,
+  "raw_initialization_and_scenario_verified": true,
+  "final_polytope_sha256": "f7809e67c69f41023c4976d6440dc9041783ec88916457076b9d235d8177a7ed",
+  "final_learning_rates": [
+    0.4519603983999999,
+    0.4519603983999999
+  ]
+}

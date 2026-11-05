@@ -1,0 +1,29 @@
+{
+  "pipeline_evaluation_subcommand": "case_microgrid_scale evaluate",
+  "pipeline_verifier": "E:\\OneDrive\\Working\\Research\\12\u591a\u79cd\u8bbe\u5907\u8fd0\u884c\u57df\u805a\u5408\u7684\u901a\u7528\u6846\u67b6\\code\\Simulator\\testers\\case_microgrid_scale.py",
+  "pipeline_verify_file_help_passed": true,
+  "active_code_and_profile_paths_exist": [
+    "Simulator/testers/case_scaling.py",
+    "Simulator/testers/case_microgrid_scale.py",
+    "Simulator/testers/polytope_evaluation.py",
+    "Simulator/testers/case_methods.py",
+    "Simulator/cases/aggregation.py",
+    "Simulator/cases/microgrid_case.py",
+    "Simulator/cases/microgrid_count_solver.py",
+    "Simulator/Approximator.py",
+    "Simulator/runners/train_aggregation.py",
+    "Simulator/runners/train_microgrid.py",
+    "Simulator/paths.py",
+    "data/profiles_data/profiles_data.npz"
+  ],
+  "imported_runtime_symbols_present": true,
+  "historical_path_maps_resolve": true,
+  "historical_source_guard_current_hash_matches": {
+    "case_source_sha256": true,
+    "evaluator_source_sha256": false,
+    "count_solver_source_sha256": true
+  },
+  "note": "Merged evaluator hash differs from original execution; strict hash equality intentionally remains unchanged.",
+  "solves": 0,
+  "results_written": false
+}

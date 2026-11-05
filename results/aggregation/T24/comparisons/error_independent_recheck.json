@@ -1,0 +1,699 @@
+{
+  "status": "passed",
+  "checked_at_utc": "2026-10-26T04:09:04.867834+00:00",
+  "result_directory": "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\aggregation\\T24\\comparisons",
+  "script_sha256": "46c594ccea61b0274366367a93959c6295c05af040818edd5b7c8140b8ef882d",
+  "absolute_tolerance": 1e-07,
+  "methods": {
+    "proposed_peb_exact": {
+      "passed": true,
+      "direction_indices_zero_based": [
+        2228,
+        4538
+      ],
+      "extra_peb_inner_feasibility_indices": [],
+      "native_region_sha256": "7132b1541ba2ced28afc99114bc2ee21dbfa2c07cdbf6559562dcdbb03d7f73b",
+      "checks": [
+        {
+          "passed": true,
+          "direction_index_zero_based": 2228,
+          "metric": "feasibility",
+          "selected_by": [
+            "maximum_error_feas"
+          ],
+          "saved_error": 9.262099849874991e-06,
+          "native_recomputed_error": 9.262099849874991e-06,
+          "pyomo_fixed_native_target_error": 9.26209984987657e-06,
+          "saved_native_absolute_difference": 0.0,
+          "saved_fixed_target_pyomo_absolute_difference": 1.5788694136820158e-18,
+          "native_LP_support_objective": -3.85990993246073,
+          "pyomo_LP_support_objective": -3.85990993246073,
+          "LP_support_objective_absolute_difference": 0.0,
+          "max_abs_native_pyomo_target_difference": 0.0,
+          "tied_optimal_support_points_differ": false,
+          "native_support_termination_status": 2,
+          "native_projection_termination_status": 2,
+          "native_projection_retry_records": [],
+          "pyomo_fixed_target_projection_attempts": [
+            {
+              "method": -1,
+              "returned_OPTIMAL_point": true
+            }
+          ],
+          "absolute_tolerance": 1e-07
+        },
+        {
+          "passed": true,
+          "direction_index_zero_based": 4538,
+          "metric": "optimality",
+          "selected_by": [
+            "maximum_error_opt"
+          ],
+          "saved_error": 0.7412120499447772,
+          "native_recomputed_error": 0.7412120499447772,
+          "pyomo_fixed_native_target_error": 0.7412120499447772,
+          "saved_native_absolute_difference": 0.0,
+          "saved_fixed_target_pyomo_absolute_difference": 0.0,
+          "native_LP_support_objective": -10.508984175811893,
+          "pyomo_LP_support_objective": -10.508984175811893,
+          "LP_support_objective_absolute_difference": 0.0,
+          "max_abs_native_pyomo_target_difference": 0.0,
+          "tied_optimal_support_points_differ": false,
+          "native_support_termination_status": 2,
+          "native_projection_termination_status": 2,
+          "native_projection_retry_records": [],
+          "pyomo_fixed_target_projection_attempts": [
+            {
+              "method": -1,
+              "returned_OPTIMAL_point": true
+            }
+          ],
+          "absolute_tolerance": 1e-07
+        }
+      ]
+    },
+    "proposed_pb_exact": {
+      "passed": true,
+      "direction_indices_zero_based": [
+        722,
+        2028
+      ],
+      "extra_peb_inner_feasibility_indices": [],
+      "native_region_sha256": "1883360b54724334b8d6e00f002506561567bf5f80876cf456dfc73234f25494",
+      "checks": [
+        {
+          "passed": true,
+          "direction_index_zero_based": 722,
+          "metric": "feasibility",
+          "selected_by": [
+            "maximum_error_feas"
+          ],
+          "saved_error": 9.695552164096966e-05,
+          "native_recomputed_error": 9.695552164096966e-05,
+          "pyomo_fixed_native_target_error": 9.695552164096748e-05,
+          "saved_native_absolute_difference": 0.0,
+          "saved_fixed_target_pyomo_absolute_difference": 2.1819568721270777e-18,
+          "native_LP_support_objective": -3.6737762831856435,
+          "pyomo_LP_support_objective": -3.6737762831856435,
+          "LP_support_objective_absolute_difference": 0.0,
+          "max_abs_native_pyomo_target_difference": 0.0,
+          "tied_optimal_support_points_differ": false,
+          "native_support_termination_status": 2,
+          "native_projection_termination_status": 2,
+          "native_projection_retry_records": [],
+          "pyomo_fixed_target_projection_attempts": [
+            {
+              "method": -1,
+              "returned_OPTIMAL_point": true
+            }
+          ],
+          "absolute_tolerance": 1e-07
+        },
+        {
+          "passed": true,
+          "direction_index_zero_based": 2028,
+          "metric": "optimality",
+          "selected_by": [
+            "maximum_error_opt"
+          ],
+          "saved_error": 1.1791303781598006,
+          "native_recomputed_error": 1.1791303781598006,
+          "pyomo_fixed_native_target_error": 1.1791303781598008,
+          "saved_native_absolute_difference": 0.0,
+          "saved_fixed_target_pyomo_absolute_difference": 2.220446049250313e-16,
+          "native_LP_support_objective": -12.030507053230298,
+          "pyomo_LP_support_objective": -12.030507053230298,
+          "LP_support_objective_absolute_difference": 0.0,
+          "max_abs_native_pyomo_target_difference": 0.0,
+          "tied_optimal_support_points_differ": false,
+          "native_support_termination_status": 2,
+          "native_projection_termination_status": 2,
+          "native_projection_retry_records": [],
+          "pyomo_fixed_target_projection_attempts": [
+            {
+              "method": -1,
+              "returned_OPTIMAL_point": true
+            }
+          ],
+          "absolute_tolerance": 1e-07
+        }
+      ]
+    },
+    "peb_inner": {
+      "passed": true,
+      "direction_indices_zero_based": [
+        1094,
+        4955
+      ],
+      "extra_peb_inner_feasibility_indices": [],
+      "native_region_sha256": "6d121726d8545583c94375a6394bbcf24d0cdd77df9c162d63befd501b9b8b1f",
+      "checks": [
+        {
+          "passed": true,
+          "direction_index_zero_based": 1094,
+          "metric": "feasibility",
+          "selected_by": [
+            "maximum_error_feas"
+          ],
+          "saved_error": 9.763241658430087e-20,
+          "native_recomputed_error": 9.763241658430087e-20,
+          "pyomo_fixed_native_target_error": 9.763241658430087e-20,
+          "saved_native_absolute_difference": 0.0,
+          "saved_fixed_target_pyomo_absolute_difference": 0.0,
+          "native_LP_support_objective": -6.79060704905381,
+          "pyomo_LP_support_objective": -6.79060704905381,
+          "LP_support_objective_absolute_difference": 0.0,
+          "max_abs_native_pyomo_target_difference": 0.0,
+          "tied_optimal_support_points_differ": false,
+          "native_support_termination_status": 2,
+          "native_projection_termination_status": 2,
+          "native_projection_retry_records": [],
+          "pyomo_fixed_target_projection_attempts": [
+            {
+              "method": -1,
+              "returned_OPTIMAL_point": true
+            }
+          ],
+          "absolute_tolerance": 1e-07
+        },
+        {
+          "passed": true,
+          "direction_index_zero_based": 4955,
+          "metric": "optimality",
+          "selected_by": [
+            "maximum_error_opt"
+          ],
+          "saved_error": 2.6367557859859296,
+          "native_recomputed_error": 2.6367557859859296,
+          "pyomo_fixed_native_target_error": 2.6367557859859296,
+          "saved_native_absolute_difference": 0.0,
+          "saved_fixed_target_pyomo_absolute_difference": 0.0,
+          "native_LP_support_objective": -9.329908296328071,
+          "pyomo_LP_support_objective": -9.329908296328071,
+          "LP_support_objective_absolute_difference": 0.0,
+          "max_abs_native_pyomo_target_difference": 0.0,
+          "tied_optimal_support_points_differ": false,
+          "native_support_termination_status": 2,
+          "native_projection_termination_status": 2,
+          "native_projection_retry_records": [],
+          "pyomo_fixed_target_projection_attempts": [
+            {
+              "method": -1,
+              "returned_OPTIMAL_point": true
+            }
+          ],
+          "absolute_tolerance": 1e-07
+        }
+      ]
+    },
+    "pb_inner": {
+      "passed": true,
+      "direction_indices_zero_based": [
+        1310,
+        4707
+      ],
+      "extra_peb_inner_feasibility_indices": [],
+      "native_region_sha256": "8cf19ff07abe5d72a4eb1b1f48c7e588dcf155690b3321749a075ab9ada0e605",
+      "checks": [
+        {
+          "passed": true,
+          "direction_index_zero_based": 1310,
+          "metric": "feasibility",
+          "selected_by": [
+            "maximum_error_feas"
+          ],
+          "saved_error": 8.178529209129802e-25,
+          "native_recomputed_error": 8.178529209129802e-25,
+          "pyomo_fixed_native_target_error": 8.178529209129802e-25,
+          "saved_native_absolute_difference": 0.0,
+          "saved_fixed_target_pyomo_absolute_difference": 0.0,
+          "native_LP_support_objective": -1.328254054513725,
+          "pyomo_LP_support_objective": -1.328254054513725,
+          "LP_support_objective_absolute_difference": 0.0,
+          "max_abs_native_pyomo_target_difference": 0.0,
+          "tied_optimal_support_points_differ": false,
+          "native_support_termination_status": 2,
+          "native_projection_termination_status": 2,
+          "native_projection_retry_records": [],
+          "pyomo_fixed_target_projection_attempts": [
+            {
+              "method": -1,
+              "returned_OPTIMAL_point": true
+            }
+          ],
+          "absolute_tolerance": 1e-07
+        },
+        {
+          "passed": true,
+          "direction_index_zero_based": 4707,
+          "metric": "optimality",
+          "selected_by": [
+            "maximum_error_opt"
+          ],
+          "saved_error": 5.6641667239745965,
+          "native_recomputed_error": 5.6641667239745965,
+          "pyomo_fixed_native_target_error": 5.6641667239745965,
+          "saved_native_absolute_difference": 0.0,
+          "saved_fixed_target_pyomo_absolute_difference": 0.0,
+          "native_LP_support_objective": -4.8031212119097555,
+          "pyomo_LP_support_objective": -4.8031212119097555,
+          "LP_support_objective_absolute_difference": 0.0,
+          "max_abs_native_pyomo_target_difference": 0.0,
+          "tied_optimal_support_points_differ": false,
+          "native_support_termination_status": 2,
+          "native_projection_termination_status": 2,
+          "native_projection_retry_records": [],
+          "pyomo_fixed_target_projection_attempts": [
+            {
+              "method": -1,
+              "returned_OPTIMAL_point": true
+            }
+          ],
+          "absolute_tolerance": 1e-07
+        }
+      ]
+    },
+    "cutting_plane": {
+      "passed": true,
+      "direction_indices_zero_based": [
+        1112,
+        2099
+      ],
+      "extra_peb_inner_feasibility_indices": [],
+      "native_region_sha256": "a48801e7350db8f62b287c08e360a98cecc9acb86b5c7e489dbd0e9884bcf596",
+      "checks": [
+        {
+          "passed": true,
+          "direction_index_zero_based": 1112,
+          "metric": "feasibility",
+          "selected_by": [
+            "maximum_error_feas"
+          ],
+          "saved_error": 1.2068573351110328,
+          "native_recomputed_error": 1.2068573351110328,
+          "pyomo_fixed_native_target_error": 1.206857335111032,
+          "saved_native_absolute_difference": 0.0,
+          "saved_fixed_target_pyomo_absolute_difference": 6.661338147750939e-16,
+          "native_LP_support_objective": -12.236442110428005,
+          "pyomo_LP_support_objective": -12.236442110428005,
+          "LP_support_objective_absolute_difference": 0.0,
+          "max_abs_native_pyomo_target_difference": 0.0,
+          "tied_optimal_support_points_differ": false,
+          "native_support_termination_status": 2,
+          "native_projection_termination_status": 2,
+          "native_projection_retry_records": [],
+          "pyomo_fixed_target_projection_attempts": [
+            {
+              "method": -1,
+              "returned_OPTIMAL_point": true
+            }
+          ],
+          "absolute_tolerance": 1e-07
+        },
+        {
+          "passed": true,
+          "direction_index_zero_based": 2099,
+          "metric": "optimality",
+          "selected_by": [
+            "maximum_error_opt"
+          ],
+          "saved_error": 4.520195366046688e-12,
+          "native_recomputed_error": 4.520195366046688e-12,
+          "pyomo_fixed_native_target_error": 4.520195366047314e-12,
+          "saved_native_absolute_difference": 0.0,
+          "saved_fixed_target_pyomo_absolute_difference": 6.26040014383395e-25,
+          "native_LP_support_objective": -14.670356136560466,
+          "pyomo_LP_support_objective": -14.670356136560466,
+          "LP_support_objective_absolute_difference": 0.0,
+          "max_abs_native_pyomo_target_difference": 0.0,
+          "tied_optimal_support_points_differ": false,
+          "native_support_termination_status": 2,
+          "native_projection_termination_status": 2,
+          "native_projection_retry_records": [],
+          "pyomo_fixed_target_projection_attempts": [
+            {
+              "method": -1,
+              "returned_OPTIMAL_point": true
+            }
+          ],
+          "absolute_tolerance": 1e-07
+        }
+      ]
+    },
+    "cutting_plane_modified": {
+      "passed": true,
+      "direction_indices_zero_based": [
+        1128,
+        2965
+      ],
+      "extra_peb_inner_feasibility_indices": [],
+      "native_region_sha256": "cdc7e142b637c76905801c555da6180674d08e55533ccd204230662bf8c08c40",
+      "checks": [
+        {
+          "passed": true,
+          "direction_index_zero_based": 1128,
+          "metric": "feasibility",
+          "selected_by": [
+            "maximum_error_feas"
+          ],
+          "saved_error": 0.9019417379844581,
+          "native_recomputed_error": 0.9019417379844581,
+          "pyomo_fixed_native_target_error": 0.9019417379844588,
+          "saved_native_absolute_difference": 0.0,
+          "saved_fixed_target_pyomo_absolute_difference": 6.661338147750939e-16,
+          "native_LP_support_objective": -13.883489583058932,
+          "pyomo_LP_support_objective": -13.883489583058932,
+          "LP_support_objective_absolute_difference": 0.0,
+          "max_abs_native_pyomo_target_difference": 0.0,
+          "tied_optimal_support_points_differ": false,
+          "native_support_termination_status": 2,
+          "native_projection_termination_status": 2,
+          "native_projection_retry_records": [],
+          "pyomo_fixed_target_projection_attempts": [
+            {
+              "method": -1,
+              "returned_OPTIMAL_point": true
+            }
+          ],
+          "absolute_tolerance": 1e-07
+        },
+        {
+          "passed": true,
+          "direction_index_zero_based": 2965,
+          "metric": "optimality",
+          "selected_by": [
+            "maximum_error_opt"
+          ],
+          "saved_error": 4.582850340228398e-12,
+          "native_recomputed_error": 4.582850340228398e-12,
+          "pyomo_fixed_native_target_error": 4.582850340227984e-12,
+          "saved_native_absolute_difference": 0.0,
+          "saved_fixed_target_pyomo_absolute_difference": 4.1359030627651384e-25,
+          "native_LP_support_objective": -11.942620716031458,
+          "pyomo_LP_support_objective": -11.942620716031458,
+          "LP_support_objective_absolute_difference": 0.0,
+          "max_abs_native_pyomo_target_difference": 0.0,
+          "tied_optimal_support_points_differ": false,
+          "native_support_termination_status": 2,
+          "native_projection_termination_status": 2,
+          "native_projection_retry_records": [],
+          "pyomo_fixed_target_projection_attempts": [
+            {
+              "method": -1,
+              "returned_OPTIMAL_point": true
+            }
+          ],
+          "absolute_tolerance": 1e-07
+        }
+      ]
+    },
+    "pve": {
+      "passed": true,
+      "direction_indices_zero_based": [
+        7,
+        1023
+      ],
+      "extra_peb_inner_feasibility_indices": [],
+      "native_region_sha256": "4e56bda94a9daa71a5a3df6923a611409c6249a69efedf0e78fdad3df2e21b4f",
+      "checks": [
+        {
+          "passed": true,
+          "direction_index_zero_based": 7,
+          "metric": "feasibility",
+          "selected_by": [
+            "maximum_error_feas"
+          ],
+          "saved_error": 3.4798388153991354e-11,
+          "native_recomputed_error": 3.4798388153991354e-11,
+          "pyomo_fixed_native_target_error": 3.479712979591368e-11,
+          "saved_native_absolute_difference": 0.0,
+          "saved_fixed_target_pyomo_absolute_difference": 1.2583580776749474e-15,
+          "native_LP_support_objective": 2.005722377596026,
+          "pyomo_LP_support_objective": 2.005722377596026,
+          "LP_support_objective_absolute_difference": 0.0,
+          "max_abs_native_pyomo_target_difference": 0.0,
+          "tied_optimal_support_points_differ": false,
+          "native_support_termination_status": 2,
+          "native_projection_termination_status": 2,
+          "native_projection_retry_records": [],
+          "pyomo_fixed_target_projection_attempts": [
+            {
+              "method": -1,
+              "returned_OPTIMAL_point": true
+            }
+          ],
+          "absolute_tolerance": 1e-07
+        },
+        {
+          "passed": true,
+          "direction_index_zero_based": 1023,
+          "metric": "optimality",
+          "selected_by": [
+            "maximum_error_opt"
+          ],
+          "saved_error": 5.125866174263851,
+          "native_recomputed_error": 5.125866174263851,
+          "pyomo_fixed_native_target_error": 5.125866174263853,
+          "saved_native_absolute_difference": 0.0,
+          "saved_fixed_target_pyomo_absolute_difference": 2.6645352591003757e-15,
+          "native_LP_support_objective": -3.978108394191331,
+          "pyomo_LP_support_objective": -3.978108394191331,
+          "LP_support_objective_absolute_difference": 0.0,
+          "max_abs_native_pyomo_target_difference": 0.0,
+          "tied_optimal_support_points_differ": false,
+          "native_support_termination_status": 2,
+          "native_projection_termination_status": 2,
+          "native_projection_retry_records": [],
+          "pyomo_fixed_target_projection_attempts": [
+            {
+              "method": -1,
+              "returned_OPTIMAL_point": true
+            }
+          ],
+          "absolute_tolerance": 1e-07
+        }
+      ]
+    },
+    "pve_modified": {
+      "passed": true,
+      "direction_indices_zero_based": [
+        198,
+        979
+      ],
+      "extra_peb_inner_feasibility_indices": [],
+      "native_region_sha256": "f57f50360e75e2deda2d0e39440de5dc0d16b96bffcbaf654f1215425368b928",
+      "checks": [
+        {
+          "passed": true,
+          "direction_index_zero_based": 198,
+          "metric": "feasibility",
+          "selected_by": [
+            "maximum_error_feas"
+          ],
+          "saved_error": 2.0874724106231052e-13,
+          "native_recomputed_error": 2.0874724106231052e-13,
+          "pyomo_fixed_native_target_error": 2.0874631303597478e-13,
+          "saved_native_absolute_difference": 0.0,
+          "saved_fixed_target_pyomo_absolute_difference": 9.280263357459832e-19,
+          "native_LP_support_objective": -5.195771774822432,
+          "pyomo_LP_support_objective": -5.195771774822432,
+          "LP_support_objective_absolute_difference": 0.0,
+          "max_abs_native_pyomo_target_difference": 0.0,
+          "tied_optimal_support_points_differ": false,
+          "native_support_termination_status": 2,
+          "native_projection_termination_status": 2,
+          "native_projection_retry_records": [],
+          "pyomo_fixed_target_projection_attempts": [
+            {
+              "method": -1,
+              "returned_OPTIMAL_point": true
+            }
+          ],
+          "absolute_tolerance": 1e-07
+        },
+        {
+          "passed": true,
+          "direction_index_zero_based": 979,
+          "metric": "optimality",
+          "selected_by": [
+            "maximum_error_opt"
+          ],
+          "saved_error": 1.9407631254231008,
+          "native_recomputed_error": 1.9407631254231008,
+          "pyomo_fixed_native_target_error": 1.9407631254230033,
+          "saved_native_absolute_difference": 0.0,
+          "saved_fixed_target_pyomo_absolute_difference": 9.747758156208874e-14,
+          "native_LP_support_objective": -8.036542541886595,
+          "pyomo_LP_support_objective": -8.036542541886595,
+          "LP_support_objective_absolute_difference": 0.0,
+          "max_abs_native_pyomo_target_difference": 0.0,
+          "tied_optimal_support_points_differ": false,
+          "native_support_termination_status": 2,
+          "native_projection_termination_status": 2,
+          "native_projection_retry_records": [],
+          "pyomo_fixed_target_projection_attempts": [
+            {
+              "method": -1,
+              "returned_OPTIMAL_point": true
+            }
+          ],
+          "absolute_tolerance": 1e-07
+        }
+      ]
+    },
+    "peb_outer": {
+      "passed": true,
+      "direction_indices_zero_based": [
+        2498,
+        2831
+      ],
+      "extra_peb_inner_feasibility_indices": [],
+      "native_region_sha256": "9a15e8cc234d722addbd8e739d0dd5cd179cb2abf42464695306af8e1dc9b108",
+      "checks": [
+        {
+          "passed": true,
+          "direction_index_zero_based": 2498,
+          "metric": "feasibility",
+          "selected_by": [
+            "maximum_error_feas"
+          ],
+          "saved_error": 1.3572779140564601,
+          "native_recomputed_error": 1.3572779140564601,
+          "pyomo_fixed_native_target_error": 1.3572779140564455,
+          "saved_native_absolute_difference": 0.0,
+          "saved_fixed_target_pyomo_absolute_difference": 1.4654943925052066e-14,
+          "native_LP_support_objective": -9.195194322690039,
+          "pyomo_LP_support_objective": -9.195194322690039,
+          "LP_support_objective_absolute_difference": 0.0,
+          "max_abs_native_pyomo_target_difference": 0.0,
+          "tied_optimal_support_points_differ": false,
+          "native_support_termination_status": 2,
+          "native_projection_termination_status": 2,
+          "native_projection_retry_records": [],
+          "pyomo_fixed_target_projection_attempts": [
+            {
+              "method": -1,
+              "returned_OPTIMAL_point": true
+            }
+          ],
+          "absolute_tolerance": 1e-07
+        },
+        {
+          "passed": true,
+          "direction_index_zero_based": 2831,
+          "metric": "optimality",
+          "selected_by": [
+            "maximum_error_opt"
+          ],
+          "saved_error": 4.925198112256484e-12,
+          "native_recomputed_error": 4.925198112256484e-12,
+          "pyomo_fixed_native_target_error": 4.925198112257154e-12,
+          "saved_native_absolute_difference": 0.0,
+          "saved_fixed_target_pyomo_absolute_difference": 6.69660866998496e-25,
+          "native_LP_support_objective": -12.080427770991964,
+          "pyomo_LP_support_objective": -12.080427770991964,
+          "LP_support_objective_absolute_difference": 0.0,
+          "max_abs_native_pyomo_target_difference": 0.0,
+          "tied_optimal_support_points_differ": false,
+          "native_support_termination_status": 2,
+          "native_projection_termination_status": 2,
+          "native_projection_retry_records": [],
+          "pyomo_fixed_target_projection_attempts": [
+            {
+              "method": -1,
+              "returned_OPTIMAL_point": true
+            }
+          ],
+          "absolute_tolerance": 1e-07
+        }
+      ]
+    }
+  },
+  "full_batch_recomputed": false,
+  "cost_objectives_solved": 0,
+  "selection": "Each method's maximum feasibility/optimality; all PEB-inner feasibility values above 1e-4",
+  "degenerate_LP_policy": "Compare support objectives and project the fixed native support target; do not compare distances of different support targets",
+  "direction_seed": 1,
+  "num_error_samples": 5000,
+  "horizon": 24,
+  "case_seed": 0,
+  "counts": {
+    "CL": 5,
+    "TCL": 40,
+    "PV": 5,
+    "EV": 0,
+    "ESS": 0
+  },
+  "solver_options": {
+    "FeasibilityTol": 1e-09,
+    "OptimalityTol": 1e-09,
+    "BarConvTol": 1e-12,
+    "Threads": 1,
+    "Seed": 0
+  },
+  "gurobi_version": [
+    12,
+    0,
+    2
+  ],
+  "input_files_sha256": {
+    "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\aggregation\\T24\\comparisons\\original_costs.npy": "2cb5fedf8ff597d8e7231151dcdcd9caf0896408661ff4fc80ded9ca784e990e",
+    "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\aggregation\\T24\\comparisons\\pb_inner_errors.npz": "0977035b958933856f43c1bf6b15eafa359502c084d75a93381304132dabca27",
+    "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\aggregation\\T24\\comparisons\\peb_inner_cost_dispatch.npz": "f979496a75978851411dbfaa657858194ec27e790696c35d31da81246757d069",
+    "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\aggregation\\T24\\comparisons\\directions.npy": "7f1ab3ff18e64b781605f070e457a7eaa6c5b7f7272ea9e2088f3dba9ca241a5",
+    "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\aggregation\\T24\\comparisons\\cutting_plane_costs.npy": "8a6e154e503acee09e58d3f2cfcb74c405c47e07bff04afa81bb70f6fe766002",
+    "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\aggregation\\T24\\comparisons\\peb_outer_cost_dispatch.npz": "ab9393afa81c9a71704768ce6ab493cdb0e2b739157b18c69e86073b4401d2bd",
+    "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\aggregation\\T24\\comparisons\\pb_inner_costs.npy": "094a7b22d25b98953d5cea06619c390ded8f1dc44e30ecfe20c2ad388e037b36",
+    "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\aggregation\\T24\\comparisons\\pve_cost_dispatch.npz": "c6f759e6052af2258f9460c2ec995d08f025e5da43fbdfd8bcc8d9c81332839b",
+    "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\aggregation\\T24\\comparisons\\price_provenance.json": "9d5b6877879ee84b6b8624b12bea596d1962bb02b0b9853a748e861884c81c06",
+    "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\aggregation\\T24\\comparisons\\cost_solver_diagnostics.json": "604c55c134b868df6f1c6906d74a8603e0dfaf6cb6995638baa945b3eacaa430",
+    "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\aggregation\\T24\\baselines\\pve\\pve.npz": "35a4267efeb53a5b56a3f3cbfeebe29a72e041af0c6575e2937df078f37cd988",
+    "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\aggregation\\T24\\exact\\pb\\seed_0\\final_polytope.npz": "eadb8e1871a1a320a2002459396b70fc1165dd2b79a98c87e49a3ac99af58974",
+    "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\aggregation\\T24\\baselines\\cutting plane\\cutting_plane.npz": "61b5fabd4ed6ff39ef35828ed7821005c0031bf5fde10b62dff40f667bba75a8",
+    "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\aggregation\\T24\\comparisons\\pb_inner_cost_dispatch.npz": "db14ce3af5942fb8f98cacd6c4b45383eeb16e865c8bddc87de17bc3e0138637",
+    "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\aggregation\\T24\\comparisons\\proposed_peb_exact_cost_dispatch.npz": "a80b1c8152e95d8a5bb230380726ee0bba38807b91d1799f52258a12c2f7a30e",
+    "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\aggregation\\T24\\comparisons\\cost_scenarios.csv": "4138af3fa68ce79a120c4790fd7a95dda17388a671416025b11b50ff8a57d7bc",
+    "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\aggregation\\T24\\baselines\\pve\\pve_modified.npz": "7d71e528aa86e93b3a4786831661f8c8bec8a647aeab6c0c776d1032b91fd405",
+    "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\aggregation\\T24\\comparisons\\cutting_plane_modified_cost_dispatch.npz": "932419fc3f7032a01cc811acf17d833a03950b47892d05d935936b71909c3d0f",
+    "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\aggregation\\T24\\comparisons\\error_samples.csv": "c94bd3954fa4537bdda7e190143068282f498ba30b2d15dd8626d32a39d8b2e3",
+    "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\aggregation\\T24\\comparisons\\pve_modified_cost_dispatch.npz": "92453941f29b8899e92d7e2b6012b21dd302efd2348ad91e99eca45dae6e61bd",
+    "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\aggregation\\T24\\comparisons\\cost_samples.csv": "6143124312d54c0fdf53d81de3275a46f12943dfe8e0a7930e882eaf6ccc6fea",
+    "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\aggregation\\T24\\exact\\peb\\verified_case0_seed0\\final_polytope.npz": "2f871d9d287d6b961dc5f6b4d8285b9dc5fc9cc88d855cef9f135572d2af9fa0",
+    "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\aggregation\\T24\\comparisons\\cost_coefficients.npy": "c5afc196d7bce8b8324ca18254d7b5fc041084d3e86ca3e8c7e96e5ffaec56ce",
+    "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\aggregation\\T24\\comparisons\\cost_comparison.pkl": "38024e58cf273f18f8f9b4df18236196db85467ce1fe8dddc32a28cc481219fb",
+    "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\aggregation\\T24\\comparisons\\cutting_plane_cost_dispatch.npz": "326d17eb4e898ec59bca18bce6ba82917a8f92ce25e3cf85fba2e456fdc41f0e",
+    "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\aggregation\\T24\\comparisons\\cutting_plane_errors.npz": "190d62481bc14b480276859b0a64f07af2efd2390326b03f4f472b2a8f55a590",
+    "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\aggregation\\T24\\comparisons\\original_cost_dispatch.npz": "990d598d41413cb84abaf208f2cccd5c9621bda82f9fa02ffb80b7a92b02437c",
+    "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\aggregation\\T24\\comparisons\\peb_inner_costs.npy": "4ece4f90185be64eef387432aa31b1a2097fe79a4e98df37aac6cba777e33feb",
+    "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\aggregation\\T24\\comparisons\\cutting_plane_modified_costs.npy": "18d2e94922b5e5dfc67172cd45672d0f47eb141ceb3a3d943c58a8552110b326",
+    "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\aggregation\\T24\\comparisons\\peb_outer_costs.npy": "86903f3d8f3b9a2e7207d98495437c599835fea9f8a46f5d5169ff32a04797de",
+    "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\aggregation\\T24\\comparisons\\proposed_pb_exact_errors.npz": "9a59e6f910a203d7203a7487564dc56c0434d05905093ca4074970c8726c4950",
+    "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\aggregation\\T24\\baselines\\matlab\\verified_case0\\final_polytope.npz": "ec93664882a1dbf010154657860c80ba6c1d3a47d33890f10580768f28f03989",
+    "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\aggregation\\T24\\comparisons\\proposed_peb_exact_errors.npz": "8ff0bca4f22e96ab0ca5ca88ffda5f8a7fba77de16a78c8c3af324c65814aeef",
+    "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\aggregation\\T24\\baselines\\cutting plane\\cutting_plane_modified.npz": "ca8d5969a485715c0e4e0d765717bd8e49df04ab508ed8c6efec34dc5956da94",
+    "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\aggregation\\T24\\comparisons\\pve_modified_errors.npz": "d0a51a0321ebd64680ea72ae80bfabd1875b597fc4e6e3e9a46118066c4bff1b",
+    "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\aggregation\\T24\\comparisons\\proposed_pb_exact_costs.npy": "10f6c624903eed401784e8ca0febfa1bef6b2a36075a3b46222a8345369d99fe",
+    "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\aggregation\\T24\\comparisons\\peb_inner_errors.npz": "6a60887a64c416d276cdb9a80a052638b4f8a9964ae0d96ab0817b056bf0c51b",
+    "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\aggregation\\T24\\comparisons\\proposed_pb_exact_cost_dispatch.npz": "d804a5e584d656d31e0e5063eed848c2e599274bc651073092cc0a2ca33d549f",
+    "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\aggregation\\T24\\comparisons\\peb_outer_errors.npz": "8ede26b02c8ad23b761fb27b8327286126587c7d90322c50a4ea19765d874710",
+    "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\aggregation\\T24\\comparisons\\metadata.json": "ebf52d446b8ec3a265fc7a8bcf9367ed90aaa58eef74387ef9f7067afce606dd",
+    "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\aggregation\\T24\\baselines\\box\\verified_case0\\final_polytope.npz": "49b6d45a29277eaddda9d68c1e17555f87cc28475e60237f97f94d0ead404520",
+    "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\aggregation\\T24\\comparisons\\pve_costs.npy": "c7464a0ef4df1bdb2fbcedfd2849978d647ad3daa8b2a206bd7b3ed7c2c08a50",
+    "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\aggregation\\T24\\comparisons\\peb_outer.npz": "5ae292d6aee23e2b9631177fb6b7c9931581cdd98ffa0c67ad510ead92c0fe0e",
+    "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\aggregation\\T24\\comparisons\\summary.json": "d5904fdc668c642a450a6b318ffb00c636aefaa4c194e2ba0ee1c15402500fdd",
+    "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\aggregation\\T24\\comparisons\\cutting_plane_modified_errors.npz": "dd18961944823a7c15df40ad0274fc828cfbf9a00c820ccbf4d9f44b9455646f",
+    "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\aggregation\\T24\\comparisons\\pve_errors.npz": "50d4008e16824241b3636ab5f8cb43699a3118a643ab792c98d1354f52c7ede2",
+    "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\aggregation\\T24\\comparisons\\error_comparison.pkl": "78c79021f079d18ce449758aee1a21e6d2f0407e2c4414b222f963cc4db2fb5d",
+    "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\aggregation\\T24\\comparisons\\pve_modified_costs.npy": "ee55e610c78871d09e758f77a46f247590a31910dfdf58cc40184b649b3b99b5",
+    "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\aggregation\\T24\\comparisons\\proposed_peb_exact_costs.npy": "49287dfdf85121972e206e52d4f1ed292af5a396e25f6e311879d13445753ae3"
+  },
+  "native_model_sha256": "1244b99bf74db8250b7df8374c3581b728050a959833d6c9f8312503a131a6d9",
+  "completed_at_utc": "2026-10-26T04:09:08.456060+00:00",
+  "selected_metric_checks": 18,
+  "selected_method_direction_pairs": 18,
+  "maximum_saved_native_absolute_difference": 0.0,
+  "maximum_saved_fixed_target_pyomo_absolute_difference": 9.747758156208874e-14,
+  "support_target_degeneracy_cases": 0,
+  "all_input_files_bitwise_unchanged": true,
+  "coordinates": "extreme_coordinates.npz"
+}

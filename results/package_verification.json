@@ -1,0 +1,50 @@
+{
+  "date": "2026-11-04",
+  "operation": "One active tester file per paper case-study dataset",
+  "testers_python_files_before": 20,
+  "testers_python_files_after": 11,
+  "case_files": [
+    "case_gradients.py",
+    "case_methods.py",
+    "case_microgrid_nonconvexity.py",
+    "case_microgrid_scale.py",
+    "case_microgrid_uncertainty.py",
+    "case_scaling.py",
+    "case_training_budgets.py",
+    "case_training_stages.py"
+  ],
+  "shared_files": [
+    "polytope_evaluation.py",
+    "paper_tables.py",
+    "__init__.py"
+  ],
+  "model_equation_tests": "Simulator/cases/test_microgrid_constraints.py",
+  "whole_simulator_python_files_before": 59,
+  "whole_simulator_python_files_after": 51,
+  "all_original_scientific_files_unchanged": true,
+  "protected_data_and_results_checked": 1638,
+  "physical_models_and_approximator_byte_unchanged": true,
+  "numerical_validation": {
+    "gradient_and_method_definitions_equivalent": 41,
+    "scaling_case_definitions_equivalent_before_default_route_alignment": 37,
+    "nonconvexity_original_definitions_equivalent": 56,
+    "nonconvexity_copied_summary_definitions_unchanged": 6,
+    "paper_tables_outputs_byte_identical": true,
+    "saved_models_loaded": 9,
+    "gradient_seed_summaries": 10,
+    "scale3_percentage_and_nonconvexity_summaries_match": true,
+    "ESS_energy_ledger_checked_without_optimization": true,
+    "imports_exports_and_source_paths_checked": true,
+    "subprocess_evaluate_and_verify_routing_checked": true
+  },
+  "integration_fixes": [
+    "Restored foreign plotting main import after disambiguating the market main function.",
+    "Corrected the verifier optional-manifest digest(recorded_path(...)) typo.",
+    "Microgrid scale evaluation defaults to scale3/training and its sibling disaggregation folder; explicit paths remain supported.",
+    "Canonical gradient model checks accept the new source basename with a fallback to recorded historical keys."
+  ],
+  "strict_historical_source_hash_guards_retained": true,
+  "no_training_or_optimization_executed": true,
+  "source_backup_outside_package": "tmp/testers_by_case_20261104/before.zip",
+  "source_and_OA_file_hashes_equal": true
+}

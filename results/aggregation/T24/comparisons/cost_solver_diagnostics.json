@@ -1,0 +1,156 @@
+{
+  "version": "native-physical-linear-cost-v1",
+  "num_samples": 365,
+  "horizon": 24,
+  "method_order": [
+    "original",
+    "proposed_peb_exact",
+    "proposed_pb_exact",
+    "peb_inner",
+    "pb_inner",
+    "cutting_plane",
+    "cutting_plane_modified",
+    "pve",
+    "pve_modified",
+    "federated_peb",
+    "peb_outer"
+  ],
+  "coefficients_sha256": "70175343c6495d18afb783c50a2af96c0af16c64c92fd897ff2a61669aa153ee",
+  "model_sha256": "1244b99bf74db8250b7df8374c3581b728050a959833d6c9f8312503a131a6d9",
+  "region_sha256": {
+    "proposed_peb_exact": "7132b1541ba2ced28afc99114bc2ee21dbfa2c07cdbf6559562dcdbb03d7f73b",
+    "proposed_pb_exact": "1883360b54724334b8d6e00f002506561567bf5f80876cf456dfc73234f25494",
+    "peb_inner": "6d121726d8545583c94375a6394bbcf24d0cdd77df9c162d63befd501b9b8b1f",
+    "pb_inner": "8cf19ff07abe5d72a4eb1b1f48c7e588dcf155690b3321749a075ab9ada0e605",
+    "cutting_plane": "a48801e7350db8f62b287c08e360a98cecc9acb86b5c7e489dbd0e9884bcf596",
+    "cutting_plane_modified": "cdc7e142b637c76905801c555da6180674d08e55533ccd204230662bf8c08c40",
+    "pve": "4e56bda94a9daa71a5a3df6923a611409c6249a69efedf0e78fdad3df2e21b4f",
+    "pve_modified": "f57f50360e75e2deda2d0e39440de5dc0d16b96bffcbaf654f1215425368b928",
+    "federated_peb": "9a9a6bc1d150c56ab6c40a47630b72f4ddb18d2957ed1c11368ee8e9e497fafd",
+    "peb_outer": "9a15e8cc234d722addbd8e739d0dd5cd179cb2abf42464695306af8e1dc9b108"
+  },
+  "scale_sha256": "6bea795e6d107a9572df038fe8e6f35b170f0e88523649aac7245ee6e4906dba",
+  "offset_sha256": "f899aa0af1eed9d44dc3e6076df8fd3ffde82aa0dd79787273bd777e80770b9e",
+  "physical_coordinates": "normalized_power * (pmax-pmin) + pmin",
+  "objective": "min coefficients @ physical_power; coefficients include units and slot duration",
+  "solver_options": {
+    "FeasibilityTol": 1e-09,
+    "OptimalityTol": 1e-09,
+    "BarConvTol": 1e-12,
+    "Threads": 1,
+    "Seed": 0,
+    "OutputFlag": 0
+  },
+  "gurobi_version": [
+    12,
+    0,
+    2
+  ],
+  "require_optimal": true,
+  "build_seconds": 0.2060222001746297,
+  "models": {
+    "original": {
+      "variables": 2184,
+      "rows": 5304,
+      "solves": 365,
+      "successful_solves": 365,
+      "solver_seconds": 0.7840011119842529,
+      "elapsed_seconds": 0.8512852999847382,
+      "termination_status": "OPTIMAL"
+    },
+    "proposed_peb_exact": {
+      "variables": 24,
+      "rows": 94,
+      "solves": 365,
+      "successful_solves": 365,
+      "solver_seconds": 0.21500015258789062,
+      "elapsed_seconds": 0.23875460005365312,
+      "termination_status": "OPTIMAL"
+    },
+    "proposed_pb_exact": {
+      "variables": 24,
+      "rows": 48,
+      "solves": 365,
+      "successful_solves": 365,
+      "solver_seconds": 0.13499999046325684,
+      "elapsed_seconds": 0.15337399998679757,
+      "termination_status": "OPTIMAL"
+    },
+    "peb_inner": {
+      "variables": 24,
+      "rows": 96,
+      "solves": 365,
+      "successful_solves": 365,
+      "solver_seconds": 0.03500008583068848,
+      "elapsed_seconds": 0.05051069986075163,
+      "termination_status": "OPTIMAL"
+    },
+    "pb_inner": {
+      "variables": 24,
+      "rows": 48,
+      "solves": 365,
+      "successful_solves": 365,
+      "solver_seconds": 0.014000177383422852,
+      "elapsed_seconds": 0.026103199925273657,
+      "termination_status": "OPTIMAL"
+    },
+    "cutting_plane": {
+      "variables": 24,
+      "rows": 49,
+      "solves": 365,
+      "successful_solves": 365,
+      "solver_seconds": 0.008999347686767578,
+      "elapsed_seconds": 0.026833999902009964,
+      "termination_status": "OPTIMAL"
+    },
+    "cutting_plane_modified": {
+      "variables": 24,
+      "rows": 326,
+      "solves": 365,
+      "successful_solves": 365,
+      "solver_seconds": 0.1099996566772461,
+      "elapsed_seconds": 0.1309618998784572,
+      "termination_status": "OPTIMAL"
+    },
+    "pve": {
+      "variables": 92,
+      "rows": 25,
+      "solves": 365,
+      "successful_solves": 365,
+      "solver_seconds": 0.018999814987182617,
+      "elapsed_seconds": 0.05269189993850887,
+      "termination_status": "OPTIMAL"
+    },
+    "pve_modified": {
+      "variables": 592,
+      "rows": 25,
+      "solves": 365,
+      "successful_solves": 365,
+      "solver_seconds": 0.12099981307983398,
+      "elapsed_seconds": 0.14061090000905097,
+      "termination_status": "OPTIMAL"
+    },
+    "federated_peb": {
+      "variables": 24,
+      "rows": 94,
+      "solves": 365,
+      "successful_solves": 365,
+      "solver_seconds": 0.10099959373474121,
+      "elapsed_seconds": 0.12462949985638261,
+      "termination_status": "OPTIMAL"
+    },
+    "peb_outer": {
+      "variables": 24,
+      "rows": 96,
+      "solves": 365,
+      "successful_solves": 365,
+      "solver_seconds": 0.039999961853027344,
+      "elapsed_seconds": 0.060964500065892935,
+      "termination_status": "OPTIMAL"
+    }
+  },
+  "elapsed_seconds": 2.063102000160143,
+  "solver_seconds": 1.5829997062683105,
+  "solves": 4015,
+  "successful_solves": 4015
+}

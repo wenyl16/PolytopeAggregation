@@ -1,0 +1,150 @@
+{
+  "status": "Publicresearchrelease_DAMLMP_product_supported; exactofficialnode_to_physicalplant_mapping_not_independently_retrieved",
+  "created_at_utc": "2026-10-28T09:11:07.622100+00:00",
+  "selected_node": "POD_CONTRL_1_POOLE-APND",
+  "selected_index": 972,
+  "product": "CAISOordinarydayaheadlocationalmarginalenergyprice, totalLMP inUSD/MWh, asrepublishedbyoriginalresearchauthors",
+  "formal_source_tier_wording": "CAISO day-ahead electricity LMP at POD_CONTRL_1_POOLE-APND; public author-released OASIS-derived dataset, retaining the release's original float32 quotes. The report does not claim a newly downloaded CAISO primary CSV.",
+  "author_primary_release": {
+    "url": "https://zenodo.org/records/21522100",
+    "DOI": "10.5281/zenodo.21522100",
+    "published": "2026-07-27",
+    "declared": "CAISO1926nodes2023Aprto2026June, day-aheadLMPwithfourpublishedcomponents; publicCAISOOASISsource; float32; NaNmissing; missingflagswithnointerpolation",
+    "local_code_archive": "tmp/mean_four_search/us/cbd/cbd_code.zip",
+    "local_code_archive_sha256": "e9a778825a0ae6f4064473b5e0215bd80c7f1e4c14660965d568cd70b376733c",
+    "uninterpolated_pipeline_evidence": {
+      "file": "src/p1_caiso_raw_fix.py",
+      "copied_to_validation": "p1_caiso_raw_fix.py",
+      "sha256": "394d9978c1f3ee89066af9ba98ef022d8111097b9f9fbb00ee09c153cec3f24e",
+      "meaning": "AuthorrawfixinitializesNaNarraysandassignsrawOASISMWquoteforLMP_TYPE=LMPwithfloat32cast; nodemeanimputationfromearlierspikepipelineexplicitlyreplaced; noforwardfillorpriceforecastgenerationinthisrawfix"
+    },
+    "DST_boundary_note": "p3_caiso_day_tensor.pyislocal-day24slotview; rootpreparationusesUTCtensorandonlyrecoversanactualmissinghourfromseparateauthorrawdayblock, crosscheckedonfourLCGDLAPs; thisaudithasnotindependentlyverifiedPoolemissinghouragainstnewprimaryCSV"
+  },
+  "official_market_definition_evidence": [
+    {
+      "url": "https://www.caiso.com/documents/appendixa-masterdefinitionsupplement-asof-feb11-2023.pdf",
+      "locator": "AppendixA printedp109 LMP; p29 AggregatedPricingNode; p144 POD",
+      "supports": "LMPismarginalcostin$/MWhofnextdemandincrementatPNode; APNodeisCAISO-definedgroupofpricingnodes; PODmeansPointofDelivery. AncillaryServiceMarginalPricehasaseparatedefinition."
+    },
+    {
+      "url": "https://bpmcm.caiso.com/BPM%20Document%20Library/Market%20Instruments/BPM_for_Market%20Instruments_V85_Redline.pdf",
+      "locator": "PDFp177/printedp178 sectionLocationalMarginalPrices; PDFp199/printedp200 APNodeListing",
+      "supports": "OfficialOASISLMPpublicationcovershourlyPNodes,APNodesandschedulingpointsforDAM,in$/MWh; ancillary/advisory/MPMreportsaredescribedseparately. APNodeListingcontainsalllocationsusedinCAISOmarkets; virtual-biddingeligibilityisaseparateflag, notdefinitionofanartificialLMP."
+    },
+    {
+      "url": "https://bpmcm.prod.caiso.com/BPM%20Document%20Library/Managing%20Full%20Network%20Model/Managing%20Full%20Network%20Model%20BPM%20Version%2025_redline.pdf",
+      "locator": "section4.2.5.3, printedp74",
+      "supports": "APNodescanbetradinghubs,defaultloadzonesoraggregatedgenerationschedulingpoints; publishedAPNodeLMPisweightedaverageofunderlyingPNodeLMPsaftermarketoptimization. Thisisnormalmarketaggregation, notmissingpricefilling."
+    }
+  ],
+  "physical_identity_evidence": {
+    "primary_public_agency_url": "https://ceqanet.lci.ca.gov/2026090817",
+    "agency": "CaliforniaStateWaterResourcesControlBoard/CEQAnet",
+    "document": "LeeViningHydroelectricProjectRelicensing, received2026-09-18",
+    "supported_fact": "PoolePowerhouseis11.25MW hydroelectricproject; applicantSouthernCaliforniaEdisonCompany",
+    "exactnode_mapping_status": "NOTDIRECTLYVERIFIED: thenodecontainsPOOLEandCONTRL,butnamingaloneisnotproofofexactphysicalplantAPNodemapping. Thus useexactnodeidentifier asformallocationlabel; Poolehydrointerpretationisconsistentwithnameandphysicalplant,butremainsexplicitinference."
+  },
+  "same_price_node_review": {
+    "source_dataset": "tmp\\mean_four_search\\us\\caiso_allnodes_2025_365.npz",
+    "dataset_sha256": "5610495fb3378281f33fb1236ad8facace59ac8f9519b54a3e5bb1e70a826c0d",
+    "nodes": [
+      {
+        "node": "POD_CONTRL_1_POOLE-APND",
+        "index": 972,
+        "shape": [
+          365,
+          24
+        ],
+        "all_finite": true,
+        "native_hours": 8760,
+        "firstUTC": "2025-01-01",
+        "lastUTC": "2025-12-31",
+        "minimum_USD_MWh": -2258.057861328125,
+        "maximum_USD_MWh": 84.39833068847656,
+        "mean_USD_MWh": -20.20510700995232,
+        "negative_hours": 5615,
+        "zero_hours": 37,
+        "distinct_values": 7623,
+        "selected_daily_price_array_sha256": "1d31208897e186797fc189352c8f44a24057af6738493db6354a4a57c960b2be"
+      },
+      {
+        "node": "POD_CONTRL_1_QF-APND",
+        "index": 973,
+        "shape": [
+          365,
+          24
+        ],
+        "all_finite": true,
+        "native_hours": 8760,
+        "firstUTC": "2025-01-01",
+        "lastUTC": "2025-12-31",
+        "minimum_USD_MWh": -2258.057861328125,
+        "maximum_USD_MWh": 84.39833068847656,
+        "mean_USD_MWh": -20.20510700995232,
+        "negative_hours": 5615,
+        "zero_hours": 37,
+        "distinct_values": 7623,
+        "selected_daily_price_array_sha256": "1d31208897e186797fc189352c8f44a24057af6738493db6354a4a57c960b2be"
+      },
+      {
+        "node": "POD_BISHOP_1_UNITS-APND",
+        "index": 934,
+        "shape": [
+          365,
+          24
+        ],
+        "all_finite": true,
+        "native_hours": 8760,
+        "firstUTC": "2025-01-01",
+        "lastUTC": "2025-12-31",
+        "minimum_USD_MWh": -2258.057861328125,
+        "maximum_USD_MWh": 84.39833068847656,
+        "mean_USD_MWh": -20.20510700995232,
+        "negative_hours": 5615,
+        "zero_hours": 37,
+        "distinct_values": 7623,
+        "selected_daily_price_array_sha256": "1d31208897e186797fc189352c8f44a24057af6738493db6354a4a57c960b2be"
+      }
+    ],
+    "Poole_QF_Bishop_8760quotes_exactly_equal": true
+  },
+  "LCG_independent_same_node_check": {
+    "public_url": "https://www.energyonline.com/Data/GenericData.aspx?DataId=22",
+    "existing_public_page_path": "tmp/price_goal_10pct/caiso/energyonline/101820250000_101820252300_initial.response",
+    "existing_public_page_sha256": "23729295fcdabb947659993f2846456102f113d4768f2773d07a3f700d76e97d",
+    "public_series_options": [
+      "PGAE",
+      "SDGE",
+      "VEA",
+      "SCE"
+    ],
+    "finding": "PublicLCGCAISODAMpageexposesonlyfourDLAPs; neitherselectedPODnodeislisted. NoLCGindependentsame-nodeverificationclaimed.",
+    "existing_DLAP_crosscheck_only": "RootprovenancecrosschecksotherDLAPnodesagainstLCG; donotdescribeasPoole-specificcheck."
+  },
+  "direct_primary_attempt_limits": {
+    "attempted_public_CAISO_APNode_reference_xlsx": [
+      "https://www.caiso.com/documents/mn-2026-m01-v0-source-and-sink-apnodes-db137.xlsx",
+      "https://www.caiso.com/documents/crr-apnode-name-change-mapping-file.xlsx"
+    ],
+    "attempted_public_LMP_sample": "CAISO_selected_DAM_LMP_sample.zip.request.json",
+    "observed": "PythonnormalTLSclientfailedwithimmediateSSLEOF; nativesameURLcurlfailedDNSresolution. NoCAISOprimaryworkbookorselected-nodeCSVcontentwasretrieved. Noauthentication,TLScertbypass,UAimpersonation,or403workaroundused.",
+    "proofs": [
+      "CAISO_APNode_name_changes.xlsx.request.json",
+      "CAISO_APNodes_202601.xlsx.request.json",
+      "CAISO_selected_DAM_LMP_sample.zip.request.json",
+      "CAISO_APNode_name_changes.xlsx.curl_request.json",
+      "CAISO_APNodes_202601.xlsx.curl_request.json",
+      "CAISO_selected_DAM_LMP_sample.zip.curl_request.json"
+    ]
+  },
+  "verdict": {
+    "ordinary_DAM_energy_price_product": "SUPPORTEDatpublishedauthorreleaseandofficialproductdefinitionlevel",
+    "fallback_or_ancillary_or_forecast_price": "Nopositiveevidenceofthese; authorselectsactualDAMtotalLMP, rawfixdoesnotcreateforecast/fallbackvalues. Donotclaimeveryhourprimarysettlementstatusindependentlyverified.",
+    "APNode_weighted_aggregation": "LegitimateCAISOmarketpriceconstruction; notfilling",
+    "exact_POole_physical_resource_mapping": "UNCONFIRMEDfromdirectofficialreference",
+    "same_node_independent_CSV_overlap": "NOTOBTAINED",
+    "use_if_root_accepts_public_actual_author_release": "Allowedwithclearsource-tierandfloat32precisiondisclosure; exactnodeidentifieravoidsoverclaimingplantmapping"
+  },
+  "formal_files_modified": false,
+  "new_large_downloads": false
+}

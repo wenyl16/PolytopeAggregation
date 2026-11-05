@@ -1,0 +1,31 @@
+SINGLE-PLOT FIGURE CONTRACT AND CAPTION
+
+Purpose: neutrally compare the joint mean feasibility and optimality errors of the two gradient methods.
+Backend: Python / Matplotlib. One figure, one coordinate system, no additional panels or diagnostic figure.
+Statistical unit: 10 paired training seeds (0,100,...,900).
+Each seed contributes one opaque symbol for each method, using 10000 common held-out directions, evaluation seed 10000.
+Each same-seed arrow starts at the EXACT mean and points to the APPROXIMATE mean. The declared display floor applies equally to the means, cloud dots and arrow endpoints. Values below 1e-08 are rendered at 1e-08; the feasibility tick at this coordinate is labelled with a less-than-or-equal sign and the threshold. Original means and all original data are preserved. Arrows are shown in this export.
+The methods use equal marker areas and opacity. Color and marker shape distinguish methods.
+X: arithmetic mean of squared feasibility distance in the common normalized power coordinates; logarithmic axis with the declared display-only floor. The axis label is Feasibility error (p.u.); ticks use absolute powers of ten, without an additional unit multiplier. At the default floor, the three ticks are <=10^-8, 10^-7 and 10^-6.
+Y: arithmetic mean of squared optimality distance in the same coordinates; linear axis. Both axis limits coincide with their first and last major ticks. Limits use the actual rendered means and selected cloud dots, not invisible covariance-envelope extents.
+The legend is inside the upper-left corner of the axes; its rendered bounds are checked against the axes rectangle before export. All floor symbols remain fully visible on the left boundary. All type uses Times New Roman, scaled to 0.8 of the preceding export (axis labels 12 pt, ticks 11.2 pt, legend 11.68 pt, caption 10 pt). Both axis units are displayed as p.u. Caption line breaks and canvas margins accommodate the text.
+Both coordinates describe geometric squared distances, not economic objective gaps.
+All ten pairs are retained. Directions are not additional independent training repetitions.
+The plot describes final held-out errors; it makes no training-speed or convergence claim.
+
+MEAN DISTRIBUTIONS
+The local clouds are distributions of resampled TEST MEANS, not individual directional errors. Individual feasibility errors have a near-zero bulk and rare large values, so their raw distributions do not surround the arithmetic mean in this log-coordinate plot.
+The standard n-out-of-n bootstrap resamples 10000 direction indices with replacement, 1200 times, RNG seed 20261025. The same direction counts are used for all twenty trained models, preserving their common-test-direction pairing.
+Centrality is evaluated in (log10 mean feasibility, mean optimality) coordinates. The full bootstrap cloud defines its center and covariance. The nearest 80% of draws by Mahalanobis distance define the displayed central region. Each cloud uses the same rule, independent of which method has lower errors.
+Clouds have no outline, boundary stroke or enclosing ellipse; they consist only of transparent sample dots. The SAME local display scales apply to every cloud's residuals about its original seed mean: log10-x residuals x 0.35; y residuals x 5. Before applying the floor, log10(x_glyph)=log10(x_mean)+0.35*(log10(x_bootstrap)-log10(x_mean)), and y_glyph=y_mean+5*(y_bootstrap-y_mean). A raw resampled coordinate at or below the cutoff always stays at the floor, even if local rescaling would lift it; all other glyph coordinates are also bounded below by the floor. Mean and arrow coordinates use only the floor, without local rescaling.
+These are locally rescaled distribution glyphs. Their displayed widths/heights must not be read as literal uncertainty intervals on the main axes. Set both cloud-scale options to 1 to recover true-scale cloud coordinates. Statistical selection always uses the ORIGINAL bootstrap data, before any display scaling.
+To limit overplotting, 60 draws are sampled uniformly without replacement from each central set with separate deterministic RNG streams. The full bootstrap data, central membership and display selection are exported.
+These clouds describe test-direction sampling variation CONDITIONAL ON EACH TRAINED MODEL. They are neither the raw directional-error spread nor across-training-seed confidence intervals, and they do not imply all-directions feasibility or an economic cost guarantee.
+
+SOURCE DATA
+source_data/seed_metrics.csv contains original and displayed mean coordinates, with seed, evaluation seed and sample count.
+source_data/bootstrap_means.csv retains every resampled mean, separate pre-floor local glyph coordinates, final displayed coordinates, and central/display selection flags.
+source_data/cloud_definitions.csv records original centers, underlying region geometry, local display scales and sample counts.
+source_data/arrow_pairs.csv records original and floor-adjusted Exact sources and Approximate destinations for every training seed.
+plot_metadata.json contains the input hashes, plotting-source hashes, transformations and figure dimensions.
+No original training, evaluation or model file is edited or rerun. Resampling creates only derived visualization data.

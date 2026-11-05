@@ -1,0 +1,308 @@
+{
+  "active_modules": 50,
+  "missing_import_modules": [],
+  "missing_import_symbols": [],
+  "missing_source_paths": [],
+  "historical_source_lookup_strings": [
+    {
+      "source": "Simulator.paths",
+      "line": 11,
+      "path": "Simulator/baselines.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 12,
+      "path": "Simulator/federated_aggregation.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 13,
+      "path": "Simulator/federated_training.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 14,
+      "path": "Simulator/federated_volume.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 16,
+      "path": "Simulator/microgrid_count_solver.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 17,
+      "path": "Simulator/runners/compare_baselines.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 18,
+      "path": "Simulator/runners/compare_gradients.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 19,
+      "path": "Simulator/runners/compare_training_budgets.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 20,
+      "path": "Simulator/runners/compare_training_stages.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 21,
+      "path": "Simulator/runners/run_federated_peb.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 22,
+      "path": "Simulator/runners/run_microgrid_scale.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 23,
+      "path": "Simulator/runners/run_taheri2022.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 24,
+      "path": "Simulator/runners/taheri_data.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 25,
+      "path": "Simulator/runners/taheri_geometry.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 26,
+      "path": "Simulator/runners/test_taheri2022.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 27,
+      "path": "Simulator/runners/train_aggregation_scaling.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 28,
+      "path": "Simulator/runners/train_aggregation_t96.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 29,
+      "path": "Simulator/support/legacy_aggregation_case.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 30,
+      "path": "Simulator/testers/_nonconvexity_domain.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 31,
+      "path": "Simulator/testers/_nonconvexity_sampling.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 32,
+      "path": "Simulator/testers/_scaling_parallel_evaluation.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 33,
+      "path": "Simulator/testers/compare_aggregation_methods.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 34,
+      "path": "Simulator/testers/compare_costs_with_real_prices.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 35,
+      "path": "Simulator/testers/compare_exact_and_approximate_gradients.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 36,
+      "path": "Simulator/testers/compare_gradients.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 37,
+      "path": "Simulator/testers/compare_training_budgets.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 38,
+      "path": "Simulator/testers/compare_training_stages.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 39,
+      "path": "Simulator/testers/compute_polytope_errors_and_costs_gurobi.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 40,
+      "path": "Simulator/testers/compute_polytope_errors_pyomo.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 41,
+      "path": "Simulator/testers/evaluate_aggregation_scaling.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 42,
+      "path": "Simulator/testers/evaluate_microgrid_disaggregation.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 43,
+      "path": "Simulator/testers/evaluate_microgrid_min_uptime_ablation.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 44,
+      "path": "Simulator/testers/evaluate_microgrid_nonconvexity.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 45,
+      "path": "Simulator/testers/evaluate_microgrid_uncertainty_distribution.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 46,
+      "path": "Simulator/testers/summarize_aggregation_scaling.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 47,
+      "path": "Simulator/testers/summarize_microgrid_min_uptime_ablation.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 48,
+      "path": "Simulator/testers/summarize_microgrid_nonconvexity.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 49,
+      "path": "Simulator/testers/summarize_microgrid_scale3_nonconvexity.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 50,
+      "path": "Simulator/testers/summarize_microgrid_scale3_percentage.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 51,
+      "path": "Simulator/testers/summarize_paper_tables.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 52,
+      "path": "Simulator/testers/summarize_results.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 53,
+      "path": "Simulator/testers/test_microgrid_constraints.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 54,
+      "path": "Simulator/testers/test_microgrid_ess_time_index.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 55,
+      "path": "Simulator/testers/test_microgrid_min_uptime.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 56,
+      "path": "Simulator/testers/verify_microgrid_nonconvexity.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 57,
+      "path": "Simulator/testers/verify_microgrid_scale.py"
+    },
+    {
+      "source": "Simulator.paths",
+      "line": 58,
+      "path": "Simulator/testers/verify_microgrid_storage_diagnostic.py"
+    },
+    {
+      "source": "Simulator.testers.case_training_stages",
+      "line": 148,
+      "path": "Simulator/testers/evaluation_native.py"
+    },
+    {
+      "source": "Simulator.testers.case_training_stages",
+      "line": 148,
+      "path": "Simulator/evaluation_native.py"
+    }
+  ],
+  "literal_cli_modules": [
+    {
+      "source": "Simulator.runners.train_microgrid",
+      "line": 671,
+      "module": "Simulator.runners.train_microgrid"
+    },
+    {
+      "source": "Simulator.runners.train_microgrid",
+      "line": 676,
+      "module": "Simulator.testers.case_microgrid_scale"
+    },
+    {
+      "source": "Simulator.testers.case_microgrid_uncertainty",
+      "line": 686,
+      "module": "Simulator.drawers.plot_microgrid_shift"
+    }
+  ],
+  "saved_method_models_loaded": [
+    "proposed_peb_exact",
+    "proposed_pb_exact",
+    "peb_inner",
+    "pb_inner",
+    "cutting_plane",
+    "cutting_plane_modified",
+    "pve",
+    "pve_modified",
+    "federated_peb"
+  ],
+  "price_validation": "passed",
+  "gradient_summary": {
+    "included_count": 10,
+    "excluded_count": 0
+  },
+  "gradient_historical_execution_ast_proof": {
+    "snapshot_verified": true,
+    "execution_snapshot": "E:\\OneDrive\\Working\\Research\\12\u591a\u79cd\u8bbe\u5907\u8fd0\u884c\u57df\u805a\u5408\u7684\u901a\u7528\u6846\u67b6\\code\\results\\aggregation\\T24\\gradient_comparison\\run_20261019_090229_case0_seeds0_900\\executed_compare_gradients.py",
+    "recorded_execution_sha256": "1da70b2c56c75b3624fe424f36aacb80fe3b3c4656cd317504e43bcba214e9c7",
+    "current_cli_sha256": "e8640a01b318393db6665440fc9bb59bf37d15b9bf0cc77385d1222a66182481",
+    "current_wrapper_differs": true,
+    "numerical_functions_ast_equal": [
+      "sample_errors",
+      "take_step",
+      "make_optimizer",
+      "surrogate",
+      "configure",
+      "sync"
+    ],
+    "numerical_constants_ast_equal": [
+      "STAGES",
+      "OPTIONS"
+    ]
+  },
+  "solver_execution": false,
+  "gurobi_loaded": false,
+  "status": "passed"
+}

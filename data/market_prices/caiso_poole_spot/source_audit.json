@@ -1,0 +1,1301 @@
+{
+  "status": "PASS_AT_AUTHOR_RELEASE_TIER_PRIMARY_ZERO_QUOTE_VERIFICATION_UNAVAILABLE",
+  "at_utc": "2026-10-28T09:11:24.830555+00:00",
+  "US_files_unchanged": true,
+  "input_hashes": {
+    "tmp\\mean_four_search\\us\\caiso_allnodes_2025_365.npz": {
+      "sha256": "5610495fb3378281f33fb1236ad8facace59ac8f9519b54a3e5bb1e70a826c0d",
+      "crc32": 506749639,
+      "bytes": 58667887
+    },
+    "tmp\\mean_four_search\\us\\caiso_allnodes_provenance.json": {
+      "sha256": "eb9bba77155b9d3e52b3645f1e1db24717d6a86d37cfdd89b5e081d15bfe96cf",
+      "crc32": 3793107490,
+      "bytes": 2538
+    },
+    "tmp\\mean_four_search\\us\\prepare_caiso_allnodes.py": {
+      "sha256": "513fdd8853062cff7a45c515e81cc180b98ecb88c8ebe1c50431427e1564b238",
+      "crc32": 3750800357,
+      "bytes": 3708
+    },
+    "tmp\\mean_four_search\\us\\cbd\\caiso_da_lmp.npy": {
+      "sha256": "ed90e49b266c3732468e2353d78e0aa7fe4e3ede33b24cca2d93f4a396150e5a",
+      "crc32": 3715000298,
+      "bytes": 218524088
+    },
+    "tmp\\mean_four_search\\us\\cbd\\caiso_dayblocks.npz": {
+      "sha256": "777bfc4cbff638ce64f70113729903bfce739a071ab3842c65de9113ce85202d",
+      "crc32": 3309289705,
+      "bytes": 66584976
+    },
+    "tmp\\mean_four_search\\us\\cbd\\caiso_time_utc.npy": {
+      "sha256": "e6dc130d3db68156fdd246b74ae188570a02b6e45a4390de50e44542fdf9cefa",
+      "crc32": 1274583367,
+      "bytes": 227048
+    },
+    "tmp\\mean_four_search\\us\\cbd\\caiso_nodes.txt": {
+      "sha256": "1687d5be85d88946d0ceacb93c9ecc98083bcdb58257086c074e96429903bd80",
+      "crc32": 406561917,
+      "bytes": 41064
+    },
+    "tmp\\mean_four_search\\us\\cbd\\cbd_code.zip": {
+      "sha256": "e9a778825a0ae6f4064473b5e0215bd80c7f1e4c14660965d568cd70b376733c",
+      "crc32": 963024059,
+      "bytes": 89783
+    }
+  },
+  "author_code_MD5_matches_Zenodo": "a509b23d9a15f2592f219ad41b59134b",
+  "member_CRC32_independently_matches_cached_ZIP_central_directory": true,
+  "source_node_count": 1926,
+  "all_1926_HE24_recovery_values_finite": true,
+  "candidate_count": 1923,
+  "all_candidate_8759_original_hours_exact": true,
+  "all_candidate_one_recovered_actual_HE24_dayblock_values_exact": true,
+  "recovery_UTC_interval_start": "2025-11-03T07:00:00Z",
+  "recovery_Pacific_interval_start": "2025-11-02T23:00:00-08:00",
+  "recovery_OPR_DT": "2025-11-02",
+  "recovery_OPR_HR": 24,
+  "target_nodes": [
+    {
+      "node": "POD_CONTRL_1_POOLE-APND",
+      "candidate_8760_finite_hours": 8760,
+      "zero_quotes": 37,
+      "NaNs": 0,
+      "quotes_equal_positive1000": 0,
+      "minimum": -2258.057861328125,
+      "maximum": 84.39833068847656,
+      "strictly_negative_hour_count": 5615,
+      "all37_zero_LMP_hours_have_finite_nonzero_original_MCC": true,
+      "zero_LMP_hours_MCC_range": [
+        -46.88370132446289,
+        -9.281570434570312
+      ],
+      "nonambiguous_original_dayblock_hour_pairs": 8758,
+      "all_nonambiguous_pairs_float32_exact": true,
+      "fall_back_two_repeated_hour_labels_preserved_from_original_GMT_tensor": [
+        "2025-11-02T08",
+        "2025-11-02T09"
+      ],
+      "zero_and_minimum_quote_records": [
+        {
+          "UTC_interval_start": "2025-01-08 08:00:00+00:00",
+          "Pacific_interval_start": "2025-01-08 00:00:00-08:00",
+          "OPR_DT": "2025-01-08",
+          "OPR_HR": 1,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -41.94026184082031
+        },
+        {
+          "UTC_interval_start": "2025-01-08 10:00:00+00:00",
+          "Pacific_interval_start": "2025-01-08 02:00:00-08:00",
+          "OPR_DT": "2025-01-08",
+          "OPR_HR": 3,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -39.71989059448242
+        },
+        {
+          "UTC_interval_start": "2025-01-08 11:00:00+00:00",
+          "Pacific_interval_start": "2025-01-08 03:00:00-08:00",
+          "OPR_DT": "2025-01-08",
+          "OPR_HR": 4,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -40.74713897705078
+        },
+        {
+          "UTC_interval_start": "2025-01-11 23:00:00+00:00",
+          "Pacific_interval_start": "2025-01-11 15:00:00-08:00",
+          "OPR_DT": "2025-01-11",
+          "OPR_HR": 16,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -9.281570434570312
+        },
+        {
+          "UTC_interval_start": "2025-01-23 00:00:00+00:00",
+          "Pacific_interval_start": "2025-01-22 16:00:00-08:00",
+          "OPR_DT": "2025-01-22",
+          "OPR_HR": 17,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -41.5501594543457
+        },
+        {
+          "UTC_interval_start": "2025-01-27 07:00:00+00:00",
+          "Pacific_interval_start": "2025-01-26 23:00:00-08:00",
+          "OPR_DT": "2025-01-26",
+          "OPR_HR": 24,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -32.76615905761719
+        },
+        {
+          "UTC_interval_start": "2025-02-20 07:00:00+00:00",
+          "Pacific_interval_start": "2025-02-19 23:00:00-08:00",
+          "OPR_DT": "2025-02-19",
+          "OPR_HR": 24,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -28.41058921813965
+        },
+        {
+          "UTC_interval_start": "2025-03-02 07:00:00+00:00",
+          "Pacific_interval_start": "2025-03-01 23:00:00-08:00",
+          "OPR_DT": "2025-03-01",
+          "OPR_HR": 24,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -34.58715057373047
+        },
+        {
+          "UTC_interval_start": "2025-03-13 04:00:00+00:00",
+          "Pacific_interval_start": "2025-03-12 21:00:00-07:00",
+          "OPR_DT": "2025-03-12",
+          "OPR_HR": 22,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -35.689491271972656
+        },
+        {
+          "UTC_interval_start": "2025-03-13 05:00:00+00:00",
+          "Pacific_interval_start": "2025-03-12 22:00:00-07:00",
+          "OPR_DT": "2025-03-12",
+          "OPR_HR": 23,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -33.64957809448242
+        },
+        {
+          "UTC_interval_start": "2025-03-19 08:00:00+00:00",
+          "Pacific_interval_start": "2025-03-19 01:00:00-07:00",
+          "OPR_DT": "2025-03-19",
+          "OPR_HR": 2,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -37.384761810302734
+        },
+        {
+          "UTC_interval_start": "2025-03-22 02:00:00+00:00",
+          "Pacific_interval_start": "2025-03-21 19:00:00-07:00",
+          "OPR_DT": "2025-03-21",
+          "OPR_HR": 20,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -27.743789672851562
+        },
+        {
+          "UTC_interval_start": "2025-04-05 08:00:00+00:00",
+          "Pacific_interval_start": "2025-04-05 01:00:00-07:00",
+          "OPR_DT": "2025-04-05",
+          "OPR_HR": 2,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -28.18522071838379
+        },
+        {
+          "UTC_interval_start": "2025-04-05 10:00:00+00:00",
+          "Pacific_interval_start": "2025-04-05 03:00:00-07:00",
+          "OPR_DT": "2025-04-05",
+          "OPR_HR": 4,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -27.233320236206055
+        },
+        {
+          "UTC_interval_start": "2025-04-14 08:00:00+00:00",
+          "Pacific_interval_start": "2025-04-14 01:00:00-07:00",
+          "OPR_DT": "2025-04-14",
+          "OPR_HR": 2,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -25.076770782470703
+        },
+        {
+          "UTC_interval_start": "2025-04-14 11:00:00+00:00",
+          "Pacific_interval_start": "2025-04-14 04:00:00-07:00",
+          "OPR_DT": "2025-04-14",
+          "OPR_HR": 5,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -25.004940032958984
+        },
+        {
+          "UTC_interval_start": "2025-04-18 12:00:00+00:00",
+          "Pacific_interval_start": "2025-04-18 05:00:00-07:00",
+          "OPR_DT": "2025-04-18",
+          "OPR_HR": 6,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -23.275419235229492
+        },
+        {
+          "UTC_interval_start": "2025-04-18 14:00:00+00:00",
+          "Pacific_interval_start": "2025-04-18 07:00:00-07:00",
+          "OPR_DT": "2025-04-18",
+          "OPR_HR": 8,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -19.310049057006836
+        },
+        {
+          "UTC_interval_start": "2025-05-29 22:00:00+00:00",
+          "Pacific_interval_start": "2025-05-29 15:00:00-07:00",
+          "OPR_DT": "2025-05-29",
+          "OPR_HR": 16,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -16.603490829467773
+        },
+        {
+          "UTC_interval_start": "2025-06-10 22:00:00+00:00",
+          "Pacific_interval_start": "2025-06-10 15:00:00-07:00",
+          "OPR_DT": "2025-06-10",
+          "OPR_HR": 16,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -18.590669631958008
+        },
+        {
+          "UTC_interval_start": "2025-06-21 04:00:00+00:00",
+          "Pacific_interval_start": "2025-06-20 21:00:00-07:00",
+          "OPR_DT": "2025-06-20",
+          "OPR_HR": 22,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -26.730850219726562
+        },
+        {
+          "UTC_interval_start": "2025-07-05 05:00:00+00:00",
+          "Pacific_interval_start": "2025-07-04 22:00:00-07:00",
+          "OPR_DT": "2025-07-04",
+          "OPR_HR": 23,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -28.197940826416016
+        },
+        {
+          "UTC_interval_start": "2025-07-05 06:00:00+00:00",
+          "Pacific_interval_start": "2025-07-04 23:00:00-07:00",
+          "OPR_DT": "2025-07-04",
+          "OPR_HR": 24,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -29.01460075378418
+        },
+        {
+          "UTC_interval_start": "2025-07-20 19:00:00+00:00",
+          "Pacific_interval_start": "2025-07-20 12:00:00-07:00",
+          "OPR_DT": "2025-07-20",
+          "OPR_HR": 13,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -13.82865047454834
+        },
+        {
+          "UTC_interval_start": "2025-07-22 16:00:00+00:00",
+          "Pacific_interval_start": "2025-07-22 09:00:00-07:00",
+          "OPR_DT": "2025-07-22",
+          "OPR_HR": 10,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -14.259909629821777
+        },
+        {
+          "UTC_interval_start": "2025-07-25 05:00:00+00:00",
+          "Pacific_interval_start": "2025-07-24 22:00:00-07:00",
+          "OPR_DT": "2025-07-24",
+          "OPR_HR": 23,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -26.32006072998047
+        },
+        {
+          "UTC_interval_start": "2025-07-26 05:00:00+00:00",
+          "Pacific_interval_start": "2025-07-25 22:00:00-07:00",
+          "OPR_DT": "2025-07-25",
+          "OPR_HR": 23,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -25.15035057067871
+        },
+        {
+          "UTC_interval_start": "2025-07-27 08:00:00+00:00",
+          "Pacific_interval_start": "2025-07-27 01:00:00-07:00",
+          "OPR_DT": "2025-07-27",
+          "OPR_HR": 2,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -26.307079315185547
+        },
+        {
+          "UTC_interval_start": "2025-07-31 18:00:00+00:00",
+          "Pacific_interval_start": "2025-07-31 11:00:00-07:00",
+          "OPR_DT": "2025-07-31",
+          "OPR_HR": 12,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -14.326419830322266
+        },
+        {
+          "UTC_interval_start": "2025-08-07 23:00:00+00:00",
+          "Pacific_interval_start": "2025-08-07 16:00:00-07:00",
+          "OPR_DT": "2025-08-07",
+          "OPR_HR": 17,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -46.88370132446289
+        },
+        {
+          "UTC_interval_start": "2025-08-13 00:00:00+00:00",
+          "Pacific_interval_start": "2025-08-12 17:00:00-07:00",
+          "OPR_DT": "2025-08-12",
+          "OPR_HR": 18,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -35.00305938720703
+        },
+        {
+          "UTC_interval_start": "2025-08-25 17:00:00+00:00",
+          "Pacific_interval_start": "2025-08-25 10:00:00-07:00",
+          "OPR_DT": "2025-08-25",
+          "OPR_HR": 11,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -46.184688568115234
+        },
+        {
+          "UTC_interval_start": "2025-08-26 06:00:00+00:00",
+          "Pacific_interval_start": "2025-08-25 23:00:00-07:00",
+          "OPR_DT": "2025-08-25",
+          "OPR_HR": 24,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -44.8206901550293
+        },
+        {
+          "UTC_interval_start": "2025-08-26 15:00:00+00:00",
+          "Pacific_interval_start": "2025-08-26 08:00:00-07:00",
+          "OPR_DT": "2025-08-26",
+          "OPR_HR": 9,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -32.12049102783203
+        },
+        {
+          "UTC_interval_start": "2025-08-27 06:00:00+00:00",
+          "Pacific_interval_start": "2025-08-26 23:00:00-07:00",
+          "OPR_DT": "2025-08-26",
+          "OPR_HR": 24,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -37.43336868286133
+        },
+        {
+          "UTC_interval_start": "2025-08-27 17:00:00+00:00",
+          "Pacific_interval_start": "2025-08-27 10:00:00-07:00",
+          "OPR_DT": "2025-08-27",
+          "OPR_HR": 11,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -22.544130325317383
+        },
+        {
+          "UTC_interval_start": "2025-08-27 23:00:00+00:00",
+          "Pacific_interval_start": "2025-08-27 16:00:00-07:00",
+          "OPR_DT": "2025-08-27",
+          "OPR_HR": 17,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -34.71181106567383
+        },
+        {
+          "UTC_interval_start": "2025-11-06 14:00:00+00:00",
+          "Pacific_interval_start": "2025-11-06 06:00:00-08:00",
+          "OPR_DT": "2025-11-06",
+          "OPR_HR": 7,
+          "candidate_quote": -2258.057861328125,
+          "canonical_tensor_quote": -2258.057861328125,
+          "author_raw_dayblock_quote": -2258.057861328125,
+          "author_raw_dayblock_MCC": -2306.303955078125
+        }
+      ]
+    },
+    {
+      "node": "POD_CONTRL_1_QF-APND",
+      "candidate_8760_finite_hours": 8760,
+      "zero_quotes": 37,
+      "NaNs": 0,
+      "quotes_equal_positive1000": 0,
+      "minimum": -2258.057861328125,
+      "maximum": 84.39833068847656,
+      "strictly_negative_hour_count": 5615,
+      "all37_zero_LMP_hours_have_finite_nonzero_original_MCC": true,
+      "zero_LMP_hours_MCC_range": [
+        -46.88370132446289,
+        -9.281570434570312
+      ],
+      "nonambiguous_original_dayblock_hour_pairs": 8758,
+      "all_nonambiguous_pairs_float32_exact": true,
+      "fall_back_two_repeated_hour_labels_preserved_from_original_GMT_tensor": [
+        "2025-11-02T08",
+        "2025-11-02T09"
+      ],
+      "zero_and_minimum_quote_records": [
+        {
+          "UTC_interval_start": "2025-01-08 08:00:00+00:00",
+          "Pacific_interval_start": "2025-01-08 00:00:00-08:00",
+          "OPR_DT": "2025-01-08",
+          "OPR_HR": 1,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -41.94026184082031
+        },
+        {
+          "UTC_interval_start": "2025-01-08 10:00:00+00:00",
+          "Pacific_interval_start": "2025-01-08 02:00:00-08:00",
+          "OPR_DT": "2025-01-08",
+          "OPR_HR": 3,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -39.71989059448242
+        },
+        {
+          "UTC_interval_start": "2025-01-08 11:00:00+00:00",
+          "Pacific_interval_start": "2025-01-08 03:00:00-08:00",
+          "OPR_DT": "2025-01-08",
+          "OPR_HR": 4,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -40.74713897705078
+        },
+        {
+          "UTC_interval_start": "2025-01-11 23:00:00+00:00",
+          "Pacific_interval_start": "2025-01-11 15:00:00-08:00",
+          "OPR_DT": "2025-01-11",
+          "OPR_HR": 16,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -9.281570434570312
+        },
+        {
+          "UTC_interval_start": "2025-01-23 00:00:00+00:00",
+          "Pacific_interval_start": "2025-01-22 16:00:00-08:00",
+          "OPR_DT": "2025-01-22",
+          "OPR_HR": 17,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -41.5501594543457
+        },
+        {
+          "UTC_interval_start": "2025-01-27 07:00:00+00:00",
+          "Pacific_interval_start": "2025-01-26 23:00:00-08:00",
+          "OPR_DT": "2025-01-26",
+          "OPR_HR": 24,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -32.76615905761719
+        },
+        {
+          "UTC_interval_start": "2025-02-20 07:00:00+00:00",
+          "Pacific_interval_start": "2025-02-19 23:00:00-08:00",
+          "OPR_DT": "2025-02-19",
+          "OPR_HR": 24,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -28.41058921813965
+        },
+        {
+          "UTC_interval_start": "2025-03-02 07:00:00+00:00",
+          "Pacific_interval_start": "2025-03-01 23:00:00-08:00",
+          "OPR_DT": "2025-03-01",
+          "OPR_HR": 24,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -34.58715057373047
+        },
+        {
+          "UTC_interval_start": "2025-03-13 04:00:00+00:00",
+          "Pacific_interval_start": "2025-03-12 21:00:00-07:00",
+          "OPR_DT": "2025-03-12",
+          "OPR_HR": 22,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -35.689491271972656
+        },
+        {
+          "UTC_interval_start": "2025-03-13 05:00:00+00:00",
+          "Pacific_interval_start": "2025-03-12 22:00:00-07:00",
+          "OPR_DT": "2025-03-12",
+          "OPR_HR": 23,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -33.64957809448242
+        },
+        {
+          "UTC_interval_start": "2025-03-19 08:00:00+00:00",
+          "Pacific_interval_start": "2025-03-19 01:00:00-07:00",
+          "OPR_DT": "2025-03-19",
+          "OPR_HR": 2,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -37.384761810302734
+        },
+        {
+          "UTC_interval_start": "2025-03-22 02:00:00+00:00",
+          "Pacific_interval_start": "2025-03-21 19:00:00-07:00",
+          "OPR_DT": "2025-03-21",
+          "OPR_HR": 20,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -27.743789672851562
+        },
+        {
+          "UTC_interval_start": "2025-04-05 08:00:00+00:00",
+          "Pacific_interval_start": "2025-04-05 01:00:00-07:00",
+          "OPR_DT": "2025-04-05",
+          "OPR_HR": 2,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -28.18522071838379
+        },
+        {
+          "UTC_interval_start": "2025-04-05 10:00:00+00:00",
+          "Pacific_interval_start": "2025-04-05 03:00:00-07:00",
+          "OPR_DT": "2025-04-05",
+          "OPR_HR": 4,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -27.233320236206055
+        },
+        {
+          "UTC_interval_start": "2025-04-14 08:00:00+00:00",
+          "Pacific_interval_start": "2025-04-14 01:00:00-07:00",
+          "OPR_DT": "2025-04-14",
+          "OPR_HR": 2,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -25.076770782470703
+        },
+        {
+          "UTC_interval_start": "2025-04-14 11:00:00+00:00",
+          "Pacific_interval_start": "2025-04-14 04:00:00-07:00",
+          "OPR_DT": "2025-04-14",
+          "OPR_HR": 5,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -25.004940032958984
+        },
+        {
+          "UTC_interval_start": "2025-04-18 12:00:00+00:00",
+          "Pacific_interval_start": "2025-04-18 05:00:00-07:00",
+          "OPR_DT": "2025-04-18",
+          "OPR_HR": 6,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -23.275419235229492
+        },
+        {
+          "UTC_interval_start": "2025-04-18 14:00:00+00:00",
+          "Pacific_interval_start": "2025-04-18 07:00:00-07:00",
+          "OPR_DT": "2025-04-18",
+          "OPR_HR": 8,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -19.310049057006836
+        },
+        {
+          "UTC_interval_start": "2025-05-29 22:00:00+00:00",
+          "Pacific_interval_start": "2025-05-29 15:00:00-07:00",
+          "OPR_DT": "2025-05-29",
+          "OPR_HR": 16,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -16.603490829467773
+        },
+        {
+          "UTC_interval_start": "2025-06-10 22:00:00+00:00",
+          "Pacific_interval_start": "2025-06-10 15:00:00-07:00",
+          "OPR_DT": "2025-06-10",
+          "OPR_HR": 16,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -18.590669631958008
+        },
+        {
+          "UTC_interval_start": "2025-06-21 04:00:00+00:00",
+          "Pacific_interval_start": "2025-06-20 21:00:00-07:00",
+          "OPR_DT": "2025-06-20",
+          "OPR_HR": 22,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -26.730850219726562
+        },
+        {
+          "UTC_interval_start": "2025-07-05 05:00:00+00:00",
+          "Pacific_interval_start": "2025-07-04 22:00:00-07:00",
+          "OPR_DT": "2025-07-04",
+          "OPR_HR": 23,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -28.197940826416016
+        },
+        {
+          "UTC_interval_start": "2025-07-05 06:00:00+00:00",
+          "Pacific_interval_start": "2025-07-04 23:00:00-07:00",
+          "OPR_DT": "2025-07-04",
+          "OPR_HR": 24,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -29.01460075378418
+        },
+        {
+          "UTC_interval_start": "2025-07-20 19:00:00+00:00",
+          "Pacific_interval_start": "2025-07-20 12:00:00-07:00",
+          "OPR_DT": "2025-07-20",
+          "OPR_HR": 13,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -13.82865047454834
+        },
+        {
+          "UTC_interval_start": "2025-07-22 16:00:00+00:00",
+          "Pacific_interval_start": "2025-07-22 09:00:00-07:00",
+          "OPR_DT": "2025-07-22",
+          "OPR_HR": 10,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -14.259909629821777
+        },
+        {
+          "UTC_interval_start": "2025-07-25 05:00:00+00:00",
+          "Pacific_interval_start": "2025-07-24 22:00:00-07:00",
+          "OPR_DT": "2025-07-24",
+          "OPR_HR": 23,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -26.32006072998047
+        },
+        {
+          "UTC_interval_start": "2025-07-26 05:00:00+00:00",
+          "Pacific_interval_start": "2025-07-25 22:00:00-07:00",
+          "OPR_DT": "2025-07-25",
+          "OPR_HR": 23,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -25.15035057067871
+        },
+        {
+          "UTC_interval_start": "2025-07-27 08:00:00+00:00",
+          "Pacific_interval_start": "2025-07-27 01:00:00-07:00",
+          "OPR_DT": "2025-07-27",
+          "OPR_HR": 2,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -26.307079315185547
+        },
+        {
+          "UTC_interval_start": "2025-07-31 18:00:00+00:00",
+          "Pacific_interval_start": "2025-07-31 11:00:00-07:00",
+          "OPR_DT": "2025-07-31",
+          "OPR_HR": 12,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -14.326419830322266
+        },
+        {
+          "UTC_interval_start": "2025-08-07 23:00:00+00:00",
+          "Pacific_interval_start": "2025-08-07 16:00:00-07:00",
+          "OPR_DT": "2025-08-07",
+          "OPR_HR": 17,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -46.88370132446289
+        },
+        {
+          "UTC_interval_start": "2025-08-13 00:00:00+00:00",
+          "Pacific_interval_start": "2025-08-12 17:00:00-07:00",
+          "OPR_DT": "2025-08-12",
+          "OPR_HR": 18,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -35.00305938720703
+        },
+        {
+          "UTC_interval_start": "2025-08-25 17:00:00+00:00",
+          "Pacific_interval_start": "2025-08-25 10:00:00-07:00",
+          "OPR_DT": "2025-08-25",
+          "OPR_HR": 11,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -46.184688568115234
+        },
+        {
+          "UTC_interval_start": "2025-08-26 06:00:00+00:00",
+          "Pacific_interval_start": "2025-08-25 23:00:00-07:00",
+          "OPR_DT": "2025-08-25",
+          "OPR_HR": 24,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -44.8206901550293
+        },
+        {
+          "UTC_interval_start": "2025-08-26 15:00:00+00:00",
+          "Pacific_interval_start": "2025-08-26 08:00:00-07:00",
+          "OPR_DT": "2025-08-26",
+          "OPR_HR": 9,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -32.12049102783203
+        },
+        {
+          "UTC_interval_start": "2025-08-27 06:00:00+00:00",
+          "Pacific_interval_start": "2025-08-26 23:00:00-07:00",
+          "OPR_DT": "2025-08-26",
+          "OPR_HR": 24,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -37.43336868286133
+        },
+        {
+          "UTC_interval_start": "2025-08-27 17:00:00+00:00",
+          "Pacific_interval_start": "2025-08-27 10:00:00-07:00",
+          "OPR_DT": "2025-08-27",
+          "OPR_HR": 11,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -22.544130325317383
+        },
+        {
+          "UTC_interval_start": "2025-08-27 23:00:00+00:00",
+          "Pacific_interval_start": "2025-08-27 16:00:00-07:00",
+          "OPR_DT": "2025-08-27",
+          "OPR_HR": 17,
+          "candidate_quote": 0.0,
+          "canonical_tensor_quote": 0.0,
+          "author_raw_dayblock_quote": 0.0,
+          "author_raw_dayblock_MCC": -34.71181106567383
+        },
+        {
+          "UTC_interval_start": "2025-11-06 14:00:00+00:00",
+          "Pacific_interval_start": "2025-11-06 06:00:00-08:00",
+          "OPR_DT": "2025-11-06",
+          "OPR_HR": 7,
+          "candidate_quote": -2258.057861328125,
+          "canonical_tensor_quote": -2258.057861328125,
+          "author_raw_dayblock_quote": -2258.057861328125,
+          "author_raw_dayblock_MCC": -2306.303955078125
+        }
+      ]
+    }
+  ],
+  "four_DLAP_cross_source_checks": [
+    {
+      "node": "DLAP_PGAE-APND",
+      "unambiguous_LCG_quote_pairs": 1790,
+      "all_float32_exact": true,
+      "clock_lag_counterchecks": {
+        "-2": {
+          "finite_pairs": 1790,
+          "exact_float32_pairs": 0
+        },
+        "-1": {
+          "finite_pairs": 1790,
+          "exact_float32_pairs": 0
+        },
+        "0": {
+          "finite_pairs": 1790,
+          "exact_float32_pairs": 1790
+        },
+        "1": {
+          "finite_pairs": 1789,
+          "exact_float32_pairs": 0
+        },
+        "2": {
+          "finite_pairs": 1788,
+          "exact_float32_pairs": 0
+        }
+      },
+      "last_four_local_hours": [
+        {
+          "local_interval_start": "2025-11-02 20:00:00",
+          "UTC_interval_start": "2025-11-03 04:00:00+00:00",
+          "OPR_HR": 21,
+          "LCG_original_quote": 52.03198,
+          "dayblock_quote": 52.031978607177734
+        },
+        {
+          "local_interval_start": "2025-11-02 21:00:00",
+          "UTC_interval_start": "2025-11-03 05:00:00+00:00",
+          "OPR_HR": 22,
+          "LCG_original_quote": 54.50507,
+          "dayblock_quote": 54.505069732666016
+        },
+        {
+          "local_interval_start": "2025-11-02 22:00:00",
+          "UTC_interval_start": "2025-11-03 06:00:00+00:00",
+          "OPR_HR": 23,
+          "LCG_original_quote": 52.79694,
+          "dayblock_quote": 52.796939849853516
+        },
+        {
+          "local_interval_start": "2025-11-02 23:00:00",
+          "UTC_interval_start": "2025-11-03 07:00:00+00:00",
+          "OPR_HR": 24,
+          "LCG_original_quote": 49.02214,
+          "dayblock_quote": 49.02214050292969
+        }
+      ]
+    },
+    {
+      "node": "DLAP_SCE-APND",
+      "unambiguous_LCG_quote_pairs": 1790,
+      "all_float32_exact": true,
+      "clock_lag_counterchecks": {
+        "-2": {
+          "finite_pairs": 1790,
+          "exact_float32_pairs": 0
+        },
+        "-1": {
+          "finite_pairs": 1790,
+          "exact_float32_pairs": 1
+        },
+        "0": {
+          "finite_pairs": 1790,
+          "exact_float32_pairs": 1790
+        },
+        "1": {
+          "finite_pairs": 1789,
+          "exact_float32_pairs": 1
+        },
+        "2": {
+          "finite_pairs": 1788,
+          "exact_float32_pairs": 0
+        }
+      },
+      "last_four_local_hours": [
+        {
+          "local_interval_start": "2025-11-02 20:00:00",
+          "UTC_interval_start": "2025-11-03 04:00:00+00:00",
+          "OPR_HR": 21,
+          "LCG_original_quote": 51.97177,
+          "dayblock_quote": 51.971771240234375
+        },
+        {
+          "local_interval_start": "2025-11-02 21:00:00",
+          "UTC_interval_start": "2025-11-03 05:00:00+00:00",
+          "OPR_HR": 22,
+          "LCG_original_quote": 53.70803,
+          "dayblock_quote": 53.708030700683594
+        },
+        {
+          "local_interval_start": "2025-11-02 22:00:00",
+          "UTC_interval_start": "2025-11-03 06:00:00+00:00",
+          "OPR_HR": 23,
+          "LCG_original_quote": 51.81272,
+          "dayblock_quote": 51.812721252441406
+        },
+        {
+          "local_interval_start": "2025-11-02 23:00:00",
+          "UTC_interval_start": "2025-11-03 07:00:00+00:00",
+          "OPR_HR": 24,
+          "LCG_original_quote": 48.25228,
+          "dayblock_quote": 48.252281188964844
+        }
+      ]
+    },
+    {
+      "node": "DLAP_SDGE-APND",
+      "unambiguous_LCG_quote_pairs": 1790,
+      "all_float32_exact": true,
+      "clock_lag_counterchecks": {
+        "-2": {
+          "finite_pairs": 1790,
+          "exact_float32_pairs": 0
+        },
+        "-1": {
+          "finite_pairs": 1790,
+          "exact_float32_pairs": 1
+        },
+        "0": {
+          "finite_pairs": 1790,
+          "exact_float32_pairs": 1790
+        },
+        "1": {
+          "finite_pairs": 1789,
+          "exact_float32_pairs": 0
+        },
+        "2": {
+          "finite_pairs": 1788,
+          "exact_float32_pairs": 0
+        }
+      },
+      "last_four_local_hours": [
+        {
+          "local_interval_start": "2025-11-02 20:00:00",
+          "UTC_interval_start": "2025-11-03 04:00:00+00:00",
+          "OPR_HR": 21,
+          "LCG_original_quote": 52.01935,
+          "dayblock_quote": 52.01934814453125
+        },
+        {
+          "local_interval_start": "2025-11-02 21:00:00",
+          "UTC_interval_start": "2025-11-03 05:00:00+00:00",
+          "OPR_HR": 22,
+          "LCG_original_quote": 53.91354,
+          "dayblock_quote": 53.91353988647461
+        },
+        {
+          "local_interval_start": "2025-11-02 22:00:00",
+          "UTC_interval_start": "2025-11-03 06:00:00+00:00",
+          "OPR_HR": 23,
+          "LCG_original_quote": 51.80969,
+          "dayblock_quote": 51.809688568115234
+        },
+        {
+          "local_interval_start": "2025-11-02 23:00:00",
+          "UTC_interval_start": "2025-11-03 07:00:00+00:00",
+          "OPR_HR": 24,
+          "LCG_original_quote": 48.12157,
+          "dayblock_quote": 48.1215705871582
+        }
+      ]
+    },
+    {
+      "node": "DLAP_VEA-APND",
+      "unambiguous_LCG_quote_pairs": 1790,
+      "all_float32_exact": true,
+      "clock_lag_counterchecks": {
+        "-2": {
+          "finite_pairs": 1790,
+          "exact_float32_pairs": 1
+        },
+        "-1": {
+          "finite_pairs": 1790,
+          "exact_float32_pairs": 5
+        },
+        "0": {
+          "finite_pairs": 1790,
+          "exact_float32_pairs": 1790
+        },
+        "1": {
+          "finite_pairs": 1789,
+          "exact_float32_pairs": 5
+        },
+        "2": {
+          "finite_pairs": 1788,
+          "exact_float32_pairs": 1
+        }
+      },
+      "last_four_local_hours": [
+        {
+          "local_interval_start": "2025-11-02 20:00:00",
+          "UTC_interval_start": "2025-11-03 04:00:00+00:00",
+          "OPR_HR": 21,
+          "LCG_original_quote": 46.68,
+          "dayblock_quote": 46.68000030517578
+        },
+        {
+          "local_interval_start": "2025-11-02 21:00:00",
+          "UTC_interval_start": "2025-11-03 05:00:00+00:00",
+          "OPR_HR": 22,
+          "LCG_original_quote": 51.4095,
+          "dayblock_quote": 51.40950012207031
+        },
+        {
+          "local_interval_start": "2025-11-02 22:00:00",
+          "UTC_interval_start": "2025-11-03 06:00:00+00:00",
+          "OPR_HR": 23,
+          "LCG_original_quote": 44.68,
+          "dayblock_quote": 44.68000030517578
+        },
+        {
+          "local_interval_start": "2025-11-02 23:00:00",
+          "UTC_interval_start": "2025-11-03 07:00:00+00:00",
+          "OPR_HR": 24,
+          "LCG_original_quote": 48.12157,
+          "dayblock_quote": 48.1215705871582
+        }
+      ]
+    }
+  ],
+  "LCG_input_request_hash_checks": [
+    {
+      "path": "tmp\\price_goal_10pct\\caiso\\energyonline\\chunks\\20251018_20251031.csv",
+      "sha256": "af7a23bccfb7f563bbbb1536c5cd4852452875eee441fcf25db41bba9d777490",
+      "crc32": 555640967,
+      "bytes": 49411,
+      "source_url": "https://www.energyonline.com/Data/GenericData.aspx?DataId=22"
+    },
+    {
+      "path": "tmp\\price_goal_10pct\\caiso\\energyonline\\chunks\\20251101_20251114.csv",
+      "sha256": "115c198ee6c7ee29d917ce725e0ad721b1c40db9a2a8fd7ba3f38e79cb1b8bf5",
+      "crc32": 403194763,
+      "bytes": 48612,
+      "source_url": "https://www.energyonline.com/Data/GenericData.aspx?DataId=22"
+    },
+    {
+      "path": "tmp\\price_goal_10pct\\caiso\\energyonline\\chunks\\20251115_20251128.csv",
+      "sha256": "cb746e589d9749d4e3029aef3cff855d2cdcdbe27606c943f79d2fb268dce841",
+      "crc32": 3289502930,
+      "bytes": 49396,
+      "source_url": "https://www.energyonline.com/Data/GenericData.aspx?DataId=22"
+    },
+    {
+      "path": "tmp\\price_goal_10pct\\caiso\\energyonline\\chunks\\20251129_20251212.csv",
+      "sha256": "fb39a95bf7c670843d8dfd85f4c8a423af52e4f7f46aa0b27f6f9b61c0b6a03f",
+      "crc32": 4292845032,
+      "bytes": 48545,
+      "source_url": "https://www.energyonline.com/Data/GenericData.aspx?DataId=22"
+    },
+    {
+      "path": "tmp\\price_goal_10pct\\caiso\\energyonline\\chunks\\20251213_20251226.csv",
+      "sha256": "c087cfd43fb0ed27cc5863d29eafae718ce3ef9525376ab37bb8888a3ec94bea",
+      "crc32": 1578496059,
+      "bytes": 49409,
+      "source_url": "https://www.energyonline.com/Data/GenericData.aspx?DataId=22"
+    },
+    {
+      "path": "tmp\\price_goal_10pct\\caiso\\energyonline\\chunks\\20251227_20260109.csv",
+      "sha256": "e5b80ee7a1220d3421d728f0da225ea0debcf767172f7a26947ddd1b123ddd43",
+      "crc32": 3113369941,
+      "bytes": 47614,
+      "source_url": "https://www.energyonline.com/Data/GenericData.aspx?DataId=22"
+    }
+  ],
+  "source_zero_and_duplicate_curve_context": {
+    "allzero_2025_original_tensor_node_count": 301,
+    "target_two_full_original_tensor_series_identical": true,
+    "target_2025_original8759_prices_identical_to_POD_BISHOP_1_UNITS_APND": true,
+    "do_not_describe_equivalent_target_nodes_as_independent_market_replications": true,
+    "allzero_price_curves_cannot_pass_strict_three_mean_cost_comparisons": true
+  },
+  "code_assessment": {
+    "canonical_raw_fix_initializes_NaN_and_directly_assigns_original_MW_float32": true,
+    "dayblock_initializes_NaN_and_directly_assigns_original_MW_float32": true,
+    "neither_path_uses_zero_imputation_linear_interpolation_or_1000_clipping": true,
+    "early_components_script_and_old_log_mention_previous_mean_imputation_so_do_not_use_that_log_as_raw_price_proof": true,
+    "forecasting_and_metrics_code_has_nan_to_num_or_clipping_but_does_not_write_these_raw_price_tensors": true,
+    "other_code_token_occurrences": [
+      {
+        "file": "src/p3_run.py",
+        "matches": [
+          {
+            "line": 42,
+            "code": "return Ld, Cc, days, np.nan_to_num(cov, nan=np.nan), k"
+          },
+          {
+            "line": 146,
+            "code": "cal_resid.append(np.nan_to_num(resid, nan=0.0).astype(np.float32))"
+          },
+          {
+            "line": 154,
+            "code": "hh.ravel(), np.nan_to_num(ev, nan=0).ravel().astype(np.float32)],"
+          }
+        ]
+      },
+      {
+        "file": "src/p3_run_amend2.py",
+        "matches": [
+          {
+            "line": 80,
+            "code": "s = np.clip(mad_60 / mad_lib, 0.7, 2.0)              # (N,)"
+          },
+          {
+            "line": 84,
+            "code": "cal_resid.append(np.nan_to_num(actual - point, nan=0.0).astype(np.float32))"
+          }
+        ]
+      },
+      {
+        "file": "src/p4_crps_dm.py",
+        "matches": [
+          {
+            "line": 37,
+            "code": "s = np.clip(mad_60 / mad_lib, 0.7, 2.0)"
+          },
+          {
+            "line": 85,
+            "code": "lib_cbd.append(np.nan_to_num(actual - point, nan=0.0).astype(np.float32))"
+          },
+          {
+            "line": 86,
+            "code": "lib_ref.append(np.nan_to_num(actual - persist, nan=0.0).astype(np.float32))"
+          }
+        ]
+      },
+      {
+        "file": "src/p4_fig14_case.py",
+        "matches": [
+          {
+            "line": 73,
+            "code": "order_act = np.argsort(np.nan_to_num(max_abs, nan=-1))"
+          },
+          {
+            "line": 77,
+            "code": "n_med = int(np.argsort(np.nan_to_num(mean_abs, nan=1e9))[active.sum() // 2])"
+          }
+        ]
+      },
+      {
+        "file": "src/p4_figdata_run.py",
+        "matches": [
+          {
+            "line": 85,
+            "code": "s = np.clip(mad_60 / mad_lib, 0.7, 2.0)              # (N,)"
+          },
+          {
+            "line": 89,
+            "code": "cal_resid.append(np.nan_to_num(actual - point, nan=0.0).astype(np.float32))"
+          }
+        ]
+      },
+      {
+        "file": "src/p4_make_figs.py",
+        "matches": [
+          {
+            "line": 81,
+            "code": "w = np.clip(w, 0, None)"
+          },
+          {
+            "line": 213,
+            "code": "axes[0].hist(np.clip(imp[~zomb] * 100, -20, 60), bins=48, color=OI[0], alpha=0.85)"
+          },
+          {
+            "line": 218,
+            "code": "axes[1].hist(np.clip(imp_mi * 100, -20, 60), bins=48, color=OI[1], alpha=0.85)"
+          }
+        ]
+      },
+      {
+        "file": "src/p4_prob_persist_ref.py",
+        "matches": [
+          {
+            "line": 62,
+            "code": "s = np.clip(mad_60 / mad_lib, 0.7, 2.0)"
+          },
+          {
+            "line": 66,
+            "code": "cal_resid.append(np.nan_to_num(actual - point, nan=0.0).astype(np.float32))"
+          }
+        ]
+      },
+      {
+        "file": "src/cbd/decompose.py",
+        "matches": [
+          {
+            "line": 8,
+            "code": "Xw = np.clip(X, -clip, clip) if (method == \"winsor\" and clip) else X"
+          },
+          {
+            "line": 14,
+            "code": "w, U = np.clip(w[order], 0, None), U[:, order]"
+          }
+        ]
+      },
+      {
+        "file": "src/cbd/forecast.py",
+        "matches": [
+          {
+            "line": 56,
+            "code": "return float(np.clip((a @ b) / denom, 0.0, 1.0))"
+          }
+        ]
+      }
+    ]
+  },
+  "scope_limitations": [
+    "The public release contains derived raw-value tensors and reconstruction code, not the underlying OASIS parquet/CSV records. All37 target zeros are exact in both released direct-assignment tensor paths, not zeros added by the current candidate preparation. Independent first-party verification that all37 were originally published as MW=0 remains unavailable because primary OASIS access is currently failing.",
+    "The authenticated ZIP tail provides member CRC32, not a locally checked MD5 of the complete remote179.8MB ZIP. Individual member SHA256 and CRC32 were independently verified.",
+    "Exact POD_APND pricing-node master records have not been independently retrieved. CAISO2210Z identifies corresponding physical CONTRL_1_POOLE / CONTRL_1_QF resources; the precise APND mapping remains secondary-source supported."
+  ],
+  "node_identity_primary_source": "https://www.caiso.com/Documents/2210Z.pdf",
+  "license_review": {
+    "Zenodo_data_license": "CC BY4.0",
+    "author_code_license": "MIT",
+    "author_release_allows_sharing_and_adaptation_with_attribution_license_link_and_change_notice": true,
+    "underlying_CAISO_terms_reserved_by_author_release": true,
+    "CAISO_current_public_material_terms_allow_use_with_intact_proprietary_notices_and_CAISO_credit": true,
+    "recommended_package_label": "Author-released original-price float32 derived data; selected original HE24 restored; not a newly retrieved untouched primary OASIS CSV export.",
+    "do_not_redistribute_LCG_verification_CSVs_without_separate_rights_check": true,
+    "sources": [
+      "https://zenodo.org/records/21522100",
+      "https://creativecommons.org/licenses/by/4.0/",
+      "https://www.caiso.com/privacy-terms-of-use"
+    ]
+  }
+}

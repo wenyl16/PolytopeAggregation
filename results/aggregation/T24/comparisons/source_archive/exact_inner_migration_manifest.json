@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-10-26T05:42:08.602074+00:00",
+  "purpose": "Exact and inner entry-point consolidation; original execution provenance retained unchanged",
+  "files": [
+    {
+      "original_path": "code/Simulator/runners/train_aggregation.py",
+      "sha256": "fefe5b9b103e052023309eca8d989867031955112f58c50c26b14c38017ba941",
+      "archive_path": "Simulator/runners/train_aggregation.py.txt",
+      "bytes": 25143
+    },
+    {
+      "original_path": "code/Simulator/runners/compare_baselines.py",
+      "sha256": "b27727c5466c3fc20a8c15f17669fd86d9c8e0466e830fc53044f7e36db7d268",
+      "archive_path": "Simulator/runners/compare_baselines.py.txt",
+      "bytes": 4559
+    },
+    {
+      "original_path": "code/Simulator/runners/prepare_exact_comparison.py",
+      "sha256": "2862822424cd350c76d61be4a33f2de862f90d6ce9151ce687b0f8736eb055bb",
+      "archive_path": "Simulator/runners/prepare_exact_comparison.py.txt",
+      "bytes": 17447
+    },
+    {
+      "original_path": "code/Simulator/runners/prepare_inner_comparison.py",
+      "sha256": "1decb3cea29921441bffaa5ab30834d061678140c1dbef6ec88b5b38a04b7d23",
+      "archive_path": "Simulator/runners/prepare_inner_comparison.py.txt",
+      "bytes": 12110
+    },
+    {
+      "original_path": "code/Simulator/runners/compare_training_stages.py",
+      "sha256": "921ca3b9e1efbd7a10e496a716e730b2671219cb8a8a24d59c55124fdc8f9647",
+      "archive_path": "Simulator/runners/compare_training_stages.py.txt",
+      "bytes": 33252
+    },
+    {
+      "original_path": "code/Simulator/runners/compare_training_budgets.py",
+      "sha256": "9a5fa29454dc0b0ea332ceb111798b78b8561d239311b2d4eeeaf2c81fdc581e",
+      "archive_path": "Simulator/runners/compare_training_budgets.py.txt",
+      "bytes": 35035
+    }
+  ],
+  "migration_targets": {
+    "code/Simulator/runners/prepare_exact_comparison.py": "code/Simulator/runners/train_aggregation.py --prepare-comparison",
+    "code/Simulator/runners/prepare_inner_comparison.py": "code/Simulator/runners/compare_baselines.py --prepare-inner"
+  },
+  "current_source_sha256": {
+    "code/Simulator/runners/train_aggregation.py": "e228bdb0b29d39acff11276c470df98c7c949af3cec0e902b0c9f3785ca03ec7",
+    "code/Simulator/runners/compare_baselines.py": "760784f42cd6b8442586c1314d9ba04542f3129ca73408c4bb5f4c1d6e92414d",
+    "code/Simulator/runners/compare_training_stages.py": "d5ac931339d7ce3444ee2c242bfaf04741c6e263653a9394bd7417652c614b0e",
+    "code/Simulator/runners/compare_training_budgets.py": "8e723437e3dfc6a63b86d12e319d6763744c02c2a7302e49900af9ce4c8e6c1e"
+  },
+  "validation": {
+    "four_help_commands_exit_zero": true,
+    "original_training_function_AST_equal": true,
+    "exact_preparation_function_AST_equal": true,
+    "inner_calculation_AST_equal_except_lazy_imports_and_source_provenance": true,
+    "scenario_sha256": "4aa952dedf9b099d1e8e806417c124199762e01a0157b2a102534cafb5ccf151",
+    "packed_archive_methods_checked": 4,
+    "archived_source_SHA_checks": 6,
+    "solver_calls": 0,
+    "physical_model_builds": 0,
+    "old_result_metadata_modified": false
+  },
+  "historical_source_policy": "Original recorded hashes remain unchanged. Archive bytes document past execution; they are not a claim that current source files have the original hash. Legacy resume still requires its existing numerical-equivalence guards."
+}

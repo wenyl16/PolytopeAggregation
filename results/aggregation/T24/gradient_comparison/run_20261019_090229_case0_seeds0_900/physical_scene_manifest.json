@@ -1,0 +1,41 @@
+{
+  "status": "verified",
+  "scenario_file": "physical_scene.json",
+  "scenario_sha256": "4aa952dedf9b099d1e8e806417c124199762e01a0157b2a102534cafb5ccf151",
+  "scene_file_sha256": "e8011e69babfab078330e6935ee817c917396f5b4451ab44efbc8e790714acf5",
+  "case_seed": 0,
+  "counts": [
+    5,
+    40,
+    5
+  ],
+  "generation_order": [
+    [
+      "gen_CL",
+      5
+    ],
+    [
+      "gen_TCL",
+      40
+    ],
+    [
+      "gen_PV",
+      5
+    ]
+  ],
+  "paired_case_generation_source": "Simulator/runners/compare_gradients.py:run_pair",
+  "training_seed_affects_directions_only": true,
+  "fixed_training_seeds": [
+    0,
+    100,
+    200,
+    300,
+    400,
+    500,
+    600,
+    700,
+    800,
+    900
+  ],
+  "third_stage_learning_rate": 1.0
+}

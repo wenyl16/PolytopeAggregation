@@ -1,0 +1,408 @@
+{
+  "status": "completed",
+  "protocol_signature": "47791f38a697a549ddb93859b0c7723037a4b845595f72185ad9f3b181b18f34",
+  "num_samples": 5000,
+  "seed": 20261023,
+  "direction_distribution": "standard_normal",
+  "direction_rng": "RandomState(SeedSequence(seed).spawn(4)[0].generate_state(1)[0]).randn(num_samples,T)",
+  "sampling_design": "One direction paired with one resource realization per sample_index, not a Cartesian product",
+  "evaluation_conservativeness": 0.0,
+  "conditions": [
+    {
+      "condition": "A",
+      "mean_shift": 0.0,
+      "noise_scale": 0.05
+    },
+    {
+      "condition": "B",
+      "mean_shift": -0.05,
+      "noise_scale": 0.05
+    },
+    {
+      "condition": "C",
+      "mean_shift": 0.05,
+      "noise_scale": 0.05
+    },
+    {
+      "condition": "D",
+      "mean_shift": 0.0,
+      "noise_scale": 0.1
+    },
+    {
+      "condition": "E",
+      "mean_shift": -0.05,
+      "noise_scale": 0.1
+    },
+    {
+      "condition": "F",
+      "mean_shift": 0.05,
+      "noise_scale": 0.1
+    }
+  ],
+  "backend": "persistent",
+  "input_sha256": {
+    "training_weights": "8961c5b26976e36ae4034a3cfd64b27ed1a392e14fe4ab43a819b0c1a312e3d2",
+    "training_metadata": "be6df5fc93ed2dc1924f0017e6512a1ea3e79b59f8a197a89cf1ad77f91a3955",
+    "physical_profiles": "eb5aa8f8047afa2572bcfce1a5fb4358e8bc21ee92618bbb2fcc315a637735d7",
+    "training_config": "cd8813dadcd24651f9291d3d8c7fdb8d123d73a27643d4c5e1a9023164773fbb"
+  },
+  "runner_sha256": "ef423cda07359f5332c828c707567d068ec3633514b075a326cb8047bbcaf07f",
+  "backend_sha256": "ef423cda07359f5332c828c707567d068ec3633514b075a326cb8047bbcaf07f",
+  "case_source_sha256": "48ba4168c0862fa42847223107b7d326f2c9efe6d35e4af85dc2c9b751ea3d7d",
+  "training_conservativeness": 0.05,
+  "training_margin_note": "Training margin is distinct from physical evaluation conservativeness",
+  "training_directory": "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\microgrid\\training",
+  "output_directory": "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\microgrid\\disaggregation",
+  "horizon": 24,
+  "device_counts": {
+    "MT": 1,
+    "PV": 1,
+    "TL": 1,
+    "CL": 1,
+    "ESS": 1,
+    "HP": 2
+  },
+  "direction_definition": "Independent N(0,I_T) vectors from randn; no sign restriction, normalization or radial scaling",
+  "direction_statistics": {
+    "mean": 0.00101936963495523,
+    "std_ddof1": 1.0022225831627927,
+    "positive_components": 60308,
+    "negative_components": 59692,
+    "mixed_sign_vectors": 5000
+  },
+  "pairing": "One cached command and one set of base Gaussian arrays per sample_index; shared by A-F",
+  "error_definition": "100*sqrt(sum((P_command-P_projected)**2)/sum(P_command**2)) in physical power coordinates",
+  "summary_metric": "relative_disaggregation_error_percent",
+  "percentage_denominator": "Sum of squares of the cached commanded physical aggregate power trajectory",
+  "zero_denominator_policy": "Relative error undefined (missing), raw squared errors and solver status retained",
+  "legacy_normalized_error_definition": "Sum of squared aggregate differences in the fixed nominal normalized coordinates",
+  "physical_error_definition": "Physical-power squared difference for that same normalized-distance projection",
+  "original_baseline": {
+    "condition": "A",
+    "mean_shift": 0.0,
+    "noise_scale": 0.05,
+    "source": "Original microgrid test defaults; re-evaluated together with all five shifted conditions",
+    "legacy_spreadsheet_not_concatenated": "Historical file lacks power-trajectory denominators and has fewer evaluations"
+  },
+  "figure_definition": {
+    "kind": "violin",
+    "y_scale": "linear",
+    "unit": "percent",
+    "raw_values_not_floored": true
+  },
+  "perturbation_definition": "x=base*(1+mean_shift+noise_scale*z), with no clipping or resampling",
+  "temperature_note": "Negative Celsius baseline: positive relative mean shift is colder",
+  "scope": "Empirical disaggregation of sampled commands; no containment or all-directions guarantee",
+  "perturbation_statistics": {
+    "A": {
+      "p_PV_rated": {
+        "relative_mean": 5.699255213611926e-05,
+        "relative_std_ddof1": 0.050042974259882356,
+        "expected_relative_mean": 0.0,
+        "expected_relative_std": 0.05,
+        "variance_multiplier": 1.0,
+        "five_standard_error_mean_tolerance": 0.0007216878364870322,
+        "five_standard_error_std_tolerance": 0.0005103124893862977,
+        "monte_carlo_moment_check": true
+      },
+      "p_CL_rated": {
+        "relative_mean": -8.627843531830993e-05,
+        "relative_std_ddof1": 0.049976810515081446,
+        "expected_relative_mean": 0.0,
+        "expected_relative_std": 0.05,
+        "variance_multiplier": 1.0,
+        "five_standard_error_mean_tolerance": 0.0007216878364870322,
+        "five_standard_error_std_tolerance": 0.0005103124893862977,
+        "monte_carlo_moment_check": true
+      },
+      "temp_amb": {
+        "relative_mean": -0.00014526780605236407,
+        "relative_std_ddof1": 0.05020392550917823,
+        "expected_relative_mean": 0.0,
+        "expected_relative_std": 0.05,
+        "variance_multiplier": 1.0,
+        "five_standard_error_mean_tolerance": 0.0007216878364870322,
+        "five_standard_error_std_tolerance": 0.0005103124893862977,
+        "monte_carlo_moment_check": true
+      }
+    },
+    "B": {
+      "p_PV_rated": {
+        "relative_mean": -0.04994300744786388,
+        "relative_std_ddof1": 0.050042974259882356,
+        "expected_relative_mean": -0.05,
+        "expected_relative_std": 0.05,
+        "variance_multiplier": 1.0,
+        "five_standard_error_mean_tolerance": 0.0007216878364870322,
+        "five_standard_error_std_tolerance": 0.0005103124893862977,
+        "monte_carlo_moment_check": true
+      },
+      "p_CL_rated": {
+        "relative_mean": -0.0500862784353183,
+        "relative_std_ddof1": 0.049976810515081446,
+        "expected_relative_mean": -0.05,
+        "expected_relative_std": 0.05,
+        "variance_multiplier": 1.0,
+        "five_standard_error_mean_tolerance": 0.0007216878364870322,
+        "five_standard_error_std_tolerance": 0.0005103124893862977,
+        "monte_carlo_moment_check": true
+      },
+      "temp_amb": {
+        "relative_mean": -0.050145267806052364,
+        "relative_std_ddof1": 0.05020392550917823,
+        "expected_relative_mean": -0.05,
+        "expected_relative_std": 0.05,
+        "variance_multiplier": 1.0,
+        "five_standard_error_mean_tolerance": 0.0007216878364870322,
+        "five_standard_error_std_tolerance": 0.0005103124893862977,
+        "monte_carlo_moment_check": true
+      }
+    },
+    "C": {
+      "p_PV_rated": {
+        "relative_mean": 0.050056992552136116,
+        "relative_std_ddof1": 0.050042974259882356,
+        "expected_relative_mean": 0.05,
+        "expected_relative_std": 0.05,
+        "variance_multiplier": 1.0,
+        "five_standard_error_mean_tolerance": 0.0007216878364870322,
+        "five_standard_error_std_tolerance": 0.0005103124893862977,
+        "monte_carlo_moment_check": true
+      },
+      "p_CL_rated": {
+        "relative_mean": 0.04991372156468169,
+        "relative_std_ddof1": 0.049976810515081446,
+        "expected_relative_mean": 0.05,
+        "expected_relative_std": 0.05,
+        "variance_multiplier": 1.0,
+        "five_standard_error_mean_tolerance": 0.0007216878364870322,
+        "five_standard_error_std_tolerance": 0.0005103124893862977,
+        "monte_carlo_moment_check": true
+      },
+      "temp_amb": {
+        "relative_mean": 0.049854732193947635,
+        "relative_std_ddof1": 0.05020392550917823,
+        "expected_relative_mean": 0.05,
+        "expected_relative_std": 0.05,
+        "variance_multiplier": 1.0,
+        "five_standard_error_mean_tolerance": 0.0007216878364870322,
+        "five_standard_error_std_tolerance": 0.0005103124893862977,
+        "monte_carlo_moment_check": true
+      }
+    },
+    "D": {
+      "p_PV_rated": {
+        "relative_mean": 0.00011398510427223852,
+        "relative_std_ddof1": 0.10008594851976471,
+        "expected_relative_mean": 0.0,
+        "expected_relative_std": 0.1,
+        "variance_multiplier": 4.0,
+        "five_standard_error_mean_tolerance": 0.0014433756729740645,
+        "five_standard_error_std_tolerance": 0.0010206249787725954,
+        "monte_carlo_moment_check": true
+      },
+      "p_CL_rated": {
+        "relative_mean": -0.00017255687063661985,
+        "relative_std_ddof1": 0.09995362103016289,
+        "expected_relative_mean": 0.0,
+        "expected_relative_std": 0.1,
+        "variance_multiplier": 4.0,
+        "five_standard_error_mean_tolerance": 0.0014433756729740645,
+        "five_standard_error_std_tolerance": 0.0010206249787725954,
+        "monte_carlo_moment_check": true
+      },
+      "temp_amb": {
+        "relative_mean": -0.00029053561210472815,
+        "relative_std_ddof1": 0.10040785101835646,
+        "expected_relative_mean": 0.0,
+        "expected_relative_std": 0.1,
+        "variance_multiplier": 4.0,
+        "five_standard_error_mean_tolerance": 0.0014433756729740645,
+        "five_standard_error_std_tolerance": 0.0010206249787725954,
+        "monte_carlo_moment_check": true
+      }
+    },
+    "E": {
+      "p_PV_rated": {
+        "relative_mean": -0.049886014895727755,
+        "relative_std_ddof1": 0.10008594851976471,
+        "expected_relative_mean": -0.05,
+        "expected_relative_std": 0.1,
+        "variance_multiplier": 4.0,
+        "five_standard_error_mean_tolerance": 0.0014433756729740645,
+        "five_standard_error_std_tolerance": 0.0010206249787725954,
+        "monte_carlo_moment_check": true
+      },
+      "p_CL_rated": {
+        "relative_mean": -0.050172556870636625,
+        "relative_std_ddof1": 0.09995362103016289,
+        "expected_relative_mean": -0.05,
+        "expected_relative_std": 0.1,
+        "variance_multiplier": 4.0,
+        "five_standard_error_mean_tolerance": 0.0014433756729740645,
+        "five_standard_error_std_tolerance": 0.0010206249787725954,
+        "monte_carlo_moment_check": true
+      },
+      "temp_amb": {
+        "relative_mean": -0.050290535612104725,
+        "relative_std_ddof1": 0.10040785101835646,
+        "expected_relative_mean": -0.05,
+        "expected_relative_std": 0.1,
+        "variance_multiplier": 4.0,
+        "five_standard_error_mean_tolerance": 0.0014433756729740645,
+        "five_standard_error_std_tolerance": 0.0010206249787725954,
+        "monte_carlo_moment_check": true
+      }
+    },
+    "F": {
+      "p_PV_rated": {
+        "relative_mean": 0.050113985104272236,
+        "relative_std_ddof1": 0.10008594851976471,
+        "expected_relative_mean": 0.05,
+        "expected_relative_std": 0.1,
+        "variance_multiplier": 4.0,
+        "five_standard_error_mean_tolerance": 0.0014433756729740645,
+        "five_standard_error_std_tolerance": 0.0010206249787725954,
+        "monte_carlo_moment_check": true
+      },
+      "p_CL_rated": {
+        "relative_mean": 0.04982744312936338,
+        "relative_std_ddof1": 0.09995362103016289,
+        "expected_relative_mean": 0.05,
+        "expected_relative_std": 0.1,
+        "variance_multiplier": 4.0,
+        "five_standard_error_mean_tolerance": 0.0014433756729740645,
+        "five_standard_error_std_tolerance": 0.0010206249787725954,
+        "monte_carlo_moment_check": true
+      },
+      "temp_amb": {
+        "relative_mean": 0.04970946438789527,
+        "relative_std_ddof1": 0.10040785101835646,
+        "expected_relative_mean": 0.05,
+        "expected_relative_std": 0.1,
+        "variance_multiplier": 4.0,
+        "five_standard_error_mean_tolerance": 0.0014433756729740645,
+        "five_standard_error_std_tolerance": 0.0010206249787725954,
+        "monte_carlo_moment_check": true
+      }
+    }
+  },
+  "array_sha256": {
+    "directions": "fa4c1cb7bc040ece10af4ec03e3fd09408253dce544232e6d661f37e6fbcbe50",
+    "base_p_PV_rated": "080a720e94ce7f3ce27566fccb86b345be0e112cef041fe6afa4a1b8fad11647",
+    "z_p_PV_rated": "4c9219c295eb2c9e067bbab2e6a6da63118b4849ea712bcf10c7c4e3284a64f3",
+    "base_p_CL_rated": "669f1ee2ea1d55672d2ce41145ef0ce0dd911d8cf236d9f845ea4dcc70ccf432",
+    "z_p_CL_rated": "645df9611991cf6d11f4639f39b5b01ed3e9e9f4da72898bee5608858b9256c3",
+    "base_temp_amb": "2b471e894e893ca4c7eb252a8518a779b15a603b098c88039f7ba7c1e4948868",
+    "z_temp_amb": "8419e02626f59f46b15fe430a44fb55862aacf25e9555ed4d9831bd3f097d066",
+    "A": "1472870d995f601258375c537324e883aabc789a2b4a261d448f7ed85be04aed",
+    "b": "c3bfbe857026a966f933181816a0dc88c3c490aea664576c06d3a3c01bfe517d",
+    "pmin": "515cb78a21591de216bd3167d1deedc2aa1764331f6416b282cbaf160c968738",
+    "pmax": "3be5d73c7a2602cb79c1db293f030551afa0a9ba1bbabb8ab766e6713c841563",
+    "pv_capacity": "e0df300988263c681722e24086cf9fba0be7ea1ec67083bb8aa5e1e0f28486d6"
+  },
+  "solver": {
+    "backend": "gurobi_persistent_remove_add_mutable_rows",
+    "gurobi_version": [
+      12,
+      0,
+      2
+    ],
+    "original_options": {
+      "MIPGap": 0.0001,
+      "MIPGapAbs": 1e-10,
+      "FeasibilityTol": 1e-06,
+      "OptimalityTol": 1e-06,
+      "IntFeasTol": 1e-05,
+      "Threads": 1,
+      "Seed": 0,
+      "OutputFlag": 0
+    },
+    "approximation_options": {
+      "MIPGap": 0.0001,
+      "MIPGapAbs": 1e-10,
+      "FeasibilityTol": 1e-06,
+      "OptimalityTol": 1e-06,
+      "IntFeasTol": 1e-05,
+      "Threads": 1,
+      "Seed": 0,
+      "OutputFlag": 0
+    },
+    "original_variables": 409,
+    "original_rows": 689,
+    "original_binary_variables": 120,
+    "original_integer_variables": 120,
+    "projection_objective": "sum((normalized_power - target_normalized_power)**2)",
+    "projection_objective_includes_constant": true,
+    "integer_relaxation": false,
+    "range_constraints_split_into_equivalent_scalar_rows": true,
+    "parameter_clipping": false,
+    "require_status": "OPTIMAL"
+  },
+  "protected_inputs_unchanged": true,
+  "cached_commands_sha256": "0ad2a626b94fb00a2410675da589af9c310b3a60baaacb3c7d712190acc487d8",
+  "paired_comparisons": {
+    "A_to_B": {
+      "unit": "percentage_points",
+      "valid_pairs": 5000,
+      "mean_change": 0.0003000593072437316,
+      "median_change": 0.0,
+      "p95_change": 0.0
+    },
+    "A_to_C": {
+      "unit": "percentage_points",
+      "valid_pairs": 5000,
+      "mean_change": -3.7575672253570227e-07,
+      "median_change": 0.0,
+      "p95_change": 0.0
+    },
+    "A_to_D": {
+      "unit": "percentage_points",
+      "valid_pairs": 5000,
+      "mean_change": 0.0005659181538146722,
+      "median_change": 0.0,
+      "p95_change": 0.0
+    },
+    "B_to_E": {
+      "unit": "percentage_points",
+      "valid_pairs": 5000,
+      "mean_change": 0.003996118345474967,
+      "median_change": 0.0,
+      "p95_change": 0.0
+    },
+    "C_to_F": {
+      "unit": "percentage_points",
+      "valid_pairs": 5000,
+      "mean_change": 0.00042703816405113734,
+      "median_change": 0.0,
+      "p95_change": 0.0
+    }
+  },
+  "support_queries_recorded": 5000,
+  "recorded_samples": 30000,
+  "completed_samples": 30000,
+  "seconds_this_invocation": 1.7186342999339104,
+  "updated_at_utc": "2026-10-31T17:33:21.292428+00:00",
+  "figure": {
+    "path": "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\microgrid\\disaggregation\\figures\\distribution_shift.pdf",
+    "sha256": "aa563f0cce0eaf580f4f0a861fe3940c506603c2e9af3f9d5ec97c24f7a9dfdf",
+    "plotter_path": "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\Simulator\\drawers\\plot_microgrid_shift.py",
+    "plotter_sha256": "d0c7d696a076ab82320f7d24128c966a2c4307bac2ef7c4a36e3647053bf000b",
+    "summary_path": "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\figures_summary\\06_uncertainty_error_distribution.pdf",
+    "summary_sha256": "aa563f0cce0eaf580f4f0a861fe3940c506603c2e9af3f9d5ec97c24f7a9dfdf"
+  },
+  "postprocessing": {
+    "status": "completed",
+    "completed_at_utc": "2026-11-01T07:38:43.590812+00:00",
+    "numerical_evaluation_repeated": false,
+    "reason": "Redrawn from the verified completed conservativeness0.05 training /0.0 evaluation dataset using the current figure style; raw numerical files retained bitwise.",
+    "previous_saved_figure": {
+      "path": "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\microgrid\\disaggregation\\figures\\distribution_shift.pdf",
+      "sha256": "0ad1722b3a3f415d43e0c83718c1ffddf3d2570cbc64181a08d10c3cab423d15",
+      "plotter_path": "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\microgrid\\disaggregation\\plot_microgrid_shift_at_run.py",
+      "plotter_sha256": "d050e76071dd498f7503d36912a646cf99c4ffef550c7e0e01f5a22fc8adc6db"
+    },
+    "replaced_displayed_c002_figure_sha256": "4547a6dde20136c77121a752c61e054cce16f5e1a372ad6a0a3af3432bff1ecc",
+    "original_and_summary_copies_equal": true
+  }
+}

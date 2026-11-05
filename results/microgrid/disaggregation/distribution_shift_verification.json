@@ -1,0 +1,94 @@
+{
+  "all_passed": true,
+  "experiment_complete": true,
+  "training_conservativeness": 0.05,
+  "evaluation_conservativeness": 0.0,
+  "num_samples_per_condition": 5000,
+  "conditions_in_figure_order": [
+    "A",
+    "D",
+    "B",
+    "E",
+    "C",
+    "F"
+  ],
+  "recorded_samples": 30000,
+  "raw_numerical_data_unchanged": true,
+  "training_configuration_weights_and_region_matched": true,
+  "numerical_evaluation_repeated": false,
+  "original_numerical_verification_sha256": "1f99e8d0b1100613a47fce7f086c025d3f33d5f8f57595cbaf669190a9fb9c3a",
+  "all_30000_PDF_scatter_values_match_current_CSV": true,
+  "maximum_PDF_value_serialization_difference_percentage_points": 6.130113750597507e-12,
+  "statistics_in_figure_order": [
+    {
+      "condition": "A",
+      "mean_shift": 0.0,
+      "noise_scale": 0.05,
+      "samples": 5000,
+      "mean_percent": 5.7794123679972845e-06,
+      "max_percent": 0.0032643290928800524
+    },
+    {
+      "condition": "D",
+      "mean_shift": 0.0,
+      "noise_scale": 0.1,
+      "samples": 5000,
+      "mean_percent": 0.0005716975661826695,
+      "max_percent": 0.5480778673387835
+    },
+    {
+      "condition": "B",
+      "mean_shift": -0.05,
+      "noise_scale": 0.05,
+      "samples": 5000,
+      "mean_percent": 0.0003058387196117289,
+      "max_percent": 0.7946336859660839
+    },
+    {
+      "condition": "E",
+      "mean_shift": -0.05,
+      "noise_scale": 0.1,
+      "samples": 5000,
+      "mean_percent": 0.004301957065086696,
+      "max_percent": 2.0620484820592573
+    },
+    {
+      "condition": "C",
+      "mean_shift": 0.05,
+      "noise_scale": 0.05,
+      "samples": 5000,
+      "mean_percent": 5.403655645461582e-06,
+      "max_percent": 0.0050567490891146585
+    },
+    {
+      "condition": "F",
+      "mean_shift": 0.05,
+      "noise_scale": 0.1,
+      "samples": 5000,
+      "mean_percent": 0.0004324418196965989,
+      "max_percent": 0.666221733816852
+    }
+  ],
+  "figure": {
+    "path": "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\microgrid\\disaggregation\\figures\\distribution_shift.pdf",
+    "sha256": "aa563f0cce0eaf580f4f0a861fe3940c506603c2e9af3f9d5ec97c24f7a9dfdf",
+    "plotter_path": "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\Simulator\\drawers\\plot_microgrid_shift.py",
+    "plotter_sha256": "d0c7d696a076ab82320f7d24128c966a2c4307bac2ef7c4a36e3647053bf000b",
+    "summary_path": "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\code\\results\\figures_summary\\06_uncertainty_error_distribution.pdf",
+    "summary_sha256": "aa563f0cce0eaf580f4f0a861fe3940c506603c2e9af3f9d5ec97c24f7a9dfdf"
+  },
+  "page_points": [
+    345.6000061035156,
+    168.47999572753906
+  ],
+  "TimesNewRoman_regular_and_bold_embedded": true,
+  "all_text_inside_page": true,
+  "visual_review": "PASS: existing colors, Times New Roman fonts, figure size, 0-4 percent axis and six-condition order preserved; all samples match the latest0.05-training/0-evaluation data.",
+  "at_utc": "2026-11-01T07:38:43.590812+00:00",
+  "files_sha256": {
+    "distribution_shift_data.npz": "84a1f246b6e02281599e2c0f15d6a4e5907645853cf4fd7ce9cc90fe7c2a7da5",
+    "distribution_shift_samples.csv": "dfd3e0f6639ae61f3ad9f9dfa98e3e1fb39cce0071ed28cded66ad2e995ebabd",
+    "distribution_shift_summary.csv": "8300dd64646011f91162468569c1e488c892f684c52dca89c219f0e7e7424b2c",
+    "distribution_shift_metadata.json": "aefd8a10f195ac035d89836f98ac271f37d0c436aa21f19de8076592450f2d81"
+  }
+}

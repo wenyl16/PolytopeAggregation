@@ -1,0 +1,109 @@
+{
+  "status": "completed",
+  "horizon": 24,
+  "template": "peb",
+  "counts": [
+    5,
+    40,
+    5
+  ],
+  "training_seed": 0,
+  "evaluation_seed": 1,
+  "evaluation_samples": 5000,
+  "scenario_sha256": "4aa952dedf9b099d1e8e806417c124199762e01a0157b2a102534cafb5ccf151",
+  "source_sha256": {
+    "Simulator\\runners\\train_aggregation.py": "bbb34552490c480d445ceaeb472dde231df0b0c5b69a7734b96d2fc3ac9bc6e0",
+    "Simulator\\Approximator.py": "51234fa104781c8a6e1fece482ebe96db506fc04e82e49c06bde6f6448656610",
+    "Simulator\\evaluation_native.py": "004caed55c637baa08624c3c624820688c6f8c7305db07fd4dd680da5de0760b",
+    "Simulator\\cases\\aggregation.py": "417f11e4d7e1721bd65d63959a0dfba1ac7d35bac923f979b6b913d7ff4347a8",
+    "Simulator\\cases\\aggregation_case_T24.py": "20bfd4a2fa84a9a8f44bc8e714696c54753a5b117fb3d347e8727bfa69f407fa"
+  },
+  "stages": [
+    {
+      "n_train": 299,
+      "epochs": 300,
+      "lr": 0.02,
+      "rate_opt_feas": 1.0
+    },
+    {
+      "n_train": 199,
+      "epochs": 200,
+      "lr": 0.1,
+      "rate_opt_feas": 0.01
+    },
+    {
+      "n_train": 499,
+      "epochs": 500,
+      "lr": 1.0,
+      "rate_opt_feas": 1e-06
+    }
+  ],
+  "optimizer_updates": 1000,
+  "phase_end_updates": [
+    300,
+    500,
+    1000
+  ],
+  "scheduler_last_epoch": 500,
+  "scheduler_step_count": 501,
+  "final_learning_rates": [
+    0.9039207967999998,
+    0.9039207967999998
+  ],
+  "elapsed_training_seconds": 307.89215580001473,
+  "polytope_shape": [
+    94,
+    24
+  ],
+  "training": {
+    "feasibility": {
+      "mean": 0.014888801963805272,
+      "median": 4.84922006775636e-22,
+      "max": 0.7727012334609308,
+      "p95": 0.07531409947740249,
+      "count_gt1e4": 313,
+      "count_threshold": 0.0001
+    },
+    "optimality": {
+      "mean": 0.24490840807428238,
+      "median": 0.24082853685397487,
+      "max": 1.2060028235804783,
+      "p95": 0.4904008883998722,
+      "count_gt1e4": 998,
+      "count_threshold": 0.0001
+    }
+  },
+  "evaluation": {
+    "feasibility": {
+      "mean": 3.4351571398297646e-09,
+      "median": 3.3623239869852865e-25,
+      "max": 9.262099849874991e-06,
+      "p95": 3.667861878727223e-23,
+      "count_gt1e4": 0,
+      "count_threshold": 0.0001
+    },
+    "optimality": {
+      "mean": 0.44422666933322397,
+      "median": 0.44902029305960023,
+      "max": 0.7412120499447772,
+      "p95": 0.5627839559258787,
+      "count_gt1e4": 5000,
+      "count_threshold": 0.0001
+    },
+    "native_original_variables": 2184,
+    "native_original_rows": 5304,
+    "native_approximation_variables": 24,
+    "native_approximation_rows": 94,
+    "native_build_seconds": 0.3231815000763163,
+    "native_solver_seconds": 87.38900065422058,
+    "native_elapsed_seconds": 94.38440020009875,
+    "native_solves": 20000,
+    "native_successful_solves": 20000,
+    "native_retry_count": 0,
+    "native_retry_policy": "{\"primary_method\": \"Gurobi default\", \"projection_only\": true, \"require_optimal\": true, \"retry_methods\": [1, 0], \"same_objective_constraints_and_tolerances\": true}",
+    "native_retry_records": "[]",
+    "native_directions_sha256": "dbe41cf89e42f0167f60646b29d9e030b60bdbadbf487521d4d54766f2b8916b",
+    "native_region_sha256": "7132b1541ba2ced28afc99114bc2ee21dbfa2c07cdbf6559562dcdbb03d7f73b",
+    "native_model_sha256": "1244b99bf74db8250b7df8374c3581b728050a959833d6c9f8312503a131a6d9"
+  }
+}

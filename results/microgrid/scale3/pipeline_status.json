@@ -1,0 +1,51 @@
+{
+  "status": "completed",
+  "stage": "completed",
+  "pid": 14804,
+  "device_scale": 3,
+  "training_conservativeness": 0.05,
+  "evaluation_conservativeness": 0.0,
+  "paired_samples": 5000,
+  "noise_scale": 0.05,
+  "mean_shift": 0.0,
+  "optimality_reference": "perturbed",
+  "started_at_utc": "2026-11-01T06:49:47.400365+00:00",
+  "stages": [
+    {
+      "name": "training",
+      "exit_code": 0,
+      "wall_seconds": 2861.040416099997
+    },
+    {
+      "name": "training_verification",
+      "exit_code": 0,
+      "wall_seconds": 0.7141035999957239
+    },
+    {
+      "name": "evaluation",
+      "exit_code": 0,
+      "wall_seconds": 1068.2695196000059
+    },
+    {
+      "name": "final_verification",
+      "exit_code": 0,
+      "wall_seconds": 9.206020500001614
+    }
+  ],
+  "prevent_idle_system_sleep": true,
+  "updated_at_utc": "2026-11-01T07:55:26.657170+00:00",
+  "stage_log": "E:\\OneDrive\\Working\\Research\\12\u591a\u79cd\u8bbe\u5907\u8fd0\u884c\u57df\u805a\u5408\u7684\u901a\u7528\u6846\u67b6\\tmp\\microgrid_scale3_c005_verification.log",
+  "metrics": {
+    "feasibility_error_rated": {
+      "mean": 3.6277083306545267e-10,
+      "max": 1.2632112749344785e-07
+    },
+    "optimality_error_rated": {
+      "mean": 0.5413613749253012,
+      "max": 0.7823528104250772
+    }
+  },
+  "training_seconds": 2843.943294500001,
+  "verification_status": "passed",
+  "pipeline_wall_seconds": 3939.2581129000027
+}

@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "removed_rows": 72,
+  "remaining_constraints_unchanged": true,
+  "variables": 1179,
+  "binary_variables": 360,
+  "minimum_on_power_preserved": true,
+  "removed_components": [
+    {
+      "component": "mt_min_uptime_0",
+      "rows": 24
+    },
+    {
+      "component": "mt_min_uptime_1",
+      "rows": 24
+    },
+    {
+      "component": "mt_min_uptime_2",
+      "rows": 24
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "status": "passed",
+  "horizon": 24,
+  "gradient_mode": "approx",
+  "checked_direction_indices": [
+    1018,
+    3579
+  ],
+  "reference": "independent Pyomo LP/QP writer",
+  "allclose_atol": 1e-08,
+  "allclose_rtol": 1e-05,
+  "checks": {
+    "error_feas": {
+      "native_values": [
+        5.097911509574073e-25,
+        1.3286203668415406e-09
+      ],
+      "pyomo_values": [
+        5.097912376304553e-25,
+        1.3286203668865289e-09
+      ],
+      "max_abs_difference": 4.498828556522779e-20
+    },
+    "error_opt": {
+      "native_values": [
+        0.5770203894011567,
+        0.1577548033287577
+      ],
+      "pyomo_values": [
+        0.5770203894011567,
+        0.15775480332875746
+      ],
+      "max_abs_difference": 2.220446049250313e-16
+    }
+  }
+}

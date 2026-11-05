@@ -1,0 +1,49 @@
+{
+  "dispatch_routes_passed": 5,
+  "physical_factories": [
+    {
+      "device_scale": 1,
+      "device_counts": {
+        "MT": 1,
+        "PV": 1,
+        "TL": 1,
+        "CL": 1,
+        "ESS": 1,
+        "HP": 2
+      },
+      "frozen_factory_device_data_identical": true,
+      "physical_bounds_identical": true,
+      "linear_constraint_signature": "daa3ba1ad1d6efba0bcfd88603ecd31ccba142ebcaf21462f13f530c1b7aca43",
+      "model_complexity": {
+        "variables": 409,
+        "constraints": 520,
+        "binary_variables": 120
+      }
+    },
+    {
+      "device_scale": 3,
+      "device_counts": {
+        "MT": 3,
+        "PV": 3,
+        "TL": 3,
+        "CL": 3,
+        "ESS": 3,
+        "HP": 6
+      },
+      "frozen_factory_device_data_identical": true,
+      "physical_bounds_identical": true,
+      "linear_constraint_signature": "c0fd71e4ee2422657dd7048e704809d0495896bd542260a18b38170e84afe2db",
+      "model_complexity": {
+        "variables": 1179,
+        "constraints": 1512,
+        "binary_variables": 360
+      }
+    }
+  ],
+  "physical_case_source_bytes_unchanged": true,
+  "internal_pipeline_training_subcommand_correct": true,
+  "canonical_preservation_source_paths_exist": true,
+  "solver_constructions": 0,
+  "solver_calls": 0,
+  "results_written": false
+}

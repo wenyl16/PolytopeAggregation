@@ -1,0 +1,285 @@
+{
+  "checks": {
+    "no_duplicate_top_level_bindings": {
+      "argparse": [
+        21
+      ],
+      "csv": [
+        22
+      ],
+      "datetime": [
+        23
+      ],
+      "timezone": [
+        23
+      ],
+      "hashlib": [
+        24
+      ],
+      "json": [
+        25
+      ],
+      "Path": [
+        26
+      ],
+      "sys": [
+        27
+      ],
+      "zipfile": [
+        28
+      ],
+      "np": [
+        33
+      ],
+      "CODE_ROOT": [
+        35
+      ],
+      "RESULTS_ROOT": [
+        35
+      ],
+      "_PAPER_METHODS": [
+        38
+      ],
+      "summarize_paper_tables": [
+        53
+      ],
+      "_paper_tabulations": [
+        190
+      ],
+      "_paper_write_outputs": [
+        207
+      ],
+      "_scaling_load": [
+        227
+      ],
+      "_scaling_describe_training": [
+        231
+      ],
+      "summarize_scaling": [
+        240
+      ],
+      "_nonconvexity_digest": [
+        355
+      ],
+      "_nonconvexity_read_json": [
+        359
+      ],
+      "_nonconvexity_write_json": [
+        363
+      ],
+      "summarize_nonconvexity": [
+        370
+      ],
+      "summarize_scale3_percentage": [
+        442
+      ],
+      "summarize_scale3_nonconvexity": [
+        500
+      ],
+      "summarize_uptime_ablation": [
+        585
+      ],
+      "main": [
+        652
+      ]
+    },
+    "import_does_not_load_gurobi": true,
+    "all_seven_current_help_pages_pass": true,
+    "paper_output_byte_equal_to_canonical_and_previous": true,
+    "scaling_percentage_ablation_unchanged_after_rewrite": true,
+    "nonconvexity_unchanged_after_rewrite": true
+  },
+  "commands": [
+    {
+      "command": [
+        "D:\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "-m",
+        "Simulator.testers.summarize_results",
+        "--help"
+      ],
+      "exit_code": 0,
+      "logs": "root_help"
+    },
+    {
+      "command": [
+        "D:\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "-m",
+        "Simulator.testers.summarize_results",
+        "paper-tables",
+        "--help"
+      ],
+      "exit_code": 0,
+      "logs": "paper-tables_help"
+    },
+    {
+      "command": [
+        "D:\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "-m",
+        "Simulator.testers.summarize_results",
+        "scaling",
+        "--help"
+      ],
+      "exit_code": 0,
+      "logs": "scaling_help"
+    },
+    {
+      "command": [
+        "D:\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "-m",
+        "Simulator.testers.summarize_results",
+        "nonconvexity",
+        "--help"
+      ],
+      "exit_code": 0,
+      "logs": "nonconvexity_help"
+    },
+    {
+      "command": [
+        "D:\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "-m",
+        "Simulator.testers.summarize_results",
+        "scale3-percentage",
+        "--help"
+      ],
+      "exit_code": 0,
+      "logs": "scale3-percentage_help"
+    },
+    {
+      "command": [
+        "D:\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "-m",
+        "Simulator.testers.summarize_results",
+        "scale3-nonconvexity",
+        "--help"
+      ],
+      "exit_code": 0,
+      "logs": "scale3-nonconvexity_help"
+    },
+    {
+      "command": [
+        "D:\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "-m",
+        "Simulator.testers.summarize_results",
+        "uptime-ablation",
+        "--help"
+      ],
+      "exit_code": 0,
+      "logs": "uptime-ablation_help"
+    },
+    {
+      "command": [
+        "D:\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "-m",
+        "Simulator.testers.summarize_results",
+        "paper-tables",
+        "--output-dir",
+        "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\tmp\\simulator_consolidation_20261104\\summaries_final\\paper_tables"
+      ],
+      "exit_code": 0,
+      "logs": "paper_tables"
+    },
+    {
+      "command": [
+        "D:\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "-m",
+        "Simulator.testers.summarize_results",
+        "scaling",
+        "--output-dir",
+        "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\tmp\\simulator_consolidation_20261104\\summaries_final\\scaling"
+      ],
+      "exit_code": 0,
+      "logs": "scaling"
+    },
+    {
+      "command": [
+        "D:\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "-m",
+        "Simulator.testers.summarize_results",
+        "scale3-percentage",
+        "--output-dir",
+        "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\tmp\\simulator_consolidation_20261104\\summaries_final\\scale3-percentage"
+      ],
+      "exit_code": 0,
+      "logs": "scale3-percentage"
+    },
+    {
+      "command": [
+        "D:\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "-m",
+        "Simulator.testers.summarize_results",
+        "uptime-ablation",
+        "--output-dir",
+        "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\tmp\\simulator_consolidation_20261104\\summaries_final\\uptime-ablation"
+      ],
+      "exit_code": 0,
+      "logs": "uptime-ablation"
+    },
+    {
+      "command": [
+        "D:\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "-m",
+        "Simulator.testers.summarize_results",
+        "nonconvexity",
+        "--input-dir",
+        "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\tmp\\simulator_consolidation_20261104\\summaries_final\\nonconvexity_inputs"
+      ],
+      "exit_code": 0,
+      "logs": "nonconvexity"
+    },
+    {
+      "command": [
+        "D:\\Python312\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "-m",
+        "Simulator.testers.summarize_results",
+        "scale3-nonconvexity",
+        "--output-dir",
+        "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\tmp\\simulator_consolidation_20261104\\summaries_final\\scale3-nonconvexity"
+      ],
+      "exit_code": 1,
+      "logs": "scale3_nonconvexity"
+    }
+  ],
+  "limitations": [
+    "ModuleNotFoundError: No module named 'gurobipy'"
+  ],
+  "source_sha256": "53a0d681bc350b7c67632063bed6efda0402369f2bffd810c963943d8bf77321"
+}

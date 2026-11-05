@@ -1,0 +1,25 @@
+{
+  "status": "completed",
+  "stage": "completed",
+  "device_scale": 3,
+  "training_conservativeness": 0.05,
+  "evaluation_conservativeness": 0.0,
+  "optimality_reference": "perturbed",
+  "paired_samples": 5000,
+  "updated_at_utc": "2026-11-01T07:55:26.611500+00:00",
+  "summary": "code\\results\\microgrid\\scale3\\summary.json",
+  "report": "code\\results\\microgrid\\scale3\\report.txt",
+  "verification": "code\\results\\microgrid\\scale3\\verification.json",
+  "historical_artifacts_note": "The retained source_snapshot and historical diagnostics listed in summary.provenance are not evidence for this current run.",
+  "training_seconds": 2843.943294500001,
+  "metrics": {
+    "feasibility_error_rated": {
+      "mean": 3.6277083306545267e-10,
+      "max": 1.2632112749344785e-07
+    },
+    "optimality_error_rated": {
+      "mean": 0.5413613749253012,
+      "max": 0.7823528104250772
+    }
+  }
+}

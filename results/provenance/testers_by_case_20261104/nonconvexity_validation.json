@@ -1,0 +1,31 @@
+{
+  "import_without_gurobi": true,
+  "help_exit_codes": {
+    "root": 0,
+    "evaluate": 0,
+    "ablation": 0,
+    "verify": 0,
+    "verify-storage": 0,
+    "summarize": 0,
+    "scale3-summary": 0,
+    "ablation-summary": 0
+  },
+  "summary_output_comparisons": {
+    "scale3/gap_table.csv": "byte-identical",
+    "scale3/gap_table.md": "byte-identical",
+    "scale3/independent_ESS_energy_verification.json": "byte-identical",
+    "ablation/min_uptime_comparison.csv": "byte-identical",
+    "ablation/min_uptime_comparison.md": "byte-identical"
+  },
+  "case_source_sha256": "a59be05c42a22972d9c295f5d5c8dba1eebd354068f63f30c0e2c85c535af0a8",
+  "source_unchanged_by_global_rewrite": true,
+  "model_test_import_paths_exist": [
+    "Simulator.cases.microgrid_case",
+    "Simulator.cases.microgrid_count_solver",
+    "Simulator.testers.case_microgrid_nonconvexity"
+  ],
+  "expected_model_size": [
+    409,
+    120
+  ]
+}

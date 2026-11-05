@@ -1,0 +1,16 @@
+{
+  "event": "backtracking",
+  "iteration": 7,
+  "trial": 39,
+  "step": 3.308722450212111e-24,
+  "gradient_norm": 8.948070322744067,
+  "directional_derivative": 8.948070322744067,
+  "gradient_scale_identity_residual": 0.007175652642697372,
+  "gradient_translation_residual": 0.0005027368316818381,
+  "accepted": false,
+  "log_objective": 121.19659619167668,
+  "elapsed_seconds": 173.08710059989244,
+  "elapsed_training_seconds": 173.08710430003703,
+  "candidate_evaluations": 74,
+  "local_lp_solves": 4485
+}

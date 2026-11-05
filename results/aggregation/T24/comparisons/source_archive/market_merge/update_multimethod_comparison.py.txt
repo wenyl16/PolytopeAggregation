@@ -1,0 +1,278 @@
+"""Publish the formal lr=1 models and refresh the fixed nine-method comparison.
+
+Reuse the completed PEB/PB training and 5000-direction evaluation verbatim.
+Reuse matching unchanged baseline samples, then update all 365 daily costs
+with the currently selected price dataset and the existing PDF plots in place.
+"""
+
+import argparse
+from concurrent.futures import ProcessPoolExecutor, as_completed
+import csv
+from datetime import datetime, timezone
+import json
+import multiprocessing
+import os
+from pathlib import Path
+import pickle
+import shutil
+import sys
+
+if __package__ in (None, ""):
+    sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+os.environ.setdefault("KMP_DUPLICATE_LIB_OK", "TRUE")
+
+import numpy as np
+
+from Simulator.paths import CODE_ROOT, RESULTS_ROOT, prepare_comparison_output
+from Simulator.runners.compare_training_budgets import check_training_files
+from Simulator.runners.prepare_exact_comparison import digest, scenario, write_json
+from Simulator.runners.train_aggregation import build_aggregator
+from Simulator.testers.evaluate_aggregation import (
+    SOLVER_OPTIONS, default_methods, evaluate_method, load_polytope, verify_scenario,
+)
+from Simulator.testers.evaluate_market_costs import main as evaluate_market_costs
+from Simulator.drawers.plot_comparison import main as plot_comparison
+
+
+BASE = RESULTS_ROOT / "aggregation/T24"
+STAGES = [(299, .02, 1.), (199, .1, .01), (499, 1., 1e-6)]
+PAYLOAD = ("final_polytope.npz", "pretrainnet_weights.pth", "training_config.json",
+           "training_directions.npy", "error_history.pkl",
+           "metadata.pkl", "scenario.json", "projection_retries.json")
+
+
+def main(argv=None):
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--source", type=Path, default=BASE / "exact")
+    parser.add_argument("--workers", type=int, default=3)
+    args = parser.parse_args(argv)
+    if args.workers < 1:
+        parser.error("--workers must be positive")
+    source, output = args.source.resolve(), (BASE / "comparisons").resolve()
+    directions = np.random.RandomState(1).randn(5000, 24)
+    np.testing.assert_array_equal(np.load(source / "evaluation_directions.npy"), directions)
+    agg = build_aggregator(24, 0)
+    case = agg.case_aggregator()
+    scene = scenario(agg)
+    specs = default_methods(BASE)
+    destinations = dict(specs)
+    previous = json.loads((output / "metadata.json").read_text(encoding="utf-8"))
+    report = {"status": "validating", "source": str(source), "training_reused": True,
+              "third_stage_learning_rate": 1., "training_updates_each": 1000,
+              "training_seed": 0, "evaluation_seed": 1, "evaluation_samples": 5000,
+              "previous_summary": json.loads((output / "summary.json").read_text(encoding="utf-8")),
+              "previous_metadata_sha256": digest(output / "metadata.json"), "models": {}}
+    # Validate every source and both full training payloads before replacing files.
+    errors = {}
+    for template in ("peb", "pb"):
+        name = f"proposed_{template}_exact"
+        directory = source / template
+        config, region, _history = check_training_files(directory, STAGES, template)
+        expected = {"training_seed": 0, "gradient_mode": "exact", "fourth_stage_used": False,
+                    "third_stage_extended": False,
+                    "stages": [{"n_train": n, "epochs": n + 1, "lr": lr, "rate_opt_feas": w}
+                               for n, lr, w in STAGES]}
+        for key, value in expected.items():
+            if config.get(key) != value:
+                raise ValueError(f"Saved training protocol differs: {template}/{key}")
+        verify_scenario(directory, agg, 0, required=True)
+        np.testing.assert_array_equal(np.load(directory / "training_directions.npy"),
+                                      np.random.RandomState(0).randn(1000, 24))
+        with np.load(directory / "evaluation_errors.npz", allow_pickle=False) as saved:
+            values = {key: saved[key].copy() for key in saved.files}
+        from Simulator.evaluation_native import _array_hash, _json_hash
+        region_hash = _json_hash({key: _array_hash(value) for key, value in region.items()})
+        if (values["num_sample"].item() != 5000 or values["native_successful_solves"].item() != 20000
+                or values["native_region_sha256"].item() != region_hash
+                or values["native_directions_sha256"].item() != _array_hash(directions)):
+            raise ValueError(f"Saved evaluation does not describe this model/direction set: {template}")
+        for key in ("error_feas", "error_opt"):
+            if values[key].shape != (5000,) or not np.isfinite(values[key]).all() or np.any(values[key] < 0):
+                raise ValueError(f"Invalid raw evaluation: {template}/{key}")
+        # NPZ metadata loads as 0-D arrays; keep the evaluator's scalar contract
+        # so the market-cost summary remains directly JSON serializable.
+        values = {key: value.item() if value.ndim == 0 else value for key, value in values.items()}
+        errors[name] = values
+        report["models"][name] = {
+            "source": str(directory), "destination": str(destinations[name].resolve()),
+            "source_files_sha256": {filename: digest(directory / filename) for filename in PAYLOAD},
+            "evaluation_sha256": digest(directory / "evaluation_errors.npz"),
+            "previous_polytope_sha256": digest(destinations[name] / "final_polytope.npz"),
+        }
+    for name, path in specs[2:]:
+        verify_scenario(path, agg, 0, required=True)
+    # Keep the pre-existing original price data; this refresh does not download or resample it.
+    price_files = ["cost_coefficients.npy", "price_provenance.json", "cost_scenarios.csv",
+                   *[path.name for path in output.glob("daily_prices_*_mwh.npy")]]
+    if (output / "nordpool_crosscheck.json").exists():
+        price_files.append("nordpool_crosscheck.json")
+    price_data = Path(previous["price_data_directory"])
+    price_area = previous["price_area"]
+    report["price_files_before"] = {name: digest(output / name) for name in price_files}
+    report["baseline_archives_before"] = {name: digest(path / "final_polytope.npz" if path.is_dir() else path)
+                                           for name, path in specs[2:]}
+    for name, record in report["models"].items():
+        directory, destination = Path(record["source"]), Path(record["destination"]).resolve()
+        if not destination.is_relative_to((BASE / "exact").resolve()) or destination == directory:
+            raise ValueError("Publication target must be a separate existing exact-model directory")
+        for filename in PAYLOAD:
+            shutil.copyfile(directory / filename, destination / filename)
+        # Copy the complete formal training trajectory, including step zero.
+        snapshots = destination / "snapshots"
+        snapshots.mkdir(exist_ok=True)
+        for path in snapshots.glob("*.csv"):
+            if path.stem[:2] in ("A_", "b_") and path.stem[2:].isdigit():
+                if not path.resolve().is_relative_to(destination):
+                    raise ValueError("Snapshot cleanup escaped the publication directory")
+                path.unlink()
+        for path in (directory / "snapshots").glob("*.csv"):
+            shutil.copyfile(path, snapshots / path.name)
+        initial = {key: np.loadtxt(snapshots / f"{key}_0.csv", delimiter=",") for key in ("A", "b")}
+        from Simulator.runners.prepare_exact_comparison import common_archive
+        np.savez(destination / "initial_polytope.npz", **initial,
+                 **common_archive(agg, scene, name + "_initial"), optimizer_updates=0)
+        for key in ("A", "b"):
+            shutil.copyfile(directory / f"{key}_final.csv", destination / f"{key}_final.csv")
+        write_json(destination / "provenance.json", {
+            "status": "completed", "scenario_sha256": scene["scenario_sha256"],
+            "source": str(directory), "training_reused": True, "training_seed": 0,
+            "optimizer_updates": 1000, "actual_stage_updates": [300, 200, 500],
+            "third_stage_learning_rate": 1., "fourth_stage_used": False,
+            "initial_polytope_optimizer_updates": 0,
+            "initial_polytope_note": "Full-training initialization reconstructed from the formal step-zero snapshot",
+            "source_files_sha256": record["source_files_sha256"],
+            "final_polytope_sha256": digest(destination / "final_polytope.npz")})
+        for filename, expected_hash in record["source_files_sha256"].items():
+            if digest(destination / filename) != expected_hash:
+                raise RuntimeError(f"Published file differs from its source: {name}/{filename}")
+    audit = {name: verify_scenario(path, agg, 0, required=True) for name, path in specs}
+    regions = {name: load_polytope(path) for name, path in specs}
+    regions["peb_outer"] = {"A": case["A_hat"], "b": case["b_hat"]}
+    audit["peb_outer"] = {"scenario_verified": True, "source": "current Aggregator support LPs"}
+    # Unchanged baseline regions already have these exact 5000 held-out samples.
+    # Validate their region and direction hashes before reusing the raw arrays.
+    reused_baselines, baseline_cache_files = [], {}
+    for name, region in regions.items():
+        saved_path = output / f"{name}_errors.npz"
+        if name in errors or not saved_path.is_file():
+            continue
+        with np.load(saved_path, allow_pickle=False) as saved:
+            values = {key: saved[key].item() if saved[key].ndim == 0 else saved[key].copy()
+                      for key in saved.files}
+        expected_hash = _json_hash({key: _array_hash(value) for key, value in region.items()})
+        if (values.get("native_region_sha256") == expected_hash
+                and values.get("native_directions_sha256") == _array_hash(directions)
+                and values.get("native_successful_solves") == 20000
+                and all(np.asarray(values[key]).shape == (5000,)
+                        and np.isfinite(values[key]).all() and np.all(values[key] >= 0)
+                        for key in ("error_feas", "error_opt"))):
+            errors[name] = values
+            reused_baselines.append(name)
+            checkpoint = output / f"{name}_checkpoint.npz"
+            if checkpoint.is_file():
+                with np.load(checkpoint, allow_pickle=False) as saved:
+                    manifest = json.loads(saved["manifest"].item())
+                    if (saved["completed"].item() != 5000
+                            or manifest["region_sha256"] != expected_hash
+                            or manifest["directions_sha256"] != _array_hash(directions)):
+                        raise ValueError(f"The reusable baseline checkpoint differs: {name}")
+                    for key in ("error_feas", "error_opt"):
+                        np.testing.assert_array_equal(saved[key], values[key])
+                baseline_cache_files[checkpoint.name] = checkpoint.read_bytes()
+                progress = output / f"{name}_progress.json"
+                if progress.is_file():
+                    baseline_cache_files[progress.name] = progress.read_bytes()
+    report["unchanged_baseline_evaluations_reused"] = reused_baselines
+    prepare_comparison_output(output, "error")
+    for filename, payload in baseline_cache_files.items():
+        (output / filename).write_bytes(payload)
+    np.save(output / "directions.npy", directions)
+    np.savez(output / "peb_outer.npz", **regions["peb_outer"], T=24, case_seed=0,
+             n_cl=5, n_tcl=40, n_pv=5, pmin=agg.pmin, pmax=agg.pmax, method="peb_outer")
+    metadata = {key: previous[key] for key in ("horizon", "case_seed", "aggregator_class", "counts",
+                 "error_definition", "peb_inner_model_note", "legacy_baseline_model_audit") if key in previous}
+    metadata.update(status="running", metric="both", error_status="running", cost_status="pending_update",
+        direction_seed=1, num_samples=5000, num_error_samples=5000, num_cost_samples=365,
+        error_backend="native", error_workers=args.workers, completed_error_methods=[],
+        pmin=agg.pmin, pmax=agg.pmax, method_order=list(regions), scenario_audit=audit,
+        methods={name: str(path.resolve()) for name, path in specs}, solver_options=SOLVER_OPTIONS,
+        model_sources_sha256={name: digest(CODE_ROOT / name) for name in
+                              ("Simulator/cases/aggregation.py", "Simulator/cases/aggregation_case_T24.py")},
+        evaluation_sources_sha256={name: digest(CODE_ROOT / name) for name in
+            ("Simulator/testers/evaluate_aggregation.py", "Simulator/evaluation.py", "Simulator/evaluation_native.py")},
+        directions_sha256=digest(output / "directions.npy"),
+        result_policy="One current comparison; overwrite in place",
+        model_update={"training_reused": True, "third_stage_learning_rate": 1.,
+                      "source": str(source), "report": "model_update.json"})
+    report["status"] = "evaluating"
+    write_json(output / "model_update.json", report)
+    write_json(output / "metadata.json", metadata)
+    try:
+        def save_error(name, values):
+            errors[name] = values
+            np.savez(output / f"{name}_errors.npz", **{k: v for k, v in values.items() if v is not None})
+            metadata["completed_error_methods"].append(name)
+            write_json(output / "metadata.json", metadata)
+            print(f"{name}: max feasibility={float(values['max_feas']):.9g}; "
+                  f">1e-4={int(values['count_feas_gt_1e4'])}", flush=True)
+        for template in ("peb", "pb"):
+            name = f"proposed_{template}_exact"
+            shutil.copyfile(source / template / f"{template}_checkpoint.npz", output / f"{name}_checkpoint.npz")
+            progress = json.loads((source / template / "evaluation_progress.json").read_text(encoding="utf-8"))
+            progress.update(method=name, reused_from=str(source / template), reused_without_new_solves=True)
+            write_json(output / f"{name}_progress.json", progress)
+            save_error(name, errors[name])
+        for name in reused_baselines:
+            save_error(name, errors[name])
+        context = multiprocessing.get_context("spawn")
+        with ProcessPoolExecutor(max_workers=args.workers, mp_context=context) as executor:
+            futures = [executor.submit(evaluate_method, (name, 24, 0, directions, region, "native", str(output)))
+                       for name, region in regions.items() if name not in errors]
+            for future in as_completed(futures):
+                save_error(*future.result())
+        errors = {name: errors[name] for name in regions}
+        if len({str(values["native_model_sha256"]) for values in errors.values()}) != 1:
+            raise RuntimeError("Reused and newly evaluated results use different physical models")
+        with (output / "error_comparison.pkl").open("wb") as stream:
+            pickle.dump(errors, stream)
+        with (output / "error_samples.csv").open("w", newline="", encoding="utf-8-sig") as stream:
+            writer = csv.writer(stream)
+            writer.writerow(("method", "sample", "feasibility_squared_distance", "optimality_squared_distance"))
+            for name, values in errors.items():
+                writer.writerows((name, i, f, o) for i, (f, o) in enumerate(zip(values["error_feas"], values["error_opt"])))
+        summary = {name: {key: values[key] for key in
+                   ("mean_feas", "max_feas", "mean_opt", "max_opt", "count_feas_gt_1e4")}
+                   for name, values in errors.items()}
+        write_json(output / "summary.json", summary)
+        metadata.update(error_status="completed", error_completed_at_utc=datetime.now(timezone.utc).isoformat())
+        write_json(output / "metadata.json", metadata)
+        evaluate_market_costs(["--error-results", str(output), "--output-dir", str(output),
+                               "--price-data", str(price_data), "--price-area", price_area])
+        plot_comparison([str(output)])
+        for name, record in report["models"].items():
+            directory, destination = Path(record["source"]), Path(record["destination"])
+            for filename, expected_hash in record["source_files_sha256"].items():
+                if digest(directory / filename) != expected_hash or digest(destination / filename) != expected_hash:
+                    raise RuntimeError(f"Original or published training payload changed: {name}/{filename}")
+            with np.load(directory / "evaluation_errors.npz", allow_pickle=False) as saved:
+                for key in ("error_feas", "error_opt"):
+                    np.testing.assert_array_equal(saved[key], errors[name][key])
+        for filename, expected_hash in report["price_files_before"].items():
+            if digest(output / filename) != expected_hash:
+                raise RuntimeError(f"Price data changed: {filename}")
+        for name, path in specs[2:]:
+            if digest(path / "final_polytope.npz" if path.is_dir() else path) != report["baseline_archives_before"][name]:
+                raise RuntimeError(f"Baseline model changed: {name}")
+        report.update(status="completed", source_payloads_copied_bitwise=True,
+                      source_payloads_unchanged=True, reused_raw_error_arrays_bitwise_equal=True,
+                      prices_unchanged=True, baseline_models_unchanged=True,
+                      completed_at_utc=datetime.now(timezone.utc).isoformat())
+    except BaseException as exc:
+        report.update(status="failed", failure=f"{type(exc).__name__}: {exc}")
+        raise
+    finally:
+        write_json(output / "model_update.json", report)
+
+
+if __name__ == "__main__":
+    main()

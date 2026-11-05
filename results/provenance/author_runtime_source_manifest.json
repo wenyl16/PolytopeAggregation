@@ -1,0 +1,40 @@
+{
+  "created_at_utc": "2026-10-28T11:53:12.349639+00:00",
+  "source_root": "E:\\OneDrive\\Working\\Latex_Papers\\10OptimalPolytope",
+  "run_directory": "E:\\OneDrive\\Working\\Research\\12多种设备运行域聚合的通用框架\\tmp\\gradient_runtime_and_baseline_budget",
+  "original_sources_sha256": {
+    "v10/OptimalPolytope.tex": "08030c1ae2081a0d9524bed995ba7c5adbb90a24df3776fbec1ce6cd56438241",
+    "R2/Response_Letter.tex": "fd6f83bdf8906146b543a6144c7ce08685dbaa91bcaa19fe398aed2e2770a918"
+  },
+  "source_assets_sha256": {
+    "v10/figs/results_revision/01_gradient_comparison.pdf": "071bba18d064c1c2cba4937977c9dbdebd8fe50c7cb8f90f385fdab8b13d7fb1",
+    "v10/figs/results_revision/02_methods_error_comparison.pdf": "77bda83c4e3ac2c9948d1197b20b4c4acc07ec083feac0322240ce79b0339226"
+  },
+  "scope_checks": {
+    "only_two_main_blocks_changed": true,
+    "old_training_time_placeholder_removed": true,
+    "new_runtime_text_present_in_main_and_quoted_response": true,
+    "only_response_2_3_changed": true,
+    "reviewer_comments_preserved": true,
+    "difference_is_1_621_seconds": true,
+    "relative_difference_rounds_to_0_83_percent": true,
+    "balanced_groups": true
+  },
+  "author_supplied_training_times": {
+    "complete_runs_per_variant": 10,
+    "updates_per_run": 1000,
+    "exact_mean_seconds": "197.215",
+    "approximate_mean_seconds": "195.594",
+    "difference_seconds": "1.621",
+    "relative_difference_percent": "0.8287575283495403744491139810",
+    "not_a_new_experiment": true
+  },
+  "initial_review_sources_sha256": {
+    "v10/OptimalPolytope.tex": "7bbd10b1c5acfe70bd4946f02811fa8a96aea268ac81bc66558821c5ab8aa5cd",
+    "R2/Response_Letter.tex": "fd6f83bdf8906146b543a6144c7ce08685dbaa91bcaa19fe398aed2e2770a918"
+  },
+  "concurrent_edits_preserved": {
+    "rebased_at_utc": "2026-10-28T11:59:18.560847+00:00",
+    "scope": "all latest non-runtime edits including Section II nonconvexity wording"
+  }
+}

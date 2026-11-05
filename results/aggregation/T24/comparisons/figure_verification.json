@@ -1,0 +1,64 @@
+{
+  "status": "PASS",
+  "price_area": "CAISO-POD_CONTRL_1_POOLE-APND",
+  "currency": "USD",
+  "days": 365,
+  "at_utc": "2026-10-28T09:30:48.505359+00:00",
+  "figures": {
+    "cost_comparison": {
+      "sha256": "210b76965bb6f455ef6d15ab5eacc4280093b70f8fd636d8bcaa6b60fad3b2b4",
+      "page_points": [
+        972.0,
+        293.2969970703125
+      ],
+      "TimesNewRoman_embedded": true,
+      "all_text_inside_page": true,
+      "summary_copy_matches": true,
+      "median_lines_displayed": false,
+      "mean_markers_displayed": true,
+      "cost_axis_range": [
+        -400,
+        1000
+      ],
+      "cost_tick_interval": 200,
+      "samples_outside_range": 0
+    },
+    "error_comparison": {
+      "sha256": "95986afbe5101fae8630f8fead60aee7451559f7139fa01620e3ae482b9b7f37",
+      "page_points": [
+        807.0822143554688,
+        336.56768798828125
+      ],
+      "TimesNewRoman_embedded": true,
+      "all_text_inside_page": true,
+      "summary_copy_matches": true,
+      "median_lines_displayed": false,
+      "mean_markers_displayed": true,
+      "width_scale": 0.85,
+      "height_preserved": true,
+      "bitwise_preserved_during_price_update": true
+    }
+  },
+  "cost_PDF_sha256": "210b76965bb6f455ef6d15ab5eacc4280093b70f8fd636d8bcaa6b60fad3b2b4",
+  "error_PDF_sha256": "95986afbe5101fae8630f8fead60aee7451559f7139fa01620e3ae482b9b7f37",
+  "visual_review": "PASS: original palettes, Times New Roman fonts, dimensions and mean markers preserved; median lines hidden; USD label correct; no clipped text; compiled ten-method LaTeX table reviewed",
+  "error_PDF_unchanged": true,
+  "error_width_scale": 0.85,
+  "error_height_preserved": true,
+  "cost_axis_range": [
+    -400,
+    1000
+  ],
+  "cost_tick_interval": 200,
+  "mean_cost_table": {
+    "file": "code\\results\\figures_summary\\02_methods_cost_CAISO_POD_CONTRL_1_POOLE_APND.tex",
+    "sha256": "4d19883c6ec99f56a22ccd5ea3b482493be6593ed800bda9549092885d449bea",
+    "unit": "USD/day",
+    "days": 365,
+    "methods": 10,
+    "decimal_places": 2,
+    "pdflatex_compilation": "PASS; no overfull boxes",
+    "source_means_verified": "PASS"
+  },
+  "plotting_code_sha256": "18e1d2fffd80bd8caf7b0093bdc0ad415d838403d7bd5ac4df71d5f26ca0989b"
+}

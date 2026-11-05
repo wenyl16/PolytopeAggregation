@@ -1,0 +1,53 @@
+{
+  "scope": "Targeted local tmp log, training-config, manuscript-runtime-manifest and ZIP-member search; no session-history scan and no optimization rerun.",
+  "claims_sought": [
+    "Training budget doubled run: 390.7 s",
+    "Seven-device repeated training range: approximately 200 to 1500 s",
+    "Twenty-one-device repeated training: more than 7000 s"
+  ],
+  "exact_raw_evidence_recovered": false,
+  "historical_logs_copied_to_results": [],
+  "relevant_nonmatching_records": [
+    {
+      "path": "tmp/microgrid_c002_control/training/training_config.json",
+      "devices": 7,
+      "conservativeness": 0.02,
+      "optimizer_updates": 2000,
+      "elapsed_seconds": 967.6845920998603,
+      "reason_not_copied": "Different training margin and runtime; does not establish either endpoint of the reported repeated-run range."
+    },
+    {
+      "path": "tmp/microgrid_conservative_002_completed_training_audit.json",
+      "devices": 7,
+      "conservativeness": 0.02,
+      "optimizer_updates": 2000,
+      "elapsed_seconds": 1171.5850651999936,
+      "reason_not_copied": "Different training margin and runtime; does not establish either endpoint of the reported repeated-run range."
+    },
+    {
+      "path": "tmp/microgrid_scale3_pipeline_race/training/training_config.json",
+      "devices": 21,
+      "optimizer_updates": 2000,
+      "elapsed_seconds": null,
+      "reason_not_copied": "Race-run config lacks elapsed runtime and uses different solver/count-branching settings. It cannot establish a greater-than-7000-second completed training measurement."
+    },
+    {
+      "path": "tmp/microgrid_pipeline_launch_race/training/training_config.json",
+      "devices": 35,
+      "status": "interrupted",
+      "reason_not_copied": "Wrong portfolio and incomplete run."
+    },
+    {
+      "path": "tmp/training_budget_comparison.log",
+      "reason_not_copied": "Progress and evaluation lines exist, but no matching 390.7-second training measurement. Saved matching PEB result config reports 461.01739399996586 seconds."
+    }
+  ],
+  "archives_inspected_by_member_names": [
+    "tmp/simulator_cleanup/source_before.zip",
+    "tmp/figures_original_before_refresh_20261027T092237906259Z.zip",
+    "tmp/figures_original_before_refresh_20261027T094649793604Z.zip"
+  ],
+  "archive_result": "No training_config, summary, runtime or timing members; these archives do not recover the missing numerical timing records.",
+  "manuscript_runtime_manifest": "tmp/gradient_runtime_and_baseline_budget/manifest.json explicitly records 197.215/195.594 seconds as author supplied, not a new experiment; already retained separately by manuscript_runtime_provenance.json.",
+  "table_schedule_check": "Tables I and V now use executed train_calls.optimizer_updates and verify against saved optimizer_updates and phase_end_updates. Table V is 600/600/800 updates (2000 total), not 30/30/40 epochs. Equivalent lambda is explicitly computed as 1/(1+saved_optimality_to_feasibility_ratio); the output does not assert exact equality with the manuscript's rounded weights."
+}
