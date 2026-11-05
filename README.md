@@ -22,7 +22,6 @@ The repository includes both executable code and historical results. Reading the
 - [Baseline methods](#baseline-methods)
 - [Evaluation entry points](#evaluation-entry-points)
 - [Map of the saved experiments](#map-of-the-saved-experiments)
-- [Reproducibility and provenance](#reproducibility-and-provenance)
 - [Troubleshooting](#troubleshooting)
 
 ## Start with the saved results
@@ -171,8 +170,6 @@ python -B -m Simulator.drawers.plot_microgrid_shift results/microgrid/disaggrega
 
 `refresh_original_figures` regenerates seven original-manuscript figures from the currently retained arrays. Without `--output-dir`, it replaces the default figure files after archiving the existing PDFs. The separate output directories above keep the retained manuscript copies available for comparison. Font availability, including Times New Roman used by the plotting style, can affect rendering.
 
-The 12 retained manuscript PDFs and newly regenerated figures are distinct artifacts. See [Reproducibility and provenance](#reproducibility-and-provenance) before interpreting a redraw as an exact reconstruction of a historical figure.
-
 ## Run new training experiments
 
 These commands perform optimization and may take substantial time. Use an empty or nonexistent output directory for each new run. Omitting output options in some runners writes to the canonical experiment directories and can replace saved results.
@@ -306,18 +303,6 @@ Paths in this table are relative to `results/`. Figure and table numbers follow 
 | Retained Fourier-Motzkin termination evidence | `microgrid/taheri2022/run_20261028_budget1000_retry2/` |
 
 Depending on the experiment, these directories contain model arrays, training histories, PyTorch weights, evaluation samples, solver diagnostics, configurations, and source snapshots. These files are part of the experiment record, rather than interchangeable caches.
-
-## Reproducibility and provenance
-
-The saved artifacts support inspection and many summary/plotting workflows, but the following documented limitations matter for exact historical reproduction:
-
-1. **T96 raw initialization is missing.** The original raw `A_0.csv` and `b_0.csv` were loaded from an archive that is no longer in the package. The runner accepts replacement locations only when the recorded hashes match. Current normalized snapshots are not substitutes for those original bytes.
-2. **Some retained figures predate the current saved model.** In particular, the historical `mg_training_trajectory.pdf` is associated with conservativeness `0.02`, whereas the retained current microgrid model uses `0.05`. Redrawing current arrays need not reconstruct that historical PDF. Some older comparison/revision figures also lack an exact matching retained export.
-3. **Some manuscript timings and counts differ from saved logs.** Author-supplied runtime figures, actual optimizer-update counts, and the gradient-evaluation sample count are not identical in every source. The current gradient-figure pipeline includes 10,000 evaluation directions, while the manuscript reports 5,000. These differences are documented rather than silently reconciled.
-4. **Historical source hashes can differ from the consolidated code.** Strict provenance checks may reject a saved execution snapshot whose hashes do not match the current files. Preserved source snapshots and path mappings support investigation; a current file with a similar name is not proof of the original execution version.
-5. **Saved results and fresh experiments have different evidentiary roles.** Re-exporting a table or redrawing a figure is not a new optimization run. Conversely, a new run with current defaults is not automatically an exact reproduction of the recorded experiment.
-
-Useful records include the [paper-results audit](results/provenance/paper_results_audit.md), [runtime provenance](results/provenance/manuscript_runtime_provenance.json), [figure-source manifest](results/figures/figure_sources.json), and [cleanup manifest](results/cleanup_manifest.json). For a new experiment, retain its command, seeds, configuration, dependency versions, solver logs, and input hashes with the outputs.
 
 ## Troubleshooting
 
